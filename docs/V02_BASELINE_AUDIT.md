@@ -20,6 +20,11 @@
 
 ## 1. The 12 required questions
 
+> **Clarification (Owner, after this audit):** "eight procedural worlds" below describes the **old v01/SAFE_TEST
+> contents** (9 worlds including Berserk). The **final target is 8 active worlds**: Demon Slayer + 7
+> new Blender worlds; Berserk is removed. **Akaza is preserved, not rebuilt**; see
+> `docs/AKAZA_PRESERVATION_AUDIT_v02.md` (backups + fingerprint check).
+
 **1. Which current Worlds were built procedurally (Lune/Luau/Roblox Parts)?**
 Eight: MHA, Dragon Ball, One Piece, Naruto, **Berserk**, Bleach, JJK, Solo Leveling. They are built
 by `game/assembler/worlds/Themes.luau` + `Kit.luau` from plain Roblox Parts (**0 MeshParts**; 135–1,136 parts each).
@@ -149,8 +154,9 @@ Scope:       local build tool only; not shipped with the game
    2. Sanitize clones into `…Sanitized`.
    3. After face-swap fixes, promote them to `…Production` and `ReplicatedStorage.SAE_Preview.Rigs`,
       keyed by characterId.
-4. **Approved assets:** keep the Akaza environment and the 4 approved DS eggs byte-identical. Giyu
-   stays archived.
+4. **Approved assets:** keep the Akaza environment and the 4 approved DS eggs unchanged. They are
+   guarded by `game/tests/akaza_fingerprint.luau`; only additive, Owner-allowed improvements are
+   permitted (AKAZA_PRESERVATION_AUDIT_v02 §5). Giyu stays archived.
 5. **World rebuilds** (Blender) replace only the 7 procedural worlds that remain after Berserk is removed.
    Berserk content moves to `SAE_Archive`.
 6. **Data/config** changes (8 worlds, rosters, 41 eggs, secret roll, extras, secure-in-hand,
