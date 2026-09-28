@@ -82,7 +82,7 @@ for _, root in ACTIVE do
 end
 local foreign = {}
 for _, s in active do
-	local owner = s:FindFirstAncestor("SAE_Server") or s:FindFirstAncestor("SAE_Client") or s:FindFirstAncestor("SAE_Shared")
+	local owner = s:FindFirstAncestor("SAE_Server") or s:FindFirstAncestor("SAE_Client") or s:FindFirstAncestor("SAE_Shared") or s:FindFirstAncestor("SAE_StudioTests")
 	if not owner then
 		table.insert(foreign, s:GetFullName())
 	end

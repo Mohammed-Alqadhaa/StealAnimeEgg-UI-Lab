@@ -295,6 +295,10 @@ local sharedFolder = B.folder(RS, "SAE_Shared")
 addScripts("game/src/shared", sharedFolder)
 local serverFolder = B.folder(SSS, "SAE_Server")
 addScripts("game/src/server", serverFolder)
+-- Studio-only Play-mode test harness: inert unless RunService:IsStudio() AND
+-- ServerStorage.SAE_EnableStudioTests == true (see docs/STUDIO_TEST_HARNESS.md)
+local testsFolder = B.folder(SSS, "SAE_StudioTests")
+addScripts("game/src/studio_tests", testsFolder)
 if fs.isDir("game/src/client") then
 	local clientFolder = B.folder(SPS, "SAE_Client")
 	addScripts("game/src/client", clientFolder)

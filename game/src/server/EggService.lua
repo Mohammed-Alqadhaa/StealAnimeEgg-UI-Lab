@@ -27,6 +27,7 @@ local Worlds = require(Shared.Worlds)
 local Layout = require(Shared.Layout)
 local Balance = require(Shared.Balance)
 local Profile = require(Shared.Profile)
+local TestGate = require(script.Parent:WaitForChild("TestGate"))
 
 local EggService = {}
 
@@ -403,6 +404,40 @@ end
 
 function EggService.OnResolved(fn)
 	table.insert(resolvedListeners, fn)
+end
+
+-- ── Studio test harness hooks (inert outside Studio test runs, see TestGate) ──
+-- Same path as the ProximityPrompt: round/carry/distance/state checks all apply, so
+-- the caller must first move the character next to the egg.
+function EggService.TestPickUp(player: Player, eggId: string): boolean
+	TestGate.check("EggService.TestPickUp")
+	local rec = records[eggId]
+	if not rec then
+		return false
+	end
+	local anchor = rec.dropModel and rec.dropModel:FindFirstChild("PromptAnchor") or rec.prompt.Parent
+	pickUp(player, rec, (anchor :: BasePart).Position)
+	return carrying[player] == rec
+end
+
+function EggService.TestEggInfo(eggId: string): { [string]: any }?
+	TestGate.check("EggService.TestEggInfo")
+	local rec = records[eggId]
+	if not rec then
+		return nil
+	end
+	local anchor = rec.prompt.Parent :: BasePart
+	return {
+		state = rec.state,
+		carrier = rec.carrier,
+		uid = rec.uid,
+		hasDrop = rec.dropModel ~= nil and rec.dropModel.Parent ~= nil,
+		dropExpiresAt = rec.dropModel and rec.dropModel:GetAttribute("ExpiresAt"),
+		dropPosition = rec.dropModel and rec.dropModel:GetPivot().Position,
+		spawnPosition = anchor.Position,
+		spawnVisible = rec.visual.Parent == rec.spawn,
+		carryModel = rec.carryModel,
+	}
 end
 
 function EggService.Count(): number

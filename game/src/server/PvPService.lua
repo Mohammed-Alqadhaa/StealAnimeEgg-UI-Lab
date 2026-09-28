@@ -13,6 +13,7 @@ local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Shared = ReplicatedStorage:WaitForChild("SAE_Shared")
+local TestGate = require(script.Parent:WaitForChild("TestGate"))
 local Balance = require(Shared.Balance)
 local Layout = require(Shared.Layout)
 local Animations = require(Shared.Animations)
@@ -106,6 +107,18 @@ local function swing(attacker: Player)
 			deps.Remotes.notify(attacker, "ok", "Egg knocked loose!")
 		end
 	end
+end
+
+-- ── Studio test harness hooks (inert outside Studio test runs, see TestGate) ──
+-- Same server resolution as Tool.Activated (range, cone, safe zone, cooldown).
+function PvPService.TestSwing(attacker: Player)
+	TestGate.check("PvPService.TestSwing")
+	swing(attacker)
+end
+
+function PvPService.TestResetCooldown(attacker: Player)
+	TestGate.check("PvPService.TestResetCooldown")
+	lastSwing[attacker] = nil
 end
 
 function PvPService.Start(d)

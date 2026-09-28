@@ -3,18 +3,29 @@
   "tree": {
     "$className": "DataModel",
     "ReplicatedStorage": {
-      "SAE_Shared": { "$path": "src/shared" }
+      "SAE_Shared": {
+        "$path": "src/shared"
+      }
     },
     "ServerScriptService": {
-      "SAE_Server": { "$path": "src/server" }
+      "SAE_Server": {
+        "$path": "src/server"
+      },
+      "SAE_StudioTests": {
+        "$path": "src/studio_tests"
+      }
     },
     "StarterPlayer": {
       "StarterPlayerScripts": {
-        "SAE_Client": { "$path": "src/client" }
+        "SAE_Client": {
+          "$path": "src/client"
+        }
       }
     },
     "StarterGui": {
-      "SAE_UI": { "$path": "ui/SAE_UI.rbxmx" }
+      "SAE_UI": {
+        "$path": "ui/SAE_UI.rbxmx"
+      }
     }
   }
 }

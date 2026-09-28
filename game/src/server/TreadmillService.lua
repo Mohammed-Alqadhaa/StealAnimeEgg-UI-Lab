@@ -21,6 +21,7 @@ local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Shared = ReplicatedStorage:WaitForChild("SAE_Shared")
+local TestGate = require(script.Parent:WaitForChild("TestGate"))
 local Balance = require(Shared.Balance)
 local Economy = require(Shared.Economy)
 local Profile = require(Shared.Profile)
@@ -116,6 +117,18 @@ end
 
 function TreadmillService.IsTraining(player: Player): boolean
 	return training[player] == true
+end
+
+-- ── Studio test harness hooks (inert outside Studio test runs, see TestGate) ──
+function TreadmillService.TestRefresh(farmIndex: number)
+	TestGate.check("TreadmillService.TestRefresh")
+	refreshSign(farmIndex)
+end
+
+function TreadmillService.TestMachine(farmIndex: number)
+	TestGate.check("TreadmillService.TestMachine")
+	local m = machines[farmIndex]
+	return m and { model = m.model, belt = m.belt, zone = m.zone, tiers = m.tiers, prompt = m.prompt }
 end
 
 function TreadmillService.Start(d)

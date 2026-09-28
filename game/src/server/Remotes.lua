@@ -12,6 +12,7 @@ local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Net = require(ReplicatedStorage:WaitForChild("SAE_Shared"):WaitForChild("Net"))
+local TestGate = require(script.Parent:WaitForChild("TestGate"))
 
 local Remotes = {}
 
@@ -20,6 +21,7 @@ local events = {}
 local functions = {}
 local lastCall = {} -- [player][name] = os.clock()
 local busy = {} -- [player] = true while a mutating handler runs
+local wrapped = {} -- [name] = the exact wrapper the RemoteEvent/RemoteFunction runs (test harness)
 
 local MIN_INTERVAL = 0.12
 
@@ -81,7 +83,7 @@ end
 function Remotes.onEvent(name: string, handler: (Player, ...any) -> ())
 	local e = events[name]
 	assert(e, "unknown remote event " .. name)
-	e.OnServerEvent:Connect(function(player, ...)
+	local function run(player: Player, ...)
 		if not allowed(player, name) then
 			return
 		end
@@ -89,13 +91,15 @@ function Remotes.onEvent(name: string, handler: (Player, ...any) -> ())
 		Remotes.locked(player, function()
 			handler(player, table.unpack(args, 1, args.n))
 		end)
-	end)
+	end
+	wrapped[name] = run
+	e.OnServerEvent:Connect(run)
 end
 
 function Remotes.onInvoke(name: string, handler: (Player, ...any) -> ...any)
 	local f = functions[name]
 	assert(f, "unknown remote function " .. name)
-	f.OnServerInvoke = function(player, ...)
+	local function run(player: Player, ...)
 		if not allowed(player, name) then
 			return false, "slow down"
 		end
@@ -104,6 +108,8 @@ function Remotes.onInvoke(name: string, handler: (Player, ...any) -> ...any)
 			return handler(player, table.unpack(args, 1, args.n))
 		end)
 	end
+	wrapped[name] = run
+	f.OnServerInvoke = run
 end
 
 function Remotes.fire(player: Player, name: string, ...)
@@ -122,6 +128,21 @@ end
 
 function Remotes.notify(player: Player, kind: string, text: string, extra: any?)
 	Remotes.fire(player, "Notify", kind, text, extra)
+end
+
+-- ── Studio test harness hooks (inert outside Studio test runs, see TestGate) ──
+-- Runs a remote exactly as if the client had sent it: same rate limit, same lock.
+function Remotes.TestCall(player: Player, name: string, ...: any): ...any
+	TestGate.check("Remotes.TestCall")
+	local run = wrapped[name]
+	assert(run, "no handler registered for " .. name)
+	return run(player, ...)
+end
+
+-- Clears the per-player rate-limit memory so sequential test calls are not throttled.
+function Remotes.TestClearRate(player: Player)
+	TestGate.check("Remotes.TestClearRate")
+	lastCall[player] = nil
 end
 
 return Remotes
