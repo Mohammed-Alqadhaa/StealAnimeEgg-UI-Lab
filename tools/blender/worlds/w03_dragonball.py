@@ -245,6 +245,32 @@ for i, (x, y, r, h) in enumerate(FALLS):
     S.empty(f"VFX_Waterfall{i + 1}", (x + face * r * 0.85, y, 0))["vfx"] = "falling water beam + splash mist (runtime)"
     S.use(S.collection(f"EXPORT_Waterfalls__Glass"))
 
+# horizon mesas + waterfalls beyond the old slot (correction pass: restores the R02 horizon lost to the slot clamp).
+# BACKGROUND, non-collidable; lateral |x| >= 139 so they clear the neighbour's stands (cross-world check).
+C("EXPORT_MesasFar__Sandstone")
+FARM = []
+for side in (-1, 1):
+    for k in range(4):
+        r = rng.uniform(22, 36)
+        FARM.append((side * rng.uniform(190, 300), rng.uniform(250, 380), r, rng.uniform(45, 85)))
+for i, (x, y, r, h) in enumerate(FARM):
+    z, rr, layer = -3.0, r, 0
+    while z < h:
+        lh = rng.uniform(9, 18)
+        S.prism(f"MesaFar{i}_{layer}", blob(x + rng.uniform(-2, 2), y + rng.uniform(-2, 2), rr, 12, 0.22), z, min(h, z + lh), ROCK if layer % 2 == 0 else ROCK_B)
+        z += lh
+        rr *= rng.uniform(0.9, 1.02)
+        layer += 1
+C("EXPORT_WaterfallsFar__Glass")
+for i, (x, y, r, h) in enumerate(FARM[::3]):
+    face = -1 if x > 0 else 1
+    S.box(f"WaterfallFar{i}", (0.4, r * 0.35, h * 0.8), (x + face * r * 0.85, y - r * 0.3, h * 0.4 - 1), (0, face * -6, 0), FALL)
+S.use(S.collection("VFX"))
+S.empty("VFX_WaterfallsFar", (0, 300, 0))["vfx"] = "distant waterfall beams + mist (runtime)"
+C("EXPORT_SeaFar__Glass")
+for side in (-1, 1):
+    S.box(f"SeaFar{side}", (260, 200, 0.2), (side * 260, 328, -1.2), material=SEA)
+
 # ═══════════════════════════════════════════════════════ FRIEZA STAGE ══
 C("EXPORT_Stage__Slate")
 for s in range(3):
@@ -333,9 +359,9 @@ for gy, tag in ((-2.0, "Entry"),):
 
 # ═══════════════════════════════════════════════════════ SKY PLANET ══
 C("EXPORT_SkyPlanet__Neon")  # SKY layer: upper-left like R02, lateral + high so it meets no other world (cross-world check)
-S.sphere("SkyPlanet", 70, (-245, 330, 185), PLANET, seg=32, rings=16)
-S.torus("SkyPlanetBand", 70.5, 3.0, (-245, 330, 185), (70, 20, 0), PLANET_B, major=48, minor=6)
-S.sphere("SkyMoon", 16, (205, 360, 215), PLANET_B, seg=20, rings=10)
+S.sphere("SkyPlanet", 60, (-170, 380, 150), PLANET, seg=32, rings=16)
+S.torus("SkyPlanetBand", 60.5, 2.6, (-170, 380, 150), (15, 10, 0), PLANET_B, major=48, minor=6)
+S.sphere("SkyMoon", 14, (160, 420, 170), PLANET_B, seg=20, rings=10)
 
 S.set_layers([
     ("Grout", "PLAYABLE"), ("Causeway", "PLAYABLE"), ("Plaza", "PLAYABLE"), ("EggPedestals", "PLAYABLE"),
@@ -344,7 +370,8 @@ S.set_layers([
     ("Stage", "BOSS_STAGE"), ("StageGlow", "PROPS"), ("StagePortal", "PROPS"), ("StageArch", "BACKGROUND"),
     ("Sea", "BACKGROUND"), ("Seabed", "BACKGROUND"), ("Island", "BACKGROUND"), ("Trunks", "BACKGROUND"),
     ("Canopy", "BACKGROUND"), ("Domes", "BACKGROUND"), ("DomeWindows", "BACKGROUND"), ("Mesas", "BACKGROUND"),
-    ("Waterfalls", "BACKGROUND"), ("SkyPlanet", "SKY"),
+    ("Waterfalls", "BACKGROUND"), ("MesasFar", "BACKGROUND"), ("WaterfallsFar", "BACKGROUND"),
+    ("SeaFar", "BACKGROUND"), ("SkyPlanet", "SKY"),
 ])
 S.organize("DragonBall")
 VALID = S.validate("DragonBall", walk_half=56.0)
