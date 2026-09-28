@@ -15,6 +15,30 @@ None of the assets below is **OFFLINE INTEGRATED**, **STUDIO TESTED** or **VISUA
 need uploaded mesh assets (Studio 3D Importer or Open Cloud), which cannot be done from this cloud container.
 All visual choices are **OWNER APPROVAL PENDING**.
 
+## CURRENT STATE: post composition correction (authoritative)
+
+The per-world sections further down describe the **pre-correction** builds (checkpoint `a39cc93`) and are kept as
+history. Where they differ, this table and `WORLD_COMPOSITION_CORRECTION_v02.md` win.
+
+| World | `.blend` (SHA-256) | Export | Review renders (after) | Reference | Collections | Playable extent (x; y) | Background extent (x; y) | Pieces / tris | Collision | VFX anchors | Status |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| MHA | `02_MHA.blend` 15 MB `875ee7fd…d151311` | `art/exports/worlds/02_MHA/` | `final_gameplay/throne/overview.png` | R01 | `WORLD_MHA/MHA_*` | ±82; -30…228 | ±204; -30…228 | 74 / 139,456 | floor, walls, end blocks, throne dais; props/background never | 16 | CORRECTED · PASS |
+| Dragon Ball | `03_DragonBall.blend` 9 MB `906054e0…aa26d7` | `…/03_DragonBall/` | `final_gameplay/boss/overview.png` | R02 Namek | `WORLD_DragonBall/…` | ±61; -30…228 | ±396; -30…441 (+ sky) | 61 / 92,116 | causeway, balustrade + 2 boundary colliders, stage | 25 | CORRECTED (minor) · PASS |
+| One Piece | `04_OnePiece.blend` 25 MB `2a8a3b7b…57e809` | `…/04_OnePiece/` | `final_*.png` | R02 Dressrosa | `WORLD_OnePiece/…` | ±124; -30…228 | ±127; -30…228 | 86 / 138,712 | floor, arena wall, far stands + gate, stage | 21 | CORRECTED · PASS |
+| Naruto | `05_Naruto.blend` 9.2 MB `992991c0…6d03` | `…/05_Naruto/` | `final_*.png` | R02 Konoha | `WORLD_Naruto/…` | ±78; -30…228 | ±150; -30…228 | 64 / 71,544 | street, gate, cliff, tower + 22 colliders (houses, street edge, gate walls) | 17 | CORRECTED · PASS |
+| Bleach | `06_Bleach.blend` 5.9 MB `993cfec4…9ebc` | `…/06_Bleach/` | `final_*.png` | **R10** | `WORLD_Bleach/…` | ±80; -30…228 | ±156; -20…228 | 53 / 43,472 | floor, walls, façade, throne pillars, stairs | 26 | CORRECTED · PASS |
+| JJK | `07_JJK.blend` 9.9 MB `9eb016e5…2a8a` | `…/07_JJK/` | `final_*.png` | R02 Shibuya | `WORLD_JJK/…` | ±80; -30…228 | ±107; -29…227 | 51 / 30,760 | road/sidewalk, torii, shrine + 2 street colliders | 19 | NO CHANGE REQUIRED · PASS |
+| Solo Leveling | `08_SoloLeveling.blend` 8.7 MB `2626078c…a036f` | `…/08_SoloLeveling/` | `final_*.png` | R02 Shadow Corridor | `WORLD_SoloLeveling/…` | ±83; -30…228 | ±82; 8…172 (overhead ribs) | 48 / 80,128 | floor, alcove walls, end walls, gate, dais | 30 | CORRECTED · PASS |
+
+SHA-256 values are shown as prefix…suffix; full values are in `WORLD_COMPOSITION_CORRECTION_v02.md` §6.
+
+**Validator and exports:**
+* **Per world:** the validator results are stored in each `manifest.json` (`validation`). **Cross-world:**
+  `art/exports/worlds/cross_world_check.json` (0 conflicts).
+* **Material strategy:** one single-colour piece per Roblox Material + Color (reasoning in
+  `WORLD_COMPOSITION_CORRECTION_v02.md` §4).
+* **Still pending:** the runtime VFX/motion layer (`WORLD_ANIMATION_VFX_AUDIT_v02.md`) and Studio integration.
+
 ## Pipeline (shared by every world)
 
 | Item | Location |

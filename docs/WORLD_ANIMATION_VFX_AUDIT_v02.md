@@ -16,3 +16,20 @@ exported in each world's `manifest.json` and become Attachments under `<World>.V
 | 6 | Bleach (Yhwach) | `VFX_BossStage`, `VFX_ThroneAura`, `VFX_Brazier_*` ×18, `VFX_EggNest1–5` (25 total) | Brazier fire + embers + flickering warm lights; dark aura + rising blue reishi motes at the throne; black-shadow / blue reishi aura on Yhwach; blue reishi motes + Quincy-cross pulse on egg pedestals; slow banner sway | ANCHORS EXPORTED · runtime code PENDING |
 | 7 | JJK (Sukuna) | `VFX_BossStage`, `VFX_Shrine`, `VFX_ToriiGlow`, `VFX_NeonFlicker±`, `VFX_EggNest1–6`, `VFX_Lamp_*` ×8 (19 total) | Neon sign flicker/buzz; crimson cursed-energy aura on Sukuna; Malevolent Shrine red haze + slash effects during the boss fight; torii rim-light pulse; cursed-energy flames + black sparks on the 6 egg pedestals; cursed-crack pulse; street lights | ANCHORS EXPORTED · runtime code PENDING |
 | 8 | Solo Leveling (Sung Jin-Woo) | `VFX_BossStage`, `VFX_Gate`, `VFX_CorridorFog`, `VFX_ShadowArmy±`, `VFX_BlueFire_*` ×20, `VFX_EggNest1–5` (30 total) | Low blue floor fog; blue fire + sparks + cold lights; shadow-army eye pulse + smoke at their feet (statues kneel when the boss wakes); violet/black Monarch aura + "ARISE" shadow burst; gate swirl + portal shimmer; shadow smoke + blue/violet motes on egg pedestals | ANCHORS EXPORTED · runtime code PENDING |
+
+## Composition correction pass: added anchors
+
+| World | New anchors | Planned runtime effect |
+|---|---|---|
+| MHA | `VFX_HighwayTraffic`, `VFX_CitySmoke` (16 total) | Distant traffic light streaks along the elevated highway; purple smoke drifting over the ruined end blocks |
+| Dragon Ball | `VFX_WaterfallsFar` (25 total) | Distant waterfall beams + mist on the restored horizon mesas |
+| One Piece | `VFX_CrowdCheerFar` (21 total) | Far-stand crowd bob/cheer + confetti during the boss fight |
+| Bleach | `VFX_PalaceFacade` (26 total) | Cold blue reishi wisps down the façade + lancet glow pulse |
+| Naruto / JJK / Solo Leveling | anchors unchanged. Naruto `VFX_HokageDust` and `VFX_UchihaCrest` moved with the cliff/stage; the Solo Leveling end-wall guards share `VFX_ShadowArmy±` behaviour | — |
+
+**Status (directive §18):**
+* The geometry/composition pass is complete, and every anchor is exported in the manifests.
+* The world-specific **runtime motion/VFX layer is NOT implemented yet**: no Roblox code exists for it. **No world
+  is "visually complete" until it is.**
+* Akaza's additive VFX (river motion, compass pulse, mist, blue energy) must stay inside `V02_VFX` and be guarded by
+  the fingerprint check.
