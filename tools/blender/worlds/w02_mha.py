@@ -366,14 +366,14 @@ S.rubble("RubbleThrone", 10, (-26, 26, 221, 225), rng, STONE, size=(1.2, 3.2))
 C("EXPORT_Gates__Slate")
 for gy, tag in ((-2.0, "Entry"),):
     for side in (-1, 1):
-        S.box(f"{tag}GatePillar{side}", (7, 7, 30), (side * 47, gy, 15), material=STONE, bev=0.35)
-        S.box(f"{tag}GateCap{side}", (8.5, 8.5, 2.2), (side * 47, gy, 31), material=STONE_L, bev=0.25)
+        S.box(f"{tag}GatePillar{side}", (7, 7, 30), (side * 57.5, gy, 15), material=STONE, bev=0.35)
+        S.box(f"{tag}GateCap{side}", (8.5, 8.5, 2.2), (side * 57.5, gy, 31), material=STONE_L, bev=0.25)
     # broken lintel pieces (keeps the next world visible through the opening)
-    S.box(f"{tag}LintelL", (34, 4, 3.4), (-31, gy, 33.5), (0, 4, 0), STONE_D, bev=0.3)
-    S.box(f"{tag}LintelR", (26, 4, 3.4), (35, gy, 32.6), (0, -9, 0), STONE_D, bev=0.3)
+    S.box(f"{tag}LintelL", (44, 4, 3.4), (-38, gy, 33.5), (0, 4, 0), STONE_D, bev=0.3)
+    S.box(f"{tag}LintelR", (34, 4, 3.4), (44, gy, 32.6), (0, -9, 0), STONE_D, bev=0.3)
 C("EXPORT_GateChains__Metal")
 for gy in (-2.0,):
-    S.chain(f"GateChain{gy}", (-45, gy, 29), (45, gy, 29), 6.0, 1.4, IRON)
+    S.chain(f"GateChain{gy}", (-55, gy, 29), (55, gy, 29), 7.0, 1.4, IRON)
 
 # ════════════════════════════════════════════════════════════ SKYLINE ══
 C("EXPORT_Skyline__SmoothPlastic")
@@ -401,6 +401,83 @@ for (bx, by, d, w, h, side) in BUILD:
             S.box(f"Win{int(bx)}_{int(by)}_{k}", (0.3, rng.uniform(1.4, 3.5), 1.4), (face_x - side * 0.16, by + rng.uniform(-w / 3, w / 3), z), material=WINDOW)
         else:
             S.box(f"Win{int(bx)}_{int(by)}_{k}", (rng.uniform(1.4, 3.5), 0.3, 1.4), (bx + rng.uniform(-6, 6), by - 8.2 + 25, z), material=WINDOW)
+# ═══════════════════════════════════════ CITY BEHIND SHIGARAKI (correction pass) ══
+# R01 puts the purple city + an elevated highway behind the throne. Restored inside the world as:
+#   * EndBlocks (BOUNDARY, collide): ruined city facades closing the far corners (|x| 54-82, y 204-228);
+#     designed openings stay on both sides of the throne (|x| ~32-54) -> the next world is visible through them
+#   * FarCity (BACKGROUND, non-collidable): a dense high-rise cluster at the far corners, taller than the side skyline
+#   * Highway (BACKGROUND): an elevated bridge spanning the back high above the exit (deck at z 58)
+C("EXPORT_EndBlocks__Slate")
+ENDB = []
+for side in (-1, 1):
+    x0 = side * 54.0
+    for k, (w, d, h) in enumerate(((14, 24, 34), (14, 24, 26))):
+        cx = side * (54.0 + 7 + k * 14)
+        S.box(f"EndBlock{side}_{k}", (w, d, h), (cx, 216, h / 2), material=STONE_D if k else STONE, bev=0.3)
+        ENDB.append((cx, 216, w, d, h, side))
+        for j in range(4):  # ruined crown
+            cs = rng.uniform(2.2, 4.2)
+            S.box(f"EndCrown{side}_{k}_{j}", (cs, cs, cs), (cx + rng.uniform(-w / 3, w / 3), rng.uniform(206, 226), h + cs * 0.3), (rng.uniform(-20, 20), rng.uniform(-20, 20), rng.uniform(0, 90)), STONE, bev=0.2)
+    S.box(f"HighwayPierNear{side}", (4, 4, 58), (side * 68, 225.5, 29), material=STONE_D)
+C("EXPORT_EndBlockCracks__Neon")
+for (cx, cy, w, d, h, side) in ENDB:
+    fx = cx - side * (w / 2 + 0.05)
+    for k in range(5):
+        S.box(f"EndCrack{int(cx)}_{k}", (0.15, rng.uniform(0.2, 0.35), rng.uniform(3, 7)), (fx, cy + rng.uniform(-10, 10), rng.uniform(3, h - 4)), (rng.uniform(-35, 35), 0, 0), CRACK)
+C("EXPORT_EndBlockWindows__Neon")
+for (cx, cy, w, d, h, side) in ENDB:
+    fy = cy - d / 2 - 0.08  # windows on the face looking down the lane
+    for z in range(8, int(h) - 3, 6):
+        for k in range(int(w // 4)):
+            if rng.random() < 0.5:
+                S.box(f"EndWin{int(cx)}_{z}_{k}", (1.6, 0.15, 2.2), (cx - w / 2 + 2 + k * 4, fy, z), material=WINDOW)
+C("EXPORT_FarCity__SmoothPlastic")
+FAR = []
+for side in (-1, 1):
+    for k in range(9):
+        w = rng.uniform(14, 24)
+        d = rng.uniform(12, 20)
+        h = rng.uniform(85, 155)
+        bx = side * rng.uniform(84, 170)
+        by = rng.uniform(170 + d / 2, 227 - d / 2)
+        S.box(f"FarTower{side}_{k}", (w, d, h), (bx, by, h / 2 - 2), material=CITY if k % 3 else CITY_FAR)
+        S.box(f"FarTowerCap{side}_{k}", (w * 0.6, d * 0.6, 6), (bx, by, h + 1), material=CITY)
+        FAR.append((bx, by, w, d, h, side))
+C("EXPORT_FarCityWindows__Neon")
+for (bx, by, w, d, h, side) in FAR:
+    fy = by - d / 2 - 0.1
+    for z in range(10, int(h) - 6, 8):
+        for k in range(int(w // 5)):
+            if rng.random() < 0.35:
+                S.box(f"FarWin{int(bx)}_{int(by)}_{z}_{k}", (2.0, 0.2, 1.4), (bx - w / 2 + 2.5 + k * 5, fy, z), material=WINDOW)
+C("EXPORT_Highway__Metal")
+S.box("HighwayDeck", (400, 5, 2.4), (0, 225.5, 58), material=IRON)
+for side in (-1, 1):
+    S.box(f"HighwayRail{side}", (400, 0.4, 1.4), (0, 225.5 + side * 2.3, 59.9), material=IRON)
+for k in range(-16, 17):
+    S.box(f"HighwayTruss{k}", (0.6, 4.6, 9), (k * 12, 225.5, 53), (0, 35 if k % 2 else -35, 0), IRON)
+C("EXPORT_HighwayPiers__Slate")
+for x in (-160, -100, 100, 160):
+    S.box(f"HighwayPier{x}", (5, 5, 58), (x, 225.5, 29), material=STONE_D)
+C("EXPORT_HighwayNeon__Neon")
+S.box("HighwayUnderglow", (400, 0.3, 0.3), (0, 223.0, 56.7), material=NEON)
+for k in range(-8, 9):
+    S.box(f"HighwayLamp{k}", (0.8, 0.8, 0.5), (k * 24, 225.5, 61.2), material=LANTERN)
+S.use(S.collection("VFX"))
+S.empty("VFX_HighwayTraffic", (0, 225.5, 60))["vfx"] = "distant traffic light streaks along the highway (runtime beams)"
+S.empty("VFX_CitySmoke", (0, 215, 30))["vfx"] = "drifting purple smoke over the ruined end blocks (runtime)"
+
+S.set_layers([
+    ("CrackBed", "PLAYABLE"), ("CrackGlow", "PLAYABLE"), ("Floor", "PLAYABLE"), ("Plaza", "PLAYABLE"),
+    ("Walls", "BOUNDARY"), ("WallCracks", "BOUNDARY"), ("EndBlocks", "BOUNDARY"), ("EndBlockCracks", "BOUNDARY"),
+    ("EndBlockWindows", "BOUNDARY"), ("Gates", "BOUNDARY"),
+    ("Throne", "BOSS_STAGE"), ("ThroneHands", "PROPS"), ("ThroneCloak", "PROPS"), ("ThroneChains", "PROPS"),
+    ("Skyline", "BACKGROUND"), ("FarCity", "BACKGROUND"), ("Highway", "BACKGROUND"),
+    ("EggNests", "PROPS"),
+])
+S.organize("MHA")
+VALID = S.validate("MHA", walk_half=75.0)
+
 # ═════════════════════════════════════════════════════════ SAVE / RENDER / EXPORT ══
 blend_dir = os.path.join(REPO, "art", "blender", "worlds")
 os.makedirs(blend_dir, exist_ok=True)
@@ -426,6 +503,6 @@ if DO_RENDER:
     S.render(os.path.join(out, f"{tag}_overview.png"), (0, -95, 120), (0, 115, 0), lens=24)
 
 if "export" in sys.argv:
-    m = S.export_modules(os.path.join(REPO, "art", "exports", "worlds", "02_MHA"), "Layout.worldZ0(2)", "MHA")
+    m = S.export_modules(os.path.join(REPO, "art", "exports", "worlds", "02_MHA"), "Layout.worldZ0(2)", "MHA", validation=VALID)
     tot = sum(x["triangles"] for x in m["modules"])
-    print("EXPORTED", len(m["modules"]), "modules", tot, "tris", "over limit:", [x["module"] for x in m["modules"] if x["overLimit"]])
+    print("EXPORTED", len(m["modules"]), "modules", tot, "tris", "over limit:", [x["module"] for x in m["modules"] if x["overLimit"]], "validation:", m["validation"]["pass"])

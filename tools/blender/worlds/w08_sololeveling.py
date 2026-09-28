@@ -173,16 +173,16 @@ S.empty("VFX_CorridorFog", (0, YM, 1))["vfx"] = "low blue fog layer along the fl
 # ═════════════════════════════════════════════════ MONARCH'S THRONE ══
 C("EXPORT_Dais__Marble")
 for s_ in range(4):
-    S.box(f"DaisStep{s_}", (40 - s_ * 5, 3.5, 0.9 + s_ * 0.9), (0, 196 + s_ * 3.5, (0.9 + s_ * 0.9) / 2), material=THRONE, bev=0.08)
-S.box("DaisTop", (22, 12, 3.6), (0, 220, 1.8), material=THRONE, bev=0.1)
+    S.box(f"DaisStep{s_}", (40 - s_ * 5, 3.5, 0.9 + s_ * 0.9), (0, 190 + s_ * 3.5, (0.9 + s_ * 0.9) / 2), material=THRONE, bev=0.08)
+S.box("DaisTop", (22, 12, 3.6), (0, 207.5, 1.8), material=THRONE, bev=0.1)
 C("EXPORT_Throne__Marble")
-S.box("ThroneSeat", (7, 4.5, 2.2), (0, 221, 4.7), material=THRONE, bev=0.3)
-S.box("ThroneBack", (7.5, 1.6, 14), (0, 223.6, 10.5), material=THRONE, bev=0.3)
+S.box("ThroneSeat", (7, 4.5, 2.2), (0, 208.5, 4.7), material=THRONE, bev=0.3)
+S.box("ThroneBack", (7.5, 1.6, 14), (0, 211.1, 10.5), material=THRONE, bev=0.3)
 for dx in (-4, -2, 0, 2, 4):
-    S.cyl(f"ThroneSpike{dx}", 0.7, 5 + (4 - abs(dx)) * 0.9, (dx, 223.6, 19 + (4 - abs(dx)) * 0.45), material=THRONE, verts=6, r2=0.04)
+    S.cyl(f"ThroneSpike{dx}", 0.7, 5 + (4 - abs(dx)) * 0.9, (dx, 211.1, 19 + (4 - abs(dx)) * 0.45), material=THRONE, verts=6, r2=0.04)
 C("EXPORT_ThroneGlow__Neon")
-S.box("ThroneTrim", (7.7, 0.2, 0.3), (0, 222.7, 17.4), material=GATEGLOW)
-S.box("DaisGlow", (22, 0.3, 0.25), (0, 213.9, 3.65), material=GATEGLOW)
+S.box("ThroneTrim", (7.7, 0.2, 0.3), (0, 210.2, 17.4), material=GATEGLOW)
+S.box("DaisGlow", (22, 0.3, 0.25), (0, 201.4, 3.65), material=GATEGLOW)
 # glowing gate behind the throne (open ring; the next world stays visible through it)
 C("EXPORT_Gate__Slate")
 for side in (-1, 1):
@@ -208,6 +208,29 @@ S.use(S.collection("VFX"))
 S.empty("VFX_BossStage", (0, BOSS_Y, 4))["vfx"] = "boss anchor + violet/black Monarch aura, 'ARISE' shadow burst (runtime)"
 S.empty("VFX_Gate", (0, 225, 20))["vfx"] = "gate swirl + blue portal shimmer (runtime)"
 
+# ═══════════════════════════════════════ CORRIDOR END WALL (correction pass) ══
+# R02: the Monarch sits in a closed corridor end, not against open sky. End walls (BOUNDARY, collide) close the
+# corridor on both sides of the gate (|x| 24.5-81); the glowing gate (41 wide, translucent non-collidable portal)
+# is the one designed opening to the next world. Two more shadow soldiers stand guard on each end wall.
+C("EXPORT_EndWalls__Slate")
+for side in (-1, 1):
+    S.box(f"EndWall{side}", (56.5, 2.5, 34), (side * 52.75, 226.75, 17), material=WALL_D)
+    S.box(f"EndCornice{side}", (57.5, 3.0, 2), (side * 52.75, 226.5, 33), material=TRIM)
+    for x in (34.5, 52.75, 71.0):
+        S.arch(f"EndArch{side}_{int(x)}", 14, 2.0, 1.2, (side * x, 225.0, 18), (0, 0, 0), WALL, segs=12)
+        for dx in (-8, 8):
+            S.box(f"EndPier{side}_{int(x)}_{dx}", (2.0, 1.2, 18), (side * x + dx, 225.0, 9), material=WALL)
+GUARDS = {SHADOW: [], SHADOW_E: [], CAPE: [], EYES: []}
+for side in (-1, 1):
+    for x in (44.0, 62.0):
+        knight(f"EndGuard{side}_{int(x)}", side * x, 222.5, 1.25, 0, GUARDS)
+for m, objs in GUARDS.items():
+    col = S.collection(f"EXPORT_EndGuards__{m['roblox_material']}")
+    for o in objs:
+        for c in list(o.users_collection):
+            c.objects.unlink(o)
+        col.objects.link(o)
+
 # ═══════════════════════════════════════════════════ EGG PEDESTALS ══
 C("EXPORT_EggPedestals__Slate")
 for i, (ex, ey) in enumerate(EGGS):
@@ -229,6 +252,17 @@ S.arch("EntryArch", 112, 5, 7, (0, GY, 36), (0, 0, 0), WALL, segs=28)
 C("EXPORT_EntryGlow__Neon")
 S.arch("EntryGlowArch", 110.6, 0.5, 7.4, (0, GY, 36), (0, 0, 0), GATEGLOW, segs=28)
 
+S.set_layers([
+    ("Grout", "PLAYABLE"), ("Floor", "PLAYABLE"), ("RunnerGlow", "PLAYABLE"), ("EggPedestals", "PLAYABLE"),
+    ("EggPedestalGlow", "PROPS"),
+    ("Walls", "BOUNDARY"), ("AlcoveFrames", "BOUNDARY"), ("EndWalls", "BOUNDARY"), ("EntryGate", "BOUNDARY"),
+    ("Gate", "BOUNDARY"), ("GatePortal", "PROPS"), ("GateGlowRing", "PROPS"),
+    ("Dais", "BOSS_STAGE"),
+    ("Ribs", "BACKGROUND"), ("RibGlow", "BACKGROUND"),
+])
+S.organize("SoloLeveling")
+VALID = S.validate("SoloLeveling", walk_half=75.0)
+
 # ═════════════════════════════════════════════════════════ SAVE / RENDER / EXPORT ══
 blend_dir = os.path.join(REPO, "art", "blender", "worlds")
 os.makedirs(blend_dir, exist_ok=True)
@@ -248,7 +282,6 @@ if DO_RENDER:
     S.render(os.path.join(out, f"{tag}_overview.png"), (0, -95, 120), (0, 115, 0), lens=24)
 
 if "export" in sys.argv:
-    m = S.export_modules(os.path.join(REPO, "art", "exports", "worlds", "08_SoloLeveling"), "Layout.worldZ0(8)", "SoloLeveling")
+    m = S.export_modules(os.path.join(REPO, "art", "exports", "worlds", "08_SoloLeveling"), "Layout.worldZ0(8)", "SoloLeveling", validation=VALID)
     tot = sum(x["triangles"] for x in m["modules"])
-    print("EXPORTED", len(m["modules"]), "modules", tot, "tris", "over limit:", [x["module"] for x in m["modules"] if x["overLimit"]],
-          "outside slot:", [x["module"] for x in m["modules"] if x["outsideSlot"]])
+    print("EXPORTED", len(m["modules"]), "modules", tot, "tris", "over limit:", [x["module"] for x in m["modules"] if x["overLimit"]], "validation:", m["validation"]["pass"])

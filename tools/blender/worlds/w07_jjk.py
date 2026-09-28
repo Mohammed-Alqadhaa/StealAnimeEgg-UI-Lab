@@ -129,6 +129,7 @@ for half, sgn in (("E", -1), ("W", 1)):
         if rng.random() < 0.8:  # vertical sign sticking out toward the street
             sh = rng.uniform(14, 26)
             sx, sy, sz = cx - side * (w / 2 + 1.6), cy + rng.uniform(-d / 3, d / 3), rng.uniform(12, max(13, h - sh / 2 - 4))
+            sz = max(sz, sh / 2 + 4)  # signs hang above the sidewalk (never reach the ground)
             S.box(f"VSign{half}{i}", (3.0, 0.6, sh), (sx, sy, sz), material=SIGNBOARD)
             SIGNS.append((sx, sy, sz, sh, rng.choice((NEON_R, NEON_R, NEON_P, NEON_C))))
         if rng.random() < 0.4:  # rooftop billboard
@@ -245,12 +246,23 @@ for i, (ex, ey) in enumerate(EGGS):
 # ═════════════════════════════════════════════════════════ ENTRY ══
 C("EXPORT_EntrySign__Metal")
 for side in (-1, 1):
-    S.box(f"GantryPost{side}", (1.2, 1.2, 22), (side * 44, -3, 11), material=IRON)
-S.box("GantryBeam", (90, 1.2, 1.6), (0, -3, 21.5), material=IRON)
+    S.box(f"GantryPost{side}", (1.2, 1.2, 22), (side * 57, -3, 11), material=IRON)  # outside the lane
+S.box("GantryBeam", (116, 1.2, 1.6), (0, -3, 21.5), material=IRON)
 S.box("GantrySign", (30, 0.6, 5), (0, -3, 18), material=SIGNBOARD)
 C("EXPORT_EntrySignNeon__Neon")
 S.box("GantrySignGlow", (28, 0.2, 0.4), (0, -3.4, 20.2), material=NEON_R)
 S.box("GantrySignGlow2", (28, 0.2, 0.4), (0, -3.4, 15.8), material=NEON_R)
+
+S.set_layers([
+    ("Grout", "PLAYABLE"), ("Road", "PLAYABLE"), ("Sidewalk", "PLAYABLE"), ("RoadPaint", "PLAYABLE"),
+    ("CurseCracks", "PLAYABLE"), ("EggPedestals", "PLAYABLE"), ("EggPedestalGlow", "PROPS"),
+    ("Torii", "BOUNDARY"), ("Shrine", "BOUNDARY"), ("ShrineRoof", "PROPS"), ("ShrineGlow", "PROPS"),
+    ("ShrineTeeth", "PROPS"),
+    ("Buildings", "BACKGROUND"), ("Windows", "BACKGROUND"), ("SignBoards", "BACKGROUND"), ("Neon", "BACKGROUND"),
+    ("Tower109", "BACKGROUND"),
+])
+S.organize("JJK")
+VALID = S.validate("JJK", walk_half=76.0)
 
 # ═════════════════════════════════════════════════════════ SAVE / RENDER / EXPORT ══
 blend_dir = os.path.join(REPO, "art", "blender", "worlds")
@@ -271,7 +283,6 @@ if DO_RENDER:
     S.render(os.path.join(out, f"{tag}_overview.png"), (0, -95, 120), (0, 115, 0), lens=24)
 
 if "export" in sys.argv:
-    m = S.export_modules(os.path.join(REPO, "art", "exports", "worlds", "07_JJK"), "Layout.worldZ0(7)", "JJK")
+    m = S.export_modules(os.path.join(REPO, "art", "exports", "worlds", "07_JJK"), "Layout.worldZ0(7)", "JJK", validation=VALID)
     tot = sum(x["triangles"] for x in m["modules"])
-    print("EXPORTED", len(m["modules"]), "modules", tot, "tris", "over limit:", [x["module"] for x in m["modules"] if x["overLimit"]],
-          "outside slot:", [x["module"] for x in m["modules"] if x["outsideSlot"]])
+    print("EXPORTED", len(m["modules"]), "modules", tot, "tris", "over limit:", [x["module"] for x in m["modules"] if x["overLimit"]], "validation:", m["validation"]["pass"])

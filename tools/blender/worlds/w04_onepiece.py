@@ -9,7 +9,8 @@ Reference elements reproduced (R02 Dressrosa):
   * straight light-stone path down the arena floor, edged by iron lamp posts with warm lamps
   * big red banners with a white Jolly Roger hanging on the arena wall
   * Doflamingo at the far end on a raised stage in front of a huge pink feather fan (his coat)
-  * extra identity: "Birdcage" string cage behind the stage, royal box with pink canopy, flower planters
+  * far stands behind the boss (horseshoe) with a grand arena gate as the opening to the next world (correction pass)
+  * extra identity: "Birdcage" string cage over the stage, royal box with pink canopy on the gate, flower planters
 Gameplay: centre lane |x| < 54 clear and flat; arena wall at |x| = 75 (collides); open entry/exit arches.
 """
 import os
@@ -61,7 +62,6 @@ TIER_W, TIER_H = 5.0, 4.0
 ST0 = HALF + 3.5  # first seating tier (x)
 Y0, Y1 = -30.0, 228.0  # world slot (sae_bpy.WORLD_SLOT_Y): nothing may leave it
 YM, YL = (Y0 + Y1) / 2, Y1 - Y0
-RB_Y = 100.0  # royal box on the west stand
 
 
 def C(name):
@@ -128,8 +128,7 @@ for side in (-1, 1):
         top = 9 + (t + 1) * TIER_H
         y = Y0 + 1.2
         while y < Y1 - 1.2:
-            royal = side > 0 and 2 <= t <= 6 and abs(y - RB_Y) < 9
-            if rng.random() < 0.72 and not royal:
+            if rng.random() < 0.72:
                 PEOPLE.append(("E" if side < 0 else "W", x, y, top))
             y += rng.uniform(1.9, 2.6)
 for grp in ("E", "W"):
@@ -172,17 +171,6 @@ for i, (x, y) in enumerate(FLAGS):
     S.banner(f"Flag{i}", 3.6, 2.2, (x, y + 1.9, ARC_Z + 34.6), (0, 0, 90), PINK if i % 2 else RED, rng, torn=False, wave=0.3)
 
 # ════════════════════════════════════════════════════════ ROYAL BOX ══
-C("EXPORT_RoyalBox__Sandstone")
-RBX = ST0 + 4 * TIER_W  # Blender +x = Roblox -x (west stand)
-RBZ = 9 + 5 * TIER_H
-S.box("RoyalBoxFloor", (12, 16, 1), (RBX, RB_Y, RBZ + 0.5), material=TRIM)
-S.box("RoyalBoxFront", (0.8, 16, 3), (RBX - 5.6, RB_Y, RBZ + 2), material=TRIM, bev=0.1)
-C("EXPORT_RoyalGold__Metal")
-for dy in (-7.2, 7.2):
-    S.box(f"RoyalPost{dy}", (1.2, 1.2, 10), (RBX - 5.4, RB_Y + dy, RBZ + 5.5), material=GOLD)
-C("EXPORT_RoyalCanopy__Fabric")
-S.banner("RoyalCanopy", 17, 6, (RBX - 5.9, RB_Y, RBZ + 10.8), (0, 0, 90), PINK, rng, torn=False, wave=0.5)
-
 # ═══════════════════════════════════════════════════════ LAMP POSTS ══
 C("EXPORT_LampPosts__Metal")
 posts = [(side * (LANE + 2), y) for side in (-1, 1) for y in range(10, 200, 20)]
@@ -213,20 +201,21 @@ for (x, y) in PLANTERS:
         S.sphere(f"Flower{x}_{y}_{k}", 0.4, (x + rng.uniform(-1.4, 1.4), y + rng.uniform(-3.5, 3.5), 3.0 + rng.uniform(0, 0.5)), FLOWER, seg=6, rings=4)
 
 # ═════════════════════════════════════════════════ DOFLAMINGO STAGE ══
+# correction pass: the stage moved forward (y 188-212) so the far stands fit behind Doflamingo (R02 composition)
 C("EXPORT_Stage__Sandstone")
 for s_ in range(3):
-    S.box(f"StageStep{s_}", (38 - s_ * 6, 4, 1.0), (0, 194 + s_ * 3, 0.5 + s_), material=TRIM, bev=0.1)
-S.box("StageTop", (32, 24, 3), (0, 215, 1.5), material=STAGE, bev=0.2)
-S.box("StageTrim", (33, 25, 0.4), (0, 215, 3.1), material=TRIM, bev=0.1)
+    S.box(f"StageStep{s_}", (38 - s_ * 6, 3, 1.0), (0, 190 + s_ * 3, 0.5 + s_), material=TRIM, bev=0.1)
+S.box("StageTop", (32, 16, 3), (0, 204, 1.5), material=STAGE, bev=0.2)
+S.box("StageTrim", (33, 17, 0.4), (0, 204, 3.1), material=TRIM, bev=0.1)
 C("EXPORT_StageGold__Metal")
-S.box("StageGoldEdge", (32.4, 0.4, 0.5), (0, 202.8, 2.8), material=GOLD)
+S.box("StageGoldEdge", (32.4, 0.4, 0.5), (0, 195.8, 2.8), material=GOLD)
 C("EXPORT_Throne__Fabric")
-S.box("ThroneSeat", (6, 4.5, 2.2), (0, 218, 4.4), material=THRONE, bev=0.4)
-S.box("ThroneBack", (6, 1.4, 8), (0, 220.5, 7.5), (-6, 0, 0), THRONE, bev=0.4)
+S.box("ThroneSeat", (6, 4.5, 2.2), (0, 207.5, 4.4), material=THRONE, bev=0.4)
+S.box("ThroneBack", (6, 1.4, 8), (0, 210.0, 7.5), (-6, 0, 0), THRONE, bev=0.4)
 C("EXPORT_ThroneGold__Metal")
 for dx in (-3.3, 3.3):
-    S.box(f"ThroneArm{dx}", (0.8, 4.5, 1.4), (dx, 218, 5.8), material=GOLD, bev=0.2)
-S.sphere("ThroneCrest", 1.2, (0, 221, 12.2), GOLD, seg=10, rings=6)
+    S.box(f"ThroneArm{dx}", (0.8, 4.5, 1.4), (dx, 207.5, 5.8), material=GOLD, bev=0.2)
+S.sphere("ThroneCrest", 1.2, (0, 210.5, 12.2), GOLD, seg=10, rings=6)
 # giant pink feather fan behind the throne (Doflamingo's coat)
 C("EXPORT_FeatherFan__Fabric")
 for k in range(21):
@@ -235,44 +224,103 @@ for k in range(21):
     L = rng.uniform(15, 20) * (1.0 - abs(a) / 300)
     cx, cz = math.sin(rad) * L * 0.55, 6 + math.cos(rad) * L * 0.55
     ob = S.sphere(f"Feather{k}", 1, (0, 0, 0), PINK if k % 2 else PINK_L, seg=10, rings=8, scale=(2.2, 0.5, L * 0.55))
-    ob.location = (cx, 224 + rng.uniform(-0.5, 0.5), cz)
+    ob.location = (cx, 211.4 + rng.uniform(-0.3, 0.3), cz)
     ob.rotation_euler = (0, rad, 0)
 S.use(S.collection("VFX"))
 S.empty("VFX_BossStage", (0, BOSS_Y, 3))["vfx"] = "boss anchor + pink string aura (runtime)"
-S.empty("VFX_FeatherSway", (0, 224, 10))["vfx"] = "feather fan sway (client CFrame oscillation)"
+S.empty("VFX_FeatherSway", (0, 211.4, 10))["vfx"] = "feather fan sway (client CFrame oscillation)"
 
-# Birdcage: glowing strings from a high apex down to a half-ring behind the stage (never across the lane)
+# Birdcage: glowing strings from a high apex down to a half-ring around the stage (never across the lane)
 C("EXPORT_Birdcage__Neon")
-APEX = (0.0, 212.0, 120.0)
+APEX = (0.0, 204.0, 120.0)
 for k in range(15):
     a = math.radians(-8 + k * (196 / 14))
-    end = (math.cos(a) * 44, 200 + math.sin(a) * 26, 0.0)
+    end = (math.cos(a) * 44, 198 + math.sin(a) * 12, 0.0)
     d = [APEX[i] - end[i] for i in range(3)]
     L = math.sqrt(sum(c * c for c in d))
     ax = math.degrees(math.asin(-d[1] / L))
     ay = math.degrees(math.atan2(d[0], d[2]))
     S.cyl(f"String{k}", 0.06, L, tuple((APEX[i] + end[i]) / 2 for i in range(3)), (ax, ay, 0), STRING, verts=5)
-# open arcade facade behind the stage: frames the boss, the next world stays visible through the arches
-C("EXPORT_StageFacade__Sandstone")
-FX = [-24.0, -12.0, 0.0, 12.0, 24.0]
-for storey in range(2):
-    z0 = storey * 14.0
-    for x in FX:
-        S.box(f"FacadePier{storey}_{x}", (2.6, 3, 10), (x, 226, z0 + 5), material=WALL, bev=0.1)
-    for a, b in zip(FX, FX[1:]):
-        S.arch(f"FacadeArch{storey}_{a}", 9.4, 1.4, 3, ((a + b) / 2, 226, z0 + 10), (0, 0, 0), WALL_D, segs=10)
-    S.box(f"FacadeCornice{storey}", (52, 3.6, 1.4), (0, 226, z0 + 14.0 - 0.7 + 0.7), material=TRIM)
-C("EXPORT_FacadeBanners__Fabric")
-for x in (-18.0, 18.0):
-    S.banner(f"FacadeBanner{x}", 7, 12, (x, 224.1, 27.6), (0, 0, 0), RED, rng, torn=False, wave=0.25)
-C("EXPORT_FacadeFlags__Wood")
-for x in FX:
-    S.cyl(f"FacadePole{x}", 0.22, 8, (x, 226, 33), material=POLE, verts=6)
-C("EXPORT_FacadePennants__Fabric")
-for i, x in enumerate(FX):
-    S.banner(f"FacadePennant{x}", 3.4, 2.1, (x + 1.8, 226, 36.6), (0, 0, 0), PINK if i % 2 else RED, rng, torn=False, wave=0.3)
 S.use(S.collection("VFX"))
 S.empty("VFX_Birdcage", APEX)["vfx"] = "string shimmer + slow tighten pulse during boss fight (runtime)"
+
+# ═══════════════════════════════════ FAR STANDS BEHIND DOFLAMINGO (correction pass) ══
+# R02 shows packed stands behind the boss. Restored as a horseshoe closing the arena end (BOUNDARY, collide):
+# 4 tiers + crowd + two-storey arcade, joined to the side stands, with a grand arena gate (|x| < 34) through the
+# stands as the designed opening: the next world is seen through the gate; the royal box sits on the gate.
+FS0, GATE_HALF, FS_X1 = 214.0, 34.0, ST0 + TIERS * TIER_W  # far stands start y, gate half-width, outer x
+C("EXPORT_FarStands__Sandstone")
+for side in (-1, 1):
+    xw = FS_X1 - GATE_HALF
+    xc = side * (GATE_HALF + xw / 2)
+    S.box(f"FarStandFront{side}", (xw, 1.6, 9), (xc, FS0 - 0.8, 4.5), material=WALL, bev=0.1)
+    for t in range(4):
+        y0 = FS0 + t * 3.5
+        top = 9 + (t + 1) * 6
+        S.box(f"FarTier{side}_{t}", (xw, Y1 - y0, top), (xc, (y0 + Y1) / 2, top / 2), material=SEAT if t % 2 else WALL)
+        S.box(f"FarTierLip{side}_{t}", (xw, 0.5, 0.5), (xc, y0 + 0.25, top + 0.25), material=TRIM)
+FAR_PEOPLE = []
+for side in (-1, 1):
+    for t in range(4):
+        top = 9 + (t + 1) * 6
+        yy = FS0 + t * 3.5 + 1.8
+        x = GATE_HALF + 1.5
+        while x < FS_X1 - 1:
+            if rng.random() < 0.72:
+                FAR_PEOPLE.append((side * x, yy, top))
+            x += rng.uniform(1.9, 2.6)
+C("EXPORT_CrowdFar__SmoothPlastic")
+for i, (x, y, top) in enumerate(FAR_PEOPLE):
+    S.box(f"FanFar{i}", (1.1, 1.1, 1.7), (x, y, top + 0.85), (0, 0, rng.uniform(-10, 10)), rng.choice(CROWD))
+C("EXPORT_CrowdHeadsFar__SmoothPlastic")
+for i, (x, y, top) in enumerate(FAR_PEOPLE):
+    S.box(f"HeadFar{i}", (0.8, 0.8, 0.8), (x, y, top + 2.15), material=SKIN)
+C("EXPORT_FarArcade__Sandstone")
+FAR_Z = 9 + 4 * 6
+for side in (-1, 1):
+    xs_ = [GATE_HALF + 1.3 + k * (FS_X1 - GATE_HALF - 2.6) / 8 for k in range(9)]
+    for storey in range(2):
+        z0 = FAR_Z + storey * 13
+        for x in xs_:
+            S.box(f"FarPier{side}{storey}_{int(x)}", (2.6, 2.6, 8), (side * x, 226.6, z0 + 4), material=WALL)
+        for a_, b_ in zip(xs_, xs_[1:]):
+            S.arch(f"FarArch{side}{storey}_{int(a_)}", (b_ - a_) - 2.6, 1.3, 2.6, (side * (a_ + b_) / 2, 226.6, z0 + 8), (0, 0, 0), WALL_D, segs=10)
+        S.box(f"FarCornice{side}{storey}", (xs_[-1] - xs_[0] + 2.6, 2.6, 1.4), (side * (xs_[0] + xs_[-1]) / 2, 226.6, z0 + 13.2), material=TRIM)
+    S.box(f"FarArcadeBack{side}", (xs_[-1] - xs_[0], 0.8, 12.5), (side * (xs_[0] + xs_[-1]) / 2, 227.5, FAR_Z + 6.2), material=WALL_D)
+# grand arena gate through the far stands (the designed opening; the royal box on top)
+C("EXPORT_ArenaGate__Sandstone")
+S.arch("ArenaGateArch", GATE_HALF * 2, 5, Y1 - FS0 - 0.4, (0, (FS0 + Y1) / 2, 9), (0, 0, 0), WALL, segs=28)
+for side in (-1, 1):
+    S.box(f"ArenaGatePier{side}", (4, Y1 - FS0 - 0.4, 9), (side * (GATE_HALF + 2), (FS0 + Y1) / 2, 4.5), material=WALL)
+S.box("ArenaGateKeystone", (6, 3, 7), (0, FS0 + 1.5, 9 + GATE_HALF + 3), material=TRIM, bev=0.2)
+C("EXPORT_RoyalBox__Sandstone")
+RBZ = 9 + GATE_HALF + 5
+S.box("RoyalBoxFloor", (18, 10, 1.2), (0, 221, RBZ + 0.6), material=TRIM)
+S.box("RoyalBoxFront", (18, 0.8, 3), (0, 216.4, RBZ + 2.2), material=TRIM, bev=0.1)
+C("EXPORT_RoyalGold__Metal")
+for dx in (-8.2, 8.2):
+    S.box(f"RoyalPost{dx}", (1.2, 1.2, 10), (dx, 216.8, RBZ + 6), material=GOLD)
+C("EXPORT_RoyalCanopy__Fabric")
+S.banner("RoyalCanopy", 19, 6, (0, 216.2, RBZ + 11.2), (0, 0, 0), PINK, rng, torn=False, wave=0.5)
+C("EXPORT_GateJollyBanners__Fabric")
+for side in (-1, 1):
+    S.banner(f"FarBanner{side}", 9, 14, (side * 52, FS0 - 1.8, 30), (0, 0, 0), RED, rng, torn=False, wave=0.3)
+C("EXPORT_GateJollyRoger__SmoothPlastic")
+for side in (-1, 1):
+    fx, fy = side * 52, FS0 - 2.2
+    S.sphere(f"FarSkull{side}", 1.7, (fx, fy, 24), WHITE, seg=14, rings=8, scale=(1, 0.5, 1))
+    S.box(f"FarJaw{side}", (2.0, 0.8, 1.1), (fx, fy, 22.4), material=WHITE, bev=0.15)
+    for a_ in (35, -35):
+        S.box(f"FarBone{side}_{a_}", (6.0, 0.6, 0.7), (fx, fy + 0.2, 23.2), (0, a_, 0), WHITE, bev=0.2)
+C("EXPORT_FarFlagPoles__Wood")
+FARFLAGS = [(side * x, 226.6) for side in (-1, 1) for x in range(int(GATE_HALF) + 4, int(FS_X1), 18)]
+for i, (x, y) in enumerate(FARFLAGS):
+    S.cyl(f"FarFlagPole{i}", 0.22, 9, (x, y, FAR_Z + 26 + 4.5), material=POLE, verts=6)
+C("EXPORT_FarFlags__Fabric")
+for i, (x, y) in enumerate(FARFLAGS):
+    S.banner(f"FarFlag{i}", 3.6, 2.2, (x + 1.9, y, FAR_Z + 34.6), (0, 0, 0), PINK if i % 2 else RED, rng, torn=False, wave=0.3)
+S.use(S.collection("VFX"))
+S.empty("VFX_CrowdCheerFar", (0, 221, 25))["vfx"] = "far-stand crowd bob/cheer + confetti (runtime)"
 
 # ═══════════════════════════════════════════════════ EGG PEDESTALS ══
 C("EXPORT_EggPedestals__Limestone")
@@ -293,12 +341,22 @@ for i, (ex, ey) in enumerate(EGGS):
 C("EXPORT_Gates__Sandstone")
 for gy, tag in ((-3.0, "Entry"),):
     for side in (-1, 1):
-        S.box(f"{tag}Pier{side}", (8, 6, 34), (side * 49, gy, 17), material=WALL, bev=0.3)
-        S.box(f"{tag}PierCap{side}", (9.5, 7, 2), (side * 49, gy, 35), material=TRIM, bev=0.2)
-    S.arch(f"{tag}Arch", 90, 5, 6, (0, gy, 34), (0, 0, 0), WALL, segs=24)
+        S.box(f"{tag}Pier{side}", (8, 6, 34), (side * 58, gy, 17), material=WALL, bev=0.3)
+        S.box(f"{tag}PierCap{side}", (9.5, 7, 2), (side * 58, gy, 35), material=TRIM, bev=0.2)
+    S.arch(f"{tag}Arch", 108, 5, 6, (0, gy, 34), (0, 0, 0), WALL, segs=28)
 C("EXPORT_GateBanners__Fabric")
 for side in (-1, 1):
-    S.banner(f"GateBanner{side}", 5, 14, (side * 49, -6.2, 31), (0, 0, 0), RED, rng, torn=False, wave=0.3)
+    S.banner(f"GateBanner{side}", 5, 14, (side * 58, -6.2, 31), (0, 0, 0), RED, rng, torn=False, wave=0.3)
+S.set_layers([
+    ("Grout", "PLAYABLE"), ("Floor", "PLAYABLE"), ("Path", "PLAYABLE"), ("EggPedestals", "PLAYABLE"), ("EggPedestalG", "PROPS"),
+    ("ArenaWall", "BOUNDARY"), ("FarStands", "BOUNDARY"), ("ArenaGate", "BOUNDARY"), ("Gates", "BOUNDARY"),
+    ("Stage", "BOSS_STAGE"),
+    ("Stands", "BACKGROUND"), ("Crowd", "BACKGROUND"), ("Arcade", "BACKGROUND"), ("FarArcade", "BACKGROUND"),
+    ("FlagPoles", "BACKGROUND"), ("Flags", "BACKGROUND"), ("FarFlag", "BACKGROUND"), ("Royal", "BACKGROUND"),
+])
+S.organize("OnePiece")
+VALID = S.validate("OnePiece", walk_half=75.0)
+
 # ═════════════════════════════════════════════════════════ SAVE / RENDER / EXPORT ══
 blend_dir = os.path.join(REPO, "art", "blender", "worlds")
 os.makedirs(blend_dir, exist_ok=True)
@@ -317,6 +375,6 @@ if DO_RENDER:
     S.render(os.path.join(out, f"{tag}_overview.png"), (0, -95, 120), (0, 115, 0), lens=24)
 
 if "export" in sys.argv:
-    m = S.export_modules(os.path.join(REPO, "art", "exports", "worlds", "04_OnePiece"), "Layout.worldZ0(4)", "OnePiece")
+    m = S.export_modules(os.path.join(REPO, "art", "exports", "worlds", "04_OnePiece"), "Layout.worldZ0(4)", "OnePiece", validation=VALID)
     tot = sum(x["triangles"] for x in m["modules"])
-    print("EXPORTED", len(m["modules"]), "modules", tot, "tris", "over limit:", [x["module"] for x in m["modules"] if x["overLimit"]])
+    print("EXPORTED", len(m["modules"]), "modules", tot, "tris", "over limit:", [x["module"] for x in m["modules"] if x["overLimit"]], "validation:", m["validation"]["pass"])

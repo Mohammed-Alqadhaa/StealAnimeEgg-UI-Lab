@@ -441,12 +441,176 @@ def tri_count(ob):
     return n
 
 
-# Each world owns local y in [-30, 230] (build.luau ZoneMinZ = z0 - 30: the 30-stud entry threshold belongs to
-# the world; the next world's threshold starts at 230). Geometry must stay inside, or neighbours intersect.
+# ───────────────────────────────────────────────────── world layers + validation ──
+# Each world owns local y in [-30, 230] (build.luau ZoneMinZ = z0 - 30: the 30-stud entry threshold belongs to the
+# world; the next world's threshold starts at 230). Since the Owner's World Production Correction Directive this slot
+# is a GAMEPLAY constraint (PLAYABLE / BOUNDARY / BOSS_STAGE / PROPS / colliders), not a visual limit:
+# BACKGROUND may extend beyond it as long as it is non-collidable and stays out of the neighbours' playable corridor.
 WORLD_SLOT_Y = (-30.0, 228.0)
+WORLD_STRIDE = 260.0
+NEIGHBOUR_CORRIDOR_X = 82.0   # half-width of every world's playable/boundary footprint (walls sit at |x| <= ~81)
+SKY_MIN_Z = 120.0              # background wholly above this is sky-level scenery (never meets a player)
+LANE = 54.0
+LAYERS = {  # layer -> (collides in Roblox, strict gameplay-slot bounds)
+    "PLAYABLE": (True, True),     # floors, route, egg interaction areas
+    "BOUNDARY": (True, True),     # intentional outside boundaries (walls, balustrades, gate piers, end walls)
+    "BOSS_STAGE": (True, True),   # boss dais / stairs / stage platforms
+    "PROPS": (False, True),       # in-world decoration (lanterns, banners, statues, furniture, rubble, ...)
+    "BACKGROUND": (False, False), # scenery / depth layers (skylines, stands, cliffs, towers, sea, mesas, ...)
+    "SKY": (False, False),        # sky-level objects (planets, moons); may become a Roblox Sky at import
+}
+_layer_cfg = {"rules": [], "default": "PROPS"}
 
 
-def _export_group(objs, mod, rmat, out_dir, manifest):
+def set_layers(rules, default="PROPS"):
+    """rules: list of (EXPORT module-name prefix, LAYER); the longest matching prefix wins."""
+    for _, lay in rules:
+        assert lay in LAYERS, lay
+    _layer_cfg["rules"] = list(rules)
+    _layer_cfg["default"] = default
+
+
+def module_layer(mod):
+    best = None
+    for pre, lay in _layer_cfg["rules"]:
+        if mod.startswith(pre) and (best is None or len(pre) > len(best[0])):
+            best = (pre, lay)
+    return best[1] if best else _layer_cfg["default"]
+
+
+def _export_cols():
+    for col in list(bpy.data.collections):
+        if col.name.startswith("EXPORT_"):
+            yield col, col.name[len("EXPORT_"):].partition("__")[0]
+
+
+def organize(world_id):
+    """Collection pass: WORLD_<id>/<id>_{PLAYABLE,BOUNDARY,BOSS_STAGE,PROPS,BACKGROUND,SKY,COLLISION,VFX_ANCHORS}."""
+    scene_root = bpy.context.scene.collection
+    root = collection(f"WORLD_{world_id}")
+    parents = {lay: collection(f"{world_id}_{lay}", root) for lay in list(LAYERS) + ["COLLISION", "VFX_ANCHORS"]}
+
+    def move(col, parent):
+        for p in list(bpy.data.collections) + [scene_root]:
+            if p is not parent and col.name in p.children:
+                p.children.unlink(col)
+        if col.name not in parent.children:
+            parent.children.link(col)
+
+    for col, mod in list(_export_cols()):
+        lay = module_layer(mod)
+        col["sae_layer"] = lay
+        move(col, parents[lay])
+    if bpy.data.collections.get("COLLIDERS"):
+        move(bpy.data.collections["COLLIDERS"], parents["COLLISION"])
+    if bpy.data.collections.get("VFX"):
+        move(bpy.data.collections["VFX"], parents["VFX_ANCHORS"])
+
+
+def _aabb(ob, dg):
+    ev = ob.evaluated_get(dg)
+    pts = [ob.matrix_world @ Vector(c) for c in ev.bound_box]
+    return (min(p.x for p in pts), min(p.y for p in pts), min(p.z for p in pts),
+            max(p.x for p in pts), max(p.y for p in pts), max(p.z for p in pts))
+
+
+def validate(world_id, walk_half=75.0, exit_min=16.0, lane_clear_y=(0.0, 186.0)):
+    """Gameplay-safety validation per layer (Owner directive §6). Stored in the manifest by export_modules.
+    1 strict layers + colliders inside the gameplay slot      2 BACKGROUND beyond the slot stays out of the
+    neighbours' playable corridor (|x| < 82, below sky level) 3 no collidable blocker in the running lane
+    4 continuous floor over the walkable area (no falls)      5 walkable exit opening + 6 visible exit opening (ray casts through the exit band, see below)"""
+    import numpy as np
+    dg = bpy.context.evaluated_depsgraph_get()
+    Y0, Y1 = WORLD_SLOT_Y
+    objs = []  # (name, module, layer, collides, aabb, transparency)
+    for col, mod in _export_cols():
+        lay = module_layer(mod)
+        for o in col.all_objects:
+            if o.type != "MESH":
+                continue
+            m = o.data.materials[0] if o.data.materials else None
+            objs.append((o.name, mod, lay, LAYERS[lay][0], _aabb(o, dg), m.get("roblox_transparency", 0.0) if m else 0.0))
+    ccol = bpy.data.collections.get("COLLIDERS")
+    colliders = [(o.name, "Collider", "COLLISION", True, _aabb(o, dg), 0.0) for o in (ccol.all_objects if ccol else [])]
+    V = {"slot": [], "neighbourCorridor": [], "laneBlocked": []}
+    for (n, mod, lay, _c, bb, _t) in objs + colliders:
+        strict = True if lay == "COLLISION" else LAYERS[lay][1]
+        if strict and (bb[1] < Y0 - 0.05 or bb[4] > Y1 + 0.05):
+            V["slot"].append(f"{lay}:{mod}:{n} y[{bb[1]:.1f},{bb[4]:.1f}]")
+    for (n, mod, lay, _c, bb, _t) in objs:
+        if lay == "BACKGROUND" and (bb[1] < Y0 - 0.05 or bb[4] > Y1 + 0.05):
+            if bb[0] < NEIGHBOUR_CORRIDOR_X and bb[3] > -NEIGHBOUR_CORRIDOR_X and bb[2] < SKY_MIN_Z:
+                V["neighbourCorridor"].append(f"{mod}:{n} x[{bb[0]:.1f},{bb[3]:.1f}] y[{bb[1]:.1f},{bb[4]:.1f}]")
+    for (n, mod, lay, c, bb, _t) in objs + colliders:
+        if (c and "Pedestal" not in mod and bb[0] < LANE and bb[3] > -LANE and bb[1] < lane_clear_y[1]
+                and bb[4] > lane_clear_y[0] and bb[5] > 2.0 and bb[2] < 12.0):
+            V["laneBlocked"].append(f"{lay}:{mod}:{n}")
+    # 3b: BACKGROUND is non-collidable by design, so it must not stand in the walkable area at ground level
+    #     (players would walk through it); such pieces belong to BOUNDARY
+    V["walkThroughScenery"] = [f"{mod}:{n}" for (n, mod, lay, _c, bb, _t) in objs
+                               if lay == "BACKGROUND" and bb[0] < walk_half - 0.5 and bb[3] > -walk_half + 0.5
+                               and bb[1] < Y1 - 0.5 and bb[4] > Y0 + 0.5 and bb[2] < 3.0 and bb[5] > 4.0]
+    xs = np.arange(-walk_half + 1.0, walk_half - 0.99, 2.0)
+    ys = np.arange(Y0 + 1.0, Y1 - 0.99, 2.0)
+    cov = np.zeros((len(xs), len(ys)), dtype=bool)
+    for (n, mod, lay, _c, bb, _t) in objs:
+        if lay in ("PLAYABLE", "BOSS_STAGE") and bb[2] <= 0.5 and -1.5 <= bb[5] <= 9.0:
+            ix = np.where((xs >= bb[0]) & (xs <= bb[3]))[0]
+            iy = np.where((ys >= bb[1]) & (ys <= bb[4]))[0]
+            if len(ix) and len(iy):
+                cov[ix[0]:ix[-1] + 1, iy[0]:iy[-1] + 1] = True
+    V["floorGaps"] = int((~cov).sum())
+    V["floorSamples"] = int(cov.size)
+    # 5/6: ray casts along +y through the exit band [Y1-8, Y1+0.5]: a column is blocked for walking when a ray at
+    # z 3/5/7 (above step height) meets a collidable surface, and blocked for sight when a ray at z 2/5/8 meets an
+    # opaque surface. Rays pass through everything else. Real geometry, so arches and gates are handled exactly.
+    info = {o[0]: (o[2], o[3], o[5]) for o in objs}
+    info.update({o[0]: ("COLLISION", True, 1.0) for o in colliders})
+    scene = bpy.context.scene
+
+    def blocked(x, zs, test):
+        for z in zs:
+            org, left = Vector((x, Y1 - 8.0, z)), 8.5
+            for _ in range(24):
+                hit, loc, _n, _i, ob, _m = scene.ray_cast(dg, org, Vector((0, 1, 0)), distance=left)
+                if not hit:
+                    break
+                meta = info.get(ob.name)
+                if meta and test(*meta):
+                    return True
+                step = (loc - org).length + 0.02
+                org, left = loc + Vector((0, 0.02, 0)), left - step
+                if left <= 0:
+                    break
+        return False
+
+    xs_ = [(-walk_half + 0.25) + 0.5 * i for i in range(int(walk_half * 4))]
+    walk_cols = [blocked(x, (3.0, 5.0, 7.0), lambda lay, c, tr: c) for x in xs_]
+    vis_cols = [blocked(x, (2.0, 5.0, 8.0), lambda lay, c, tr: lay != "COLLISION" and tr < 0.5) for x in xs_]
+
+    def longest(cols):
+        best = run = 0
+        for bl in cols:
+            run = 0 if bl else run + 1
+            best = max(best, run)
+        return best * 0.5
+
+    V["exitWalkRun"] = longest(walk_cols)
+    V["exitVisibleRun"] = longest(vis_cols)
+    V["exitMin"], V["walkHalf"] = exit_min, walk_half
+    V["layerCounts"] = {lay: len({o[1] for o in objs if o[2] == lay}) for lay in LAYERS}
+    V["pass"] = (not V["slot"] and not V["neighbourCorridor"] and not V["laneBlocked"] and not V["walkThroughScenery"] and V["floorGaps"] == 0
+                 and V["exitWalkRun"] >= exit_min and V["exitVisibleRun"] >= exit_min)
+    print(f"VALIDATION {world_id}: {'PASS' if V['pass'] else 'FAIL'} slot={len(V['slot'])} corridor={len(V['neighbourCorridor'])} "
+          f"lane={len(V['laneBlocked'])} walkThrough={len(V['walkThroughScenery'])} floorGaps={V['floorGaps']}/{V['floorSamples']} exitWalk={V['exitWalkRun']:.1f} "
+          f"exitVisible={V['exitVisibleRun']:.1f} layers={V['layerCounts']}")
+    for k in ("slot", "neighbourCorridor", "laneBlocked", "walkThroughScenery"):
+        for v in V[k][:8]:
+            print(f"  {k}: {v}")
+    return V
+
+
+def _export_group(objs, mod, rmat, out_dir, manifest, layer):
     # duplicate → apply modifiers → join (the editable objects in the .blend stay untouched)
     dups = []
     for o in objs:
@@ -466,10 +630,11 @@ def _export_group(objs, mod, rmat, out_dir, manifest):
         bpy.ops.object.join()
     j = bpy.context.view_layer.objects.active
     bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
-    bpy.ops.object.origin_set(type="ORIGIN_GEOMETRY", center="BOUNDS")
     tris = tri_count(j)
-    ys = [(j.matrix_world @ v.co).y for v in j.data.vertices]
-    outside = (min(ys) < WORLD_SLOT_Y[0] - 0.01 or max(ys) > WORLD_SLOT_Y[1] + 0.01) and not mod.startswith("Sky")
+    vs = [j.matrix_world @ v.co for v in j.data.vertices]
+    bmin = [min(v[i] for v in vs) for i in range(3)]
+    bmax = [max(v[i] for v in vs) for i in range(3)]
+    bpy.ops.object.origin_set(type="ORIGIN_GEOMETRY", center="BOUNDS")
     c = j.location.copy()
     dims = j.dimensions.copy()
     j.location = (0, 0, 0)
@@ -480,9 +645,9 @@ def _export_group(objs, mod, rmat, out_dir, manifest):
                              axis_forward="Z", axis_up="Y", bake_space_transform=True, mesh_smooth_type="FACE", add_leaf_bones=False)
     mats = [m for m in j.data.materials if m]
     manifest["modules"].append({
-        "module": mod, "fbx": os.path.basename(path), "robloxMaterial": rmat or "SmoothPlastic",
-        "triangles": tris, "overLimit": tris > TRI_LIMIT, "outsideSlot": outside,
-        "slotY": [round(min(ys), 2), round(max(ys), 2)],
+        "module": mod, "fbx": os.path.basename(path), "layer": layer, "canCollide": LAYERS[layer][0],
+        "robloxMaterial": rmat or "SmoothPlastic", "triangles": tris, "overLimit": tris > TRI_LIMIT,
+        "boundsLocal": [round(v, 2) for v in bmin + bmax],  # Blender world-local x,y,z min then max
         "robloxPosition": [round(-c.x, 3), round(c.z, 3), round(c.y, 3)],
         "sizeStuds": [round(dims.x, 3), round(dims.z, 3), round(dims.y, 3)],
         "materials": sorted({m.name for m in mats}),
@@ -492,11 +657,11 @@ def _export_group(objs, mod, rmat, out_dir, manifest):
     bpy.data.objects.remove(j, do_unlink=True)
 
 
-def export_modules(out_dir, z0_note, world_id):
+def export_modules(out_dir, z0_note, world_id, validation=None):
     """Join every EXPORT_* collection into one mesh (temporary copies), write FBX + manifest.
     The editable objects in the .blend are left untouched."""
     os.makedirs(out_dir, exist_ok=True)
-    manifest = {"worldSlotY": list(WORLD_SLOT_Y), "world": world_id, "units": "1 Blender unit = 1 stud", "mapping": "Roblox(X,Y,Z) = (-x, z, z0 + y)", "z0": z0_note, "modules": [], "anchors": []}
+    manifest = {"worldSlotY": list(WORLD_SLOT_Y), "layers": {k: {"collides": v[0], "strictSlot": v[1]} for k, v in LAYERS.items()}, "world": world_id, "units": "1 Blender unit = 1 stud", "mapping": "Roblox(X,Y,Z) = (-x, z, z0 + y)", "z0": z0_note, "modules": [], "anchors": []}
     for col in list(bpy.data.collections):
         if not col.name.startswith("EXPORT_"):
             continue
@@ -511,7 +676,7 @@ def export_modules(out_dir, z0_note, world_id):
             groups.setdefault(m.name if m else "", []).append(o)
         for mname, gobjs in sorted(groups.items()):
             sub = mod if len(groups) == 1 else f"{mod}_{mname.split('_', 1)[-1]}"
-            _export_group(gobjs, sub, rmat, out_dir, manifest)
+            _export_group(gobjs, sub, rmat, out_dir, manifest, module_layer(mod))
     for ob in bpy.data.objects:
         if ob.type == "EMPTY" and ob.name.startswith("VFX_"):
             p = ob.matrix_world.translation
@@ -522,6 +687,8 @@ def export_modules(out_dir, z0_note, world_id):
         p, d = ob.matrix_world.translation, ob.dimensions
         manifest["colliders"].append({"name": ob.name, "robloxPosition": [round(-p.x, 3), round(p.z, 3), round(p.y, 3)],
                                       "sizeStuds": [round(d.x, 3), round(d.z, 3), round(d.y, 3)]})
+    if validation is not None:
+        manifest["validation"] = validation
     with open(os.path.join(out_dir, "manifest.json"), "w") as f:
         json.dump(manifest, f, indent=1)
     return manifest

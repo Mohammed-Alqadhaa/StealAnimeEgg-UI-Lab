@@ -159,7 +159,7 @@ for half, pred in (("E", lambda t: t[0] < 0), ("W", lambda t: t[0] > 0)):
 C("EXPORT_Stairs__Marble")
 for s_ in range(8):  # wide staircase rising toward the throne
     S.box(f"Stair{s_}", (46 - s_ * 2, 3.0, 0.8 + s_ * 0.8), (0, 196 + s_ * 3, (0.8 + s_ * 0.8) / 2), material=THRONE_W if s_ % 2 == 0 else STONE, bev=0.05)
-S.box("ThronePlatform", (30, 6, 7.2), (0, 223, 3.6), material=THRONE_W, bev=0.1)
+S.box("ThronePlatform", (20, 6, 7.2), (0, 223, 3.6), material=THRONE_W, bev=0.1)
 C("EXPORT_Throne__Marble")
 S.box("ThroneSeat", (7, 4.5, 2.0), (0, 223, 8.2), material=THRONE, bev=0.3)
 S.box("ThroneBack", (8, 1.6, 18), (0, 225.2, 16), material=THRONE, bev=0.3)
@@ -171,19 +171,58 @@ C("EXPORT_ThroneCross__SmoothPlastic")
 wandenreich("ThroneEmblem", (0, 224.3, 17.5), 0, 2.4, THRONE_W)
 C("EXPORT_ThronePillars__Slate")
 for side in (-1, 1):
-    S.box(f"ThronePillar{side}", (5.5, 5.5, 58), (side * 20, 222, 29), material=STONE_D, bev=0.3)
-    S.cyl(f"ThronePillarSpire{side}", 3.8, 16, (side * 20, 222, 66), material=STONE_D, verts=4, r2=0.05)
+    S.box(f"ThronePillar{side}", (5.5, 5.5, 58), (side * 34, 222, 29), material=STONE_D, bev=0.3)
+    S.cyl(f"ThronePillarSpire{side}", 3.8, 16, (side * 34, 222, 66), material=STONE_D, verts=4, r2=0.05)
 C("EXPORT_ThroneBanners__Fabric")
 for side in (-1, 1):
-    S.banner(f"ThroneBanner{side}", 11, 36, (side * 20, 218.9, 54), (0, 0, 0), BANNER, rng, torn=False, wave=0.3)
+    S.banner(f"ThroneBanner{side}", 11, 36, (side * 34, 218.9, 54), (0, 0, 0), BANNER, rng, torn=False, wave=0.3)
 C("EXPORT_ThroneBannerCrosses__SmoothPlastic")
 for side in (-1, 1):
-    wandenreich(f"ThroneBannerCross{side}", (side * 20, 218.3, 40), 0, 3.0, CROSS)
+    wandenreich(f"ThroneBannerCross{side}", (side * 34, 218.3, 40), 0, 3.0, CROSS)
 C("EXPORT_ThroneReishi__Neon")
-S.box("ThroneStepGlow", (30, 0.3, 0.25), (0, 219.9, 7.25), material=REISHI)
+S.box("ThroneStepGlow", (20, 0.3, 0.25), (0, 219.9, 7.25), material=REISHI)
 S.use(S.collection("VFX"))
 S.empty("VFX_BossStage", (0, BOSS_Y, 5))["vfx"] = "boss anchor + black shadow / blue reishi aura (runtime)"
 S.empty("VFX_ThroneAura", (0, 223, 12))["vfx"] = "dark aura + blue reishi motes rising (runtime)"
+
+# ═════════════════════════════════════ PALACE GATE FACADE BEHIND YHWACH (correction pass) ══
+# R10 shows a monumental dark palace facade behind the throne. Restored across the far end (y 214-228):
+#   * PalaceFacade (BOUNDARY, |x| 38-78, collide) + PalaceFacadeOuter (BACKGROUND, |x| 78-120): gothic masses with
+#     pinnacles and lit lancet windows
+#   * PalaceArch (BACKGROUND, high): a colossal pointed arch spanning the facade with a Wandenreich medallion
+#   * designed openings: |x| 10-31 on both sides of the narrowed throne platform (next world visible through them)
+FAC_Y0, FAC_X0 = 214.0, 38.0
+C("EXPORT_PalaceFacade__Slate")
+for side in (-1, 1):
+    S.box(f"FacadeMass{side}", (78 - FAC_X0, Y1 - FAC_Y0, 58), (side * (FAC_X0 + 78) / 2, (FAC_Y0 + Y1) / 2, 29), material=STONE_D)
+    S.box(f"FacadeBand{side}", (78 - FAC_X0 + 1, Y1 - FAC_Y0 + 0.6, 2), (side * (FAC_X0 + 78) / 2, (FAC_Y0 + Y1) / 2 - 0.3, 40), material=STONE_W)
+    for k in range(5):
+        x = side * (FAC_X0 + 3 + k * 8.5)
+        S.box(f"FacadeButtress{side}_{k}", (2.6, 3.0, 62), (x, FAC_Y0 - 1.0, 31), material=STONE, bev=0.2)
+        S.cyl(f"FacadePinnacle{side}_{k}", 1.6, 10, (x, FAC_Y0 - 1.0, 67), material=STONE_D, verts=4, r2=0.05)
+C("EXPORT_PalaceFacadeWindows__Glass")
+for side in (-1, 1):
+    for k in range(4):
+        x = side * (FAC_X0 + 7.25 + k * 8.5)
+        for z in (14, 30, 48):
+            S.box(f"Lancet{side}_{k}_{z}", (3.2, 0.3, 9), (x, FAC_Y0 - 0.2, z), material=GLASS)
+            S.cyl(f"LancetTop{side}_{k}_{z}", 1.6, 2.6, (x, FAC_Y0 - 0.2, z + 5.8), (90, 0, 0), GLASS, verts=4)
+C("EXPORT_PalaceFacadeOuter__Slate")
+for side in (-1, 1):
+    S.box(f"FacadeOuter{side}", (42, Y1 - FAC_Y0, 70), (side * 99, (FAC_Y0 + Y1) / 2, 35), material=STONE)
+    for k in range(4):
+        S.cyl(f"FacadeOuterSpire{side}_{k}", 4.5, 26, (side * (82 + k * 11), (FAC_Y0 + Y1) / 2, 83), material=STONE_D, verts=4, r2=0.05, rot=(0, 0, 45))
+C("EXPORT_PalaceArch__Slate")
+LEG = math.hypot(FAC_X0, 42.0)
+for side in (-1, 1):  # pointed (gothic) arch: two straight legs from the facade tops (z 58) to the apex (z 100)
+    S.box(f"ArchLeg{side}", (7, 8, LEG + 4), (side * FAC_X0 / 2, (FAC_Y0 + Y1) / 2, 79), (0, -side * math.degrees(math.atan2(FAC_X0, 42.0)), 0), STONE_W)
+S.box("ArchApex", (8, 8, 8), (0, (FAC_Y0 + Y1) / 2, 100), (0, 45, 0), STONE_W)
+C("EXPORT_PalaceMedallion__Limestone")
+S.cyl("MedallionPlate", 9, 1.0, (0, FAC_Y0 - 0.5, 86), (90, 0, 0), STONE_W, verts=28)
+C("EXPORT_PalaceMedallionCross__SmoothPlastic")
+wandenreich("MedallionCross", (0, FAC_Y0 - 1.2, 86), 0, 4.4, CROSS)
+S.use(S.collection("VFX"))
+S.empty("VFX_PalaceFacade", (0, FAC_Y0, 60))["vfx"] = "cold blue reishi wisps drifting down the facade + lancet glow pulse (runtime)"
 
 # ═══════════════════════════════════════════════════ EGG PEDESTALS ══
 C("EXPORT_EggPedestals__Slate")
@@ -211,6 +250,18 @@ wandenreich("GateEmblem", (0, GY - 3.2, 76), 0, 4.0, CROSS)
 C("EXPORT_GateEmblemPlate__Limestone")
 S.cyl("GatePlate", 7.5, 0.6, (0, GY - 2.8, 76), (90, 0, 0), STONE_W, verts=24)
 
+S.set_layers([
+    ("Grout", "PLAYABLE"), ("Floor", "PLAYABLE"), ("FloorInlay", "PLAYABLE"), ("EggPedestals", "PLAYABLE"),
+    ("EggPedestalGlow", "PROPS"),
+    ("Walls", "BOUNDARY"), ("Buttresses", "BOUNDARY"), ("Gate", "BOUNDARY"), ("GateCross", "PROPS"),
+    ("GateEmblemPlate", "PROPS"), ("PalaceFacade", "BOUNDARY"), ("PalaceFacadeWindows", "BOUNDARY"),
+    ("Stairs", "BOSS_STAGE"), ("ThronePillars", "BOUNDARY"),
+    ("Spires", "BACKGROUND"), ("SpireWindows", "BACKGROUND"), ("PalaceFacadeOuter", "BACKGROUND"),
+    ("PalaceArch", "BACKGROUND"), ("PalaceMedallion", "BACKGROUND"),
+])
+S.organize("Bleach")
+VALID = S.validate("Bleach", walk_half=75.0)
+
 # ═════════════════════════════════════════════════════════ SAVE / RENDER / EXPORT ══
 blend_dir = os.path.join(REPO, "art", "blender", "worlds")
 os.makedirs(blend_dir, exist_ok=True)
@@ -230,7 +281,6 @@ if DO_RENDER:
     S.render(os.path.join(out, f"{tag}_overview.png"), (0, -95, 120), (0, 115, 0), lens=24)
 
 if "export" in sys.argv:
-    m = S.export_modules(os.path.join(REPO, "art", "exports", "worlds", "06_Bleach"), "Layout.worldZ0(6)", "Bleach")
+    m = S.export_modules(os.path.join(REPO, "art", "exports", "worlds", "06_Bleach"), "Layout.worldZ0(6)", "Bleach", validation=VALID)
     tot = sum(x["triangles"] for x in m["modules"])
-    print("EXPORTED", len(m["modules"]), "modules", tot, "tris", "over limit:", [x["module"] for x in m["modules"] if x["overLimit"]],
-          "outside slot:", [x["module"] for x in m["modules"] if x["outsideSlot"]])
+    print("EXPORTED", len(m["modules"]), "modules", tot, "tris", "over limit:", [x["module"] for x in m["modules"] if x["overLimit"]], "validation:", m["validation"]["pass"])

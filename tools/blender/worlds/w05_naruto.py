@@ -7,7 +7,8 @@ Reference elements reproduced (R02 Konoha):
   * village main street: stone path, wooden lantern posts with warm lanterns
   * cream-walled wooden houses with red/orange tiled roofs lining both sides, hanging red paper lanterns
   * red banners with the white Leaf-village spiral
-  * Hokage Rock: a cliff with carved faces overlooking the far end (kept inside the world slot, off the lane)
+  * Hokage Rock: the cliff spans the far end behind Madara, faces carved in a rock bridge over the red tower;
+    two passes through the mountain are the openings to the next world (correction pass)
   * Madara at the far end on a stone stage under a big Uchiha fan crest, red round tower behind
   * extra identity: Konoha main gate (open) at the entry, Ichiraku-style ramen stand, round green trees
 Gameplay: centre lane |x| < 54 clear and flat; house fronts at |x| >= 60 with invisible colliders; open gate.
@@ -61,6 +62,9 @@ BOSS_Y = 206.0
 Y0, Y1 = -30.0, 228.0  # world slot (sae_bpy.WORLD_SLOT_Y): nothing may leave it
 YM, YL = (Y0 + Y1) / 2, Y1 - Y0
 FRONT = 60.0  # house fronts
+CLIFF_Y = 214.0  # Hokage cliff front (correction pass: the rock spans the far end behind Madara)
+HOUSE_END = 211.0
+PASS_X = (9.0, 36.0)  # the two passes through the mountain (|x| between tower and cliff masses)
 
 
 def C(name):
@@ -114,16 +118,14 @@ for side in (-1, 1):
 HOUSES = []
 for side in (-1, 1):
     y = 8.0  # houses start inside the village gate (the threshold before it stays open ground)
-    while y < Y1 - 10:
-        d = min(rng.uniform(14, 22), Y1 - 2 - y)
+    while y < HOUSE_END - 8:
+        d = min(rng.uniform(14, 22), HOUSE_END - y)
         if d < 8:
             break
         w = rng.uniform(14, 20)
         storeys = 2 if rng.random() < 0.45 else 1
         HOUSES.append((side, side * (FRONT + w / 2), y + d / 2, w, d, storeys))
         y += d + rng.uniform(3, 7)
-# the far-end right side is reserved for the Hokage Rock
-HOUSES = [h for h in HOUSES if not (h[0] > 0 and h[2] > 150)]
 for half, sgn in (("E", -1), ("W", 1)):
     hs = [h for h in HOUSES if h[0] == sgn]
     C(f"EXPORT_HouseWalls{half}__SmoothPlastic")
@@ -159,7 +161,7 @@ for half, sgn in (("E", -1), ("W", 1)):
 S.use(S.collection("VFX"))
 S.empty("VFX_PaperLanterns", (0, 100, 7))["vfx"] = "paper lantern sway + soft red glow (runtime)"
 for side in (-1, 1):  # boundary behind the houses (gaps between houses are closed)
-    S.collider(f"StreetBoundary{side}", (2, YL, 40), (side * (FRONT + 2), YM, 20))
+    S.collider(f"StreetBoundary{side}", (2, YL, 40), (side * (FRONT - 1.0), YM, 20))  # in front of the facades
 
 # Leaf-village banners on tall poles between houses (face the street)
 C("EXPORT_BannerPoles__Wood")
@@ -191,7 +193,7 @@ for (x, y) in posts[::2]:
 
 # ═════════════════════════════════════════════════════════════ TREES ══
 TREES = [(side * rng.uniform(FRONT + 24, 125), rng.uniform(Y0 + 8, Y1 - 8)) for side in (-1, 1) for _ in range(16)]
-TREES = [t for t in TREES if not (t[0] > 0 and t[1] > 140)]
+TREES = [t for t in TREES if t[1] < CLIFF_Y - 8]
 C("EXPORT_TreeTrunks__Wood")
 for i, (x, y) in enumerate(TREES):
     S.cyl(f"Trunk{i}", 0.9, 12, (x, y, 6), material=TRUNK, verts=8, r2=0.6)
@@ -207,31 +209,62 @@ for side in (-1, 1):
     S.box(f"OuterGrass{side}", (80, YL, 0.4), (side * (FRONT + 40), YM, -0.25), material=GRASS)
 
 # ═══════════════════════════════════════════════════════ HOKAGE ROCK ══
-# a cliff at the far end on Blender +x (Roblox -x), faces carved looking down the street
-RX0, RY0, RY1 = 64.0, 160.0, 226.0
-C("EXPORT_HokageRock__Rock")
+# Correction pass (R02: the Hokage faces rise behind Madara, above the red Hokage building). The cliff spans the far
+# end (y 214-228). The four faces are carved in a natural rock bridge (z 38-78) over the tower behind the stage;
+# two passes through the mountain (|x| 9-36, both sides of the tower) are the designed openings to the next world.
+#   HokageCliff (BOUNDARY, collide, |x| <= 78) + HokageCliffOuter (BACKGROUND, |x| 78-150) + HokageBridge/Faces
+C("EXPORT_HokageCliff__Rock")
+CLIFF = []
 z, layer = 0.0, 0
-while z < 72:
+while z < 76:
     lh = rng.uniform(12, 20)
-    inset = layer * 2.2
-    front = [(RX0 + inset + k * 11 + rng.uniform(-3, 3), RY0 + inset * 0.6 + rng.uniform(0, 4)) for k in range(11)]
-    left = [(RX0 + inset + rng.uniform(0, 3), RY1 - 2 - k * (RY1 - RY0) / 4 + rng.uniform(-2, 2)) for k in range(4)]
-    # outline in order: jagged front (+x), far corners, back-left corner, then down the left side (-y)
-    poly = front + [(RX0 + 118, RY0 + inset), (RX0 + 118, RY1), (RX0 + inset + rng.uniform(0, 3), RY1)] + left[1:]
-    S.prism(f"Cliff{layer}", poly, z, min(72, z + lh), ROCK)
+    inset = layer * 1.2
+    for side in (-1, 1):
+        front = [(side * (PASS_X[1] + inset + k * 7 + rng.uniform(-1.5, 1.5)), CLIFF_Y + inset * 0.4 + rng.uniform(0, 2.0)) for k in range(7)]
+        front[-1] = (side * 78.0, front[-1][1])
+        poly = front + [(side * 78.0, Y1), (side * (PASS_X[1] + inset + rng.uniform(0, 2)), Y1)]
+        if side < 0:
+            poly = list(reversed(poly))
+        CLIFF.append((poly, z, min(76, z + lh), layer))
+        S.prism(f"Cliff{side}_{layer}", poly, z, min(76, z + lh), ROCK if layer % 2 == 0 else ROCK_D)
     z += lh
     layer += 1
+C("EXPORT_HokageCliffOuter__Rock")
+for side in (-1, 1):
+    z, layer = 0.0, 0
+    while z < 76:
+        lh = rng.uniform(12, 20)
+        front = [(side * (78.0 + k * 12), CLIFF_Y + layer * 0.5 + rng.uniform(0, 3)) for k in range(7)]
+        poly = front + [(side * 150.0, Y1), (side * 78.0, Y1)]
+        if side < 0:
+            poly = list(reversed(poly))
+        S.prism(f"CliffOuter{side}_{layer}", poly, z, min(76 - (layer * 2), z + lh), ROCK if layer % 2 == 0 else ROCK_D)
+        z += lh
+        layer += 1
+C("EXPORT_HokageBridge__Rock")
+z, layer = 38.0, 0
+while z < 78:
+    lh = rng.uniform(10, 16)
+    front = [(-44 + k * 8 + rng.uniform(-1, 1), CLIFF_Y + rng.uniform(0, 1.5)) for k in range(12)]
+    poly = front + [(44, Y1), (-44, Y1)]
+    S.prism(f"Bridge{layer}", poly, z, min(78, z + lh), ROCK if layer % 2 == 0 else ROCK_D)
+    z += lh
+    layer += 1
+for k in range(10):  # hanging rock under the bridge (reads as a natural arch)
+    x = rng.uniform(-40, 40)
+    S.box(f"BridgeHang{k}", (rng.uniform(3, 7), rng.uniform(4, 10), rng.uniform(3, 6)), (x, rng.uniform(218, 222), 37), (rng.uniform(-10, 10), 0, rng.uniform(0, 30)), ROCK_D, bev=0.4)
 C("EXPORT_HokageRockBoulders__Rock")
 for k in range(14):
-    bx, by = RX0 + rng.uniform(0, 100), RY0 + rng.uniform(-6, 2)
-    S.sphere(f"Boulder{k}", rng.uniform(2.5, 5.5), (bx, by, 1.5), ROCK_D, seg=8, rings=6, scale=(1.2, 0.9, 0.8))
+    side = rng.choice((-1, 1))
+    bx, by = side * rng.uniform(PASS_X[1] + 2, 76), CLIFF_Y - rng.uniform(0, 1.5)
+    S.sphere(f"Boulder{k}", rng.uniform(2.5, 5.0), (bx, by, 1.5), ROCK_D, seg=8, rings=6, scale=(1.2, 0.9, 0.8))
 C("EXPORT_HokageTopTrees__Grass")
-for k in range(12):
-    S.sphere(f"TopTree{k}", rng.uniform(4, 6.5), (RX0 + 14 + k * 8.5 + rng.uniform(-2, 2), RY0 + 26 + rng.uniform(0, 30), 74), LEAF, seg=10, rings=6)
+for k in range(26):
+    S.sphere(f"TopTree{k}", rng.uniform(4, 6.5), (-140 + k * 11.2 + rng.uniform(-2, 2), rng.uniform(218, 221), 77), LEAF, seg=10, rings=6)
 S.use(S.collection("VFX"))
-S.empty("VFX_HokageDust", (RX0, RY0, 40))["vfx"] = "drifting leaves + light dust off the cliff (runtime)"
+S.empty("VFX_HokageDust", (0, CLIFF_Y, 50))["vfx"] = "drifting leaves + light dust off the cliff (runtime)"
 C("EXPORT_HokageFaces__Rock")
-FACES = [(RX0 + 16 + k * 19, RY0 + 1.0, 44 + (k % 2) * 3) for k in range(4)]
+FACES = [(-27.0 + k * 18, CLIFF_Y, 55 + (k % 2) * 3) for k in range(4)]
 for k, (fx, fy, fz) in enumerate(FACES):
     S.sphere(f"Head{k}", 7.0, (fx, fy - 1.0, fz), ROCK, seg=16, rings=10, scale=(0.9, 0.55, 1.2))
     S.box(f"Brow{k}", (9.0, 2.0, 1.4), (fx, fy - 4.4, fz + 2.6), material=ROCK_D, bev=0.4)
@@ -248,41 +281,41 @@ for k, (fx, fy, fz) in enumerate(FACES):
 # ═════════════════════════════════════════════════════════ MADARA STAGE ══
 C("EXPORT_Stage__Slate")
 for s_ in range(3):
-    S.box(f"StageStep{s_}", (36 - s_ * 6, 4, 1.0), (0, 194 + s_ * 3, 0.5 + s_), material=STAGE_L, bev=0.1)
-S.box("StageTop", (30, 22, 3), (0, 214, 1.5), material=STAGE, bev=0.2)
+    S.box(f"StageStep{s_}", (36 - s_ * 6, 3, 1.0), (0, 190 + s_ * 3, 0.5 + s_), material=STAGE_L, bev=0.1)
+S.box("StageTop", (30, 16, 3), (0, 204, 1.5), material=STAGE, bev=0.2)
 for side in (-1, 1):
-    S.box(f"CrestPost{side}", (2.2, 2.2, 36), (side * 13, 220, 18), material=TIMBER)
-S.box("CrestBeam", (30, 2.2, 2.0), (0, 220, 35.2), material=TIMBER)
+    S.box(f"CrestPost{side}", (2.2, 2.2, 36), (side * 13, 210, 18), material=TIMBER)
+S.box("CrestBeam", (30, 2.2, 2.0), (0, 210, 35.2), material=TIMBER)
 C("EXPORT_CrestRoof__Slate")
-gable_roof("CrestRoof", 0, 220, 34, 4.5, 36.2, 22, 1.2, ROOF, along_y=False)
+gable_roof("CrestRoof", 0, 210, 34, 4.5, 36.2, 22, 1.2, ROOF, along_y=False)
 # Uchiha fan crest hanging under the beam (high: the lane below stays open to the next world)
 C("EXPORT_UchihaFanRed__SmoothPlastic")
 top = [(math.cos(math.pi * k / 20) * 7.5, math.sin(math.pi * k / 20) * 7.5) for k in range(21)]
 fan = S.prism("FanTop", top, -0.3, 0.3, UCHIHA_R)
 fan.rotation_euler = (math.radians(90), 0, 0)
-fan.location = (0, 219, 24)
-S.box("FanHandle", (1.4, 0.6, 6.0), (0, 219, 18.6), material=UCHIHA_R)
+fan.location = (0, 209, 24)
+S.box("FanHandle", (1.4, 0.6, 6.0), (0, 209, 18.6), material=UCHIHA_R)
 C("EXPORT_UchihaFanWhite__SmoothPlastic")
 bot = [(math.cos(math.pi + math.pi * k / 20) * 7.5, math.sin(math.pi + math.pi * k / 20) * 7.5) for k in range(21)]
 fw = S.prism("FanBottom", bot, -0.3, 0.3, UCHIHA_W)
 fw.rotation_euler = (math.radians(90), 0, 0)
-fw.location = (0, 219, 24)
+fw.location = (0, 209, 24)
 C("EXPORT_CrestRopes__Wood")
 for dx in (-5, 5):
-    S.cyl(f"CrestRope{dx}", 0.12, 4.0, (dx, 219, 33.0), material=TIMBER, verts=5)
+    S.cyl(f"CrestRope{dx}", 0.12, 4.0, (dx, 209, 33.0), material=TIMBER, verts=5)
 # red round tower (Hokage residence silhouette) behind-left of the stage, inside the slot
 C("EXPORT_Tower__SmoothPlastic")
-S.cyl("TowerBody", 13, 26, (-36, 209, 13), material=TOWER, verts=28)
-S.cyl("TowerBand", 13.4, 1.2, (-36, 209, 18), material=WHITE, verts=28)
+S.cyl("TowerBody", 8.5, 26, (0, 219, 13), material=TOWER, verts=28)
+S.cyl("TowerBand", 8.9, 1.2, (0, 219, 18), material=WHITE, verts=28)
 C("EXPORT_TowerRoof__Slate")
-S.cyl("TowerRoof", 15, 5, (-36, 209, 28.5), material=ROOF, verts=28, r2=9)
-S.cyl("TowerTop", 9, 2.5, (-36, 209, 32.2), material=ROOF_O, verts=28, r2=4)
+S.cyl("TowerRoof", 9.0, 4.5, (0, 219, 28.2), material=ROOF, verts=28, r2=5.5)
+S.cyl("TowerTop", 5.5, 2.5, (0, 219, 31.7), material=ROOF_O, verts=28, r2=2.5)
 S.use(S.collection("VFX"))
 S.empty("VFX_BossStage", (0, BOSS_Y, 3))["vfx"] = "boss anchor + dark chakra / Susanoo-blue aura (runtime)"
-S.empty("VFX_UchihaCrest", (0, 219, 24))["vfx"] = "crest pulse + falling leaves (runtime)"
+S.empty("VFX_UchihaCrest", (0, 209, 24))["vfx"] = "crest pulse + falling leaves (runtime)"
 
 # ════════════════════════════════════════════════════════ RAMEN STAND ══
-RX, RY = -(LANE + 3.5), 88.0  # Blender -x = Roblox +x
+RX, RY = -(LANE + 2.5), 88.0  # Blender -x = Roblox +x
 C("EXPORT_RamenStand__Wood")
 S.box("RamenCounter", (3, 14, 3.4), (RX, RY, 1.7), material=TIMBER)
 S.box("RamenBack", (1, 14, 9), (RX - 4.5, RY, 4.5), material=TIMBER)
@@ -324,6 +357,18 @@ leaf_symbol("GateLeaf", (0, GY - 2.3, 26.0), 0, 1.6, WHITE)
 for side in (-1, 1):
     S.collider(f"GateWall{side}", (16, 4, 30), (side * 67, GY, 15))
 
+S.set_layers([
+    ("Grout", "PLAYABLE"), ("Street", "PLAYABLE"), ("Ground", "PLAYABLE"), ("EggPedestals", "PLAYABLE"),
+    ("EggPedestalGlow", "PROPS"),
+    ("HokageCliff", "BOUNDARY"), ("Gate", "BOUNDARY"), ("GateMarks", "PROPS"), ("GateRoof", "BOUNDARY"),
+    ("Stage", "BOSS_STAGE"),
+    ("HokageCliffOuter", "BACKGROUND"), ("HokageBridge", "BACKGROUND"), ("HokageFace", "BACKGROUND"),
+    ("HokageTopTrees", "BACKGROUND"), ("House", "BACKGROUND"), ("PaperLanterns", "BACKGROUND"),
+    ("TreeTrunks", "BACKGROUND"), ("TreeCanopy", "BACKGROUND"), ("OuterGrass", "BACKGROUND"), ("Tower", "BOUNDARY"), ("TowerRoof", "BACKGROUND"),
+])
+S.organize("Naruto")
+VALID = S.validate("Naruto", walk_half=58.0)
+
 # ═════════════════════════════════════════════════════════ SAVE / RENDER / EXPORT ══
 blend_dir = os.path.join(REPO, "art", "blender", "worlds")
 os.makedirs(blend_dir, exist_ok=True)
@@ -342,7 +387,6 @@ if DO_RENDER:
     S.render(os.path.join(out, f"{tag}_overview.png"), (0, -95, 120), (0, 115, 0), lens=24)
 
 if "export" in sys.argv:
-    m = S.export_modules(os.path.join(REPO, "art", "exports", "worlds", "05_Naruto"), "Layout.worldZ0(5)", "Naruto")
+    m = S.export_modules(os.path.join(REPO, "art", "exports", "worlds", "05_Naruto"), "Layout.worldZ0(5)", "Naruto", validation=VALID)
     tot = sum(x["triangles"] for x in m["modules"])
-    print("EXPORTED", len(m["modules"]), "modules", tot, "tris", "over limit:", [x["module"] for x in m["modules"] if x["overLimit"]],
-          "outside slot:", [x["module"] for x in m["modules"] if x["outsideSlot"]])
+    print("EXPORTED", len(m["modules"]), "modules", tot, "tris", "over limit:", [x["module"] for x in m["modules"] if x["overLimit"]], "validation:", m["validation"]["pass"])

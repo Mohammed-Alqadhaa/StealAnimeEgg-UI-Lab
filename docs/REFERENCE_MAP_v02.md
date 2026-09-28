@@ -50,3 +50,30 @@ repo so future sessions do not depend on per-session upload paths.
 | 7 | JJK (Sukuna) | R02 Shibuya panel | R02 (Yuji, Gojo, Toji, Mahoraga, Sukuna). **Maki: custom new** |
 | 8 | Solo Leveling (Sung Jin-Woo) | R02 Shadow corridor panel | R02 (Igris, Beru, Cha Hae-In A). **Cha Hae-In B: custom new** |
 | — | Extras | — | custom new: Guts, Shinjuku Gojo, Megumi-body Sukuna |
+
+## 3. Authoritative per-world composition (World Production Correction Directive)
+
+The Owner's references are the visual authority. The legacy v01 world slot is a gameplay constraint only; it is the
+lowest-priority visual constraint (directive §15).
+
+| # | World | Authoritative map image | Special override | Composition requirements (what must stay recognisable) | Egg-reference source | Obsolete |
+|---|---|---|---|---|---|---|
+| 1 | Demon Slayer (Akaza) | **existing preserved SAFE_TEST environment** (baseline), R12 / N08 | Not rebuilt. Additive and reversible only, fingerprint-guarded | Widened torii arena (150-stud walls, 122 walk), compass inlay, river + waterfalls, bamboo, lanterns | approved DS eggs (N08–N11, protected). Tanjiro: Owner approval pending | the original un-widened Last CP Zone1 as the target (kept only as backup A) |
+| 2 | MHA (Shigaraki) | R01 | — | Purple villain hideout / bar (left) + lounge (right); cracked purple-glow floor; Shigaraki throne of slabs + decay hands + red cloak; torn hand banners; lantern posts + chains; **purple city + elevated highway behind the throne** | new motif eggs (MHA eggs not in R02) | — |
+| 3 | Dragon Ball (Frieza) | R02 "Planet Namek" panel | — | Green sky + **large planet upper-left**; stone causeway with lanterns; turquoise sea; Ajisa trees + Namekian domes; tan mesas + waterfalls; Frieza on a dark stage with purple arch | R02 | — |
+| 4 | One Piece (Doflamingo) | R02 "Dressrosa" panel | — | Corrida Colosseum: tiered stands full of spectators **on both sides and behind the boss**, arcade crown, Jolly Roger banners, lamp posts, pale path; Doflamingo in front of the pink feather coat | R02 (Nami/Kaido as shown) | — |
+| 5 | Naruto (Madara) | R02 "Konoha" panel | — | Village street with red-roof timber houses, Leaf banners, lanterns; **Hokage Rock faces rising behind Madara**, above the red round Hokage building | R02 | — |
+| 6 | Bleach (Yhwach) | **R10** (separate Yhwach Palace reference) | R10 overrides R02's Bleach panel for the map | Monumental grey/black corridor, polished floor, white banners with the black Wandenreich cross, braziers, **gothic palace façade behind the throne**, Yhwach enthroned at the top of stairs | R02 Bleach eggs (Ichigo, Aizen, Kenpachi, Yhwach); **Yachiru: custom new** | R02 Bleach **map** panel; any older rejected Bleach environment |
+| 7 | JJK (Sukuna) | R02 "Shibuya" panel | 6 characters / 6 eggs | Shibuya street under a red sky, neon signs, dark blocks, giant red torii, Sukuna's shrine | R02 (Yuji, Gojo, Toji, Mahoraga, Sukuna). **Maki: custom new** | old 5-egg layout |
+| 8 | Solo Leveling (Sung Jin-Woo) | R02 "Shadow Corridor" panel | — | Long symmetric corridor, shadow soldiers along both walls, blue flames, **closed corridor end with the Monarch's throne + gate** | R02 (Igris, Beru, Cha Hae-In A). **Cha Hae-In B: custom new** | Thomas Andre egg |
+| — | **Berserk** | — | **Obsolete as an active world** (R02 Berserk panel, R11 Griffith egg) | — | Guts = Extra with a custom egg | everything Berserk |
+
+**Next-world rule (directive §7):** current world, then boss focal composition, then a designed opening, then the
+next world seen through it. The openings used are:
+* MHA: two corridors beside the throne.
+* One Piece: the arena gate through the far stands.
+* Naruto: two passes through the Hokage mountain.
+* Bleach: two openings beside the throne in the palace façade.
+* JJK: the torii and street.
+* Solo Leveling: the Monarch's gate.
+* Dragon Ball: open causeway beside the Frieza stage.

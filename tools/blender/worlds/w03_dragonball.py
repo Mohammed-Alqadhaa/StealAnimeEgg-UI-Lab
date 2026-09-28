@@ -324,18 +324,30 @@ for i, (ex, ey) in enumerate(EGGS):
 C("EXPORT_Gates__Limestone")
 for gy, tag in ((-2.0, "Entry"),):
     for side in (-1, 1):
-        S.box(f"{tag}GatePillar{side}", (5, 5, 22), (side * (EDGE - 2), gy, 11), material=CURB, bev=0.3)
-        S.sphere(f"{tag}GateOrb{side}", 2.8, (side * (EDGE - 2), gy, 24.2), DOME, seg=14, rings=8)
+        S.box(f"{tag}GatePillar{side}", (5, 5, 22), (side * (EDGE + 2.5), gy, 11), material=CURB, bev=0.3)
+        S.sphere(f"{tag}GateOrb{side}", 2.8, (side * (EDGE + 2.5), gy, 24.2), DOME, seg=14, rings=8)
 C("EXPORT_GateOrbGlow__Neon")
 for gy, tag in ((-2.0, "Entry"),):
     for side in (-1, 1):
-        S.torus(f"{tag}GateRing{side}", 2.9, 0.18, (side * (EDGE - 2), gy, 24.2), (0, 0, 0), PEDGLOW, major=24, minor=4)
+        S.torus(f"{tag}GateRing{side}", 2.9, 0.18, (side * (EDGE + 2.5), gy, 24.2), (0, 0, 0), PEDGLOW, major=24, minor=4)
 
 # ═══════════════════════════════════════════════════════ SKY PLANET ══
-C("EXPORT_SkyPlanet__Neon")  # far backdrop; in Roblox this may become a Sky/Billboard instead of a mesh
-S.sphere("SkyPlanet", 70, (-130, LEN + 520, 190), PLANET, seg=32, rings=16)
-S.torus("SkyPlanetBand", 70.5, 3.0, (-130, LEN + 520, 190), (70, 20, 0), PLANET_B, major=48, minor=6)
-S.sphere("SkyMoon", 16, (120, LEN + 480, 230), PLANET_B, seg=20, rings=10)
+C("EXPORT_SkyPlanet__Neon")  # SKY layer: upper-left like R02, lateral + high so it meets no other world (cross-world check)
+S.sphere("SkyPlanet", 70, (-245, 330, 185), PLANET, seg=32, rings=16)
+S.torus("SkyPlanetBand", 70.5, 3.0, (-245, 330, 185), (70, 20, 0), PLANET_B, major=48, minor=6)
+S.sphere("SkyMoon", 16, (205, 360, 215), PLANET_B, seg=20, rings=10)
+
+S.set_layers([
+    ("Grout", "PLAYABLE"), ("Causeway", "PLAYABLE"), ("Plaza", "PLAYABLE"), ("EggPedestals", "PLAYABLE"),
+    ("EggPedestalGlow", "PROPS"),
+    ("Balustrade", "BOUNDARY"), ("CausewayWall", "BOUNDARY"), ("Gates", "BOUNDARY"), ("GateOrbGlow", "PROPS"),
+    ("Stage", "BOSS_STAGE"), ("StageGlow", "PROPS"), ("StagePortal", "PROPS"), ("StageArch", "BACKGROUND"),
+    ("Sea", "BACKGROUND"), ("Seabed", "BACKGROUND"), ("Island", "BACKGROUND"), ("Trunks", "BACKGROUND"),
+    ("Canopy", "BACKGROUND"), ("Domes", "BACKGROUND"), ("DomeWindows", "BACKGROUND"), ("Mesas", "BACKGROUND"),
+    ("Waterfalls", "BACKGROUND"), ("SkyPlanet", "SKY"),
+])
+S.organize("DragonBall")
+VALID = S.validate("DragonBall", walk_half=56.0)
 
 # ═════════════════════════════════════════════════════════ SAVE / RENDER / EXPORT ══
 blend_dir = os.path.join(REPO, "art", "blender", "worlds")
@@ -357,6 +369,6 @@ if DO_RENDER:
     S.render(os.path.join(out, f"{tag}_overview.png"), (0, -95, 120), (0, 115, 0), lens=24)
 
 if "export" in sys.argv:
-    m = S.export_modules(os.path.join(REPO, "art", "exports", "worlds", "03_DragonBall"), "Layout.worldZ0(3)", "DragonBall")
+    m = S.export_modules(os.path.join(REPO, "art", "exports", "worlds", "03_DragonBall"), "Layout.worldZ0(3)", "DragonBall", validation=VALID)
     tot = sum(x["triangles"] for x in m["modules"])
-    print("EXPORTED", len(m["modules"]), "modules", tot, "tris", "over limit:", [x["module"] for x in m["modules"] if x["overLimit"]])
+    print("EXPORTED", len(m["modules"]), "modules", tot, "tris", "over limit:", [x["module"] for x in m["modules"] if x["overLimit"]], "validation:", m["validation"]["pass"])
