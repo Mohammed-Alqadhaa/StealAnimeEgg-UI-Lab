@@ -131,7 +131,8 @@
     "Workspace.SAE_World.Worlds.Bleach",
     "Workspace.SAE_World.Worlds.JJK",
     "Workspace.SAE_World.Worlds.SoloLeveling",
-    "ReplicatedStorage.SAE_Shared, ServerScriptService.SAE_Server, StarterPlayerScripts.SAE_Client"
+    "ReplicatedStorage.SAE_Shared, ServerScriptService.SAE_Server, StarterPlayerScripts.SAE_Client",
+    "StarterGui.SAE_UI (production UI from the UI Lab)"
   ],
   "demonSlayerWiden": {
     "floorTilesCloned": 14,
@@ -179,7 +180,7 @@
       }
     }
   ],
-  "instanceCount": 18468,
+  "instanceCount": 20095,
   "maxPlayersSetInFile": true,
   "moved": [
     "FarmHubVisualPrototype.SixZoneRoute.Zone1.BlenderEnvironment → SAE_World.Worlds.DemonSlayer.Environment (widened ×1.5)",
@@ -358,7 +359,5 @@
     "sell": "Rem — Re:Zero (stand-in; not in the 45 hatchable roster)",
     "trailShop": "Makima (stand-in)"
   },
-  "warnings": [
-    "production UI model not found (game/build/SAE_UI.rbxmx) — run tools/build-prod.js first"
-  ]
+  "warnings": {}
 }

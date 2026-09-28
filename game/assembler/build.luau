@@ -32,7 +32,7 @@ local V3, CF = B.V3, B.CF
 
 local BASELINE = "checkpoints/StealAnAnimeEgg_PreClaudeTakeover_20260928.rbxlx"
 local OUT = process.args[1] or "checkpoints/StealAnAnimeEgg_FullProduction_OwnerReview_v01.rbxlx"
-local UI_MODEL = "game/build/SAE_UI.rbxmx"
+local UI_MODEL = "game/ui/SAE_UI.rbxmx"
 
 local report = { archived = {}, removed = {}, created = {}, moved = {}, importAudit = {}, warnings = {}, standIns = {} }
 local function log(kind, what)

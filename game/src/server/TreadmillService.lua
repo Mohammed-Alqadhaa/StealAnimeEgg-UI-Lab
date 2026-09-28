@@ -95,7 +95,12 @@ function TreadmillService.Upgrade(player: Player): boolean
 		return Profile.upgradeTreadmill(p)
 	end)
 	if ok then
-		deps.Remotes.notify(player, "ok", string.format("Treadmill Level %d!  +%s Speed/s", result.level, Economy.format(result.gain)), { kind = "treadmill", level = result.level })
+		deps.Remotes.notify(
+			player,
+			"ok",
+			string.format("Treadmill Level %d!  +%s Speed/s", result.level, Economy.format(result.gain)),
+			{ kind = "treadmill", level = result.level }
+		)
 	else
 		deps.Remotes.notify(player, "warn", result == "max level" and "Treadmill is MAX LEVEL" or "Not enough Cash")
 	end

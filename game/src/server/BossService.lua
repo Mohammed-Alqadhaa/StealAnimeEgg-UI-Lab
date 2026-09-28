@@ -133,7 +133,10 @@ end
 local function carriersList()
 	local list = {}
 	for _, c in deps.EggService.GetCarriers() do
-		table.insert(list, { id = c.player, x = c.position.X, z = c.position.Z, worldOfEgg = c.worldId, secured = false, player = c.player, position = c.position })
+		table.insert(
+			list,
+			{ id = c.player, x = c.position.X, z = c.position.Z, worldOfEgg = c.worldId, secured = false, player = c.player, position = c.position }
+		)
 	end
 	return list
 end

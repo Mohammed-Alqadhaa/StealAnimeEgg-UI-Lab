@@ -32,16 +32,17 @@ function HatchService.Start(deps)
 			return false, result
 		end
 		local c = Worlds.CHARACTERS[result.characterId]
-		return true, {
-			uid = result.unit.uid,
-			characterId = result.characterId,
-			name = c.name,
-			worldId = c.world,
-			worldName = Worlds.WORLDS[c.world].name,
-			isBoss = c.isBoss,
-			isNewDiscovery = result.isNewDiscovery,
-			equipped = result.equipped,
-		}
+		return true,
+			{
+				uid = result.unit.uid,
+				characterId = result.characterId,
+				name = c.name,
+				worldId = c.world,
+				worldName = Worlds.WORLDS[c.world].name,
+				isBoss = c.isBoss,
+				isNewDiscovery = result.isNewDiscovery,
+				equipped = result.equipped,
+			}
 	end)
 end
 

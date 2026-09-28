@@ -472,4 +472,4 @@ function shopMenu(D) {
 }
 
 function all(D) { return [shopMenu(D), indexMenu(D), eggsMenu(D), charactersMenu(D), upgradeMenu(D)]; }
-module.exports = { all };
+module.exports = { all, menuWindow, chip, sectionHeader, rarityFaces, tabButton, levelPips };

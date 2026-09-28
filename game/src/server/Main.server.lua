@@ -60,4 +60,11 @@ deps.DevService.Start(deps)
 deps.RoundService.Start(deps) -- last: starts the first round once everything listens
 
 workspace:SetAttribute("SAE_ServerReady", true)
-print(string.format("[SAE] server online — %d egg spawns, %d bosses, data %s", deps.EggService.Count(), deps.BossService.Count(), deps.DataService.IsPersistent() and "PERSISTENT" or "IN-MEMORY"))
+print(
+	string.format(
+		"[SAE] server online — %d egg spawns, %d bosses, data %s",
+		deps.EggService.Count(),
+		deps.BossService.Count(),
+		deps.DataService.IsPersistent() and "PERSISTENT" or "IN-MEMORY"
+	)
+)

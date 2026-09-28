@@ -119,16 +119,58 @@ function TrailFx.apply(char: Model, tier): Folder?
 	local cs = gradient(tier.colors)
 	local fam = tier.aura
 	if fam == "wisp" or fam == "streaks" then
-		emitter(aura, "Wisps", { Texture = TEX.smoke, Color = cs, Rate = fam == "wisp" and 8 or 16, Lifetime = NumberRange.new(0.4, 0.8), Speed = NumberRange.new(2, 5), SpreadAngle = Vector2.new(25, 25), Size = NumberSequence.new({ NumberSequenceKeypoint.new(0, 0.6), NumberSequenceKeypoint.new(1, 1.6) }), Transparency = NumberSequence.new({ NumberSequenceKeypoint.new(0, 0.55), NumberSequenceKeypoint.new(1, 1) }), EmissionDirection = Enum.NormalId.Back, Enabled = false })
+		emitter(aura, "Wisps", {
+			Texture = TEX.smoke,
+			Color = cs,
+			Rate = fam == "wisp" and 8 or 16,
+			Lifetime = NumberRange.new(0.4, 0.8),
+			Speed = NumberRange.new(2, 5),
+			SpreadAngle = Vector2.new(25, 25),
+			Size = NumberSequence.new({ NumberSequenceKeypoint.new(0, 0.6), NumberSequenceKeypoint.new(1, 1.6) }),
+			Transparency = NumberSequence.new({ NumberSequenceKeypoint.new(0, 0.55), NumberSequenceKeypoint.new(1, 1) }),
+			EmissionDirection = Enum.NormalId.Back,
+			Enabled = false,
+		})
 	end
 	if fam == "streaks" or fam == "embers" or fam == "sparks" then
-		emitter(aura, "Streaks", { Texture = TEX.sparkle, Color = cs, Rate = 24, Lifetime = NumberRange.new(0.25, 0.5), Speed = NumberRange.new(10, 18), SpreadAngle = Vector2.new(10, 10), Size = NumberSequence.new({ NumberSequenceKeypoint.new(0, 0.5), NumberSequenceKeypoint.new(1, 0) }), EmissionDirection = Enum.NormalId.Back, Enabled = false })
+		emitter(aura, "Streaks", {
+			Texture = TEX.sparkle,
+			Color = cs,
+			Rate = 24,
+			Lifetime = NumberRange.new(0.25, 0.5),
+			Speed = NumberRange.new(10, 18),
+			SpreadAngle = Vector2.new(10, 10),
+			Size = NumberSequence.new({ NumberSequenceKeypoint.new(0, 0.5), NumberSequenceKeypoint.new(1, 0) }),
+			EmissionDirection = Enum.NormalId.Back,
+			Enabled = false,
+		})
 	end
 	if fam == "embers" or fam == "shadowflame" then
-		emitter(aura, "Flames", { Texture = TEX.fire, Color = cs, Rate = 30, Lifetime = NumberRange.new(0.3, 0.7), Speed = NumberRange.new(1, 3), SpreadAngle = Vector2.new(35, 35), Size = NumberSequence.new({ NumberSequenceKeypoint.new(0, 1.2), NumberSequenceKeypoint.new(1, 0.2) }), Transparency = NumberSequence.new({ NumberSequenceKeypoint.new(0, 0.2), NumberSequenceKeypoint.new(1, 1) }), EmissionDirection = Enum.NormalId.Top, Enabled = false })
+		emitter(aura, "Flames", {
+			Texture = TEX.fire,
+			Color = cs,
+			Rate = 30,
+			Lifetime = NumberRange.new(0.3, 0.7),
+			Speed = NumberRange.new(1, 3),
+			SpreadAngle = Vector2.new(35, 35),
+			Size = NumberSequence.new({ NumberSequenceKeypoint.new(0, 1.2), NumberSequenceKeypoint.new(1, 0.2) }),
+			Transparency = NumberSequence.new({ NumberSequenceKeypoint.new(0, 0.2), NumberSequenceKeypoint.new(1, 1) }),
+			EmissionDirection = Enum.NormalId.Top,
+			Enabled = false,
+		})
 	end
 	if fam == "sparks" or tier.arcs then
-		emitter(aura, "Sparks", { Texture = TEX.sparkle, Color = ColorSequence.new(Color3.new(1, 1, 1)), Rate = 40, Lifetime = NumberRange.new(0.1, 0.25), Speed = NumberRange.new(6, 14), SpreadAngle = Vector2.new(180, 180), Size = NumberSequence.new(0.35), LightEmission = 1, Enabled = false })
+		emitter(aura, "Sparks", {
+			Texture = TEX.sparkle,
+			Color = ColorSequence.new(Color3.new(1, 1, 1)),
+			Rate = 40,
+			Lifetime = NumberRange.new(0.1, 0.25),
+			Speed = NumberRange.new(6, 14),
+			SpreadAngle = Vector2.new(180, 180),
+			Size = NumberSequence.new(0.35),
+			LightEmission = 1,
+			Enabled = false,
+		})
 		-- flickering lightning beams around the legs (toggled/wiggled by the client)
 		for i = 1, 2 do
 			local s0 = att("Arc" .. i .. "A", Vector3.new(i == 1 and -1.2 or 1.2, lowY + 0.3, -0.4))
@@ -150,13 +192,47 @@ function TrailFx.apply(char: Model, tier): Folder?
 		end
 	end
 	if fam == "stars" or fam == "monarch" or fam == "prismatic" or fam == "halo" then
-		emitter(aura, "Stars", { Texture = TEX.sparkle, Color = cs, Rate = fam == "stars" and 20 or 32, Lifetime = NumberRange.new(0.8, 1.6), Speed = NumberRange.new(0.5, 2), SpreadAngle = Vector2.new(180, 180), Size = NumberSequence.new({ NumberSequenceKeypoint.new(0, 0.2), NumberSequenceKeypoint.new(0.5, 0.6), NumberSequenceKeypoint.new(1, 0) }), Rotation = NumberRange.new(0, 360), RotSpeed = NumberRange.new(-90, 90), Enabled = false })
+		emitter(aura, "Stars", {
+			Texture = TEX.sparkle,
+			Color = cs,
+			Rate = fam == "stars" and 20 or 32,
+			Lifetime = NumberRange.new(0.8, 1.6),
+			Speed = NumberRange.new(0.5, 2),
+			SpreadAngle = Vector2.new(180, 180),
+			Size = NumberSequence.new({ NumberSequenceKeypoint.new(0, 0.2), NumberSequenceKeypoint.new(0.5, 0.6), NumberSequenceKeypoint.new(1, 0) }),
+			Rotation = NumberRange.new(0, 360),
+			RotSpeed = NumberRange.new(-90, 90),
+			Enabled = false,
+		})
 	end
 	if fam == "shadowflame" or fam == "monarch" then
-		emitter(aura, "Shadow", { Texture = TEX.smoke, Color = ColorSequence.new(Color3.fromRGB(10, 6, 24), hex(tier.colors[1])), LightEmission = 0.2, Rate = 26, Lifetime = NumberRange.new(0.6, 1.2), Speed = NumberRange.new(1, 3), SpreadAngle = Vector2.new(40, 40), Size = NumberSequence.new({ NumberSequenceKeypoint.new(0, 1.4), NumberSequenceKeypoint.new(1, 3) }), Transparency = NumberSequence.new({ NumberSequenceKeypoint.new(0, 0.35), NumberSequenceKeypoint.new(1, 1) }), EmissionDirection = Enum.NormalId.Top, Enabled = false })
+		emitter(aura, "Shadow", {
+			Texture = TEX.smoke,
+			Color = ColorSequence.new(Color3.fromRGB(10, 6, 24), hex(tier.colors[1])),
+			LightEmission = 0.2,
+			Rate = 26,
+			Lifetime = NumberRange.new(0.6, 1.2),
+			Speed = NumberRange.new(1, 3),
+			SpreadAngle = Vector2.new(40, 40),
+			Size = NumberSequence.new({ NumberSequenceKeypoint.new(0, 1.4), NumberSequenceKeypoint.new(1, 3) }),
+			Transparency = NumberSequence.new({ NumberSequenceKeypoint.new(0, 0.35), NumberSequenceKeypoint.new(1, 1) }),
+			EmissionDirection = Enum.NormalId.Top,
+			Enabled = false,
+		})
 	end
 	if tier.rings then
-		emitter(aura, "Rings", { Texture = TEX.sparkle, Shape = Enum.ParticleEmitterShape.Disc, ShapeStyle = Enum.ParticleEmitterShapeStyle.Surface, ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward, Color = cs, Rate = 18, Lifetime = NumberRange.new(0.4, 0.6), Speed = NumberRange.new(4, 6), Size = NumberSequence.new({ NumberSequenceKeypoint.new(0, 0.5), NumberSequenceKeypoint.new(1, 0) }), Enabled = false })
+		emitter(aura, "Rings", {
+			Texture = TEX.sparkle,
+			Shape = Enum.ParticleEmitterShape.Disc,
+			ShapeStyle = Enum.ParticleEmitterShapeStyle.Surface,
+			ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward,
+			Color = cs,
+			Rate = 18,
+			Lifetime = NumberRange.new(0.4, 0.6),
+			Speed = NumberRange.new(4, 6),
+			Size = NumberSequence.new({ NumberSequenceKeypoint.new(0, 0.5), NumberSequenceKeypoint.new(1, 0) }),
+			Enabled = false,
+		})
 	end
 	if fam == "halo" or fam == "prismatic" or fam == "monarch" then
 		local light = Instance.new("PointLight")

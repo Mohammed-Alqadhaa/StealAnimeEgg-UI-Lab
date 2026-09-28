@@ -1,0 +1,20 @@
+{
+  "name": "StealAnAnimeEgg",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "SAE_Shared": { "$path": "src/shared" }
+    },
+    "ServerScriptService": {
+      "SAE_Server": { "$path": "src/server" }
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "SAE_Client": { "$path": "src/client" }
+      }
+    },
+    "StarterGui": {
+      "SAE_UI": { "$path": "ui/SAE_UI.rbxmx" }
+    }
+  }
+}
