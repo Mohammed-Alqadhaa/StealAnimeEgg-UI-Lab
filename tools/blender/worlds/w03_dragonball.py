@@ -65,6 +65,8 @@ HALF, LEN, LANE = 75.0, 230.0, 54.0
 EDGE = 56.0  # causeway edge (balustrade)
 EGGS = [(-42, 118), (42, 118), (-26, 158), (26, 158), (0, 184)]
 BOSS_Y = 206.0
+Y0, Y1 = -30.0, 228.0  # world slot (sae_bpy.WORLD_SLOT_Y): nothing may leave it (sky objects excepted)
+YM, YL = (Y0 + Y1) / 2, Y1 - Y0
 PLAZA = (0.0, 168.0, 34.0)
 
 
@@ -87,8 +89,8 @@ def in_plaza(x, y):
 
 # ═══════════════════════════════════════════════════════════ CAUSEWAY ══
 C("EXPORT_Grout__Slate")
-S.box("Grout", (EDGE * 2, LEN + 24, 0.4), (0, LEN / 2 - 12, -0.4), material=GROUT)
-for part, (y0, y1) in enumerate([(-12, 64), (64, 140), (140, LEN + 12)]):
+S.box("Grout", (EDGE * 2, YL, 0.4), (0, YM, -0.4), material=GROUT)
+for part, (y0, y1) in enumerate([(Y0, 64), (64, 140), (140, Y1)]):
     C(f"EXPORT_Causeway{part + 1}__Slate")
     for ob in S.slab_floor(f"Path{part}", -EDGE, EDGE, y0, y1, 9.0, 0.16, 0.0, 0.8, PATH, rng, jitter=0.1, tilt=0.004, bev=0.1, gap_var=0.06):
         cx = sum(v.co.x for v in ob.data.vertices) / len(ob.data.vertices)
@@ -119,9 +121,9 @@ for k, (sx, sy) in enumerate([(-2.6, 2.0), (2.6, 2.0), (-2.6, -2.4), (2.6, -2.4)
 # balustrade: low curb wall with posts; lantern posts every 26 studs
 C("EXPORT_Balustrade__Limestone")
 for side in (-1, 1):
-    S.box(f"CurbBase{side}", (1.6, LEN + 8, 0.8), (side * (EDGE + 0.8), LEN / 2, 0.4), material=CURB, bev=0.08)
-    S.box(f"CurbRail{side}", (1.0, LEN + 8, 0.45), (side * (EDGE + 0.8), LEN / 2, 2.9), material=CURB, bev=0.08)
-    for y in range(0, int(LEN) + 1, 6):
+    S.box(f"CurbBase{side}", (1.6, YL, 0.8), (side * (EDGE + 0.8), YM, 0.4), material=CURB, bev=0.08)
+    S.box(f"CurbRail{side}", (1.0, YL, 0.45), (side * (EDGE + 0.8), YM, 2.9), material=CURB, bev=0.08)
+    for y in range(int(Y0) + 2, int(Y1), 6):
         S.cyl(f"Baluster{side}_{y}", 0.35, 2.1, (side * (EDGE + 0.8), y, 1.75), material=CURB, verts=8, r2=0.26)
 C("EXPORT_LanternPosts__Limestone")
 posts = [(side * (EDGE + 0.8), y) for side in (-1, 1) for y in range(13, 200, 26)]
@@ -143,18 +145,17 @@ for (x, y) in posts[::2]:
 
 # gameplay boundary: invisible colliders on the balustrade line (the sea is never walkable)
 for side in (-1, 1):
-    S.collider(f"BoundaryCollider{side}", (2.0, LEN + 20, 40), (side * (EDGE + 1.2), LEN / 2, 20))
+    S.collider(f"BoundaryCollider{side}", (2.0, YL, 40), (side * (EDGE + 1.2), YM, 20))
 
 # ════════════════════════════════════════════════════════════════ SEA ══
 C("EXPORT_Sea__Glass")
 for side in (-1, 1):
-    S.box(f"SeaSurface{side}", (340, LEN + 420, 0.2), (side * (EDGE + 170), LEN / 2 + 90, -1.2), material=SEA)
-S.box("SeaSurfaceBack", (EDGE * 2, 320, 0.2), (0, LEN + 172, -1.2), material=SEA)
+    S.box(f"SeaSurface{side}", (340, YL, 0.2), (side * (EDGE + 170), YM, -1.2), material=SEA)
 C("EXPORT_Seabed__Sand")
-S.box("Seabed", (760, LEN + 440, 0.4), (0, LEN / 2 + 90, -5), material=SEABED)
+S.box("Seabed", (760, YL, 0.4), (0, YM, -5), material=SEABED)
 C("EXPORT_CausewayWall__Sandstone")  # causeway embankment face, seen above the waterline
 for side in (-1, 1):
-    S.box(f"Embankment{side}", (2.0, LEN + 8, 5.6), (side * (EDGE + 1.6), LEN / 2, -2.4), material=ROCK_B)
+    S.box(f"Embankment{side}", (2.0, YL, 5.6), (side * (EDGE + 1.6), YM, -2.4), material=ROCK_B)
 S.use(S.collection("VFX"))
 for side in (-1, 1):
     S.empty(f"VFX_SeaShimmer{side}", (side * 90, LEN / 2, -1))["vfx"] = "sea texture scroll + sparkle (runtime)"
@@ -162,15 +163,15 @@ for side in (-1, 1):
 # ═══════════════════════════════════════════════════════════ ISLANDS ══
 ISLANDS = []
 for side in (-1, 1):
-    y = -20.0
-    while y < LEN + 40:
-        r = rng.uniform(11, 20)
+    y = Y0 + 12
+    while y < Y1 - 12:
+        r = min(rng.uniform(11, 20), (y - Y0) / 1.1, (Y1 - y) / 1.1)
         x = side * rng.uniform(EDGE + 14 + r, EDGE + 40 + r)
         ISLANDS.append((x, y, r))
         y += r * 2 + rng.uniform(6, 20)
     for k in range(4):  # a second, farther row
         r = rng.uniform(16, 28)
-        ISLANDS.append((side * rng.uniform(170, 230), rng.uniform(-20, LEN + 60), r))
+        ISLANDS.append((side * rng.uniform(170, 230), rng.uniform(Y0 + r * 1.1, Y1 - r * 1.1), r))
 C("EXPORT_IslandRock__Sandstone")
 for i, (x, y, r) in enumerate(ISLANDS):
     S.prism(f"IslandRock{i}", blob(x, y, r * 1.05, 11), -4.5, 0.2, ROCK)
@@ -185,7 +186,7 @@ for (x, y, r) in ISLANDS:
         a, d = rng.uniform(0, 2 * math.pi), rng.uniform(0, r * 0.7)
         TREES.append((x + math.cos(a) * d, y + math.sin(a) * d, rng.uniform(16, 30)))
 for side in (-1, 1):  # trees rising from the water right beside the causeway (R02 lines the path)
-    for y in range(4, int(LEN), 22):
+    for y in range(4, int(Y1) - 10, 22):
         TREES.append((side * (EDGE + rng.uniform(6, 11)), y + rng.uniform(-4, 4), rng.uniform(18, 28)))
 for half, pred in (("E", lambda t: t[0] < 0), ("W", lambda t: t[0] >= 0)):
     C(f"EXPORT_Trunks{half}__Wood")
@@ -222,11 +223,10 @@ for k, (x, y, dr) in enumerate(DOMES):
 # ═══════════════════════════════════════════════════════════ MESAS ══
 MESAS = []
 for side in (-1, 1):
-    for k in range(7):
-        MESAS.append((side * rng.uniform(250, 330), rng.uniform(-60, LEN + 200), rng.uniform(22, 40), rng.uniform(35, 75)))
-for k in range(8):
-    MESAS.append((-210 + k * 60 + rng.uniform(-10, 10), LEN + rng.uniform(260, 330), rng.uniform(25, 40), rng.uniform(40, 85)))
-for half, pred in (("E", lambda m: m[0] < -30), ("W", lambda m: m[0] > 30), ("Back", lambda m: abs(m[0]) <= 30 or m[1] > LEN + 200)):
+    for k in range(5):
+        r = rng.uniform(22, 40)
+        MESAS.append((side * rng.uniform(250, 330), rng.uniform(Y0 + r * 1.35, Y1 - r * 1.35), r, rng.uniform(35, 75)))
+for half, pred in (("E", lambda m: m[0] < 0), ("W", lambda m: m[0] > 0)):
     C(f"EXPORT_Mesas{half}__Sandstone")
     for i, (x, y, r, h) in enumerate([m for m in MESAS if pred(m)]):
         z, rr, layer = -3.0, r, 0
@@ -322,12 +322,12 @@ for i, (ex, ey) in enumerate(EGGS):
 
 # ═════════════════════════════════════════════════════ ENTRY / EXIT ══
 C("EXPORT_Gates__Limestone")
-for gy, tag in ((-2.0, "Entry"), (LEN + 2.0, "Exit")):
+for gy, tag in ((-2.0, "Entry"),):
     for side in (-1, 1):
         S.box(f"{tag}GatePillar{side}", (5, 5, 22), (side * (EDGE - 2), gy, 11), material=CURB, bev=0.3)
         S.sphere(f"{tag}GateOrb{side}", 2.8, (side * (EDGE - 2), gy, 24.2), DOME, seg=14, rings=8)
 C("EXPORT_GateOrbGlow__Neon")
-for gy, tag in ((-2.0, "Entry"), (LEN + 2.0, "Exit")):
+for gy, tag in ((-2.0, "Entry"),):
     for side in (-1, 1):
         S.torus(f"{tag}GateRing{side}", 2.9, 0.18, (side * (EDGE - 2), gy, 24.2), (0, 0, 0), PEDGLOW, major=24, minor=4)
 

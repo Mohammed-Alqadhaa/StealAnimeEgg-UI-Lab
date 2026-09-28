@@ -57,6 +57,7 @@ INLAY = S.mat("MHA_Inlay", "#d9d2cc", rough=0.7, roblox="SmoothPlastic")
 HALF, LEN, LANE = 75.0, 230.0, 54.0
 EGGS = [(-42, 118), (42, 118), (-26, 158), (26, 158), (0, 184)]  # Roblox x → Blender x = -x (symmetric)
 BOSS_Y = 206.0
+Y0, Y1 = -30.0, 228.0  # world slot (sae_bpy.WORLD_SLOT_Y): nothing may leave it
 PLAZA = (0.0, 168.0, 36.0)
 
 
@@ -67,7 +68,7 @@ def C(name):
 # ═══════════════════════════════════════════════════════════════ FLOOR ══
 # glowing crack plane under everything (visible only through slab gaps)
 C("EXPORT_CrackBed__Slate")
-S.box("CrackBed", (HALF * 2, LEN + 30, 0.2), (0, LEN / 2 - 15, -0.55), material=CRACKBED)
+S.box("CrackBed", (HALF * 2, Y1 - Y0, 0.2), (0, (Y0 + Y1) / 2, -0.55), material=CRACKBED)
 C("EXPORT_CrackGlow__Neon")
 # glow veins: irregular emissive patches just above the dark bed, visible only through gaps.
 # Concentrated around the plaza, egg nests, throne and wall bases (R01 lighting language).
@@ -81,6 +82,7 @@ for (gx, gy, gr, n) in glow_centres:
         d = rng.uniform(0, gr * 0.7)
         cx, cy = gx + math.cos(ang) * d, gy + math.sin(ang) * d
         poly = [(cx + math.cos(2 * math.pi * s / 7) * r * rng.uniform(0.55, 1.0), cy + math.sin(2 * math.pi * s / 7) * r * rng.uniform(0.55, 1.0)) for s in range(7)]
+        poly = [(x, min(max(y, Y0 + 0.2), Y1 - 0.2)) for (x, y) in poly]
         S.prism(f"GlowVein{k}", poly, -0.34, -0.28, CRACK)
         k += 1
 
@@ -98,7 +100,7 @@ def edge_raise(x, y):
     return abs(x) > LANE + 2 and rng.random() < 0.55
 
 
-for part, (y0, y1) in enumerate([(-15, 60), (60, 135), (135, LEN + 15)]):
+for part, (y0, y1) in enumerate([(Y0, 60), (60, 135), (135, Y1)]):
     C(f"EXPORT_Floor{part + 1}__Slate")
     for ob in S.slab_floor(f"Slab{part}", -HALF, HALF, y0, y1, 8.0, 0.22, 0.0, 1.0, STONE, rng, jitter=0.36, tilt=0.018, raise_edge=edge_raise, bev=0.14, gap_var=0.3):
         # carve the plaza out of the regular flagstones (plaza has its own rings)
@@ -155,7 +157,7 @@ for k in range(23):
     h = rng.uniform(22, 38) * (1.0 - abs(a) / 200)
     w = rng.uniform(4.2, 7.0)
     x = math.sin(rad) * 21
-    y = 218 + math.cos(rad) * 7
+    y = 216.5 + math.cos(rad) * 7
     S.box(f"ThroneSlab{k}", (w, rng.uniform(1.6, 2.6), h), (x, y, h / 2 + 2), (rng.uniform(-10, -2), math.degrees(rad) * 0.55 + rng.uniform(-6, 6), rng.uniform(-8, 8)), STONE if k % 3 else STONE_D, bev=0.25)
 for k in range(10):  # rubble at the throne base
     S.box(f"ThroneRubble{k}", (rng.uniform(2, 4), rng.uniform(2, 4), rng.uniform(1.2, 2.6)), (rng.uniform(-18, 18), rng.uniform(203, 214), 3.6), (rng.uniform(-20, 20), rng.uniform(-20, 20), rng.uniform(0, 90)), STONE_D, bev=0.2)
@@ -236,15 +238,15 @@ for side in (-1, 1):  # one module per side keeps each under the 20k-triangle Me
 # ═══════════════════════════════════════════════════════ RUINED WALLS ══
 for side in (-1, 1):
     C(f"EXPORT_Walls{'E' if side < 0 else 'W'}__Slate")
-    y = -12.0
-    while y < LEN + 12:
-        w = rng.uniform(6, 11)
+    y = Y0
+    while y < Y1 - 0.5:
+        w = min(rng.uniform(6, 11), Y1 - y)
         h = rng.uniform(15, 25)
         S.box(f"WallBlock{side}_{int(y)}", (4.5, w, h), (side * (HALF + 2.2), y + w / 2, h / 2), (0, rng.uniform(-2, 2), 0), STONE_D if rng.random() < 0.5 else STONE, bev=0.3)
         # broken crown blocks
         for k in range(rng.randint(1, 3)):
             cs = rng.uniform(1.8, 3.2)
-            S.box(f"WallCrown{side}_{int(y)}_{k}", (cs, cs, cs), (side * (HALF + 2.2 + rng.uniform(-1, 1)), y + rng.uniform(0, w), h + cs * 0.4), (rng.uniform(-20, 20), rng.uniform(-20, 20), rng.uniform(0, 90)), STONE, bev=0.2)
+            S.box(f"WallCrown{side}_{int(y)}_{k}", (cs, cs, cs), (side * (HALF + 2.2 + rng.uniform(-1, 1)), min(Y1 - cs, max(Y0 + cs, y + rng.uniform(0, w))), h + cs * 0.4), (rng.uniform(-20, 20), rng.uniform(-20, 20), rng.uniform(0, 90)), STONE, bev=0.2)
         y += w
 C("EXPORT_WallCracks__Neon")
 for side in (-1, 1):
@@ -274,16 +276,16 @@ for side in (-1, 1):
 # tall banner posts behind the throne (R01: two big torn red banners flank Shigaraki)
 C("EXPORT_BannerPosts__Slate")
 for side in (-1, 1):
-    S.box(f"BannerPost{side}", (4.5, 4.5, 50), (side * 30, 226, 25), material=STONE, bev=0.3)
-    S.box(f"BannerPostCap{side}", (5.6, 5.6, 1.8), (side * 30, 226, 50.6), material=STONE_L, bev=0.2)
+    S.box(f"BannerPost{side}", (4.5, 4.5, 50), (side * 30, 224.5, 25), material=STONE, bev=0.3)
+    S.box(f"BannerPostCap{side}", (5.6, 5.6, 1.8), (side * 30, 224.5, 50.6), material=STONE_L, bev=0.2)
 C("EXPORT_BannerBeam__Metal")
-S.box("BannerBeam", (70, 1.4, 1.4), (0, 224, 47), material=IRON)
+S.box("BannerBeam", (70, 1.4, 1.4), (0, 223, 47), material=IRON)
 C("EXPORT_BigBanners__Fabric")
 for side in (-1, 1):
-    S.banner(f"BigBanner{side}", 11, 30, (side * 20, 223.2, 46), (0, 0, 0), RED, rng, torn=True, wave=0.8)
+    S.banner(f"BigBanner{side}", 11, 30, (side * 20, 222.2, 46), (0, 0, 0), RED, rng, torn=True, wave=0.8)
 C("EXPORT_BigBannerHands__SmoothPlastic")
 for side in (-1, 1):
-    S.hand(f"BigBannerHand{side}", (side * 20, 222.6, 35), (0, 0, 0), 3.4, HANDW)
+    S.hand(f"BigBannerHand{side}", (side * 20, 221.6, 35), (0, 0, 0), 3.4, HANDW)
 
 # torn red banners with a white hand (R01)
 C("EXPORT_Banners__Fabric")
@@ -358,11 +360,11 @@ for side in (-1, 1):
     for k in range(9):
         y0 = 8 + k * 24
         S.rubble(f"Rubble{side}_{k}", 5, (side * (LANE + 5) - 3, side * (LANE + 5) + 3, y0, y0 + 10), rng, STONE_D, size=(0.8, 2.6))
-S.rubble("RubbleThrone", 10, (-26, 26, 222, 230), rng, STONE, size=(1.2, 3.2))
+S.rubble("RubbleThrone", 10, (-26, 26, 221, 225), rng, STONE, size=(1.2, 3.2))
 
 # ═══════════════════════════════════════════════ ENTRANCE / EXIT GATES ══
 C("EXPORT_Gates__Slate")
-for gy, tag in ((-2.0, "Entry"), (LEN + 2.0, "Exit")):
+for gy, tag in ((-2.0, "Entry"),):
     for side in (-1, 1):
         S.box(f"{tag}GatePillar{side}", (7, 7, 30), (side * 47, gy, 15), material=STONE, bev=0.35)
         S.box(f"{tag}GateCap{side}", (8.5, 8.5, 2.2), (side * 47, gy, 31), material=STONE_L, bev=0.25)
@@ -370,7 +372,7 @@ for gy, tag in ((-2.0, "Entry"), (LEN + 2.0, "Exit")):
     S.box(f"{tag}LintelL", (34, 4, 3.4), (-31, gy, 33.5), (0, 4, 0), STONE_D, bev=0.3)
     S.box(f"{tag}LintelR", (26, 4, 3.4), (35, gy, 32.6), (0, -9, 0), STONE_D, bev=0.3)
 C("EXPORT_GateChains__Metal")
-for gy in (-2.0, LEN + 2.0):
+for gy in (-2.0,):
     S.chain(f"GateChain{gy}", (-45, gy, 29), (45, gy, 29), 6.0, 1.4, IRON)
 
 # ════════════════════════════════════════════════════════════ SKYLINE ══
@@ -379,20 +381,15 @@ BUILD = []
 for side in (-1, 1):
     x = 112.0
     for row in range(3):
-        y = -30.0
-        while y < LEN + 60:
-            w = rng.uniform(12, 24)
+        y = Y0
+        while y < Y1 - 4:
+            w = min(rng.uniform(12, 24), Y1 - y)
             d = rng.uniform(12, 22)
             h = rng.uniform(40, 95) + row * 25
             bx = side * (x + row * 38 + rng.uniform(0, 8))
             S.box(f"Bldg{side}_{row}_{int(y)}", (d, w, h), (bx, y + w / 2, h / 2 - 2), material=CITY if row == 0 else CITY_FAR)
             BUILD.append((bx, y + w / 2, d, w, h, side))
             y += w + rng.uniform(2, 8)
-for k in range(12):  # skyline behind the throne
-    x = -120 + k * 22 + rng.uniform(-4, 4)
-    h = rng.uniform(55, 120)
-    S.box(f"BldgBack{k}", (18, 16, h), (x, LEN + 95 + rng.uniform(0, 40), h / 2 - 2), material=CITY_FAR)
-    BUILD.append((x, LEN + 70, 18, 16, h, 0))
 C("EXPORT_SkylineWindows__Neon")
 for (bx, by, d, w, h, side) in BUILD:
     face_x = bx - side * d / 2 if side else None
@@ -404,11 +401,6 @@ for (bx, by, d, w, h, side) in BUILD:
             S.box(f"Win{int(bx)}_{int(by)}_{k}", (0.3, rng.uniform(1.4, 3.5), 1.4), (face_x - side * 0.16, by + rng.uniform(-w / 3, w / 3), z), material=WINDOW)
         else:
             S.box(f"Win{int(bx)}_{int(by)}_{k}", (rng.uniform(1.4, 3.5), 0.3, 1.4), (bx + rng.uniform(-6, 6), by - 8.2 + 25, z), material=WINDOW)
-C("EXPORT_Bridge__Metal")
-S.box("BridgeDeck", (300, 6, 2.2), (0, LEN + 45, 58), material=IRON)
-for k in range(-6, 7):
-    S.box(f"BridgeTruss{k}", (0.6, 6, 12), (k * 24, LEN + 45, 52), (0, 35 if k % 2 else -35, 0), IRON)
-
 # ═════════════════════════════════════════════════════════ SAVE / RENDER / EXPORT ══
 blend_dir = os.path.join(REPO, "art", "blender", "worlds")
 os.makedirs(blend_dir, exist_ok=True)

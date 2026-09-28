@@ -166,6 +166,28 @@ def torus(name, R, r, loc, rot=(0, 0, 0), material=None, major=12, minor=6, scal
     return _place(ob, loc, rot)
 
 
+def arch(name, span, thick, depth, loc, rot=(0, 0, 0), material=None, segs=12, col=None):
+    """Semicircular arch band in the XZ plane (springing line at loc.z), rectangular section, open ends
+    (sits on pillars). Inner radius span/2, outer span/2 + thick, depth along Y."""
+    bm = bmesh.new()
+    ri, ro, hd = span / 2, span / 2 + thick, depth / 2
+    ring = []
+    for i in range(segs + 1):
+        a = math.pi * i / segs
+        c, s_ = math.cos(a), math.sin(a)
+        ring.append([bm.verts.new((c * ri, -hd, s_ * ri)), bm.verts.new((c * ro, -hd, s_ * ro)),
+                     bm.verts.new((c * ro, hd, s_ * ro)), bm.verts.new((c * ri, hd, s_ * ri))])
+    for i in range(segs):
+        A, B = ring[i], ring[i + 1]
+        for k in range(4):
+            bm.faces.new((A[k], A[(k + 1) % 4], B[(k + 1) % 4], B[k]))
+    bm.faces.new(list(reversed(ring[0])))
+    bm.faces.new(ring[-1])
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+    ob = _obj_from_bm(name, bm, material, col)
+    return _place(ob, loc, rot)
+
+
 def prism(name, poly, z0, z1, material=None, col=None, top_tilt=(0.0, 0.0)):
     """Extruded polygon (list of (x,y)) from z0 to z1; top may tilt (dz per unit x/y)."""
     bm = bmesh.new()
@@ -419,11 +441,62 @@ def tri_count(ob):
     return n
 
 
+# Each world owns local y in [-30, 230] (build.luau ZoneMinZ = z0 - 30: the 30-stud entry threshold belongs to
+# the world; the next world's threshold starts at 230). Geometry must stay inside, or neighbours intersect.
+WORLD_SLOT_Y = (-30.0, 228.0)
+
+
+def _export_group(objs, mod, rmat, out_dir, manifest):
+    # duplicate → apply modifiers → join (the editable objects in the .blend stay untouched)
+    dups = []
+    for o in objs:
+        d = o.copy()
+        d.data = o.data.copy()
+        bpy.context.scene.collection.objects.link(d)
+        dups.append(d)
+    bpy.ops.object.select_all(action="DESELECT")
+    for d in dups:
+        bpy.context.view_layer.objects.active = d
+        for m in list(d.modifiers):
+            bpy.ops.object.modifier_apply(modifier=m.name)
+    for d in dups:
+        d.select_set(True)
+    bpy.context.view_layer.objects.active = dups[0]
+    if len(dups) > 1:
+        bpy.ops.object.join()
+    j = bpy.context.view_layer.objects.active
+    bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
+    bpy.ops.object.origin_set(type="ORIGIN_GEOMETRY", center="BOUNDS")
+    tris = tri_count(j)
+    ys = [(j.matrix_world @ v.co).y for v in j.data.vertices]
+    outside = (min(ys) < WORLD_SLOT_Y[0] - 0.01 or max(ys) > WORLD_SLOT_Y[1] + 0.01) and not mod.startswith("Sky")
+    c = j.location.copy()
+    dims = j.dimensions.copy()
+    j.location = (0, 0, 0)
+    path = os.path.join(out_dir, f"{mod}.fbx")
+    bpy.ops.object.select_all(action="DESELECT")
+    j.select_set(True)
+    bpy.ops.export_scene.fbx(filepath=path, use_selection=True, apply_unit_scale=True, global_scale=1.0,
+                             axis_forward="Z", axis_up="Y", bake_space_transform=True, mesh_smooth_type="FACE", add_leaf_bones=False)
+    mats = [m for m in j.data.materials if m]
+    manifest["modules"].append({
+        "module": mod, "fbx": os.path.basename(path), "robloxMaterial": rmat or "SmoothPlastic",
+        "triangles": tris, "overLimit": tris > TRI_LIMIT, "outsideSlot": outside,
+        "slotY": [round(min(ys), 2), round(max(ys), 2)],
+        "robloxPosition": [round(-c.x, 3), round(c.z, 3), round(c.y, 3)],
+        "sizeStuds": [round(dims.x, 3), round(dims.z, 3), round(dims.y, 3)],
+        "materials": sorted({m.name for m in mats}),
+        "color": mats[0].get("roblox_color", "") if mats else "",
+        "transparency": max([m.get("roblox_transparency", 0.0) for m in mats] or [0.0]),
+    })
+    bpy.data.objects.remove(j, do_unlink=True)
+
+
 def export_modules(out_dir, z0_note, world_id):
     """Join every EXPORT_* collection into one mesh (temporary copies), write FBX + manifest.
     The editable objects in the .blend are left untouched."""
     os.makedirs(out_dir, exist_ok=True)
-    manifest = {"world": world_id, "units": "1 Blender unit = 1 stud", "mapping": "Roblox(X,Y,Z) = (-x, z, z0 + y)", "z0": z0_note, "modules": [], "anchors": []}
+    manifest = {"worldSlotY": list(WORLD_SLOT_Y), "world": world_id, "units": "1 Blender unit = 1 stud", "mapping": "Roblox(X,Y,Z) = (-x, z, z0 + y)", "z0": z0_note, "modules": [], "anchors": []}
     for col in list(bpy.data.collections):
         if not col.name.startswith("EXPORT_"):
             continue
@@ -431,45 +504,14 @@ def export_modules(out_dir, z0_note, world_id):
         objs = [o for o in col.all_objects if o.type == "MESH"]
         if not objs:
             continue
-        # duplicate → apply modifiers → join
-        dups = []
+        # A Roblox MeshPart has one Color: split multi-material modules into one sub-module per material.
+        groups = {}
         for o in objs:
-            d = o.copy()
-            d.data = o.data.copy()
-            bpy.context.scene.collection.objects.link(d)
-            dups.append(d)
-        bpy.ops.object.select_all(action="DESELECT")
-        for d in dups:
-            bpy.context.view_layer.objects.active = d
-            for m in list(d.modifiers):
-                bpy.ops.object.modifier_apply(modifier=m.name)
-        for d in dups:
-            d.select_set(True)
-        bpy.context.view_layer.objects.active = dups[0]
-        if len(dups) > 1:
-            bpy.ops.object.join()
-        j = bpy.context.view_layer.objects.active
-        bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
-        bpy.ops.object.origin_set(type="ORIGIN_GEOMETRY", center="BOUNDS")
-        tris = tri_count(j)
-        c = j.location.copy()
-        dims = j.dimensions.copy()
-        j.location = (0, 0, 0)
-        path = os.path.join(out_dir, f"{mod}.fbx")
-        bpy.ops.object.select_all(action="DESELECT")
-        j.select_set(True)
-        bpy.ops.export_scene.fbx(filepath=path, use_selection=True, apply_unit_scale=True, global_scale=1.0,
-                                 axis_forward="Z", axis_up="Y", bake_space_transform=True, mesh_smooth_type="FACE", add_leaf_bones=False)
-        manifest["modules"].append({
-            "module": mod, "fbx": os.path.basename(path), "robloxMaterial": rmat or "SmoothPlastic",
-            "triangles": tris, "overLimit": tris > TRI_LIMIT,
-            "robloxPosition": [round(-c.x, 3), round(c.z, 3), round(c.y, 3)],
-            "sizeStuds": [round(dims.x, 3), round(dims.z, 3), round(dims.y, 3)],
-            "materials": sorted({m.name for m in j.data.materials if m}),
-            "colors": sorted({m.get("roblox_color", "") for m in j.data.materials if m}),
-            "transparency": max([m.get("roblox_transparency", 0.0) for m in j.data.materials if m] or [0.0]),
-        })
-        bpy.data.objects.remove(j, do_unlink=True)
+            m = o.data.materials[0] if o.data.materials else None
+            groups.setdefault(m.name if m else "", []).append(o)
+        for mname, gobjs in sorted(groups.items()):
+            sub = mod if len(groups) == 1 else f"{mod}_{mname.split('_', 1)[-1]}"
+            _export_group(gobjs, sub, rmat, out_dir, manifest)
     for ob in bpy.data.objects:
         if ob.type == "EMPTY" and ob.name.startswith("VFX_"):
             p = ob.matrix_world.translation
