@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StealAnimeEgg UI Lab</title>
+<link rel="stylesheet" href="data/fonts.css">
+<style>
+  :root { --ink:#1B1036; --bar:#140c2b; --chip:#2a1f5c; --chipOn:#ffd23f; --text:#f4f0ff; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #0d0820; color: var(--text); font-family: 'Fredoka', system-ui, sans-serif; overflow: hidden; }
+  #bar { height: 48px; display: flex; align-items: center; gap: 8px; padding: 0 12px; background: var(--bar); border-bottom: 3px solid #ffd23f; overflow-x: auto; white-space: nowrap; }
+  #bar .warn { font-family: 'Luckiest Guy'; letter-spacing: .5px; color: var(--ink); padding: 5px 10px 3px; border-radius: 8px;
+    background: repeating-linear-gradient(135deg,#ffd23f 0 12px,#ffb300 12px 24px); border: 2px solid var(--ink); }
+  #bar button { font: 600 13px 'Fredoka'; color: var(--text); background: var(--chip); border: 2px solid #4b3a99; border-radius: 999px; padding: 5px 12px; cursor: pointer; }
+  #bar button.on { background: var(--chipOn); color: var(--ink); border-color: var(--ink); }
+  #bar .sep { width: 1px; height: 24px; background: #3b2f7a; }
+  #wrap { position: absolute; top: 48px; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: center; }
+  #stage { position: relative; overflow: hidden; transform-origin: center; box-shadow: 0 0 0 3px #3b2f7a, 0 20px 60px #000; }
+  /* game-world backdrop so the HUD is judged in context */
+  .world { position: absolute; inset: 0; background: linear-gradient(#5fb8ff, #bfe6ff 45%, #9fd8ff 46%); overflow: hidden; perspective: 700px; }
+  .world .ground { position: absolute; left: -60%; right: -60%; top: 44%; height: 160%; transform-origin: top; transform: rotateX(62deg);
+    background: repeating-conic-gradient(#63d64a 0 25%, #74e25a 0 50%) 0 0/80px 80px; }
+  .world .wall { position: absolute; left: 0; right: 0; top: 40%; height: 5%; background: repeating-conic-gradient(#c98b52 0 25%, #b77840 0 50%) 0 0/28px 28px; border-top: 6px solid #4bd84a; }
+  .world .sun { position:absolute; right: 12%; top: 8%; width: 90px; height: 90px; border-radius: 50%; background: radial-gradient(#fff9c4, #ffe066 60%, transparent 62%); filter: blur(1px); }
+  #screen { position: absolute; inset: 0; }
+  .rbx { position: absolute; box-sizing: border-box; }
+  .rbx .img { position: absolute; pointer-events: none; }
+  .rbx .txt { position: absolute; inset: 0; display: flex; pointer-events: none; overflow: visible; }
+  .rbx .txt.stroke span { -webkit-text-fill-color: currentColor; }
+  .rbx.btn { cursor: pointer; }
+  .rbx.scroll { scrollbar-width: thin; scrollbar-color: #9a5cff55 transparent; }
+  .rbx .canvas { position: relative; width: 100%; }
+  #note { position: absolute; left: 8px; bottom: 6px; font-size: 11px; opacity: .6; pointer-events: none; }
+</style>
+</head>
+<body>
+<div id="bar">
+  <span class="warn">PREVIEW MODE &bull; SAMPLE DATA</span>
+  <span class="sep"></span>
+  <span>Viewport:</span>
+  <button data-dev="1280x720" class="on">Desktop 1280&times;720</button>
+  <button data-dev="1920x1080">1080p</button>
+  <button data-dev="1024x768">Tablet 4:3</button>
+  <button data-dev="844x390">Phone 844&times;390</button>
+  <button data-dev="667x375">Small phone</button>
+  <span class="sep"></span>
+  <span style="opacity:.75">Use the in-game PREVIEW panel (top-right) to switch menus &amp; states.</span>
+</div>
+<div id="wrap">
+  <div id="stage">
+    <div class="world"><div class="sun"></div><div class="wall"></div><div class="ground"></div></div>
+    <div id="screen"></div>
+  </div>
+</div>
+<div id="note">Browser approximation of the Roblox GUI tree (not Roblox Studio).</div>
+<script src="data/ui-tree.js"></script>
+<script src="data/sample.js"></script>
+<script src="data/assets.js"></script>
+<script src="renderer.js"></script>
+<script src="states.js"></script>
+<script src="controller.js"></script>
+</body>
+</html>

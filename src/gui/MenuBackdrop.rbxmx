@@ -1,0 +1,32 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+  <Item class="Frame" referent="RBX00000000">
+    <Properties>
+      <string name="Name">MenuBackdrop</string>
+      <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+      <Color3 name="BackgroundColor3"><R>0.105882</R><G>0.062745</G><B>0.211765</B></Color3>
+      <float name="BackgroundTransparency">0.45</float>
+      <int name="BorderSizePixel">0</int>
+      <bool name="Visible">false</bool>
+      <int name="ZIndex">4</int>
+      <BinaryString name="AttributesSerialize">AQAAAAUAAABMYXllcgIIAAAAQmFja2Ryb3A=</BinaryString>
+    </Properties>
+    <Item class="Frame" referent="RBX00000001">
+      <Properties>
+        <string name="Name">Vignette</string>
+        <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+        <Color3 name="BackgroundColor3"><R>0</R><G>0</G><B>0</B></Color3>
+        <float name="BackgroundTransparency">0</float>
+        <int name="BorderSizePixel">0</int>
+        <int name="ZIndex">1</int>
+      </Properties>
+      <Item class="UIGradient" referent="RBX00000002">
+        <Properties>
+          <string name="Name">UIGradient</string>
+          <ColorSequence name="Color">0 0 0 0 0 1 0 0 0 0 </ColorSequence>
+          <float name="Rotation">0</float>
+          <NumberSequence name="Transparency">0 0.55 0 0.5 1 0 1 0.55 0 </NumberSequence>
+        </Properties>
+      </Item>
+    </Item>
+  </Item>
+</roblox>

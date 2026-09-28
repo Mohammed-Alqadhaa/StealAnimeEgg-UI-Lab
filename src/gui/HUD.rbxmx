@@ -1,0 +1,887 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+  <Item class="Frame" referent="RBX00000000">
+    <Properties>
+      <string name="Name">HUD</string>
+      <UDim2 name="Size"><XS>0</XS><XO>310</XO><YS>0</YS><YO>140</YO></UDim2>
+      <UDim2 name="Position"><XS>0</XS><XO>18</XO><YS>1</YS><YO>-18</YO></UDim2>
+      <Vector2 name="AnchorPoint"><X>0</X><Y>1</Y></Vector2>
+      <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+      <float name="BackgroundTransparency">1</float>
+      <int name="BorderSizePixel">0</int>
+      <int name="ZIndex">1</int>
+      <BinaryString name="AttributesSerialize">AQAAAAUAAABMYXllcgIDAAAASFVE</BinaryString>
+    </Properties>
+    <Item class="UIScale" referent="RBX00000001">
+      <Properties>
+        <string name="Name">AutoScale</string>
+        <float name="Scale">1</float>
+      </Properties>
+    </Item>
+    <Item class="Frame" referent="RBX00000002">
+      <Properties>
+        <string name="Name">Speed</string>
+        <UDim2 name="Size"><XS>0</XS><XO>300</XO><YS>0</YS><YO>64</YO></UDim2>
+        <UDim2 name="Position"><XS>0</XS><XO>0</XO><YS>0</YS><YO>0</YO></UDim2>
+        <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+        <float name="BackgroundTransparency">1</float>
+        <int name="BorderSizePixel">0</int>
+        <int name="ZIndex">1</int>
+      </Properties>
+      <Item class="Frame" referent="RBX00000003">
+        <Properties>
+          <string name="Name">Pill</string>
+          <UDim2 name="Size"><XS>1</XS><XO>-34</XO><YS>0</YS><YO>50</YO></UDim2>
+          <UDim2 name="Position"><XS>0</XS><XO>34</XO><YS>0.5</YS><YO>4</YO></UDim2>
+          <Vector2 name="AnchorPoint"><X>0</X><Y>0.5</Y></Vector2>
+          <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+          <float name="BackgroundTransparency">0</float>
+          <int name="BorderSizePixel">0</int>
+          <int name="ZIndex">1</int>
+        </Properties>
+        <Item class="UICorner" referent="RBX00000004">
+          <Properties>
+            <string name="Name">UICorner</string>
+            <UDim name="CornerRadius"><S>1</S><O>0</O></UDim>
+          </Properties>
+        </Item>
+        <Item class="UIGradient" referent="RBX00000005">
+          <Properties>
+            <string name="Name">UIGradient</string>
+            <ColorSequence name="Color">0 0.207843 0.721569 1 0 1 0.058824 0.290196 0.658824 0 </ColorSequence>
+            <float name="Rotation">90</float>
+          </Properties>
+        </Item>
+        <Item class="UIStroke" referent="RBX00000006">
+          <Properties>
+            <string name="Name">UIStroke</string>
+            <float name="Thickness">3.5</float>
+            <Color3 name="Color"><R>0.105882</R><G>0.062745</G><B>0.211765</B></Color3>
+            <float name="Transparency">0</float>
+            <token name="ApplyStrokeMode">1</token>
+            <token name="LineJoinMode">0</token>
+          </Properties>
+        </Item>
+        <Item class="ImageLabel" referent="RBX00000007">
+          <Properties>
+            <string name="Name">Pattern</string>
+            <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">1</float>
+            <int name="BorderSizePixel">0</int>
+            <Content name="Image"><null></null></Content>
+            <token name="ScaleType">2</token>
+            <UDim2 name="TileSize"><XS>0</XS><XO>50</XO><YS>0</YS><YO>50</YO></UDim2>
+            <float name="ImageTransparency">0.9</float>
+            <int name="ZIndex">1</int>
+            <BinaryString name="AttributesSerialize">AQAAAAgAAABBc3NldEtleQIQAAAAcGF0dGVybl9kaWFnb25hbA==</BinaryString>
+          </Properties>
+          <Item class="UICorner" referent="RBX00000008">
+            <Properties>
+              <string name="Name">UICorner</string>
+              <UDim name="CornerRadius"><S>1</S><O>0</O></UDim>
+            </Properties>
+          </Item>
+        </Item>
+        <Item class="Frame" referent="RBX00000009">
+          <Properties>
+            <string name="Name">Gloss</string>
+            <UDim2 name="Size"><XS>1</XS><XO>-52</XO><YS>0.4</YS><YO>0</YO></UDim2>
+            <UDim2 name="Position"><XS>0</XS><XO>30</XO><YS>0</YS><YO>4</YO></UDim2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">0</float>
+            <int name="BorderSizePixel">0</int>
+            <int name="ZIndex">2</int>
+          </Properties>
+          <Item class="UICorner" referent="RBX0000000A">
+            <Properties>
+              <string name="Name">UICorner</string>
+              <UDim name="CornerRadius"><S>1</S><O>0</O></UDim>
+            </Properties>
+          </Item>
+          <Item class="UIGradient" referent="RBX0000000B">
+            <Properties>
+              <string name="Name">UIGradient</string>
+              <ColorSequence name="Color">0 1 1 1 0 1 1 1 1 0 </ColorSequence>
+              <float name="Rotation">90</float>
+              <NumberSequence name="Transparency">0 0.55 0 1 0.95 0 </NumberSequence>
+            </Properties>
+          </Item>
+        </Item>
+        <Item class="TextLabel" referent="RBX0000000C">
+          <Properties>
+            <string name="Name">Value</string>
+            <UDim2 name="Size"><XS>1</XS><XO>-46</XO><YS>1</YS><YO>2</YO></UDim2>
+            <UDim2 name="Position"><XS>0</XS><XO>46</XO><YS>0</YS><YO>0</YO></UDim2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">1</float>
+            <int name="BorderSizePixel">0</int>
+            <string name="Text">1.7M</string>
+            <float name="TextSize">36</float>
+            <Font name="FontFace"><Family><url>rbxasset://fonts/families/LuckiestGuy.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+            <Color3 name="TextColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <token name="TextXAlignment">0</token>
+            <token name="TextYAlignment">1</token>
+            <int name="ZIndex">3</int>
+          </Properties>
+          <Item class="UIStroke" referent="RBX0000000D">
+            <Properties>
+              <string name="Name">UIStroke</string>
+              <float name="Thickness">3.5</float>
+              <Color3 name="Color"><R>0.105882</R><G>0.062745</G><B>0.211765</B></Color3>
+              <float name="Transparency">0</float>
+              <token name="ApplyStrokeMode">0</token>
+              <token name="LineJoinMode">0</token>
+            </Properties>
+          </Item>
+          <Item class="UIGradient" referent="RBX0000000E">
+            <Properties>
+              <string name="Name">UIGradient</string>
+              <ColorSequence name="Color">0 1 1 1 0 1 0.65098 0.94902 1 0 </ColorSequence>
+              <float name="Rotation">90</float>
+            </Properties>
+          </Item>
+        </Item>
+      </Item>
+      <Item class="Frame" referent="RBX0000000F">
+        <Properties>
+          <string name="Name">Caption</string>
+          <UDim2 name="Size"><XS>0</XS><XO>64</XO><YS>0</YS><YO>20</YO></UDim2>
+          <UDim2 name="Position"><XS>0</XS><XO>62</XO><YS>0</YS><YO>-1</YO></UDim2>
+          <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+          <float name="BackgroundTransparency">0</float>
+          <int name="BorderSizePixel">0</int>
+          <int name="ZIndex">2</int>
+        </Properties>
+        <Item class="UICorner" referent="RBX00000010">
+          <Properties>
+            <string name="Name">UICorner</string>
+            <UDim name="CornerRadius"><S>1</S><O>0</O></UDim>
+          </Properties>
+        </Item>
+        <Item class="UIGradient" referent="RBX00000011">
+          <Properties>
+            <string name="Name">UIGradient</string>
+            <ColorSequence name="Color">0 0.117647 0.482353 1 0 1 0.058824 0.290196 0.658824 0 </ColorSequence>
+            <float name="Rotation">90</float>
+          </Properties>
+        </Item>
+        <Item class="UIStroke" referent="RBX00000012">
+          <Properties>
+            <string name="Name">UIStroke</string>
+            <float name="Thickness">2.5</float>
+            <Color3 name="Color"><R>0.105882</R><G>0.062745</G><B>0.211765</B></Color3>
+            <float name="Transparency">0</float>
+            <token name="ApplyStrokeMode">1</token>
+            <token name="LineJoinMode">0</token>
+          </Properties>
+        </Item>
+        <Item class="TextLabel" referent="RBX00000013">
+          <Properties>
+            <string name="Name">Text</string>
+            <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">1</float>
+            <int name="BorderSizePixel">0</int>
+            <string name="Text">SPEED</string>
+            <float name="TextSize">14</float>
+            <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+            <Color3 name="TextColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <token name="TextXAlignment">2</token>
+            <token name="TextYAlignment">1</token>
+            <int name="ZIndex">1</int>
+          </Properties>
+          <Item class="UIStroke" referent="RBX00000014">
+            <Properties>
+              <string name="Name">UIStroke</string>
+              <float name="Thickness">2</float>
+              <Color3 name="Color"><R>0.105882</R><G>0.062745</G><B>0.211765</B></Color3>
+              <float name="Transparency">0</float>
+              <token name="ApplyStrokeMode">0</token>
+              <token name="LineJoinMode">0</token>
+            </Properties>
+          </Item>
+        </Item>
+      </Item>
+      <Item class="Frame" referent="RBX00000015">
+        <Properties>
+          <string name="Name">IconBadge</string>
+          <UDim2 name="Size"><XS>0</XS><XO>70</XO><YS>0</YS><YO>70</YO></UDim2>
+          <UDim2 name="Position"><XS>0</XS><XO>0</XO><YS>0.5</YS><YO>4</YO></UDim2>
+          <Vector2 name="AnchorPoint"><X>0</X><Y>0.5</Y></Vector2>
+          <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+          <float name="BackgroundTransparency">0</float>
+          <int name="BorderSizePixel">0</int>
+          <int name="ZIndex">3</int>
+        </Properties>
+        <Item class="UICorner" referent="RBX00000016">
+          <Properties>
+            <string name="Name">UICorner</string>
+            <UDim name="CornerRadius"><S>1</S><O>0</O></UDim>
+          </Properties>
+        </Item>
+        <Item class="UIGradient" referent="RBX00000017">
+          <Properties>
+            <string name="Name">UIGradient</string>
+            <ColorSequence name="Color">0 1 1 1 0 0.5 0.65098 0.94902 1 0 1 0.207843 0.721569 1 0 </ColorSequence>
+            <float name="Rotation">90</float>
+          </Properties>
+        </Item>
+        <Item class="UIStroke" referent="RBX00000018">
+          <Properties>
+            <string name="Name">UIStroke</string>
+            <float name="Thickness">3.5</float>
+            <Color3 name="Color"><R>0.105882</R><G>0.062745</G><B>0.211765</B></Color3>
+            <float name="Transparency">0</float>
+            <token name="ApplyStrokeMode">1</token>
+            <token name="LineJoinMode">0</token>
+          </Properties>
+        </Item>
+        <Item class="Frame" referent="RBX00000019">
+          <Properties>
+            <string name="Name">Ring</string>
+            <UDim2 name="Size"><XS>1</XS><XO>-10</XO><YS>1</YS><YO>-10</YO></UDim2>
+            <UDim2 name="Position"><XS>0.5</XS><XO>0</XO><YS>0.5</YS><YO>0</YO></UDim2>
+            <Vector2 name="AnchorPoint"><X>0.5</X><Y>0.5</Y></Vector2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">1</float>
+            <int name="BorderSizePixel">0</int>
+            <int name="ZIndex">1</int>
+          </Properties>
+          <Item class="UICorner" referent="RBX0000001A">
+            <Properties>
+              <string name="Name">UICorner</string>
+              <UDim name="CornerRadius"><S>1</S><O>0</O></UDim>
+            </Properties>
+          </Item>
+          <Item class="UIStroke" referent="RBX0000001B">
+            <Properties>
+              <string name="Name">UIStroke</string>
+              <float name="Thickness">3</float>
+              <Color3 name="Color"><R>1</R><G>1</G><B>1</B></Color3>
+              <float name="Transparency">0.3</float>
+              <token name="ApplyStrokeMode">1</token>
+              <token name="LineJoinMode">0</token>
+            </Properties>
+          </Item>
+        </Item>
+        <Item class="ImageLabel" referent="RBX0000001C">
+          <Properties>
+            <string name="Name">Icon</string>
+            <UDim2 name="Size"><XS>0</XS><XO>78</XO><YS>0</YS><YO>78</YO></UDim2>
+            <UDim2 name="Position"><XS>0.5</XS><XO>0</XO><YS>0.5</YS><YO>-2</YO></UDim2>
+            <Vector2 name="AnchorPoint"><X>0.5</X><Y>0.5</Y></Vector2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">1</float>
+            <int name="BorderSizePixel">0</int>
+            <Content name="Image"><null></null></Content>
+            <token name="ScaleType">3</token>
+            <Vector2 name="ImageRectOffset"><X>256</X><Y>256</Y></Vector2>
+            <Vector2 name="ImageRectSize"><X>256</X><Y>256</Y></Vector2>
+            <int name="ZIndex">2</int>
+            <BinaryString name="AttributesSerialize">AQAAAAgAAABBc3NldEtleQIKAAAAaWNvbl9zcGVlZA==</BinaryString>
+          </Properties>
+        </Item>
+      </Item>
+      <Item class="TextButton" referent="RBX0000001D">
+        <Properties>
+          <string name="Name">PlusButton</string>
+          <UDim2 name="Size"><XS>0</XS><XO>40</XO><YS>0</YS><YO>40</YO></UDim2>
+          <UDim2 name="Position"><XS>1</XS><XO>6</XO><YS>0.5</YS><YO>4</YO></UDim2>
+          <Vector2 name="AnchorPoint"><X>1</X><Y>0.5</Y></Vector2>
+          <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+          <float name="BackgroundTransparency">1</float>
+          <int name="BorderSizePixel">0</int>
+          <int name="ZIndex">4</int>
+          <string name="Text"></string>
+          <bool name="AutoButtonColor">false</bool>
+          <BinaryString name="AttributesSerialize">AwAAAAYAAABDaHVua3kDAQgAAABMaXBEZXB0aAYAAAAAAAAUQAYAAABBY3Rpb24CCAAAAEJ1eVNwZWVk</BinaryString>
+        </Properties>
+        <Item class="UIScale" referent="RBX0000001E">
+          <Properties>
+            <string name="Name">PressScale</string>
+            <float name="Scale">1</float>
+          </Properties>
+        </Item>
+        <Item class="Frame" referent="RBX0000001F">
+          <Properties>
+            <string name="Name">Lip</string>
+            <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+            <Color3 name="BackgroundColor3"><R>0.658824</R><G>0.372549</G><B>0</B></Color3>
+            <float name="BackgroundTransparency">0</float>
+            <int name="BorderSizePixel">0</int>
+            <int name="ZIndex">1</int>
+          </Properties>
+          <Item class="UICorner" referent="RBX00000020">
+            <Properties>
+              <string name="Name">UICorner</string>
+              <UDim name="CornerRadius"><S>0</S><O>10</O></UDim>
+            </Properties>
+          </Item>
+          <Item class="UIStroke" referent="RBX00000021">
+            <Properties>
+              <string name="Name">UIStroke</string>
+              <float name="Thickness">3</float>
+              <Color3 name="Color"><R>0.105882</R><G>0.062745</G><B>0.211765</B></Color3>
+              <float name="Transparency">0</float>
+              <token name="ApplyStrokeMode">1</token>
+              <token name="LineJoinMode">0</token>
+            </Properties>
+          </Item>
+        </Item>
+        <Item class="Frame" referent="RBX00000022">
+          <Properties>
+            <string name="Name">Face</string>
+            <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>-5</YO></UDim2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">0</float>
+            <int name="BorderSizePixel">0</int>
+            <int name="ZIndex">2</int>
+          </Properties>
+          <Item class="UICorner" referent="RBX00000023">
+            <Properties>
+              <string name="Name">UICorner</string>
+              <UDim name="CornerRadius"><S>0</S><O>10</O></UDim>
+            </Properties>
+          </Item>
+          <Item class="UIGradient" referent="RBX00000024">
+            <Properties>
+              <string name="Name">UIGradient</string>
+              <ColorSequence name="Color">0 1 0.968627 0.690196 0 0.5 1 0.823529 0.247059 0 1 1 0.627451 0 0 </ColorSequence>
+              <float name="Rotation">90</float>
+            </Properties>
+          </Item>
+          <Item class="UIStroke" referent="RBX00000025">
+            <Properties>
+              <string name="Name">InnerRim</string>
+              <float name="Thickness">2</float>
+              <Color3 name="Color"><R>1</R><G>0.968627</G><B>0.690196</B></Color3>
+              <float name="Transparency">0.35</float>
+              <token name="ApplyStrokeMode">1</token>
+              <token name="LineJoinMode">0</token>
+            </Properties>
+          </Item>
+          <Item class="ImageLabel" referent="RBX00000026">
+            <Properties>
+              <string name="Name">Pattern</string>
+              <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+              <float name="BackgroundTransparency">1</float>
+              <int name="BorderSizePixel">0</int>
+              <Content name="Image"><null></null></Content>
+              <token name="ScaleType">2</token>
+              <UDim2 name="TileSize"><XS>0</XS><XO>40</XO><YS>0</YS><YO>40</YO></UDim2>
+              <float name="ImageTransparency">0.9</float>
+              <int name="ZIndex">1</int>
+              <BinaryString name="AttributesSerialize">AQAAAAgAAABBc3NldEtleQIQAAAAcGF0dGVybl9kaWFnb25hbA==</BinaryString>
+            </Properties>
+            <Item class="UICorner" referent="RBX00000027">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>10</O></UDim>
+              </Properties>
+            </Item>
+          </Item>
+          <Item class="Frame" referent="RBX00000028">
+            <Properties>
+              <string name="Name">Gloss</string>
+              <UDim2 name="Size"><XS>1</XS><XO>-8</XO><YS>0.46</YS><YO>0</YO></UDim2>
+              <UDim2 name="Position"><XS>0</XS><XO>4</XO><YS>0</YS><YO>3</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+              <float name="BackgroundTransparency">0</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="ZIndex">2</int>
+            </Properties>
+            <Item class="UICorner" referent="RBX00000029">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>7</O></UDim>
+              </Properties>
+            </Item>
+            <Item class="UIGradient" referent="RBX0000002A">
+              <Properties>
+                <string name="Name">UIGradient</string>
+                <ColorSequence name="Color">0 1 1 1 0 1 1 1 1 0 </ColorSequence>
+                <float name="Rotation">90</float>
+                <NumberSequence name="Transparency">0 0.45 0 1 0.95 0 </NumberSequence>
+              </Properties>
+            </Item>
+          </Item>
+          <Item class="Frame" referent="RBX0000002B">
+            <Properties>
+              <string name="Name">Content</string>
+              <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+              <float name="BackgroundTransparency">1</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="ZIndex">3</int>
+            </Properties>
+            <Item class="ImageLabel" referent="RBX0000002C">
+              <Properties>
+                <string name="Name">Icon</string>
+                <UDim2 name="Size"><XS>0</XS><XO>22</XO><YS>0</YS><YO>22</YO></UDim2>
+                <UDim2 name="Position"><XS>0.5</XS><XO>0</XO><YS>0.5</YS><YO>0</YO></UDim2>
+                <Vector2 name="AnchorPoint"><X>0.5</X><Y>0.5</Y></Vector2>
+                <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+                <float name="BackgroundTransparency">1</float>
+                <int name="BorderSizePixel">0</int>
+                <Content name="Image"><null></null></Content>
+                <token name="ScaleType">3</token>
+                <Vector2 name="ImageRectOffset"><X>256</X><Y>512</Y></Vector2>
+                <Vector2 name="ImageRectSize"><X>256</X><Y>256</Y></Vector2>
+                <int name="ZIndex">1</int>
+                <BinaryString name="AttributesSerialize">AQAAAAgAAABBc3NldEtleQIJAAAAaWNvbl9wbHVz</BinaryString>
+              </Properties>
+            </Item>
+          </Item>
+        </Item>
+      </Item>
+    </Item>
+    <Item class="Frame" referent="RBX0000002D">
+      <Properties>
+        <string name="Name">Cash</string>
+        <UDim2 name="Size"><XS>0</XS><XO>300</XO><YS>0</YS><YO>64</YO></UDim2>
+        <UDim2 name="Position"><XS>0</XS><XO>0</XO><YS>0</YS><YO>72</YO></UDim2>
+        <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+        <float name="BackgroundTransparency">1</float>
+        <int name="BorderSizePixel">0</int>
+        <int name="ZIndex">2</int>
+      </Properties>
+      <Item class="Frame" referent="RBX0000002E">
+        <Properties>
+          <string name="Name">Pill</string>
+          <UDim2 name="Size"><XS>1</XS><XO>-34</XO><YS>0</YS><YO>50</YO></UDim2>
+          <UDim2 name="Position"><XS>0</XS><XO>34</XO><YS>0.5</YS><YO>4</YO></UDim2>
+          <Vector2 name="AnchorPoint"><X>0</X><Y>0.5</Y></Vector2>
+          <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+          <float name="BackgroundTransparency">0</float>
+          <int name="BorderSizePixel">0</int>
+          <int name="ZIndex">1</int>
+        </Properties>
+        <Item class="UICorner" referent="RBX0000002F">
+          <Properties>
+            <string name="Name">UICorner</string>
+            <UDim name="CornerRadius"><S>1</S><O>0</O></UDim>
+          </Properties>
+        </Item>
+        <Item class="UIGradient" referent="RBX00000030">
+          <Properties>
+            <string name="Name">UIGradient</string>
+            <ColorSequence name="Color">0 0.27451 0.85098 0.372549 0 1 0.054902 0.368627 0.141176 0 </ColorSequence>
+            <float name="Rotation">90</float>
+          </Properties>
+        </Item>
+        <Item class="UIStroke" referent="RBX00000031">
+          <Properties>
+            <string name="Name">UIStroke</string>
+            <float name="Thickness">3.5</float>
+            <Color3 name="Color"><R>0.105882</R><G>0.062745</G><B>0.211765</B></Color3>
+            <float name="Transparency">0</float>
+            <token name="ApplyStrokeMode">1</token>
+            <token name="LineJoinMode">0</token>
+          </Properties>
+        </Item>
+        <Item class="ImageLabel" referent="RBX00000032">
+          <Properties>
+            <string name="Name">Pattern</string>
+            <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">1</float>
+            <int name="BorderSizePixel">0</int>
+            <Content name="Image"><null></null></Content>
+            <token name="ScaleType">2</token>
+            <UDim2 name="TileSize"><XS>0</XS><XO>50</XO><YS>0</YS><YO>50</YO></UDim2>
+            <float name="ImageTransparency">0.9</float>
+            <int name="ZIndex">1</int>
+            <BinaryString name="AttributesSerialize">AQAAAAgAAABBc3NldEtleQIQAAAAcGF0dGVybl9kaWFnb25hbA==</BinaryString>
+          </Properties>
+          <Item class="UICorner" referent="RBX00000033">
+            <Properties>
+              <string name="Name">UICorner</string>
+              <UDim name="CornerRadius"><S>1</S><O>0</O></UDim>
+            </Properties>
+          </Item>
+        </Item>
+        <Item class="Frame" referent="RBX00000034">
+          <Properties>
+            <string name="Name">Gloss</string>
+            <UDim2 name="Size"><XS>1</XS><XO>-52</XO><YS>0.4</YS><YO>0</YO></UDim2>
+            <UDim2 name="Position"><XS>0</XS><XO>30</XO><YS>0</YS><YO>4</YO></UDim2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">0</float>
+            <int name="BorderSizePixel">0</int>
+            <int name="ZIndex">2</int>
+          </Properties>
+          <Item class="UICorner" referent="RBX00000035">
+            <Properties>
+              <string name="Name">UICorner</string>
+              <UDim name="CornerRadius"><S>1</S><O>0</O></UDim>
+            </Properties>
+          </Item>
+          <Item class="UIGradient" referent="RBX00000036">
+            <Properties>
+              <string name="Name">UIGradient</string>
+              <ColorSequence name="Color">0 1 1 1 0 1 1 1 1 0 </ColorSequence>
+              <float name="Rotation">90</float>
+              <NumberSequence name="Transparency">0 0.55 0 1 0.95 0 </NumberSequence>
+            </Properties>
+          </Item>
+        </Item>
+        <Item class="TextLabel" referent="RBX00000037">
+          <Properties>
+            <string name="Name">Value</string>
+            <UDim2 name="Size"><XS>1</XS><XO>-46</XO><YS>1</YS><YO>2</YO></UDim2>
+            <UDim2 name="Position"><XS>0</XS><XO>46</XO><YS>0</YS><YO>0</YO></UDim2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">1</float>
+            <int name="BorderSizePixel">0</int>
+            <string name="Text">$5.6T</string>
+            <float name="TextSize">36</float>
+            <Font name="FontFace"><Family><url>rbxasset://fonts/families/LuckiestGuy.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+            <Color3 name="TextColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <token name="TextXAlignment">0</token>
+            <token name="TextYAlignment">1</token>
+            <int name="ZIndex">3</int>
+          </Properties>
+          <Item class="UIStroke" referent="RBX00000038">
+            <Properties>
+              <string name="Name">UIStroke</string>
+              <float name="Thickness">3.5</float>
+              <Color3 name="Color"><R>0.105882</R><G>0.062745</G><B>0.211765</B></Color3>
+              <float name="Transparency">0</float>
+              <token name="ApplyStrokeMode">0</token>
+              <token name="LineJoinMode">0</token>
+            </Properties>
+          </Item>
+          <Item class="UIGradient" referent="RBX00000039">
+            <Properties>
+              <string name="Name">UIGradient</string>
+              <ColorSequence name="Color">0 1 1 1 0 1 0.760784 1 0.639216 0 </ColorSequence>
+              <float name="Rotation">90</float>
+            </Properties>
+          </Item>
+        </Item>
+        <Item class="TextLabel" referent="RBX0000003A">
+          <Properties>
+            <string name="Name">Rate</string>
+            <UDim2 name="Size"><XS>0</XS><XO>90</XO><YS>1</YS><YO>0</YO></UDim2>
+            <UDim2 name="Position"><XS>1</XS><XO>-46</XO><YS>0</YS><YO>0</YO></UDim2>
+            <Vector2 name="AnchorPoint"><X>1</X><Y>0</Y></Vector2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">1</float>
+            <int name="BorderSizePixel">0</int>
+            <string name="Text">+$216/s</string>
+            <float name="TextSize">17</float>
+            <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+            <Color3 name="TextColor3"><R>0.760784</R><G>1</G><B>0.639216</B></Color3>
+            <token name="TextXAlignment">1</token>
+            <token name="TextYAlignment">1</token>
+            <int name="ZIndex">4</int>
+          </Properties>
+          <Item class="UIStroke" referent="RBX0000003B">
+            <Properties>
+              <string name="Name">UIStroke</string>
+              <float name="Thickness">2.5</float>
+              <Color3 name="Color"><R>0.105882</R><G>0.062745</G><B>0.211765</B></Color3>
+              <float name="Transparency">0</float>
+              <token name="ApplyStrokeMode">0</token>
+              <token name="LineJoinMode">0</token>
+            </Properties>
+          </Item>
+        </Item>
+      </Item>
+      <Item class="Frame" referent="RBX0000003C">
+        <Properties>
+          <string name="Name">Caption</string>
+          <UDim2 name="Size"><XS>0</XS><XO>56</XO><YS>0</YS><YO>20</YO></UDim2>
+          <UDim2 name="Position"><XS>0</XS><XO>62</XO><YS>0</YS><YO>-1</YO></UDim2>
+          <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+          <float name="BackgroundTransparency">0</float>
+          <int name="BorderSizePixel">0</int>
+          <int name="ZIndex">2</int>
+        </Properties>
+        <Item class="UICorner" referent="RBX0000003D">
+          <Properties>
+            <string name="Name">UICorner</string>
+            <UDim name="CornerRadius"><S>1</S><O>0</O></UDim>
+          </Properties>
+        </Item>
+        <Item class="UIGradient" referent="RBX0000003E">
+          <Properties>
+            <string name="Name">UIGradient</string>
+            <ColorSequence name="Color">0 0.117647 0.623529 0.243137 0 1 0.054902 0.368627 0.141176 0 </ColorSequence>
+            <float name="Rotation">90</float>
+          </Properties>
+        </Item>
+        <Item class="UIStroke" referent="RBX0000003F">
+          <Properties>
+            <string name="Name">UIStroke</string>
+            <float name="Thickness">2.5</float>
+            <Color3 name="Color"><R>0.105882</R><G>0.062745</G><B>0.211765</B></Color3>
+            <float name="Transparency">0</float>
+            <token name="ApplyStrokeMode">1</token>
+            <token name="LineJoinMode">0</token>
+          </Properties>
+        </Item>
+        <Item class="TextLabel" referent="RBX00000040">
+          <Properties>
+            <string name="Name">Text</string>
+            <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">1</float>
+            <int name="BorderSizePixel">0</int>
+            <string name="Text">CASH</string>
+            <float name="TextSize">14</float>
+            <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+            <Color3 name="TextColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <token name="TextXAlignment">2</token>
+            <token name="TextYAlignment">1</token>
+            <int name="ZIndex">1</int>
+          </Properties>
+          <Item class="UIStroke" referent="RBX00000041">
+            <Properties>
+              <string name="Name">UIStroke</string>
+              <float name="Thickness">2</float>
+              <Color3 name="Color"><R>0.105882</R><G>0.062745</G><B>0.211765</B></Color3>
+              <float name="Transparency">0</float>
+              <token name="ApplyStrokeMode">0</token>
+              <token name="LineJoinMode">0</token>
+            </Properties>
+          </Item>
+        </Item>
+      </Item>
+      <Item class="Frame" referent="RBX00000042">
+        <Properties>
+          <string name="Name">IconBadge</string>
+          <UDim2 name="Size"><XS>0</XS><XO>70</XO><YS>0</YS><YO>70</YO></UDim2>
+          <UDim2 name="Position"><XS>0</XS><XO>0</XO><YS>0.5</YS><YO>4</YO></UDim2>
+          <Vector2 name="AnchorPoint"><X>0</X><Y>0.5</Y></Vector2>
+          <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+          <float name="BackgroundTransparency">0</float>
+          <int name="BorderSizePixel">0</int>
+          <int name="ZIndex">3</int>
+        </Properties>
+        <Item class="UICorner" referent="RBX00000043">
+          <Properties>
+            <string name="Name">UICorner</string>
+            <UDim name="CornerRadius"><S>1</S><O>0</O></UDim>
+          </Properties>
+        </Item>
+        <Item class="UIGradient" referent="RBX00000044">
+          <Properties>
+            <string name="Name">UIGradient</string>
+            <ColorSequence name="Color">0 1 1 1 0 0.5 0.760784 1 0.639216 0 1 0.27451 0.85098 0.372549 0 </ColorSequence>
+            <float name="Rotation">90</float>
+          </Properties>
+        </Item>
+        <Item class="UIStroke" referent="RBX00000045">
+          <Properties>
+            <string name="Name">UIStroke</string>
+            <float name="Thickness">3.5</float>
+            <Color3 name="Color"><R>0.105882</R><G>0.062745</G><B>0.211765</B></Color3>
+            <float name="Transparency">0</float>
+            <token name="ApplyStrokeMode">1</token>
+            <token name="LineJoinMode">0</token>
+          </Properties>
+        </Item>
+        <Item class="Frame" referent="RBX00000046">
+          <Properties>
+            <string name="Name">Ring</string>
+            <UDim2 name="Size"><XS>1</XS><XO>-10</XO><YS>1</YS><YO>-10</YO></UDim2>
+            <UDim2 name="Position"><XS>0.5</XS><XO>0</XO><YS>0.5</YS><YO>0</YO></UDim2>
+            <Vector2 name="AnchorPoint"><X>0.5</X><Y>0.5</Y></Vector2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">1</float>
+            <int name="BorderSizePixel">0</int>
+            <int name="ZIndex">1</int>
+          </Properties>
+          <Item class="UICorner" referent="RBX00000047">
+            <Properties>
+              <string name="Name">UICorner</string>
+              <UDim name="CornerRadius"><S>1</S><O>0</O></UDim>
+            </Properties>
+          </Item>
+          <Item class="UIStroke" referent="RBX00000048">
+            <Properties>
+              <string name="Name">UIStroke</string>
+              <float name="Thickness">3</float>
+              <Color3 name="Color"><R>1</R><G>1</G><B>1</B></Color3>
+              <float name="Transparency">0.3</float>
+              <token name="ApplyStrokeMode">1</token>
+              <token name="LineJoinMode">0</token>
+            </Properties>
+          </Item>
+        </Item>
+        <Item class="ImageLabel" referent="RBX00000049">
+          <Properties>
+            <string name="Name">Icon</string>
+            <UDim2 name="Size"><XS>0</XS><XO>78</XO><YS>0</YS><YO>78</YO></UDim2>
+            <UDim2 name="Position"><XS>0.5</XS><XO>0</XO><YS>0.5</YS><YO>-2</YO></UDim2>
+            <Vector2 name="AnchorPoint"><X>0.5</X><Y>0.5</Y></Vector2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">1</float>
+            <int name="BorderSizePixel">0</int>
+            <Content name="Image"><null></null></Content>
+            <token name="ScaleType">3</token>
+            <Vector2 name="ImageRectOffset"><X>512</X><Y>256</Y></Vector2>
+            <Vector2 name="ImageRectSize"><X>256</X><Y>256</Y></Vector2>
+            <int name="ZIndex">2</int>
+            <BinaryString name="AttributesSerialize">AQAAAAgAAABBc3NldEtleQIJAAAAaWNvbl9jYXNo</BinaryString>
+          </Properties>
+        </Item>
+      </Item>
+      <Item class="TextButton" referent="RBX0000004A">
+        <Properties>
+          <string name="Name">PlusButton</string>
+          <UDim2 name="Size"><XS>0</XS><XO>40</XO><YS>0</YS><YO>40</YO></UDim2>
+          <UDim2 name="Position"><XS>1</XS><XO>6</XO><YS>0.5</YS><YO>4</YO></UDim2>
+          <Vector2 name="AnchorPoint"><X>1</X><Y>0.5</Y></Vector2>
+          <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+          <float name="BackgroundTransparency">1</float>
+          <int name="BorderSizePixel">0</int>
+          <int name="ZIndex">4</int>
+          <string name="Text"></string>
+          <bool name="AutoButtonColor">false</bool>
+          <BinaryString name="AttributesSerialize">AwAAAAYAAABDaHVua3kDAQgAAABMaXBEZXB0aAYAAAAAAAAUQAYAAABBY3Rpb24CBwAAAEJ1eUNhc2g=</BinaryString>
+        </Properties>
+        <Item class="UIScale" referent="RBX0000004B">
+          <Properties>
+            <string name="Name">PressScale</string>
+            <float name="Scale">1</float>
+          </Properties>
+        </Item>
+        <Item class="Frame" referent="RBX0000004C">
+          <Properties>
+            <string name="Name">Lip</string>
+            <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+            <Color3 name="BackgroundColor3"><R>0.658824</R><G>0.372549</G><B>0</B></Color3>
+            <float name="BackgroundTransparency">0</float>
+            <int name="BorderSizePixel">0</int>
+            <int name="ZIndex">1</int>
+          </Properties>
+          <Item class="UICorner" referent="RBX0000004D">
+            <Properties>
+              <string name="Name">UICorner</string>
+              <UDim name="CornerRadius"><S>0</S><O>10</O></UDim>
+            </Properties>
+          </Item>
+          <Item class="UIStroke" referent="RBX0000004E">
+            <Properties>
+              <string name="Name">UIStroke</string>
+              <float name="Thickness">3</float>
+              <Color3 name="Color"><R>0.105882</R><G>0.062745</G><B>0.211765</B></Color3>
+              <float name="Transparency">0</float>
+              <token name="ApplyStrokeMode">1</token>
+              <token name="LineJoinMode">0</token>
+            </Properties>
+          </Item>
+        </Item>
+        <Item class="Frame" referent="RBX0000004F">
+          <Properties>
+            <string name="Name">Face</string>
+            <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>-5</YO></UDim2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">0</float>
+            <int name="BorderSizePixel">0</int>
+            <int name="ZIndex">2</int>
+          </Properties>
+          <Item class="UICorner" referent="RBX00000050">
+            <Properties>
+              <string name="Name">UICorner</string>
+              <UDim name="CornerRadius"><S>0</S><O>10</O></UDim>
+            </Properties>
+          </Item>
+          <Item class="UIGradient" referent="RBX00000051">
+            <Properties>
+              <string name="Name">UIGradient</string>
+              <ColorSequence name="Color">0 1 0.968627 0.690196 0 0.5 1 0.823529 0.247059 0 1 1 0.627451 0 0 </ColorSequence>
+              <float name="Rotation">90</float>
+            </Properties>
+          </Item>
+          <Item class="UIStroke" referent="RBX00000052">
+            <Properties>
+              <string name="Name">InnerRim</string>
+              <float name="Thickness">2</float>
+              <Color3 name="Color"><R>1</R><G>0.968627</G><B>0.690196</B></Color3>
+              <float name="Transparency">0.35</float>
+              <token name="ApplyStrokeMode">1</token>
+              <token name="LineJoinMode">0</token>
+            </Properties>
+          </Item>
+          <Item class="ImageLabel" referent="RBX00000053">
+            <Properties>
+              <string name="Name">Pattern</string>
+              <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+              <float name="BackgroundTransparency">1</float>
+              <int name="BorderSizePixel">0</int>
+              <Content name="Image"><null></null></Content>
+              <token name="ScaleType">2</token>
+              <UDim2 name="TileSize"><XS>0</XS><XO>40</XO><YS>0</YS><YO>40</YO></UDim2>
+              <float name="ImageTransparency">0.9</float>
+              <int name="ZIndex">1</int>
+              <BinaryString name="AttributesSerialize">AQAAAAgAAABBc3NldEtleQIQAAAAcGF0dGVybl9kaWFnb25hbA==</BinaryString>
+            </Properties>
+            <Item class="UICorner" referent="RBX00000054">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>10</O></UDim>
+              </Properties>
+            </Item>
+          </Item>
+          <Item class="Frame" referent="RBX00000055">
+            <Properties>
+              <string name="Name">Gloss</string>
+              <UDim2 name="Size"><XS>1</XS><XO>-8</XO><YS>0.46</YS><YO>0</YO></UDim2>
+              <UDim2 name="Position"><XS>0</XS><XO>4</XO><YS>0</YS><YO>3</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+              <float name="BackgroundTransparency">0</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="ZIndex">2</int>
+            </Properties>
+            <Item class="UICorner" referent="RBX00000056">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>7</O></UDim>
+              </Properties>
+            </Item>
+            <Item class="UIGradient" referent="RBX00000057">
+              <Properties>
+                <string name="Name">UIGradient</string>
+                <ColorSequence name="Color">0 1 1 1 0 1 1 1 1 0 </ColorSequence>
+                <float name="Rotation">90</float>
+                <NumberSequence name="Transparency">0 0.45 0 1 0.95 0 </NumberSequence>
+              </Properties>
+            </Item>
+          </Item>
+          <Item class="Frame" referent="RBX00000058">
+            <Properties>
+              <string name="Name">Content</string>
+              <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+              <float name="BackgroundTransparency">1</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="ZIndex">3</int>
+            </Properties>
+            <Item class="ImageLabel" referent="RBX00000059">
+              <Properties>
+                <string name="Name">Icon</string>
+                <UDim2 name="Size"><XS>0</XS><XO>22</XO><YS>0</YS><YO>22</YO></UDim2>
+                <UDim2 name="Position"><XS>0.5</XS><XO>0</XO><YS>0.5</YS><YO>0</YO></UDim2>
+                <Vector2 name="AnchorPoint"><X>0.5</X><Y>0.5</Y></Vector2>
+                <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+                <float name="BackgroundTransparency">1</float>
+                <int name="BorderSizePixel">0</int>
+                <Content name="Image"><null></null></Content>
+                <token name="ScaleType">3</token>
+                <Vector2 name="ImageRectOffset"><X>256</X><Y>512</Y></Vector2>
+                <Vector2 name="ImageRectSize"><X>256</X><Y>256</Y></Vector2>
+                <int name="ZIndex">1</int>
+                <BinaryString name="AttributesSerialize">AQAAAAgAAABBc3NldEtleQIJAAAAaWNvbl9wbHVz</BinaryString>
+              </Properties>
+            </Item>
+          </Item>
+        </Item>
+      </Item>
+    </Item>
+  </Item>
+</roblox>

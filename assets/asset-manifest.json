@@ -1,0 +1,594 @@
+{
+  "cell": 256,
+  "atlasSize": 1024,
+  "atlases": {
+    "atlas_a": {
+      "file": "assets/png/atlas/atlas_a.png",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    "atlas_b": {
+      "file": "assets/png/atlas/atlas_b.png",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    "atlas_c": {
+      "file": "assets/png/atlas/atlas_c.png",
+      "size": [
+        1024,
+        1024
+      ]
+    }
+  },
+  "images": {
+    "icon_shop": {
+      "atlas": "atlas_a",
+      "offset": [
+        0,
+        0
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_index": {
+      "atlas": "atlas_a",
+      "offset": [
+        256,
+        0
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_eggs": {
+      "atlas": "atlas_a",
+      "offset": [
+        512,
+        0
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_characters": {
+      "atlas": "atlas_a",
+      "offset": [
+        768,
+        0
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_upgrade": {
+      "atlas": "atlas_a",
+      "offset": [
+        0,
+        256
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_speed": {
+      "atlas": "atlas_a",
+      "offset": [
+        256,
+        256
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_cash": {
+      "atlas": "atlas_a",
+      "offset": [
+        512,
+        256
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_gem": {
+      "atlas": "atlas_a",
+      "offset": [
+        768,
+        256
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_coin": {
+      "atlas": "atlas_a",
+      "offset": [
+        0,
+        512
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_plus": {
+      "atlas": "atlas_a",
+      "offset": [
+        256,
+        512
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_close": {
+      "atlas": "atlas_a",
+      "offset": [
+        512,
+        512
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_check": {
+      "atlas": "atlas_a",
+      "offset": [
+        768,
+        512
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_arrow": {
+      "atlas": "atlas_a",
+      "offset": [
+        0,
+        768
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_star": {
+      "atlas": "atlas_a",
+      "offset": [
+        256,
+        768
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_lock": {
+      "atlas": "atlas_a",
+      "offset": [
+        512,
+        768
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_timer": {
+      "atlas": "atlas_a",
+      "offset": [
+        768,
+        768
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_hourglass": {
+      "atlas": "atlas_b",
+      "offset": [
+        0,
+        0
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_shield": {
+      "atlas": "atlas_b",
+      "offset": [
+        256,
+        0
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_warning": {
+      "atlas": "atlas_b",
+      "offset": [
+        512,
+        0
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_drop": {
+      "atlas": "atlas_b",
+      "offset": [
+        768,
+        0
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_bolt": {
+      "atlas": "atlas_b",
+      "offset": [
+        0,
+        256
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_potion": {
+      "atlas": "atlas_b",
+      "offset": [
+        256,
+        256
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_clover": {
+      "atlas": "atlas_b",
+      "offset": [
+        512,
+        256
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_crown": {
+      "atlas": "atlas_b",
+      "offset": [
+        768,
+        256
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_gift": {
+      "atlas": "atlas_b",
+      "offset": [
+        0,
+        512
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_moneybag": {
+      "atlas": "atlas_b",
+      "offset": [
+        256,
+        512
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_slots": {
+      "atlas": "atlas_b",
+      "offset": [
+        512,
+        512
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_treadmill": {
+      "atlas": "atlas_b",
+      "offset": [
+        768,
+        512
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_farm": {
+      "atlas": "atlas_b",
+      "offset": [
+        0,
+        768
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_sparkle": {
+      "atlas": "atlas_b",
+      "offset": [
+        256,
+        768
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_equip_best": {
+      "atlas": "atlas_b",
+      "offset": [
+        512,
+        768
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_skip": {
+      "atlas": "atlas_b",
+      "offset": [
+        768,
+        768
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "icon_info": {
+      "atlas": "atlas_c",
+      "offset": [
+        0,
+        0
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "egg_demon": {
+      "atlas": "atlas_c",
+      "offset": [
+        256,
+        0
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "egg_anime": {
+      "atlas": "atlas_c",
+      "offset": [
+        512,
+        0
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "egg_flame": {
+      "atlas": "atlas_c",
+      "offset": [
+        768,
+        0
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "egg_moon": {
+      "atlas": "atlas_c",
+      "offset": [
+        0,
+        256
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "egg_golden": {
+      "atlas": "atlas_c",
+      "offset": [
+        256,
+        256
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "char_rengoku": {
+      "atlas": "atlas_c",
+      "offset": [
+        512,
+        256
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "char_tanjiro": {
+      "atlas": "atlas_c",
+      "offset": [
+        768,
+        256
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "char_muzan": {
+      "atlas": "atlas_c",
+      "offset": [
+        0,
+        512
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "char_akaza": {
+      "atlas": "atlas_c",
+      "offset": [
+        256,
+        512
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "char_yoriichi": {
+      "atlas": "atlas_c",
+      "offset": [
+        512,
+        512
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "fx_glow": {
+      "atlas": "atlas_c",
+      "offset": [
+        768,
+        512
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "fx_sparkles": {
+      "atlas": "atlas_c",
+      "offset": [
+        0,
+        768
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "deco_rivet": {
+      "atlas": "atlas_c",
+      "offset": [
+        256,
+        768
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "deco_corner": {
+      "atlas": "atlas_c",
+      "offset": [
+        512,
+        768
+      ],
+      "size": [
+        256,
+        256
+      ]
+    },
+    "fx_rays": {
+      "standalone": "fx_rays",
+      "file": "assets/png/fx_rays.png",
+      "size": [
+        512,
+        512
+      ]
+    },
+    "pattern_diagonal": {
+      "standalone": "pattern_diagonal",
+      "file": "assets/png/pattern_diagonal.png",
+      "size": [
+        128,
+        128
+      ]
+    },
+    "pattern_dots": {
+      "standalone": "pattern_dots",
+      "file": "assets/png/pattern_dots.png",
+      "size": [
+        128,
+        128
+      ]
+    },
+    "pattern_tiles": {
+      "standalone": "pattern_tiles",
+      "file": "assets/png/pattern_tiles.png",
+      "size": [
+        128,
+        128
+      ]
+    },
+    "pattern_stars": {
+      "standalone": "pattern_stars",
+      "file": "assets/png/pattern_stars.png",
+      "size": [
+        128,
+        128
+      ]
+    },
+    "pattern_hazard": {
+      "standalone": "pattern_hazard",
+      "file": "assets/png/pattern_hazard.png",
+      "size": [
+        128,
+        128
+      ]
+    }
+  }
+}

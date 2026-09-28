@@ -1,0 +1,1618 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+  <Item class="Frame" referent="RBX00000000">
+    <Properties>
+      <string name="Name">PREVIEW_Panel</string>
+      <UDim2 name="Size"><XS>0</XS><XO>234</XO><YS>0</YS><YO>428</YO></UDim2>
+      <UDim2 name="Position"><XS>1</XS><XO>-12</XO><YS>0</YS><YO>64</YO></UDim2>
+      <Vector2 name="AnchorPoint"><X>1</X><Y>0</Y></Vector2>
+      <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+      <float name="BackgroundTransparency">1</float>
+      <int name="BorderSizePixel">0</int>
+      <int name="ZIndex">11</int>
+      <BinaryString name="AttributesSerialize">AgAAAAUAAABMYXllcgIHAAAAUHJldmlldwwAAABQUkVWSUVXX09OTFkDAQ==</BinaryString>
+    </Properties>
+    <Item class="UIScale" referent="RBX00000001">
+      <Properties>
+        <string name="Name">AutoScale</string>
+        <float name="Scale">1</float>
+      </Properties>
+    </Item>
+    <Item class="Frame" referent="RBX00000002">
+      <Properties>
+        <string name="Name">Frame</string>
+        <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+        <Color3 name="BackgroundColor3"><R>0.078431</R><G>0.047059</G><B>0.168627</B></Color3>
+        <float name="BackgroundTransparency">0.08</float>
+        <int name="BorderSizePixel">0</int>
+        <int name="ZIndex">1</int>
+      </Properties>
+      <Item class="UICorner" referent="RBX00000003">
+        <Properties>
+          <string name="Name">UICorner</string>
+          <UDim name="CornerRadius"><S>0</S><O>12</O></UDim>
+        </Properties>
+      </Item>
+      <Item class="UIStroke" referent="RBX00000004">
+        <Properties>
+          <string name="Name">UIStroke</string>
+          <float name="Thickness">2.5</float>
+          <Color3 name="Color"><R>1</R><G>0.823529</G><B>0.247059</B></Color3>
+          <float name="Transparency">0</float>
+          <token name="ApplyStrokeMode">1</token>
+          <token name="LineJoinMode">0</token>
+        </Properties>
+      </Item>
+      <Item class="Frame" referent="RBX00000005">
+        <Properties>
+          <string name="Name">Header</string>
+          <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>0</YS><YO>40</YO></UDim2>
+          <Color3 name="BackgroundColor3"><R>1</R><G>0.823529</G><B>0.247059</B></Color3>
+          <float name="BackgroundTransparency">0</float>
+          <int name="BorderSizePixel">0</int>
+          <int name="ZIndex">1</int>
+        </Properties>
+        <Item class="UICorner" referent="RBX00000006">
+          <Properties>
+            <string name="Name">UICorner</string>
+            <UDim name="CornerRadius"><S>0</S><O>12</O></UDim>
+          </Properties>
+        </Item>
+        <Item class="ImageLabel" referent="RBX00000007">
+          <Properties>
+            <string name="Name">Tape</string>
+            <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">1</float>
+            <int name="BorderSizePixel">0</int>
+            <Content name="Image"><null></null></Content>
+            <token name="ScaleType">2</token>
+            <UDim2 name="TileSize"><XS>0</XS><XO>22</XO><YS>0</YS><YO>22</YO></UDim2>
+            <float name="ImageTransparency">0.25</float>
+            <int name="ZIndex">1</int>
+            <BinaryString name="AttributesSerialize">AQAAAAgAAABBc3NldEtleQIOAAAAcGF0dGVybl9oYXphcmQ=</BinaryString>
+          </Properties>
+          <Item class="UICorner" referent="RBX00000008">
+            <Properties>
+              <string name="Name">UICorner</string>
+              <UDim name="CornerRadius"><S>0</S><O>12</O></UDim>
+            </Properties>
+          </Item>
+        </Item>
+        <Item class="Frame" referent="RBX00000009">
+          <Properties>
+            <string name="Name">Plate</string>
+            <UDim2 name="Size"><XS>1</XS><XO>-14</XO><YS>0</YS><YO>30</YO></UDim2>
+            <UDim2 name="Position"><XS>0.5</XS><XO>0</XO><YS>0.5</YS><YO>0</YO></UDim2>
+            <Vector2 name="AnchorPoint"><X>0.5</X><Y>0.5</Y></Vector2>
+            <Color3 name="BackgroundColor3"><R>0.105882</R><G>0.062745</G><B>0.211765</B></Color3>
+            <float name="BackgroundTransparency">0</float>
+            <int name="BorderSizePixel">0</int>
+            <int name="ZIndex">2</int>
+          </Properties>
+          <Item class="UICorner" referent="RBX0000000A">
+            <Properties>
+              <string name="Name">UICorner</string>
+              <UDim name="CornerRadius"><S>0</S><O>8</O></UDim>
+            </Properties>
+          </Item>
+          <Item class="TextLabel" referent="RBX0000000B">
+            <Properties>
+              <string name="Name">Title</string>
+              <UDim2 name="Size"><XS>1</XS><XO>-40</XO><YS>0</YS><YO>17</YO></UDim2>
+              <UDim2 name="Position"><XS>0</XS><XO>8</XO><YS>0</YS><YO>1</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+              <float name="BackgroundTransparency">1</float>
+              <int name="BorderSizePixel">0</int>
+              <string name="Text">PREVIEW MODE</string>
+              <float name="TextSize">15</float>
+              <Font name="FontFace"><Family><url>rbxasset://fonts/families/LuckiestGuy.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+              <Color3 name="TextColor3"><R>1</R><G>0.823529</G><B>0.247059</B></Color3>
+              <token name="TextXAlignment">0</token>
+              <token name="TextYAlignment">1</token>
+              <int name="ZIndex">1</int>
+            </Properties>
+          </Item>
+          <Item class="TextLabel" referent="RBX0000000C">
+            <Properties>
+              <string name="Name">Sub</string>
+              <UDim2 name="Size"><XS>1</XS><XO>-40</XO><YS>0</YS><YO>12</YO></UDim2>
+              <UDim2 name="Position"><XS>0</XS><XO>8</XO><YS>0</YS><YO>16</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+              <float name="BackgroundTransparency">1</float>
+              <int name="BorderSizePixel">0</int>
+              <string name="Text">SAMPLE DATA - NOT GAMEPLAY</string>
+              <float name="TextSize">10</float>
+              <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+              <Color3 name="TextColor3"><R>1</R><G>1</G><B>1</B></Color3>
+              <token name="TextXAlignment">0</token>
+              <token name="TextYAlignment">1</token>
+              <int name="ZIndex">2</int>
+            </Properties>
+          </Item>
+          <Item class="TextButton" referent="RBX0000000D">
+            <Properties>
+              <string name="Name">Collapse</string>
+              <UDim2 name="Size"><XS>0</XS><XO>24</XO><YS>0</YS><YO>22</YO></UDim2>
+              <UDim2 name="Position"><XS>1</XS><XO>-4</XO><YS>0.5</YS><YO>0</YO></UDim2>
+              <Vector2 name="AnchorPoint"><X>1</X><Y>0.5</Y></Vector2>
+              <Color3 name="BackgroundColor3"><R>1</R><G>0.823529</G><B>0.247059</B></Color3>
+              <float name="BackgroundTransparency">0</float>
+              <int name="BorderSizePixel">0</int>
+              <string name="Text"></string>
+              <int name="ZIndex">3</int>
+              <BinaryString name="AttributesSerialize">AQAAAA0AAABQcmV2aWV3QWN0aW9uAgwAAABwYW5lbDp0b2dnbGU=</BinaryString>
+            </Properties>
+            <Item class="UICorner" referent="RBX0000000E">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>6</O></UDim>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="RBX0000000F">
+              <Properties>
+                <string name="Name">Label</string>
+                <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+                <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+                <float name="BackgroundTransparency">1</float>
+                <int name="BorderSizePixel">0</int>
+                <string name="Text">-</string>
+                <float name="TextSize">18</float>
+                <Font name="FontFace"><Family><url>rbxasset://fonts/families/LuckiestGuy.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+                <Color3 name="TextColor3"><R>0.105882</R><G>0.062745</G><B>0.211765</B></Color3>
+                <token name="TextXAlignment">2</token>
+                <token name="TextYAlignment">1</token>
+                <int name="ZIndex">1</int>
+              </Properties>
+            </Item>
+          </Item>
+        </Item>
+      </Item>
+      <Item class="Frame" referent="RBX00000010">
+        <Properties>
+          <string name="Name">Body</string>
+          <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>-48</YO></UDim2>
+          <UDim2 name="Position"><XS>0</XS><XO>0</XO><YS>0</YS><YO>44</YO></UDim2>
+          <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+          <float name="BackgroundTransparency">1</float>
+          <int name="BorderSizePixel">0</int>
+          <int name="ZIndex">2</int>
+        </Properties>
+        <Item class="UIPadding" referent="RBX00000011">
+          <Properties>
+            <string name="Name">UIPadding</string>
+            <UDim name="PaddingTop"><S>0</S><O>2</O></UDim>
+            <UDim name="PaddingRight"><S>0</S><O>8</O></UDim>
+            <UDim name="PaddingBottom"><S>0</S><O>6</O></UDim>
+            <UDim name="PaddingLeft"><S>0</S><O>9</O></UDim>
+          </Properties>
+        </Item>
+        <Item class="UIListLayout" referent="RBX00000012">
+          <Properties>
+            <string name="Name">UIListLayout</string>
+            <token name="FillDirection">1</token>
+            <UDim name="Padding"><S>0</S><O>3</O></UDim>
+            <token name="HorizontalAlignment">1</token>
+            <token name="VerticalAlignment">1</token>
+            <token name="SortOrder">2</token>
+          </Properties>
+        </Item>
+        <Item class="TextLabel" referent="RBX00000013">
+          <Properties>
+            <string name="Name">H_MENUS</string>
+            <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>0</YS><YO>14</YO></UDim2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">1</float>
+            <int name="BorderSizePixel">0</int>
+            <int name="LayoutOrder">0</int>
+            <string name="Text">MENUS</string>
+            <float name="TextSize">12</float>
+            <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+            <Color3 name="TextColor3"><R>1</R><G>0.823529</G><B>0.247059</B></Color3>
+            <token name="TextXAlignment">0</token>
+            <token name="TextYAlignment">1</token>
+            <int name="ZIndex">1</int>
+          </Properties>
+        </Item>
+        <Item class="Frame" referent="RBX00000014">
+          <Properties>
+            <string name="Name">G_MENUS</string>
+            <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>0</YS><YO>52</YO></UDim2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">1</float>
+            <int name="BorderSizePixel">0</int>
+            <int name="LayoutOrder">1</int>
+            <int name="ZIndex">2</int>
+          </Properties>
+          <Item class="UIGridLayout" referent="RBX00000015">
+            <Properties>
+              <string name="Name">UIGridLayout</string>
+              <UDim2 name="CellSize"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <UDim2 name="CellPadding"><XS>0</XS><XO>4</XO><YS>0</YS><YO>4</YO></UDim2>
+              <token name="HorizontalAlignment">1</token>
+              <token name="VerticalAlignment">1</token>
+              <token name="SortOrder">2</token>
+            </Properties>
+          </Item>
+          <Item class="TextButton" referent="RBX00000016">
+            <Properties>
+              <string name="Name">Chip_menu_Shop</string>
+              <UDim2 name="Size"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>0.184314</R><G>0.145098</G><B>0.4</B></Color3>
+              <float name="BackgroundTransparency">0</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">0</int>
+              <string name="Text"></string>
+              <bool name="AutoButtonColor">true</bool>
+              <int name="ZIndex">1</int>
+              <BinaryString name="AttributesSerialize">AQAAAA0AAABQcmV2aWV3QWN0aW9uAgkAAABtZW51OlNob3A=</BinaryString>
+            </Properties>
+            <Item class="UICorner" referent="RBX00000017">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>7</O></UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="RBX00000018">
+              <Properties>
+                <string name="Name">UIStroke</string>
+                <float name="Thickness">1.5</float>
+                <Color3 name="Color"><R>0.435294</R><G>0.372549</G><B>0.815686</B></Color3>
+                <float name="Transparency">0</float>
+                <token name="ApplyStrokeMode">1</token>
+                <token name="LineJoinMode">0</token>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="RBX00000019">
+              <Properties>
+                <string name="Name">Label</string>
+                <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+                <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+                <float name="BackgroundTransparency">1</float>
+                <int name="BorderSizePixel">0</int>
+                <string name="Text">Shop</string>
+                <float name="TextSize">13</float>
+                <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+                <Color3 name="TextColor3"><R>0.929412</R><G>0.909804</G><B>1</B></Color3>
+                <token name="TextXAlignment">2</token>
+                <token name="TextYAlignment">1</token>
+                <int name="ZIndex">1</int>
+              </Properties>
+            </Item>
+          </Item>
+          <Item class="TextButton" referent="RBX0000001A">
+            <Properties>
+              <string name="Name">Chip_menu_Index</string>
+              <UDim2 name="Size"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>0.184314</R><G>0.145098</G><B>0.4</B></Color3>
+              <float name="BackgroundTransparency">0</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">1</int>
+              <string name="Text"></string>
+              <bool name="AutoButtonColor">true</bool>
+              <int name="ZIndex">2</int>
+              <BinaryString name="AttributesSerialize">AQAAAA0AAABQcmV2aWV3QWN0aW9uAgoAAABtZW51OkluZGV4</BinaryString>
+            </Properties>
+            <Item class="UICorner" referent="RBX0000001B">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>7</O></UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="RBX0000001C">
+              <Properties>
+                <string name="Name">UIStroke</string>
+                <float name="Thickness">1.5</float>
+                <Color3 name="Color"><R>0.435294</R><G>0.372549</G><B>0.815686</B></Color3>
+                <float name="Transparency">0</float>
+                <token name="ApplyStrokeMode">1</token>
+                <token name="LineJoinMode">0</token>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="RBX0000001D">
+              <Properties>
+                <string name="Name">Label</string>
+                <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+                <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+                <float name="BackgroundTransparency">1</float>
+                <int name="BorderSizePixel">0</int>
+                <string name="Text">Index</string>
+                <float name="TextSize">13</float>
+                <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+                <Color3 name="TextColor3"><R>0.929412</R><G>0.909804</G><B>1</B></Color3>
+                <token name="TextXAlignment">2</token>
+                <token name="TextYAlignment">1</token>
+                <int name="ZIndex">1</int>
+              </Properties>
+            </Item>
+          </Item>
+          <Item class="TextButton" referent="RBX0000001E">
+            <Properties>
+              <string name="Name">Chip_menu_Eggs</string>
+              <UDim2 name="Size"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>0.184314</R><G>0.145098</G><B>0.4</B></Color3>
+              <float name="BackgroundTransparency">0</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">2</int>
+              <string name="Text"></string>
+              <bool name="AutoButtonColor">true</bool>
+              <int name="ZIndex">3</int>
+              <BinaryString name="AttributesSerialize">AQAAAA0AAABQcmV2aWV3QWN0aW9uAgkAAABtZW51OkVnZ3M=</BinaryString>
+            </Properties>
+            <Item class="UICorner" referent="RBX0000001F">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>7</O></UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="RBX00000020">
+              <Properties>
+                <string name="Name">UIStroke</string>
+                <float name="Thickness">1.5</float>
+                <Color3 name="Color"><R>0.435294</R><G>0.372549</G><B>0.815686</B></Color3>
+                <float name="Transparency">0</float>
+                <token name="ApplyStrokeMode">1</token>
+                <token name="LineJoinMode">0</token>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="RBX00000021">
+              <Properties>
+                <string name="Name">Label</string>
+                <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+                <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+                <float name="BackgroundTransparency">1</float>
+                <int name="BorderSizePixel">0</int>
+                <string name="Text">Eggs</string>
+                <float name="TextSize">13</float>
+                <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+                <Color3 name="TextColor3"><R>0.929412</R><G>0.909804</G><B>1</B></Color3>
+                <token name="TextXAlignment">2</token>
+                <token name="TextYAlignment">1</token>
+                <int name="ZIndex">1</int>
+              </Properties>
+            </Item>
+          </Item>
+          <Item class="TextButton" referent="RBX00000022">
+            <Properties>
+              <string name="Name">Chip_menu_Characters</string>
+              <UDim2 name="Size"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>0.184314</R><G>0.145098</G><B>0.4</B></Color3>
+              <float name="BackgroundTransparency">0</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">3</int>
+              <string name="Text"></string>
+              <bool name="AutoButtonColor">true</bool>
+              <int name="ZIndex">4</int>
+              <BinaryString name="AttributesSerialize">AQAAAA0AAABQcmV2aWV3QWN0aW9uAg8AAABtZW51OkNoYXJhY3RlcnM=</BinaryString>
+            </Properties>
+            <Item class="UICorner" referent="RBX00000023">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>7</O></UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="RBX00000024">
+              <Properties>
+                <string name="Name">UIStroke</string>
+                <float name="Thickness">1.5</float>
+                <Color3 name="Color"><R>0.435294</R><G>0.372549</G><B>0.815686</B></Color3>
+                <float name="Transparency">0</float>
+                <token name="ApplyStrokeMode">1</token>
+                <token name="LineJoinMode">0</token>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="RBX00000025">
+              <Properties>
+                <string name="Name">Label</string>
+                <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+                <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+                <float name="BackgroundTransparency">1</float>
+                <int name="BorderSizePixel">0</int>
+                <string name="Text">Chars</string>
+                <float name="TextSize">13</float>
+                <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+                <Color3 name="TextColor3"><R>0.929412</R><G>0.909804</G><B>1</B></Color3>
+                <token name="TextXAlignment">2</token>
+                <token name="TextYAlignment">1</token>
+                <int name="ZIndex">1</int>
+              </Properties>
+            </Item>
+          </Item>
+          <Item class="TextButton" referent="RBX00000026">
+            <Properties>
+              <string name="Name">Chip_menu_Upgrade</string>
+              <UDim2 name="Size"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>0.184314</R><G>0.145098</G><B>0.4</B></Color3>
+              <float name="BackgroundTransparency">0</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">4</int>
+              <string name="Text"></string>
+              <bool name="AutoButtonColor">true</bool>
+              <int name="ZIndex">5</int>
+              <BinaryString name="AttributesSerialize">AQAAAA0AAABQcmV2aWV3QWN0aW9uAgwAAABtZW51OlVwZ3JhZGU=</BinaryString>
+            </Properties>
+            <Item class="UICorner" referent="RBX00000027">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>7</O></UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="RBX00000028">
+              <Properties>
+                <string name="Name">UIStroke</string>
+                <float name="Thickness">1.5</float>
+                <Color3 name="Color"><R>0.435294</R><G>0.372549</G><B>0.815686</B></Color3>
+                <float name="Transparency">0</float>
+                <token name="ApplyStrokeMode">1</token>
+                <token name="LineJoinMode">0</token>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="RBX00000029">
+              <Properties>
+                <string name="Name">Label</string>
+                <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+                <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+                <float name="BackgroundTransparency">1</float>
+                <int name="BorderSizePixel">0</int>
+                <string name="Text">Upgrade</string>
+                <float name="TextSize">13</float>
+                <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+                <Color3 name="TextColor3"><R>0.929412</R><G>0.909804</G><B>1</B></Color3>
+                <token name="TextXAlignment">2</token>
+                <token name="TextYAlignment">1</token>
+                <int name="ZIndex">1</int>
+              </Properties>
+            </Item>
+          </Item>
+          <Item class="TextButton" referent="RBX0000002A">
+            <Properties>
+              <string name="Name">Chip_menu_none</string>
+              <UDim2 name="Size"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>0.184314</R><G>0.145098</G><B>0.4</B></Color3>
+              <float name="BackgroundTransparency">0</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">5</int>
+              <string name="Text"></string>
+              <bool name="AutoButtonColor">true</bool>
+              <int name="ZIndex">6</int>
+              <BinaryString name="AttributesSerialize">AQAAAA0AAABQcmV2aWV3QWN0aW9uAgkAAABtZW51Om5vbmU=</BinaryString>
+            </Properties>
+            <Item class="UICorner" referent="RBX0000002B">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>7</O></UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="RBX0000002C">
+              <Properties>
+                <string name="Name">UIStroke</string>
+                <float name="Thickness">1.5</float>
+                <Color3 name="Color"><R>0.435294</R><G>0.372549</G><B>0.815686</B></Color3>
+                <float name="Transparency">0</float>
+                <token name="ApplyStrokeMode">1</token>
+                <token name="LineJoinMode">0</token>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="RBX0000002D">
+              <Properties>
+                <string name="Name">Label</string>
+                <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+                <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+                <float name="BackgroundTransparency">1</float>
+                <int name="BorderSizePixel">0</int>
+                <string name="Text">Close</string>
+                <float name="TextSize">13</float>
+                <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+                <Color3 name="TextColor3"><R>0.929412</R><G>0.909804</G><B>1</B></Color3>
+                <token name="TextXAlignment">2</token>
+                <token name="TextYAlignment">1</token>
+                <int name="ZIndex">1</int>
+              </Properties>
+            </Item>
+          </Item>
+        </Item>
+        <Item class="TextLabel" referent="RBX0000002E">
+          <Properties>
+            <string name="Name">H_INDEX</string>
+            <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>0</YS><YO>14</YO></UDim2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">1</float>
+            <int name="BorderSizePixel">0</int>
+            <int name="LayoutOrder">2</int>
+            <string name="Text">INDEX</string>
+            <float name="TextSize">12</float>
+            <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+            <Color3 name="TextColor3"><R>1</R><G>0.823529</G><B>0.247059</B></Color3>
+            <token name="TextXAlignment">0</token>
+            <token name="TextYAlignment">1</token>
+            <int name="ZIndex">3</int>
+          </Properties>
+        </Item>
+        <Item class="Frame" referent="RBX0000002F">
+          <Properties>
+            <string name="Name">G_INDEX</string>
+            <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>0</YS><YO>24</YO></UDim2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">1</float>
+            <int name="BorderSizePixel">0</int>
+            <int name="LayoutOrder">3</int>
+            <int name="ZIndex">4</int>
+          </Properties>
+          <Item class="UIGridLayout" referent="RBX00000030">
+            <Properties>
+              <string name="Name">UIGridLayout</string>
+              <UDim2 name="CellSize"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <UDim2 name="CellPadding"><XS>0</XS><XO>4</XO><YS>0</YS><YO>4</YO></UDim2>
+              <token name="HorizontalAlignment">1</token>
+              <token name="VerticalAlignment">1</token>
+              <token name="SortOrder">2</token>
+            </Properties>
+          </Item>
+          <Item class="TextButton" referent="RBX00000031">
+            <Properties>
+              <string name="Name">Chip_index_unlockNext</string>
+              <UDim2 name="Size"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>0.184314</R><G>0.145098</G><B>0.4</B></Color3>
+              <float name="BackgroundTransparency">0</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">0</int>
+              <string name="Text"></string>
+              <bool name="AutoButtonColor">true</bool>
+              <int name="ZIndex">1</int>
+              <BinaryString name="AttributesSerialize">AQAAAA0AAABQcmV2aWV3QWN0aW9uAhAAAABpbmRleDp1bmxvY2tOZXh0</BinaryString>
+            </Properties>
+            <Item class="UICorner" referent="RBX00000032">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>7</O></UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="RBX00000033">
+              <Properties>
+                <string name="Name">UIStroke</string>
+                <float name="Thickness">1.5</float>
+                <Color3 name="Color"><R>0.435294</R><G>0.372549</G><B>0.815686</B></Color3>
+                <float name="Transparency">0</float>
+                <token name="ApplyStrokeMode">1</token>
+                <token name="LineJoinMode">0</token>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="RBX00000034">
+              <Properties>
+                <string name="Name">Label</string>
+                <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+                <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+                <float name="BackgroundTransparency">1</float>
+                <int name="BorderSizePixel">0</int>
+                <string name="Text">Unlock +1</string>
+                <float name="TextSize">13</float>
+                <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+                <Color3 name="TextColor3"><R>0.929412</R><G>0.909804</G><B>1</B></Color3>
+                <token name="TextXAlignment">2</token>
+                <token name="TextYAlignment">1</token>
+                <int name="ZIndex">1</int>
+              </Properties>
+            </Item>
+          </Item>
+          <Item class="TextButton" referent="RBX00000035">
+            <Properties>
+              <string name="Name">Chip_index_lockAll</string>
+              <UDim2 name="Size"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>0.184314</R><G>0.145098</G><B>0.4</B></Color3>
+              <float name="BackgroundTransparency">0</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">1</int>
+              <string name="Text"></string>
+              <bool name="AutoButtonColor">true</bool>
+              <int name="ZIndex">2</int>
+              <BinaryString name="AttributesSerialize">AQAAAA0AAABQcmV2aWV3QWN0aW9uAg0AAABpbmRleDpsb2NrQWxs</BinaryString>
+            </Properties>
+            <Item class="UICorner" referent="RBX00000036">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>7</O></UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="RBX00000037">
+              <Properties>
+                <string name="Name">UIStroke</string>
+                <float name="Thickness">1.5</float>
+                <Color3 name="Color"><R>0.435294</R><G>0.372549</G><B>0.815686</B></Color3>
+                <float name="Transparency">0</float>
+                <token name="ApplyStrokeMode">1</token>
+                <token name="LineJoinMode">0</token>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="RBX00000038">
+              <Properties>
+                <string name="Name">Label</string>
+                <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+                <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+                <float name="BackgroundTransparency">1</float>
+                <int name="BorderSizePixel">0</int>
+                <string name="Text">Lock all</string>
+                <float name="TextSize">13</float>
+                <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+                <Color3 name="TextColor3"><R>0.929412</R><G>0.909804</G><B>1</B></Color3>
+                <token name="TextXAlignment">2</token>
+                <token name="TextYAlignment">1</token>
+                <int name="ZIndex">1</int>
+              </Properties>
+            </Item>
+          </Item>
+          <Item class="TextButton" referent="RBX00000039">
+            <Properties>
+              <string name="Name">Chip_index_unlockAll</string>
+              <UDim2 name="Size"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>0.184314</R><G>0.145098</G><B>0.4</B></Color3>
+              <float name="BackgroundTransparency">0</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">2</int>
+              <string name="Text"></string>
+              <bool name="AutoButtonColor">true</bool>
+              <int name="ZIndex">3</int>
+              <BinaryString name="AttributesSerialize">AQAAAA0AAABQcmV2aWV3QWN0aW9uAg8AAABpbmRleDp1bmxvY2tBbGw=</BinaryString>
+            </Properties>
+            <Item class="UICorner" referent="RBX0000003A">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>7</O></UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="RBX0000003B">
+              <Properties>
+                <string name="Name">UIStroke</string>
+                <float name="Thickness">1.5</float>
+                <Color3 name="Color"><R>0.435294</R><G>0.372549</G><B>0.815686</B></Color3>
+                <float name="Transparency">0</float>
+                <token name="ApplyStrokeMode">1</token>
+                <token name="LineJoinMode">0</token>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="RBX0000003C">
+              <Properties>
+                <string name="Name">Label</string>
+                <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+                <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+                <float name="BackgroundTransparency">1</float>
+                <int name="BorderSizePixel">0</int>
+                <string name="Text">All</string>
+                <float name="TextSize">13</float>
+                <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+                <Color3 name="TextColor3"><R>0.929412</R><G>0.909804</G><B>1</B></Color3>
+                <token name="TextXAlignment">2</token>
+                <token name="TextYAlignment">1</token>
+                <int name="ZIndex">1</int>
+              </Properties>
+            </Item>
+          </Item>
+        </Item>
+        <Item class="TextLabel" referent="RBX0000003D">
+          <Properties>
+            <string name="Name">H_EGGCARDS</string>
+            <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>0</YS><YO>14</YO></UDim2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">1</float>
+            <int name="BorderSizePixel">0</int>
+            <int name="LayoutOrder">4</int>
+            <string name="Text">EGG CARDS</string>
+            <float name="TextSize">12</float>
+            <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+            <Color3 name="TextColor3"><R>1</R><G>0.823529</G><B>0.247059</B></Color3>
+            <token name="TextXAlignment">0</token>
+            <token name="TextYAlignment">1</token>
+            <int name="ZIndex">5</int>
+          </Properties>
+        </Item>
+        <Item class="Frame" referent="RBX0000003E">
+          <Properties>
+            <string name="Name">G_EGGCARDS</string>
+            <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>0</YS><YO>24</YO></UDim2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">1</float>
+            <int name="BorderSizePixel">0</int>
+            <int name="LayoutOrder">5</int>
+            <int name="ZIndex">6</int>
+          </Properties>
+          <Item class="UIGridLayout" referent="RBX0000003F">
+            <Properties>
+              <string name="Name">UIGridLayout</string>
+              <UDim2 name="CellSize"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <UDim2 name="CellPadding"><XS>0</XS><XO>4</XO><YS>0</YS><YO>4</YO></UDim2>
+              <token name="HorizontalAlignment">1</token>
+              <token name="VerticalAlignment">1</token>
+              <token name="SortOrder">2</token>
+            </Properties>
+          </Item>
+          <Item class="TextButton" referent="RBX00000040">
+            <Properties>
+              <string name="Name">Chip_eggs_cycle</string>
+              <UDim2 name="Size"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>0.184314</R><G>0.145098</G><B>0.4</B></Color3>
+              <float name="BackgroundTransparency">0</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">0</int>
+              <string name="Text"></string>
+              <bool name="AutoButtonColor">true</bool>
+              <int name="ZIndex">1</int>
+              <BinaryString name="AttributesSerialize">AQAAAA0AAABQcmV2aWV3QWN0aW9uAgoAAABlZ2dzOmN5Y2xl</BinaryString>
+            </Properties>
+            <Item class="UICorner" referent="RBX00000041">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>7</O></UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="RBX00000042">
+              <Properties>
+                <string name="Name">UIStroke</string>
+                <float name="Thickness">1.5</float>
+                <Color3 name="Color"><R>0.435294</R><G>0.372549</G><B>0.815686</B></Color3>
+                <float name="Transparency">0</float>
+                <token name="ApplyStrokeMode">1</token>
+                <token name="LineJoinMode">0</token>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="RBX00000043">
+              <Properties>
+                <string name="Name">Label</string>
+                <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+                <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+                <float name="BackgroundTransparency">1</float>
+                <int name="BorderSizePixel">0</int>
+                <string name="Text">Cycle</string>
+                <float name="TextSize">13</float>
+                <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+                <Color3 name="TextColor3"><R>0.929412</R><G>0.909804</G><B>1</B></Color3>
+                <token name="TextXAlignment">2</token>
+                <token name="TextYAlignment">1</token>
+                <int name="ZIndex">1</int>
+              </Properties>
+            </Item>
+          </Item>
+          <Item class="TextButton" referent="RBX00000044">
+            <Properties>
+              <string name="Name">Chip_eggs_allReady</string>
+              <UDim2 name="Size"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>0.184314</R><G>0.145098</G><B>0.4</B></Color3>
+              <float name="BackgroundTransparency">0</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">1</int>
+              <string name="Text"></string>
+              <bool name="AutoButtonColor">true</bool>
+              <int name="ZIndex">2</int>
+              <BinaryString name="AttributesSerialize">AQAAAA0AAABQcmV2aWV3QWN0aW9uAg0AAABlZ2dzOmFsbFJlYWR5</BinaryString>
+            </Properties>
+            <Item class="UICorner" referent="RBX00000045">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>7</O></UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="RBX00000046">
+              <Properties>
+                <string name="Name">UIStroke</string>
+                <float name="Thickness">1.5</float>
+                <Color3 name="Color"><R>0.435294</R><G>0.372549</G><B>0.815686</B></Color3>
+                <float name="Transparency">0</float>
+                <token name="ApplyStrokeMode">1</token>
+                <token name="LineJoinMode">0</token>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="RBX00000047">
+              <Properties>
+                <string name="Name">Label</string>
+                <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+                <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+                <float name="BackgroundTransparency">1</float>
+                <int name="BorderSizePixel">0</int>
+                <string name="Text">All Ready</string>
+                <float name="TextSize">13</float>
+                <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+                <Color3 name="TextColor3"><R>0.929412</R><G>0.909804</G><B>1</B></Color3>
+                <token name="TextXAlignment">2</token>
+                <token name="TextYAlignment">1</token>
+                <int name="ZIndex">1</int>
+              </Properties>
+            </Item>
+          </Item>
+          <Item class="TextButton" referent="RBX00000048">
+            <Properties>
+              <string name="Name">Chip_eggs_reset</string>
+              <UDim2 name="Size"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>0.184314</R><G>0.145098</G><B>0.4</B></Color3>
+              <float name="BackgroundTransparency">0</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">2</int>
+              <string name="Text"></string>
+              <bool name="AutoButtonColor">true</bool>
+              <int name="ZIndex">3</int>
+              <BinaryString name="AttributesSerialize">AQAAAA0AAABQcmV2aWV3QWN0aW9uAgoAAABlZ2dzOnJlc2V0</BinaryString>
+            </Properties>
+            <Item class="UICorner" referent="RBX00000049">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>7</O></UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="RBX0000004A">
+              <Properties>
+                <string name="Name">UIStroke</string>
+                <float name="Thickness">1.5</float>
+                <Color3 name="Color"><R>0.435294</R><G>0.372549</G><B>0.815686</B></Color3>
+                <float name="Transparency">0</float>
+                <token name="ApplyStrokeMode">1</token>
+                <token name="LineJoinMode">0</token>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="RBX0000004B">
+              <Properties>
+                <string name="Name">Label</string>
+                <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+                <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+                <float name="BackgroundTransparency">1</float>
+                <int name="BorderSizePixel">0</int>
+                <string name="Text">Reset</string>
+                <float name="TextSize">13</float>
+                <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+                <Color3 name="TextColor3"><R>0.929412</R><G>0.909804</G><B>1</B></Color3>
+                <token name="TextXAlignment">2</token>
+                <token name="TextYAlignment">1</token>
+                <int name="ZIndex">1</int>
+              </Properties>
+            </Item>
+          </Item>
+        </Item>
+        <Item class="TextLabel" referent="RBX0000004C">
+          <Properties>
+            <string name="Name">H_HATCHTIMER</string>
+            <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>0</YS><YO>14</YO></UDim2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">1</float>
+            <int name="BorderSizePixel">0</int>
+            <int name="LayoutOrder">6</int>
+            <string name="Text">HATCH TIMER</string>
+            <float name="TextSize">12</float>
+            <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+            <Color3 name="TextColor3"><R>1</R><G>0.823529</G><B>0.247059</B></Color3>
+            <token name="TextXAlignment">0</token>
+            <token name="TextYAlignment">1</token>
+            <int name="ZIndex">7</int>
+          </Properties>
+        </Item>
+        <Item class="Frame" referent="RBX0000004D">
+          <Properties>
+            <string name="Name">G_HATCHTIMER</string>
+            <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>0</YS><YO>24</YO></UDim2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">1</float>
+            <int name="BorderSizePixel">0</int>
+            <int name="LayoutOrder">7</int>
+            <int name="ZIndex">8</int>
+          </Properties>
+          <Item class="UIGridLayout" referent="RBX0000004E">
+            <Properties>
+              <string name="Name">UIGridLayout</string>
+              <UDim2 name="CellSize"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <UDim2 name="CellPadding"><XS>0</XS><XO>4</XO><YS>0</YS><YO>4</YO></UDim2>
+              <token name="HorizontalAlignment">1</token>
+              <token name="VerticalAlignment">1</token>
+              <token name="SortOrder">2</token>
+            </Properties>
+          </Item>
+          <Item class="TextButton" referent="RBX0000004F">
+            <Properties>
+              <string name="Name">Chip_hatch_start</string>
+              <UDim2 name="Size"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>0.184314</R><G>0.145098</G><B>0.4</B></Color3>
+              <float name="BackgroundTransparency">0</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">0</int>
+              <string name="Text"></string>
+              <bool name="AutoButtonColor">true</bool>
+              <int name="ZIndex">1</int>
+              <BinaryString name="AttributesSerialize">AQAAAA0AAABQcmV2aWV3QWN0aW9uAgsAAABoYXRjaDpzdGFydA==</BinaryString>
+            </Properties>
+            <Item class="UICorner" referent="RBX00000050">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>7</O></UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="RBX00000051">
+              <Properties>
+                <string name="Name">UIStroke</string>
+                <float name="Thickness">1.5</float>
+                <Color3 name="Color"><R>0.435294</R><G>0.372549</G><B>0.815686</B></Color3>
+                <float name="Transparency">0</float>
+                <token name="ApplyStrokeMode">1</token>
+                <token name="LineJoinMode">0</token>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="RBX00000052">
+              <Properties>
+                <string name="Name">Label</string>
+                <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+                <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+                <float name="BackgroundTransparency">1</float>
+                <int name="BorderSizePixel">0</int>
+                <string name="Text">Start 60s</string>
+                <float name="TextSize">13</float>
+                <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+                <Color3 name="TextColor3"><R>0.929412</R><G>0.909804</G><B>1</B></Color3>
+                <token name="TextXAlignment">2</token>
+                <token name="TextYAlignment">1</token>
+                <int name="ZIndex">1</int>
+              </Properties>
+            </Item>
+          </Item>
+          <Item class="TextButton" referent="RBX00000053">
+            <Properties>
+              <string name="Name">Chip_hatch_hatching</string>
+              <UDim2 name="Size"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>0.184314</R><G>0.145098</G><B>0.4</B></Color3>
+              <float name="BackgroundTransparency">0</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">1</int>
+              <string name="Text"></string>
+              <bool name="AutoButtonColor">true</bool>
+              <int name="ZIndex">2</int>
+              <BinaryString name="AttributesSerialize">AQAAAA0AAABQcmV2aWV3QWN0aW9uAg4AAABoYXRjaDpoYXRjaGluZw==</BinaryString>
+            </Properties>
+            <Item class="UICorner" referent="RBX00000054">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>7</O></UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="RBX00000055">
+              <Properties>
+                <string name="Name">UIStroke</string>
+                <float name="Thickness">1.5</float>
+                <Color3 name="Color"><R>0.435294</R><G>0.372549</G><B>0.815686</B></Color3>
+                <float name="Transparency">0</float>
+                <token name="ApplyStrokeMode">1</token>
+                <token name="LineJoinMode">0</token>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="RBX00000056">
+              <Properties>
+                <string name="Name">Label</string>
+                <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+                <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+                <float name="BackgroundTransparency">1</float>
+                <int name="BorderSizePixel">0</int>
+                <string name="Text">Hatching</string>
+                <float name="TextSize">13</float>
+                <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+                <Color3 name="TextColor3"><R>0.929412</R><G>0.909804</G><B>1</B></Color3>
+                <token name="TextXAlignment">2</token>
+                <token name="TextYAlignment">1</token>
+                <int name="ZIndex">1</int>
+              </Properties>
+            </Item>
+          </Item>
+          <Item class="TextButton" referent="RBX00000057">
+            <Properties>
+              <string name="Name">Chip_hatch_ready</string>
+              <UDim2 name="Size"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>0.184314</R><G>0.145098</G><B>0.4</B></Color3>
+              <float name="BackgroundTransparency">0</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">2</int>
+              <string name="Text"></string>
+              <bool name="AutoButtonColor">true</bool>
+              <int name="ZIndex">3</int>
+              <BinaryString name="AttributesSerialize">AQAAAA0AAABQcmV2aWV3QWN0aW9uAgsAAABoYXRjaDpyZWFkeQ==</BinaryString>
+            </Properties>
+            <Item class="UICorner" referent="RBX00000058">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>7</O></UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="RBX00000059">
+              <Properties>
+                <string name="Name">UIStroke</string>
+                <float name="Thickness">1.5</float>
+                <Color3 name="Color"><R>0.435294</R><G>0.372549</G><B>0.815686</B></Color3>
+                <float name="Transparency">0</float>
+                <token name="ApplyStrokeMode">1</token>
+                <token name="LineJoinMode">0</token>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="RBX0000005A">
+              <Properties>
+                <string name="Name">Label</string>
+                <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+                <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+                <float name="BackgroundTransparency">1</float>
+                <int name="BorderSizePixel">0</int>
+                <string name="Text">READY</string>
+                <float name="TextSize">13</float>
+                <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+                <Color3 name="TextColor3"><R>0.929412</R><G>0.909804</G><B>1</B></Color3>
+                <token name="TextXAlignment">2</token>
+                <token name="TextYAlignment">1</token>
+                <int name="ZIndex">1</int>
+              </Properties>
+            </Item>
+          </Item>
+        </Item>
+        <Item class="TextLabel" referent="RBX0000005B">
+          <Properties>
+            <string name="Name">H_EGGCARRY</string>
+            <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>0</YS><YO>14</YO></UDim2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">1</float>
+            <int name="BorderSizePixel">0</int>
+            <int name="LayoutOrder">8</int>
+            <string name="Text">EGG CARRY</string>
+            <float name="TextSize">12</float>
+            <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+            <Color3 name="TextColor3"><R>1</R><G>0.823529</G><B>0.247059</B></Color3>
+            <token name="TextXAlignment">0</token>
+            <token name="TextYAlignment">1</token>
+            <int name="ZIndex">9</int>
+          </Properties>
+        </Item>
+        <Item class="Frame" referent="RBX0000005C">
+          <Properties>
+            <string name="Name">G_EGGCARRY</string>
+            <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>0</YS><YO>24</YO></UDim2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">1</float>
+            <int name="BorderSizePixel">0</int>
+            <int name="LayoutOrder">9</int>
+            <int name="ZIndex">10</int>
+          </Properties>
+          <Item class="UIGridLayout" referent="RBX0000005D">
+            <Properties>
+              <string name="Name">UIGridLayout</string>
+              <UDim2 name="CellSize"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <UDim2 name="CellPadding"><XS>0</XS><XO>4</XO><YS>0</YS><YO>4</YO></UDim2>
+              <token name="HorizontalAlignment">1</token>
+              <token name="VerticalAlignment">1</token>
+              <token name="SortOrder">2</token>
+            </Properties>
+          </Item>
+          <Item class="TextButton" referent="RBX0000005E">
+            <Properties>
+              <string name="Name">Chip_carry_unsafe</string>
+              <UDim2 name="Size"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>0.184314</R><G>0.145098</G><B>0.4</B></Color3>
+              <float name="BackgroundTransparency">0</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">0</int>
+              <string name="Text"></string>
+              <bool name="AutoButtonColor">true</bool>
+              <int name="ZIndex">1</int>
+              <BinaryString name="AttributesSerialize">AQAAAA0AAABQcmV2aWV3QWN0aW9uAgwAAABjYXJyeTp1bnNhZmU=</BinaryString>
+            </Properties>
+            <Item class="UICorner" referent="RBX0000005F">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>7</O></UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="RBX00000060">
+              <Properties>
+                <string name="Name">UIStroke</string>
+                <float name="Thickness">1.5</float>
+                <Color3 name="Color"><R>0.435294</R><G>0.372549</G><B>0.815686</B></Color3>
+                <float name="Transparency">0</float>
+                <token name="ApplyStrokeMode">1</token>
+                <token name="LineJoinMode">0</token>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="RBX00000061">
+              <Properties>
+                <string name="Name">Label</string>
+                <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+                <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+                <float name="BackgroundTransparency">1</float>
+                <int name="BorderSizePixel">0</int>
+                <string name="Text">Unsafe</string>
+                <float name="TextSize">13</float>
+                <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+                <Color3 name="TextColor3"><R>0.929412</R><G>0.909804</G><B>1</B></Color3>
+                <token name="TextXAlignment">2</token>
+                <token name="TextYAlignment">1</token>
+                <int name="ZIndex">1</int>
+              </Properties>
+            </Item>
+          </Item>
+          <Item class="TextButton" referent="RBX00000062">
+            <Properties>
+              <string name="Name">Chip_carry_secured</string>
+              <UDim2 name="Size"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>0.184314</R><G>0.145098</G><B>0.4</B></Color3>
+              <float name="BackgroundTransparency">0</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">1</int>
+              <string name="Text"></string>
+              <bool name="AutoButtonColor">true</bool>
+              <int name="ZIndex">2</int>
+              <BinaryString name="AttributesSerialize">AQAAAA0AAABQcmV2aWV3QWN0aW9uAg0AAABjYXJyeTpzZWN1cmVk</BinaryString>
+            </Properties>
+            <Item class="UICorner" referent="RBX00000063">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>7</O></UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="RBX00000064">
+              <Properties>
+                <string name="Name">UIStroke</string>
+                <float name="Thickness">1.5</float>
+                <Color3 name="Color"><R>0.435294</R><G>0.372549</G><B>0.815686</B></Color3>
+                <float name="Transparency">0</float>
+                <token name="ApplyStrokeMode">1</token>
+                <token name="LineJoinMode">0</token>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="RBX00000065">
+              <Properties>
+                <string name="Name">Label</string>
+                <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+                <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+                <float name="BackgroundTransparency">1</float>
+                <int name="BorderSizePixel">0</int>
+                <string name="Text">Secured</string>
+                <float name="TextSize">13</float>
+                <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+                <Color3 name="TextColor3"><R>0.929412</R><G>0.909804</G><B>1</B></Color3>
+                <token name="TextXAlignment">2</token>
+                <token name="TextYAlignment">1</token>
+                <int name="ZIndex">1</int>
+              </Properties>
+            </Item>
+          </Item>
+          <Item class="TextButton" referent="RBX00000066">
+            <Properties>
+              <string name="Name">Chip_carry_hidden</string>
+              <UDim2 name="Size"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>0.184314</R><G>0.145098</G><B>0.4</B></Color3>
+              <float name="BackgroundTransparency">0</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">2</int>
+              <string name="Text"></string>
+              <bool name="AutoButtonColor">true</bool>
+              <int name="ZIndex">3</int>
+              <BinaryString name="AttributesSerialize">AQAAAA0AAABQcmV2aWV3QWN0aW9uAgwAAABjYXJyeTpoaWRkZW4=</BinaryString>
+            </Properties>
+            <Item class="UICorner" referent="RBX00000067">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>7</O></UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="RBX00000068">
+              <Properties>
+                <string name="Name">UIStroke</string>
+                <float name="Thickness">1.5</float>
+                <Color3 name="Color"><R>0.435294</R><G>0.372549</G><B>0.815686</B></Color3>
+                <float name="Transparency">0</float>
+                <token name="ApplyStrokeMode">1</token>
+                <token name="LineJoinMode">0</token>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="RBX00000069">
+              <Properties>
+                <string name="Name">Label</string>
+                <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+                <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+                <float name="BackgroundTransparency">1</float>
+                <int name="BorderSizePixel">0</int>
+                <string name="Text">Hide</string>
+                <float name="TextSize">13</float>
+                <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+                <Color3 name="TextColor3"><R>0.929412</R><G>0.909804</G><B>1</B></Color3>
+                <token name="TextXAlignment">2</token>
+                <token name="TextYAlignment">1</token>
+                <int name="ZIndex">1</int>
+              </Properties>
+            </Item>
+          </Item>
+        </Item>
+        <Item class="TextLabel" referent="RBX0000006A">
+          <Properties>
+            <string name="Name">H_CHARACTERS</string>
+            <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>0</YS><YO>14</YO></UDim2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">1</float>
+            <int name="BorderSizePixel">0</int>
+            <int name="LayoutOrder">10</int>
+            <string name="Text">CHARACTERS</string>
+            <float name="TextSize">12</float>
+            <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+            <Color3 name="TextColor3"><R>1</R><G>0.823529</G><B>0.247059</B></Color3>
+            <token name="TextXAlignment">0</token>
+            <token name="TextYAlignment">1</token>
+            <int name="ZIndex">11</int>
+          </Properties>
+        </Item>
+        <Item class="Frame" referent="RBX0000006B">
+          <Properties>
+            <string name="Name">G_CHARACTERS</string>
+            <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>0</YS><YO>24</YO></UDim2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">1</float>
+            <int name="BorderSizePixel">0</int>
+            <int name="LayoutOrder">11</int>
+            <int name="ZIndex">12</int>
+          </Properties>
+          <Item class="UIGridLayout" referent="RBX0000006C">
+            <Properties>
+              <string name="Name">UIGridLayout</string>
+              <UDim2 name="CellSize"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <UDim2 name="CellPadding"><XS>0</XS><XO>4</XO><YS>0</YS><YO>4</YO></UDim2>
+              <token name="HorizontalAlignment">1</token>
+              <token name="VerticalAlignment">1</token>
+              <token name="SortOrder">2</token>
+            </Properties>
+          </Item>
+          <Item class="TextButton" referent="RBX0000006D">
+            <Properties>
+              <string name="Name">Chip_chars_equipBest</string>
+              <UDim2 name="Size"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>0.184314</R><G>0.145098</G><B>0.4</B></Color3>
+              <float name="BackgroundTransparency">0</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">0</int>
+              <string name="Text"></string>
+              <bool name="AutoButtonColor">true</bool>
+              <int name="ZIndex">1</int>
+              <BinaryString name="AttributesSerialize">AQAAAA0AAABQcmV2aWV3QWN0aW9uAg8AAABjaGFyczplcXVpcEJlc3Q=</BinaryString>
+            </Properties>
+            <Item class="UICorner" referent="RBX0000006E">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>7</O></UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="RBX0000006F">
+              <Properties>
+                <string name="Name">UIStroke</string>
+                <float name="Thickness">1.5</float>
+                <Color3 name="Color"><R>0.435294</R><G>0.372549</G><B>0.815686</B></Color3>
+                <float name="Transparency">0</float>
+                <token name="ApplyStrokeMode">1</token>
+                <token name="LineJoinMode">0</token>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="RBX00000070">
+              <Properties>
+                <string name="Name">Label</string>
+                <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+                <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+                <float name="BackgroundTransparency">1</float>
+                <int name="BorderSizePixel">0</int>
+                <string name="Text">Equip Best</string>
+                <float name="TextSize">13</float>
+                <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+                <Color3 name="TextColor3"><R>0.929412</R><G>0.909804</G><B>1</B></Color3>
+                <token name="TextXAlignment">2</token>
+                <token name="TextYAlignment">1</token>
+                <int name="ZIndex">1</int>
+              </Properties>
+            </Item>
+          </Item>
+          <Item class="TextButton" referent="RBX00000071">
+            <Properties>
+              <string name="Name">Chip_chars_unequipAll</string>
+              <UDim2 name="Size"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>0.184314</R><G>0.145098</G><B>0.4</B></Color3>
+              <float name="BackgroundTransparency">0</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">1</int>
+              <string name="Text"></string>
+              <bool name="AutoButtonColor">true</bool>
+              <int name="ZIndex">2</int>
+              <BinaryString name="AttributesSerialize">AQAAAA0AAABQcmV2aWV3QWN0aW9uAhAAAABjaGFyczp1bmVxdWlwQWxs</BinaryString>
+            </Properties>
+            <Item class="UICorner" referent="RBX00000072">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>7</O></UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="RBX00000073">
+              <Properties>
+                <string name="Name">UIStroke</string>
+                <float name="Thickness">1.5</float>
+                <Color3 name="Color"><R>0.435294</R><G>0.372549</G><B>0.815686</B></Color3>
+                <float name="Transparency">0</float>
+                <token name="ApplyStrokeMode">1</token>
+                <token name="LineJoinMode">0</token>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="RBX00000074">
+              <Properties>
+                <string name="Name">Label</string>
+                <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+                <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+                <float name="BackgroundTransparency">1</float>
+                <int name="BorderSizePixel">0</int>
+                <string name="Text">Unequip</string>
+                <float name="TextSize">13</float>
+                <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+                <Color3 name="TextColor3"><R>0.929412</R><G>0.909804</G><B>1</B></Color3>
+                <token name="TextXAlignment">2</token>
+                <token name="TextYAlignment">1</token>
+                <int name="ZIndex">1</int>
+              </Properties>
+            </Item>
+          </Item>
+          <Item class="TextButton" referent="RBX00000075">
+            <Properties>
+              <string name="Name">Chip_chars_addDupe</string>
+              <UDim2 name="Size"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>0.184314</R><G>0.145098</G><B>0.4</B></Color3>
+              <float name="BackgroundTransparency">0</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">2</int>
+              <string name="Text"></string>
+              <bool name="AutoButtonColor">true</bool>
+              <int name="ZIndex">3</int>
+              <BinaryString name="AttributesSerialize">AQAAAA0AAABQcmV2aWV3QWN0aW9uAg0AAABjaGFyczphZGREdXBl</BinaryString>
+            </Properties>
+            <Item class="UICorner" referent="RBX00000076">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>7</O></UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="RBX00000077">
+              <Properties>
+                <string name="Name">UIStroke</string>
+                <float name="Thickness">1.5</float>
+                <Color3 name="Color"><R>0.435294</R><G>0.372549</G><B>0.815686</B></Color3>
+                <float name="Transparency">0</float>
+                <token name="ApplyStrokeMode">1</token>
+                <token name="LineJoinMode">0</token>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="RBX00000078">
+              <Properties>
+                <string name="Name">Label</string>
+                <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+                <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+                <float name="BackgroundTransparency">1</float>
+                <int name="BorderSizePixel">0</int>
+                <string name="Text">+ Dupe</string>
+                <float name="TextSize">13</float>
+                <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+                <Color3 name="TextColor3"><R>0.929412</R><G>0.909804</G><B>1</B></Color3>
+                <token name="TextXAlignment">2</token>
+                <token name="TextYAlignment">1</token>
+                <int name="ZIndex">1</int>
+              </Properties>
+            </Item>
+          </Item>
+        </Item>
+        <Item class="TextLabel" referent="RBX00000079">
+          <Properties>
+            <string name="Name">H_UPGRADE</string>
+            <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>0</YS><YO>14</YO></UDim2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">1</float>
+            <int name="BorderSizePixel">0</int>
+            <int name="LayoutOrder">12</int>
+            <string name="Text">UPGRADE</string>
+            <float name="TextSize">12</float>
+            <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+            <Color3 name="TextColor3"><R>1</R><G>0.823529</G><B>0.247059</B></Color3>
+            <token name="TextXAlignment">0</token>
+            <token name="TextYAlignment">1</token>
+            <int name="ZIndex">13</int>
+          </Properties>
+        </Item>
+        <Item class="Frame" referent="RBX0000007A">
+          <Properties>
+            <string name="Name">G_UPGRADE</string>
+            <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>0</YS><YO>52</YO></UDim2>
+            <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+            <float name="BackgroundTransparency">1</float>
+            <int name="BorderSizePixel">0</int>
+            <int name="LayoutOrder">13</int>
+            <int name="ZIndex">14</int>
+          </Properties>
+          <Item class="UIGridLayout" referent="RBX0000007B">
+            <Properties>
+              <string name="Name">UIGridLayout</string>
+              <UDim2 name="CellSize"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <UDim2 name="CellPadding"><XS>0</XS><XO>4</XO><YS>0</YS><YO>4</YO></UDim2>
+              <token name="HorizontalAlignment">1</token>
+              <token name="VerticalAlignment">1</token>
+              <token name="SortOrder">2</token>
+            </Properties>
+          </Item>
+          <Item class="TextButton" referent="RBX0000007C">
+            <Properties>
+              <string name="Name">Chip_upgrade_tab_Character</string>
+              <UDim2 name="Size"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>0.184314</R><G>0.145098</G><B>0.4</B></Color3>
+              <float name="BackgroundTransparency">0</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">0</int>
+              <string name="Text"></string>
+              <bool name="AutoButtonColor">true</bool>
+              <int name="ZIndex">1</int>
+              <BinaryString name="AttributesSerialize">AQAAAA0AAABQcmV2aWV3QWN0aW9uAhUAAAB1cGdyYWRlOnRhYjpDaGFyYWN0ZXI=</BinaryString>
+            </Properties>
+            <Item class="UICorner" referent="RBX0000007D">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>7</O></UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="RBX0000007E">
+              <Properties>
+                <string name="Name">UIStroke</string>
+                <float name="Thickness">1.5</float>
+                <Color3 name="Color"><R>0.435294</R><G>0.372549</G><B>0.815686</B></Color3>
+                <float name="Transparency">0</float>
+                <token name="ApplyStrokeMode">1</token>
+                <token name="LineJoinMode">0</token>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="RBX0000007F">
+              <Properties>
+                <string name="Name">Label</string>
+                <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+                <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+                <float name="BackgroundTransparency">1</float>
+                <int name="BorderSizePixel">0</int>
+                <string name="Text">Char</string>
+                <float name="TextSize">13</float>
+                <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+                <Color3 name="TextColor3"><R>0.929412</R><G>0.909804</G><B>1</B></Color3>
+                <token name="TextXAlignment">2</token>
+                <token name="TextYAlignment">1</token>
+                <int name="ZIndex">1</int>
+              </Properties>
+            </Item>
+          </Item>
+          <Item class="TextButton" referent="RBX00000080">
+            <Properties>
+              <string name="Name">Chip_upgrade_tab_Treadmill</string>
+              <UDim2 name="Size"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>0.184314</R><G>0.145098</G><B>0.4</B></Color3>
+              <float name="BackgroundTransparency">0</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">1</int>
+              <string name="Text"></string>
+              <bool name="AutoButtonColor">true</bool>
+              <int name="ZIndex">2</int>
+              <BinaryString name="AttributesSerialize">AQAAAA0AAABQcmV2aWV3QWN0aW9uAhUAAAB1cGdyYWRlOnRhYjpUcmVhZG1pbGw=</BinaryString>
+            </Properties>
+            <Item class="UICorner" referent="RBX00000081">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>7</O></UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="RBX00000082">
+              <Properties>
+                <string name="Name">UIStroke</string>
+                <float name="Thickness">1.5</float>
+                <Color3 name="Color"><R>0.435294</R><G>0.372549</G><B>0.815686</B></Color3>
+                <float name="Transparency">0</float>
+                <token name="ApplyStrokeMode">1</token>
+                <token name="LineJoinMode">0</token>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="RBX00000083">
+              <Properties>
+                <string name="Name">Label</string>
+                <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+                <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+                <float name="BackgroundTransparency">1</float>
+                <int name="BorderSizePixel">0</int>
+                <string name="Text">Treadmill</string>
+                <float name="TextSize">13</float>
+                <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+                <Color3 name="TextColor3"><R>0.929412</R><G>0.909804</G><B>1</B></Color3>
+                <token name="TextXAlignment">2</token>
+                <token name="TextYAlignment">1</token>
+                <int name="ZIndex">1</int>
+              </Properties>
+            </Item>
+          </Item>
+          <Item class="TextButton" referent="RBX00000084">
+            <Properties>
+              <string name="Name">Chip_upgrade_tab_Farm</string>
+              <UDim2 name="Size"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>0.184314</R><G>0.145098</G><B>0.4</B></Color3>
+              <float name="BackgroundTransparency">0</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">2</int>
+              <string name="Text"></string>
+              <bool name="AutoButtonColor">true</bool>
+              <int name="ZIndex">3</int>
+              <BinaryString name="AttributesSerialize">AQAAAA0AAABQcmV2aWV3QWN0aW9uAhAAAAB1cGdyYWRlOnRhYjpGYXJt</BinaryString>
+            </Properties>
+            <Item class="UICorner" referent="RBX00000085">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>7</O></UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="RBX00000086">
+              <Properties>
+                <string name="Name">UIStroke</string>
+                <float name="Thickness">1.5</float>
+                <Color3 name="Color"><R>0.435294</R><G>0.372549</G><B>0.815686</B></Color3>
+                <float name="Transparency">0</float>
+                <token name="ApplyStrokeMode">1</token>
+                <token name="LineJoinMode">0</token>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="RBX00000087">
+              <Properties>
+                <string name="Name">Label</string>
+                <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+                <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+                <float name="BackgroundTransparency">1</float>
+                <int name="BorderSizePixel">0</int>
+                <string name="Text">Farm</string>
+                <float name="TextSize">13</float>
+                <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+                <Color3 name="TextColor3"><R>0.929412</R><G>0.909804</G><B>1</B></Color3>
+                <token name="TextXAlignment">2</token>
+                <token name="TextYAlignment">1</token>
+                <int name="ZIndex">1</int>
+              </Properties>
+            </Item>
+          </Item>
+          <Item class="TextButton" referent="RBX00000088">
+            <Properties>
+              <string name="Name">Chip_upgrade_toggleMax</string>
+              <UDim2 name="Size"><XS>0</XS><XO>66</XO><YS>0</YS><YO>24</YO></UDim2>
+              <Color3 name="BackgroundColor3"><R>0.184314</R><G>0.145098</G><B>0.4</B></Color3>
+              <float name="BackgroundTransparency">0</float>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">3</int>
+              <string name="Text"></string>
+              <bool name="AutoButtonColor">true</bool>
+              <int name="ZIndex">4</int>
+              <BinaryString name="AttributesSerialize">AQAAAA0AAABQcmV2aWV3QWN0aW9uAhEAAAB1cGdyYWRlOnRvZ2dsZU1heA==</BinaryString>
+            </Properties>
+            <Item class="UICorner" referent="RBX00000089">
+              <Properties>
+                <string name="Name">UICorner</string>
+                <UDim name="CornerRadius"><S>0</S><O>7</O></UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="RBX0000008A">
+              <Properties>
+                <string name="Name">UIStroke</string>
+                <float name="Thickness">1.5</float>
+                <Color3 name="Color"><R>0.435294</R><G>0.372549</G><B>0.815686</B></Color3>
+                <float name="Transparency">0</float>
+                <token name="ApplyStrokeMode">1</token>
+                <token name="LineJoinMode">0</token>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="RBX0000008B">
+              <Properties>
+                <string name="Name">Label</string>
+                <UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2>
+                <Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3>
+                <float name="BackgroundTransparency">1</float>
+                <int name="BorderSizePixel">0</int>
+                <string name="Text">Toggle MAX</string>
+                <float name="TextSize">13</float>
+                <Font name="FontFace"><Family><url>rbxasset://fonts/families/FredokaOne.json</url></Family><Weight>400</Weight><Style>Normal</Style></Font>
+                <Color3 name="TextColor3"><R>0.929412</R><G>0.909804</G><B>1</B></Color3>
+                <token name="TextXAlignment">2</token>
+                <token name="TextYAlignment">1</token>
+                <int name="ZIndex">1</int>
+              </Properties>
+            </Item>
+          </Item>
+        </Item>
+      </Item>
+    </Item>
+  </Item>
+</roblox>

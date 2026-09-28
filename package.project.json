@@ -1,0 +1,49 @@
+{
+  "name": "StealAnimeEggUI",
+  "tree": {
+    "$className": "ScreenGui",
+    "$properties": {
+      "ResetOnSpawn": false,
+      "ZIndexBehavior": "Sibling",
+      "IgnoreGuiInset": true,
+      "ScreenInsets": "DeviceSafeInsets",
+      "DisplayOrder": 5
+    },
+    "HUD": {
+      "$path": "src/gui/HUD.rbxmx"
+    },
+    "HatchTimer": {
+      "$path": "src/gui/HatchTimer.rbxmx"
+    },
+    "EggCarry": {
+      "$path": "src/gui/EggCarry.rbxmx"
+    },
+    "MenuBackdrop": {
+      "$path": "src/gui/MenuBackdrop.rbxmx"
+    },
+    "Nav": {
+      "$path": "src/gui/Nav.rbxmx"
+    },
+    "ShopMenu": {
+      "$path": "src/gui/ShopMenu.rbxmx"
+    },
+    "IndexMenu": {
+      "$path": "src/gui/IndexMenu.rbxmx"
+    },
+    "EggsMenu": {
+      "$path": "src/gui/EggsMenu.rbxmx"
+    },
+    "CharactersMenu": {
+      "$path": "src/gui/CharactersMenu.rbxmx"
+    },
+    "UpgradeMenu": {
+      "$path": "src/gui/UpgradeMenu.rbxmx"
+    },
+    "PREVIEW_Panel": {
+      "$path": "src/gui/PREVIEW_Panel.rbxmx"
+    },
+    "LabScripts": {
+      "$path": "src/client"
+    }
+  }
+}

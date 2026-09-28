@@ -1,0 +1,14 @@
+{
+  "name": "stealanimeegg-ui-lab-tools",
+  "private": true,
+  "description": "Build tooling for StealAnimeEgg-UI-Lab: SVG->PNG, atlas packing, Roblox model generation, browser preview + screenshots.",
+  "scripts": {
+    "build": "node build.js",
+    "shots": "node screenshots.js"
+  },
+  "devDependencies": {
+    "@fontsource/fredoka": "5.3.0",
+    "@fontsource/luckiest-guy": "5.3.0",
+    "playwright": "1.56.1"
+  }
+}

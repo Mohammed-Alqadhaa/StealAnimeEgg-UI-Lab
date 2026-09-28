@@ -1,0 +1,41 @@
+{
+  "name": "StealAnimeEgg_UI_Lab_Demo",
+  "tree": {
+    "$className": "DataModel",
+    "StarterGui": {
+      "$className": "StarterGui",
+      "StealAnimeEggUI": { "$path": "package.project.json" }
+    },
+    "Workspace": {
+      "$className": "Workspace",
+      "Baseplate": {
+        "$className": "Part",
+        "$properties": {
+          "Anchored": true,
+          "Locked": true,
+          "Size": [512, 4, 512],
+          "Position": [0, -2, 0],
+          "Color": [0.39, 0.84, 0.29],
+          "Material": "Grass",
+          "TopSurface": "Smooth",
+          "BottomSurface": "Smooth"
+        }
+      },
+      "SpawnLocation": {
+        "$className": "SpawnLocation",
+        "$properties": {
+          "Anchored": true,
+          "Size": [12, 1, 12],
+          "Position": [0, 0.5, 0],
+          "Color": [1, 0.82, 0.25],
+          "TopSurface": "Smooth",
+          "BottomSurface": "Smooth"
+        }
+      }
+    },
+    "Lighting": {
+      "$className": "Lighting",
+      "$properties": { "ClockTime": 14, "Brightness": 2 }
+    }
+  }
+}
