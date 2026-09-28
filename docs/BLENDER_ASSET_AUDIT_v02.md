@@ -31,11 +31,23 @@ All visual choices are **OWNER APPROVAL PENDING**.
 * Blender +Y runs down the lane, so Roblox `(X, Y, Z) = (-x, z, Layout.worldZ0(i) + y)`. The FBX export
   (`axis_forward="Z", axis_up="Y"`) produces exactly that mapping, and the manifest records each module's Roblox
   position, size, triangles and material.
-* Every export module is one collection named `EXPORT_<Module>__<RobloxMaterial>`. It is joined into a single mesh
-  and becomes one MeshPart with that Roblox Material. Colour comes from the Blender material's `roblox_color`.
+* Every export module is one collection named `EXPORT_<Module>__<RobloxMaterial>`, joined into a single mesh.
+* **One colour per MeshPart:** a Roblox MeshPart has a single `Color`. The exporter therefore splits a collection that
+  mixes Blender materials into `<Module>_<Material>` sub-modules. The manifest gives each module one
+  `color` and `transparency`.
 * `VFX_*` empties are **runtime anchors only**. Particles, lights, beams and tweens are authored in Roblox, not baked.
 * Layout contract: lane `|x| < 54` stays clear and flat; walls at `|x| ≈ 75–77`; length 230; egg nests at the
-  `Layout.EGG_OFFSETS`; boss stage at 206; entry and exit gates are open, so the next world is visible.
+  `Layout.EGG_OFFSETS`; boss stage at 206.
+* **World slot `y ∈ [-30, 228]`** (`sae_bpy.WORLD_SLOT_Y`). `build.luau` gives each world
+  `ZoneMinZ = z0 − 30`, so the 30-stud entry threshold belongs to the world, and the next world's threshold
+  starts at 230.
+  * All geometry must stay inside the slot, or adjacent worlds intersect. The exporter flags `outsideSlot` per
+    module. Only `Sky*` modules are exempt; they become Sky/billboard objects at import.
+  * Each world has an **entry** gate only. The next world's entry frames the exit, and the view past the boss
+    is the next world.
+  * Found and fixed during the One Piece pass: MHA had a back skyline row and a bridge up to y ≈ 365; Dragon Ball
+    had a back sea and mesas up to y ≈ 560; both had exit gates at y = 232. All are now clamped or removed.
+* `COLLIDERS` collection: invisible boxes are written to manifest `colliders` and are never rendered.
 * **Collision (to apply at import):** the floor, plaza, dais and walls collide. Everything else is decoration
   (`CanCollide=false`, collision group `Decor`), per the no-blocking-decoration rule.
 
@@ -43,9 +55,9 @@ All visual choices are **OWNER APPROVAL PENDING**.
 
 | Field | Value |
 |---|---|
-| Source | `art/blender/worlds/02_MHA.blend` (13.7 MB; SHA-256 `5fce24dd95950991d166e484253996ce991be12443cf94d2423937994ce1a23b`) |
+| Source | `art/blender/worlds/02_MHA.blend` (12.7 MB; SHA-256 `41d904307200b97dd0e6ca5e7a3fb9565e9aee7e8a5f784289a32cc25464d689`) |
 | Script | `tools/blender/worlds/w02_mha.py` (deterministic, `random.Random(202)`) |
-| Exports | `art/exports/worlds/02_MHA/`: **47 FBX modules, 137,784 triangles total, 0 over the limit**. `manifest.json` also holds 14 VFX anchors |
+| Exports | `art/exports/worlds/02_MHA/`: **63 FBX modules (single colour each), 131,236 triangles total, 0 over the limit, 0 outside the slot**. `manifest.json` also holds 14 VFX anchors |
 | Renders | `pass1_*` … `pass4_*` (iterations, 24 spp), `final_gameplay.png`, `final_throne.png`, `final_overview.png` (64 spp) |
 | Target Roblox path | `Workspace.SAE_World.Worlds.MHA.Environment.<Module>` (MeshParts), `…MHA.V02_VFX` (anchors) |
 | Status | **BLENDER MODELED · BLENDER RENDER VERIFIED · EXPORTED · OWNER APPROVAL PENDING** |
@@ -55,11 +67,10 @@ All visual choices are **OWNER APPROVAL PENDING**.
 | Module | Triangles |
 |---|---|
 | ChainsE / ChainsW | 11,900 each (split per side) |
-| Rubble | 10,800 |
 | ThroneChains | 10,400 |
-| WallsE / WallsW | 9,936 / 10,152 (split per side) |
-| Floor1 / Floor2 / Floor3 | 7,456 / 7,412 / 8,588 |
-| GateChains | 8,400 |
+| Rubble_StoneDark | 9,720 |
+| WallsW_Stone / WallsE_Stone | 8,748 / 8,316 |
+| Floor1_Stone | 7,368 |
 
 Every other module is under 4,500 triangles.
 
@@ -106,9 +117,9 @@ Every other module is under 4,500 triangles.
 
 | Field | Value |
 |---|---|
-| Source | `art/blender/worlds/03_DragonBall.blend` (10.0 MB; SHA-256 `b749a9e1326e99a4547c2fad709408d3495ff05fbec8c83b338a66dcc4b806f0`) |
+| Source | `art/blender/worlds/03_DragonBall.blend` (9.0 MB; SHA-256 `afc99b079f3634e521b5fbeefae7fbec94a37d8b08a7f0e3ab9c2da90839fac1`) |
 | Script | `tools/blender/worlds/w03_dragonball.py` (`random.Random(303)`) |
-| Exports | `art/exports/worlds/03_DragonBall/`: **43 FBX modules, 100,740 triangles, 0 over the limit** (canopies split into 4 modules of ≤ 12,052). Manifest: 24 VFX anchors, **2 boundary colliders** |
+| Exports | `art/exports/worlds/03_DragonBall/`: **57 FBX modules (single colour each), 90,076 triangles, 0 over the limit, 0 outside the slot** (largest 9,956). Manifest: 24 VFX anchors, **2 boundary colliders**. The sky planet/moon are `Sky*` modules (exempt) |
 | Renders | `pass1_*` … `pass3_*` (20 spp), `final_gameplay.png`, `final_boss.png`, `final_overview.png` (48 spp) |
 | Target Roblox path | `Workspace.SAE_World.Worlds.DragonBall.Environment.<Module>`, `…DragonBall.V02_VFX`, `…DragonBall.V02_Colliders` |
 | Status | **BLENDER MODELED · BLENDER RENDER VERIFIED · EXPORTED · OWNER APPROVAL PENDING** |
@@ -150,3 +161,45 @@ Every other module is under 4,500 triangles.
   at `VFX_SeaShimmer*`).
 * The sky planet is a far mesh. In Roblox it may instead become a Sky/billboard (recorded in the script).
 * The "stepped" mesa silhouette is a deliberate stylisation.
+
+## 04_OnePiece — Dressrosa Corrida Colosseum / Doflamingo (reference **R02** Dressrosa panel)
+
+| Field | Value |
+|---|---|
+| Source | `art/blender/worlds/04_OnePiece.blend` (22.9 MB; SHA-256 `c69d38f2551f3147a384a8eb4873764b00aeaae27edac84c8a6d795688ee0fb2`) |
+| Script | `tools/blender/worlds/w04_onepiece.py` (`random.Random(404)`) |
+| Exports | `art/exports/worlds/04_OnePiece/`: **74 FBX modules (single colour each), 125,836 triangles, 0 over the limit (largest 9,396), 0 outside the slot**. 20 VFX anchors |
+| Renders | `pass1_*`, `pass2_*` (20 spp), `final_gameplay.png`, `final_boss.png`, `final_overview.png` (48 spp) |
+| Target Roblox path | `Workspace.SAE_World.Worlds.OnePiece.Environment.<Module>`, `…OnePiece.V02_VFX` |
+| Status | **BLENDER MODELED · BLENDER RENDER VERIFIED · EXPORTED · OWNER APPROVAL PENDING** |
+
+**Gameplay layout:**
+* Sandstone arena floor with a pale central path (|x| < 12).
+* Lane `|x| < 54` clear.
+* The arena wall at `|x| ≈ 76.5` collides.
+* A great open entry arch spans the whole lane.
+
+**R02 elements reproduced:**
+* **Colosseum:** 9-tier stands on both sides, with about 1,900 stylised spectators in 5 shirt colours
+  (auto-split by colour). A two-storey round-arch arcade crowns the stands, with red/pink pennants on top.
+* **Arena floor:** a pale stone path to the boss, lined by iron lamp posts with warm lamps.
+* **Banners:** red banners with a white Jolly Roger (skull + crossbones) on the arena wall.
+* **Doflamingo stage:** a raised stage with a red and gold throne in front of a large pink feather fan (his coat).
+
+**Extra identity:**
+* A subtle "Birdcage" of glowing strings behind the stage (never across the lane).
+* An open two-storey arcade façade behind the stage (next world visible through the arches).
+* A royal box with a pink canopy on the west stand.
+* Dressrosa flower planters.
+
+**Iterations:**
+
+| Pass | Findings | Fix |
+|---|---|---|
+| 1 | Birdcage strings formed a glaring white pyramid; boss had no backdrop; stands behind the boss would leave the world slot | Strings thinner, dimmer and partly transparent; open arcade façade behind the stage; far stands removed and the royal box moved to the side stand |
+| 2 / final | Matches the R02 colosseum composition | Final render + export |
+
+**Known deviations:**
+* R02 shows stands behind Doflamingo. They cannot fit inside the world slot, so the façade takes their place.
+* Spectators are static blocks. The `VFX_CrowdCheer±` anchors drive a client bob/cheer.
+* The feather fan is stylised as petals.

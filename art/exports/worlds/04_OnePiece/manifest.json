@@ -1,0 +1,2193 @@
+{
+ "worldSlotY": [
+  -30.0,
+  228.0
+ ],
+ "world": "OnePiece",
+ "units": "1 Blender unit = 1 stud",
+ "mapping": "Roblox(X,Y,Z) = (-x, z, z0 + y)",
+ "z0": "Layout.worldZ0(4)",
+ "modules": [
+  {
+   "module": "ArcadeE_Trim",
+   "fbx": "ArcadeE_Trim.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 24,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -29.9,
+    227.9
+   ],
+   "robloxPosition": [
+    125.0,
+    64.0,
+    99.0
+   ],
+   "sizeStuds": [
+    3.6,
+    14.4,
+    257.8
+   ],
+   "materials": [
+    "OP_Trim"
+   ],
+   "color": "#e8dcc0",
+   "transparency": 0.0
+  },
+  {
+   "module": "ArcadeE_Wall",
+   "fbx": "ArcadeE_Wall.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 528,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -30.0,
+    228.0
+   ],
+   "robloxPosition": [
+    125.0,
+    55.5,
+    99.0
+   ],
+   "sizeStuds": [
+    3.0,
+    21.0,
+    258.0
+   ],
+   "materials": [
+    "OP_Wall"
+   ],
+   "color": "#c9a878",
+   "transparency": 0.0
+  },
+  {
+   "module": "ArcadeE_WallShade",
+   "fbx": "ArcadeE_WallShade.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 3540,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -28.7,
+    226.7
+   ],
+   "robloxPosition": [
+    125.45,
+    58.515,
+    99.0
+   ],
+   "sizeStuds": [
+    3.9,
+    27.131,
+    255.4
+   ],
+   "materials": [
+    "OP_WallShade"
+   ],
+   "color": "#a8875c",
+   "transparency": 0.0
+  },
+  {
+   "module": "ArcadeW_Trim",
+   "fbx": "ArcadeW_Trim.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 24,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -29.9,
+    227.9
+   ],
+   "robloxPosition": [
+    -125.0,
+    64.0,
+    99.0
+   ],
+   "sizeStuds": [
+    3.6,
+    14.4,
+    257.8
+   ],
+   "materials": [
+    "OP_Trim"
+   ],
+   "color": "#e8dcc0",
+   "transparency": 0.0
+  },
+  {
+   "module": "ArcadeW_Wall",
+   "fbx": "ArcadeW_Wall.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 528,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -30.0,
+    228.0
+   ],
+   "robloxPosition": [
+    -125.0,
+    55.5,
+    99.0
+   ],
+   "sizeStuds": [
+    3.0,
+    21.0,
+    258.0
+   ],
+   "materials": [
+    "OP_Wall"
+   ],
+   "color": "#c9a878",
+   "transparency": 0.0
+  },
+  {
+   "module": "ArcadeW_WallShade",
+   "fbx": "ArcadeW_WallShade.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 3540,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -28.7,
+    226.7
+   ],
+   "robloxPosition": [
+    -125.45,
+    58.515,
+    99.0
+   ],
+   "sizeStuds": [
+    3.9,
+    27.131,
+    255.4
+   ],
+   "materials": [
+    "OP_WallShade"
+   ],
+   "color": "#a8875c",
+   "transparency": 0.0
+  },
+  {
+   "module": "ArenaWall_Trim",
+   "fbx": "ArenaWall_Trim.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 3672,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -30.0,
+    228.0
+   ],
+   "robloxPosition": [
+    -0.0,
+    4.8,
+    99.0
+   ],
+   "sizeStuds": [
+    157.0,
+    9.6,
+    258.0
+   ],
+   "materials": [
+    "OP_Trim"
+   ],
+   "color": "#e8dcc0",
+   "transparency": 0.0
+  },
+  {
+   "module": "ArenaWall_Wall",
+   "fbx": "ArenaWall_Wall.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 216,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -30.0,
+    228.0
+   ],
+   "robloxPosition": [
+    -0.0,
+    4.5,
+    99.0
+   ],
+   "sizeStuds": [
+    156.0,
+    9.0,
+    258.0
+   ],
+   "materials": [
+    "OP_Wall"
+   ],
+   "color": "#c9a878",
+   "transparency": 0.0
+  },
+  {
+   "module": "BannerRods",
+   "fbx": "BannerRods.fbx",
+   "robloxMaterial": "Metal",
+   "triangles": 224,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    18.75,
+    173.25
+   ],
+   "robloxPosition": [
+    -0.0,
+    17.6,
+    96.0
+   ],
+   "sizeStuds": [
+    149.6,
+    0.4,
+    154.5
+   ],
+   "materials": [
+    "OP_Iron"
+   ],
+   "color": "#2a2724",
+   "transparency": 0.0
+  },
+  {
+   "module": "Banners",
+   "fbx": "Banners.fbx",
+   "robloxMaterial": "Fabric",
+   "triangles": 5248,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    19.48,
+    172.52
+   ],
+   "robloxPosition": [
+    -0.0,
+    9.996,
+    96.0
+   ],
+   "sizeStuds": [
+    149.895,
+    15.013,
+    153.039
+   ],
+   "materials": [
+    "OP_BannerRed"
+   ],
+   "color": "#a8161f",
+   "transparency": 0.0
+  },
+  {
+   "module": "Birdcage",
+   "fbx": "Birdcage.fbx",
+   "robloxMaterial": "Neon",
+   "triangles": 240,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    196.33,
+    226.06
+   ],
+   "robloxPosition": [
+    0.0,
+    59.998,
+    211.196
+   ],
+   "sizeStuds": [
+    87.626,
+    120.04,
+    29.726
+   ],
+   "materials": [
+    "OP_String"
+   ],
+   "color": "#ffe6f2",
+   "transparency": 0.3
+  },
+  {
+   "module": "CrowdE_CrowdBlue",
+   "fbx": "CrowdE_CrowdBlue.fbx",
+   "robloxMaterial": "SmoothPlastic",
+   "triangles": 1908,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -29.42,
+    225.02
+   ],
+   "robloxPosition": [
+    101.248,
+    29.85,
+    97.8
+   ],
+   "sizeStuds": [
+    41.269,
+    33.7,
+    254.443
+   ],
+   "materials": [
+    "OP_CrowdBlue"
+   ],
+   "color": "#3a5fa8",
+   "transparency": 0.0
+  },
+  {
+   "module": "CrowdE_CrowdGreen",
+   "fbx": "CrowdE_CrowdGreen.fbx",
+   "robloxMaterial": "SmoothPlastic",
+   "triangles": 2004,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -27.47,
+    226.92
+   ],
+   "robloxPosition": [
+    101.257,
+    29.85,
+    99.723
+   ],
+   "sizeStuds": [
+    41.253,
+    33.7,
+    254.388
+   ],
+   "materials": [
+    "OP_CrowdGreen"
+   ],
+   "color": "#4d8a4a",
+   "transparency": 0.0
+  },
+  {
+   "module": "CrowdE_CrowdRed",
+   "fbx": "CrowdE_CrowdRed.fbx",
+   "robloxMaterial": "SmoothPlastic",
+   "triangles": 1860,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -27.18,
+    227.35
+   ],
+   "robloxPosition": [
+    101.249,
+    29.85,
+    100.088
+   ],
+   "sizeStuds": [
+    41.271,
+    33.7,
+    254.528
+   ],
+   "materials": [
+    "OP_CrowdRed"
+   ],
+   "color": "#b8322e",
+   "transparency": 0.0
+  },
+  {
+   "module": "CrowdE_CrowdWhite",
+   "fbx": "CrowdE_CrowdWhite.fbx",
+   "robloxMaterial": "SmoothPlastic",
+   "triangles": 1848,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -29.43,
+    226.05
+   ],
+   "robloxPosition": [
+    101.252,
+    29.85,
+    98.312
+   ],
+   "sizeStuds": [
+    41.254,
+    33.7,
+    255.482
+   ],
+   "materials": [
+    "OP_CrowdWhite"
+   ],
+   "color": "#e8e2d6",
+   "transparency": 0.0
+  },
+  {
+   "module": "CrowdE_CrowdYellow",
+   "fbx": "CrowdE_CrowdYellow.fbx",
+   "robloxMaterial": "SmoothPlastic",
+   "triangles": 1776,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -29.39,
+    224.63
+   ],
+   "robloxPosition": [
+    101.249,
+    29.85,
+    97.621
+   ],
+   "sizeStuds": [
+    41.258,
+    33.7,
+    254.019
+   ],
+   "materials": [
+    "OP_CrowdYellow"
+   ],
+   "color": "#d9b23a",
+   "transparency": 0.0
+  },
+  {
+   "module": "CrowdHeadsE",
+   "fbx": "CrowdHeadsE.fbx",
+   "robloxMaterial": "SmoothPlastic",
+   "triangles": 9396,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -29.2,
+    227.17
+   ],
+   "robloxPosition": [
+    101.25,
+    31.15,
+    98.983
+   ],
+   "sizeStuds": [
+    40.8,
+    32.8,
+    256.365
+   ],
+   "materials": [
+    "OP_CrowdSkin"
+   ],
+   "color": "#d9a878",
+   "transparency": 0.0
+  },
+  {
+   "module": "CrowdHeadsW",
+   "fbx": "CrowdHeadsW.fbx",
+   "robloxMaterial": "SmoothPlastic",
+   "triangles": 8628,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -29.2,
+    226.9
+   ],
+   "robloxPosition": [
+    -101.25,
+    31.15,
+    98.848
+   ],
+   "sizeStuds": [
+    40.8,
+    32.8,
+    256.096
+   ],
+   "materials": [
+    "OP_CrowdSkin"
+   ],
+   "color": "#d9a878",
+   "transparency": 0.0
+  },
+  {
+   "module": "CrowdW_CrowdBlue",
+   "fbx": "CrowdW_CrowdBlue.fbx",
+   "robloxMaterial": "SmoothPlastic",
+   "triangles": 1704,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -27.09,
+    225.81
+   ],
+   "robloxPosition": [
+    -101.248,
+    29.85,
+    99.362
+   ],
+   "sizeStuds": [
+    41.27,
+    33.7,
+    252.896
+   ],
+   "materials": [
+    "OP_CrowdBlue"
+   ],
+   "color": "#3a5fa8",
+   "transparency": 0.0
+  },
+  {
+   "module": "CrowdW_CrowdGreen",
+   "fbx": "CrowdW_CrowdGreen.fbx",
+   "robloxMaterial": "SmoothPlastic",
+   "triangles": 1752,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -29.36,
+    224.92
+   ],
+   "robloxPosition": [
+    -101.252,
+    29.85,
+    97.782
+   ],
+   "sizeStuds": [
+    41.269,
+    33.7,
+    254.28
+   ],
+   "materials": [
+    "OP_CrowdGreen"
+   ],
+   "color": "#4d8a4a",
+   "transparency": 0.0
+  },
+  {
+   "module": "CrowdW_CrowdRed",
+   "fbx": "CrowdW_CrowdRed.fbx",
+   "robloxMaterial": "SmoothPlastic",
+   "triangles": 1644,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -29.41,
+    226.66
+   ],
+   "robloxPosition": [
+    -101.24,
+    29.85,
+    98.623
+   ],
+   "sizeStuds": [
+    41.249,
+    33.7,
+    256.066
+   ],
+   "materials": [
+    "OP_CrowdRed"
+   ],
+   "color": "#b8322e",
+   "transparency": 0.0
+  },
+  {
+   "module": "CrowdW_CrowdWhite",
+   "fbx": "CrowdW_CrowdWhite.fbx",
+   "robloxMaterial": "SmoothPlastic",
+   "triangles": 1884,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -29.44,
+    227.06
+   ],
+   "robloxPosition": [
+    -101.249,
+    29.85,
+    98.812
+   ],
+   "sizeStuds": [
+    41.269,
+    33.7,
+    256.497
+   ],
+   "materials": [
+    "OP_CrowdWhite"
+   ],
+   "color": "#e8e2d6",
+   "transparency": 0.0
+  },
+  {
+   "module": "CrowdW_CrowdYellow",
+   "fbx": "CrowdW_CrowdYellow.fbx",
+   "robloxMaterial": "SmoothPlastic",
+   "triangles": 1644,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -29.43,
+    225.79
+   ],
+   "robloxPosition": [
+    -101.248,
+    29.85,
+    98.177
+   ],
+   "sizeStuds": [
+    41.261,
+    33.7,
+    255.217
+   ],
+   "materials": [
+    "OP_CrowdYellow"
+   ],
+   "color": "#d9b23a",
+   "transparency": 0.0
+  },
+  {
+   "module": "EggPedestalGlow",
+   "fbx": "EggPedestalGlow.fbx",
+   "robloxMaterial": "Neon",
+   "triangles": 1120,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    115.58,
+    186.42
+   ],
+   "robloxPosition": [
+    -0.0,
+    1.62,
+    151.0
+   ],
+   "sizeStuds": [
+    88.84,
+    0.24,
+    70.84
+   ],
+   "materials": [
+    "OP_GoldGlow"
+   ],
+   "color": "#ffd46a",
+   "transparency": 0.0
+  },
+  {
+   "module": "EggPedestalGold",
+   "fbx": "EggPedestalGold.fbx",
+   "robloxMaterial": "Metal",
+   "triangles": 1120,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    114.6,
+    187.4
+   ],
+   "robloxPosition": [
+    -0.0,
+    1.2,
+    151.0
+   ],
+   "sizeStuds": [
+    90.8,
+    0.4,
+    72.8
+   ],
+   "materials": [
+    "OP_Gold"
+   ],
+   "color": "#d4a23a",
+   "transparency": 0.0
+  },
+  {
+   "module": "EggPedestals_ArenaStoneDark",
+   "fbx": "EggPedestals_ArenaStoneDark.fbx",
+   "robloxMaterial": "Limestone",
+   "triangles": 300,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    115.3,
+    186.7
+   ],
+   "robloxPosition": [
+    -0.0,
+    1.4,
+    151.0
+   ],
+   "sizeStuds": [
+    89.4,
+    0.4,
+    71.4
+   ],
+   "materials": [
+    "OP_ArenaStoneDark"
+   ],
+   "color": "#b69c72",
+   "transparency": 0.0
+  },
+  {
+   "module": "EggPedestals_Trim",
+   "fbx": "EggPedestals_Trim.fbx",
+   "robloxMaterial": "Limestone",
+   "triangles": 300,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    114.8,
+    187.2
+   ],
+   "robloxPosition": [
+    -0.0,
+    0.6,
+    151.0
+   ],
+   "sizeStuds": [
+    90.4,
+    1.2,
+    72.4
+   ],
+   "materials": [
+    "OP_Trim"
+   ],
+   "color": "#e8dcc0",
+   "transparency": 0.0
+  },
+  {
+   "module": "FacadeBanners",
+   "fbx": "FacadeBanners.fbx",
+   "robloxMaterial": "Fabric",
+   "triangles": 1312,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    223.73,
+    224.35
+   ],
+   "robloxPosition": [
+    0.007,
+    21.597,
+    224.04
+   ],
+   "sizeStuds": [
+    43.022,
+    12.011,
+    0.617
+   ],
+   "materials": [
+    "OP_BannerRed"
+   ],
+   "color": "#a8161f",
+   "transparency": 0.0
+  },
+  {
+   "module": "FacadeFlags",
+   "fbx": "FacadeFlags.fbx",
+   "robloxMaterial": "Wood",
+   "triangles": 100,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    225.78,
+    226.22
+   ],
+   "robloxPosition": [
+    -0.0,
+    33.0,
+    226.0
+   ],
+   "sizeStuds": [
+    48.381,
+    8.0,
+    0.44
+   ],
+   "materials": [
+    "OP_FlagPole"
+   ],
+   "color": "#4a3a2a",
+   "transparency": 0.0
+  },
+  {
+   "module": "FacadePennants_BannerRed",
+   "fbx": "FacadePennants_BannerRed.fbx",
+   "robloxMaterial": "Fabric",
+   "triangles": 1968,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    225.58,
+    226.3
+   ],
+   "robloxPosition": [
+    -1.786,
+    35.532,
+    225.941
+   ],
+   "sizeStuds": [
+    51.45,
+    2.168,
+    0.715
+   ],
+   "materials": [
+    "OP_BannerRed"
+   ],
+   "color": "#a8161f",
+   "transparency": 0.0
+  },
+  {
+   "module": "FacadePennants_Feather",
+   "fbx": "FacadePennants_Feather.fbx",
+   "robloxMaterial": "Fabric",
+   "triangles": 1312,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    225.58,
+    226.3
+   ],
+   "robloxPosition": [
+    -1.786,
+    35.532,
+    225.941
+   ],
+   "sizeStuds": [
+    27.45,
+    2.168,
+    0.715
+   ],
+   "materials": [
+    "OP_Feather"
+   ],
+   "color": "#ff5fa8",
+   "transparency": 0.0
+  },
+  {
+   "module": "FeatherFan_Feather",
+   "fbx": "FeatherFan_Feather.fbx",
+   "robloxMaterial": "Fabric",
+   "triangles": 1400,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    223.02,
+    224.76
+   ],
+   "robloxPosition": [
+    0.444,
+    15.212,
+    223.892
+   ],
+   "sizeStuds": [
+    29.725,
+    20.354,
+    1.743
+   ],
+   "materials": [
+    "OP_Feather"
+   ],
+   "color": "#ff5fa8",
+   "transparency": 0.0
+  },
+  {
+   "module": "FeatherFan_FeatherLight",
+   "fbx": "FeatherFan_FeatherLight.fbx",
+   "robloxMaterial": "Fabric",
+   "triangles": 1540,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    223.04,
+    224.99
+   ],
+   "robloxPosition": [
+    -0.231,
+    14.439,
+    224.012
+   ],
+   "sizeStuds": [
+    29.409,
+    19.945,
+    1.948
+   ],
+   "materials": [
+    "OP_FeatherLight"
+   ],
+   "color": "#ff8cc4",
+   "transparency": 0.0
+  },
+  {
+   "module": "FlagPoles",
+   "fbx": "FlagPoles.fbx",
+   "robloxMaterial": "Wood",
+   "triangles": 440,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -24.22,
+    216.22
+   ],
+   "robloxPosition": [
+    0.0,
+    75.5,
+    96.0
+   ],
+   "sizeStuds": [
+    250.381,
+    9.0,
+    240.44
+   ],
+   "materials": [
+    "OP_FlagPole"
+   ],
+   "color": "#4a3a2a",
+   "transparency": 0.0
+  },
+  {
+   "module": "Flags_BannerRed",
+   "fbx": "Flags_BannerRed.fbx",
+   "robloxMaterial": "Fabric",
+   "triangles": 7216,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -23.94,
+    219.71
+   ],
+   "robloxPosition": [
+    -0.059,
+    78.482,
+    97.886
+   ],
+   "sizeStuds": [
+    250.715,
+    2.266,
+    243.648
+   ],
+   "materials": [
+    "OP_BannerRed"
+   ],
+   "color": "#a8161f",
+   "transparency": 0.0
+  },
+  {
+   "module": "Flags_Feather",
+   "fbx": "Flags_Feather.fbx",
+   "robloxMaterial": "Fabric",
+   "triangles": 7216,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -23.94,
+    219.71
+   ],
+   "robloxPosition": [
+    -0.059,
+    78.482,
+    97.886
+   ],
+   "sizeStuds": [
+    250.715,
+    2.266,
+    243.648
+   ],
+   "materials": [
+    "OP_Feather"
+   ],
+   "color": "#ff5fa8",
+   "transparency": 0.0
+  },
+  {
+   "module": "Floor1_ArenaStone",
+   "fbx": "Floor1_ArenaStone.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 4532,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -29.91,
+    63.9
+   ],
+   "robloxPosition": [
+    -0.011,
+    -0.357,
+    16.998
+   ],
+   "sizeStuds": [
+    149.807,
+    0.886,
+    93.812
+   ],
+   "materials": [
+    "OP_ArenaStone"
+   ],
+   "color": "#cdb48a",
+   "transparency": 0.0
+  },
+  {
+   "module": "Floor1_ArenaStoneDark",
+   "fbx": "Floor1_ArenaStoneDark.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 1628,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -29.89,
+    63.89
+   ],
+   "robloxPosition": [
+    0.008,
+    -0.357,
+    16.998
+   ],
+   "sizeStuds": [
+    149.787,
+    0.885,
+    93.783
+   ],
+   "materials": [
+    "OP_ArenaStoneDark"
+   ],
+   "color": "#b69c72",
+   "transparency": 0.0
+  },
+  {
+   "module": "Floor2_ArenaStone",
+   "fbx": "Floor2_ArenaStone.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 3476,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    64.1,
+    139.9
+   ],
+   "robloxPosition": [
+    0.0,
+    -0.358,
+    101.997
+   ],
+   "sizeStuds": [
+    149.798,
+    0.885,
+    75.8
+   ],
+   "materials": [
+    "OP_ArenaStone"
+   ],
+   "color": "#cdb48a",
+   "transparency": 0.0
+  },
+  {
+   "module": "Floor2_ArenaStoneDark",
+   "fbx": "Floor2_ArenaStoneDark.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 1452,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    72.2,
+    139.9
+   ],
+   "robloxPosition": [
+    0.012,
+    -0.355,
+    106.054
+   ],
+   "sizeStuds": [
+    149.769,
+    0.89,
+    67.699
+   ],
+   "materials": [
+    "OP_ArenaStoneDark"
+   ],
+   "color": "#b69c72",
+   "transparency": 0.0
+  },
+  {
+   "module": "Floor3_ArenaStone",
+   "fbx": "Floor3_ArenaStone.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 4532,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    140.1,
+    227.92
+   ],
+   "robloxPosition": [
+    0.011,
+    -0.359,
+    184.008
+   ],
+   "sizeStuds": [
+    149.811,
+    0.883,
+    87.814
+   ],
+   "materials": [
+    "OP_ArenaStone"
+   ],
+   "color": "#cdb48a",
+   "transparency": 0.0
+  },
+  {
+   "module": "Floor3_ArenaStoneDark",
+   "fbx": "Floor3_ArenaStoneDark.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 1628,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    140.1,
+    227.89
+   ],
+   "robloxPosition": [
+    0.001,
+    -0.362,
+    183.996
+   ],
+   "sizeStuds": [
+    149.79,
+    0.877,
+    87.796
+   ],
+   "materials": [
+    "OP_ArenaStoneDark"
+   ],
+   "color": "#b69c72",
+   "transparency": 0.0
+  },
+  {
+   "module": "GateBanners",
+   "fbx": "GateBanners.fbx",
+   "robloxMaterial": "Fabric",
+   "triangles": 1312,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -6.62,
+    -5.9
+   ],
+   "robloxPosition": [
+    0.011,
+    23.997,
+    -6.26
+   ],
+   "sizeStuds": [
+    103.037,
+    14.011,
+    0.716
+   ],
+   "materials": [
+    "OP_BannerRed"
+   ],
+   "color": "#a8161f",
+   "transparency": 0.0
+  },
+  {
+   "module": "Gates_Trim",
+   "fbx": "Gates_Trim.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 216,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -6.5,
+    0.5
+   ],
+   "robloxPosition": [
+    -0.0,
+    35.0,
+    -3.0
+   ],
+   "sizeStuds": [
+    107.5,
+    2.0,
+    7.0
+   ],
+   "materials": [
+    "OP_Trim"
+   ],
+   "color": "#e8dcc0",
+   "transparency": 0.0
+  },
+  {
+   "module": "Gates_Wall",
+   "fbx": "Gates_Wall.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 412,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -6.0,
+    0.0
+   ],
+   "robloxPosition": [
+    -0.0,
+    42.0,
+    -3.0
+   ],
+   "sizeStuds": [
+    106.0,
+    84.0,
+    6.0
+   ],
+   "materials": [
+    "OP_Wall"
+   ],
+   "color": "#c9a878",
+   "transparency": 0.0
+  },
+  {
+   "module": "Grout",
+   "fbx": "Grout.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 12,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -30.0,
+    228.0
+   ],
+   "robloxPosition": [
+    -0.0,
+    -0.45,
+    99.0
+   ],
+   "sizeStuds": [
+    150.0,
+    0.4,
+    258.0
+   ],
+   "materials": [
+    "OP_Grout"
+   ],
+   "color": "#7a6a50",
+   "transparency": 0.0
+  },
+  {
+   "module": "JollyRoger_JollyBlack",
+   "fbx": "JollyRoger_JollyBlack.fbx",
+   "robloxMaterial": "SmoothPlastic",
+   "triangles": 1280,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    22.98,
+    169.02
+   ],
+   "robloxPosition": [
+    -0.0,
+    12.1,
+    96.0
+   ],
+   "sizeStuds": [
+    147.736,
+    0.84,
+    146.04
+   ],
+   "materials": [
+    "OP_JollyBlack"
+   ],
+   "color": "#1b1a1c",
+   "transparency": 0.0
+  },
+  {
+   "module": "JollyRoger_JollyWhite",
+   "fbx": "JollyRoger_JollyWhite.fbx",
+   "robloxMaterial": "SmoothPlastic",
+   "triangles": 4160,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    21.42,
+    170.58
+   ],
+   "robloxPosition": [
+    -0.0,
+    11.287,
+    96.0
+   ],
+   "sizeStuds": [
+    150.157,
+    4.426,
+    149.153
+   ],
+   "materials": [
+    "OP_JollyWhite"
+   ],
+   "color": "#f2efe8",
+   "transparency": 0.0
+  },
+  {
+   "module": "LampGlow",
+   "fbx": "LampGlow.fbx",
+   "robloxMaterial": "Neon",
+   "triangles": 240,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    9.4,
+    190.6
+   ],
+   "robloxPosition": [
+    -0.0,
+    9.0,
+    100.0
+   ],
+   "sizeStuds": [
+    113.2,
+    1.9,
+    181.2
+   ],
+   "materials": [
+    "OP_LampGlow"
+   ],
+   "color": "#ffc35c",
+   "transparency": 0.0
+  },
+  {
+   "module": "LampPosts",
+   "fbx": "LampPosts.fbx",
+   "robloxMaterial": "Metal",
+   "triangles": 1600,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    8.9,
+    191.1
+   ],
+   "robloxPosition": [
+    -0.0,
+    5.55,
+    100.0
+   ],
+   "sizeStuds": [
+    114.2,
+    11.1,
+    182.2
+   ],
+   "materials": [
+    "OP_Iron"
+   ],
+   "color": "#2a2724",
+   "transparency": 0.0
+  },
+  {
+   "module": "Path1",
+   "fbx": "Path1.fbx",
+   "robloxMaterial": "Limestone",
+   "triangles": 2816,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -29.92,
+    63.92
+   ],
+   "robloxPosition": [
+    -0.0,
+    -0.342,
+    16.999
+   ],
+   "sizeStuds": [
+    23.835,
+    0.856,
+    93.837
+   ],
+   "materials": [
+    "OP_PathStone"
+   ],
+   "color": "#e3d6b8",
+   "transparency": 0.0
+  },
+  {
+   "module": "Path2",
+   "fbx": "Path2.fbx",
+   "robloxMaterial": "Limestone",
+   "triangles": 2288,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    64.08,
+    139.92
+   ],
+   "robloxPosition": [
+    0.0,
+    -0.343,
+    102.001
+   ],
+   "sizeStuds": [
+    23.836,
+    0.855,
+    75.837
+   ],
+   "materials": [
+    "OP_PathStone"
+   ],
+   "color": "#e3d6b8",
+   "transparency": 0.0
+  },
+  {
+   "module": "Path3",
+   "fbx": "Path3.fbx",
+   "robloxMaterial": "Limestone",
+   "triangles": 2640,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    140.08,
+    227.92
+   ],
+   "robloxPosition": [
+    0.001,
+    -0.34,
+    184.001
+   ],
+   "sizeStuds": [
+    23.838,
+    0.86,
+    87.837
+   ],
+   "materials": [
+    "OP_PathStone"
+   ],
+   "color": "#e3d6b8",
+   "transparency": 0.0
+  },
+  {
+   "module": "PathBorder",
+   "fbx": "PathBorder.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 24,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -30.0,
+    228.0
+   ],
+   "robloxPosition": [
+    -0.0,
+    0.08,
+    99.0
+   ],
+   "sizeStuds": [
+    25.5,
+    0.3,
+    258.0
+   ],
+   "materials": [
+    "OP_WallShade"
+   ],
+   "color": "#a8875c",
+   "transparency": 0.0
+  },
+  {
+   "module": "PlanterFlowers",
+   "fbx": "PlanterFlowers.fbx",
+   "robloxMaterial": "SmoothPlastic",
+   "triangles": 3240,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    17.06,
+    183.89
+   ],
+   "robloxPosition": [
+    0.027,
+    3.252,
+    100.476
+   ],
+   "sizeStuds": [
+    125.387,
+    1.296,
+    166.826
+   ],
+   "materials": [
+    "OP_Flower"
+   ],
+   "color": "#ffd23c",
+   "transparency": 0.0
+  },
+  {
+   "module": "PlanterLeaves",
+   "fbx": "PlanterLeaves.fbx",
+   "robloxMaterial": "Grass",
+   "triangles": 4000,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    15.7,
+    184.3
+   ],
+   "robloxPosition": [
+    0.007,
+    2.0,
+    100.0
+   ],
+   "sizeStuds": [
+    126.572,
+    2.6,
+    168.6
+   ],
+   "materials": [
+    "OP_Leaf"
+   ],
+   "color": "#4f9a3a",
+   "transparency": 0.0
+  },
+  {
+   "module": "Planters",
+   "fbx": "Planters.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 1080,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    16.0,
+    184.0
+   ],
+   "robloxPosition": [
+    -0.0,
+    0.8,
+    100.0
+   ],
+   "sizeStuds": [
+    126.0,
+    1.6,
+    168.0
+   ],
+   "materials": [
+    "OP_Trim"
+   ],
+   "color": "#e8dcc0",
+   "transparency": 0.0
+  },
+  {
+   "module": "RoyalBox",
+   "fbx": "RoyalBox.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 120,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    92.0,
+    108.0
+   ],
+   "robloxPosition": [
+    -98.5,
+    30.75,
+    100.0
+   ],
+   "sizeStuds": [
+    12.0,
+    3.5,
+    16.0
+   ],
+   "materials": [
+    "OP_Trim"
+   ],
+   "color": "#e8dcc0",
+   "transparency": 0.0
+  },
+  {
+   "module": "RoyalCanopy",
+   "fbx": "RoyalCanopy.fbx",
+   "robloxMaterial": "Fabric",
+   "triangles": 656,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    91.49,
+    108.5
+   ],
+   "robloxPosition": [
+    -92.66,
+    36.787,
+    99.995
+   ],
+   "sizeStuds": [
+    1.113,
+    6.044,
+    17.018
+   ],
+   "materials": [
+    "OP_Feather"
+   ],
+   "color": "#ff5fa8",
+   "transparency": 0.0
+  },
+  {
+   "module": "RoyalGold",
+   "fbx": "RoyalGold.fbx",
+   "robloxMaterial": "Metal",
+   "triangles": 24,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    92.2,
+    107.8
+   ],
+   "robloxPosition": [
+    -93.1,
+    34.5,
+    100.0
+   ],
+   "sizeStuds": [
+    1.2,
+    10.0,
+    15.6
+   ],
+   "materials": [
+    "OP_Gold"
+   ],
+   "color": "#d4a23a",
+   "transparency": 0.0
+  },
+  {
+   "module": "Stage_Stage",
+   "fbx": "Stage_Stage.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 108,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    203.0,
+    227.0
+   ],
+   "robloxPosition": [
+    -0.0,
+    1.5,
+    215.0
+   ],
+   "sizeStuds": [
+    32.0,
+    3.0,
+    24.0
+   ],
+   "materials": [
+    "OP_Stage"
+   ],
+   "color": "#8c6b4a",
+   "transparency": 0.0
+  },
+  {
+   "module": "Stage_Trim",
+   "fbx": "Stage_Trim.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 432,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    192.0,
+    227.5
+   ],
+   "robloxPosition": [
+    -0.0,
+    1.65,
+    209.75
+   ],
+   "sizeStuds": [
+    38.0,
+    3.3,
+    35.5
+   ],
+   "materials": [
+    "OP_Trim"
+   ],
+   "color": "#e8dcc0",
+   "transparency": 0.0
+  },
+  {
+   "module": "StageFacade_Trim",
+   "fbx": "StageFacade_Trim.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 24,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    224.2,
+    227.8
+   ],
+   "robloxPosition": [
+    -0.0,
+    21.0,
+    226.0
+   ],
+   "sizeStuds": [
+    52.0,
+    15.4,
+    3.6
+   ],
+   "materials": [
+    "OP_Trim"
+   ],
+   "color": "#e8dcc0",
+   "transparency": 0.0
+  },
+  {
+   "module": "StageFacade_Wall",
+   "fbx": "StageFacade_Wall.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 1080,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    224.5,
+    227.5
+   ],
+   "robloxPosition": [
+    -0.0,
+    12.0,
+    226.0
+   ],
+   "sizeStuds": [
+    50.6,
+    24.0,
+    3.0
+   ],
+   "materials": [
+    "OP_Wall"
+   ],
+   "color": "#c9a878",
+   "transparency": 0.0
+  },
+  {
+   "module": "StageFacade_WallShade",
+   "fbx": "StageFacade_WallShade.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 672,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    224.5,
+    227.5
+   ],
+   "robloxPosition": [
+    0.0,
+    20.05,
+    226.0
+   ],
+   "sizeStuds": [
+    48.2,
+    20.1,
+    3.0
+   ],
+   "materials": [
+    "OP_WallShade"
+   ],
+   "color": "#a8875c",
+   "transparency": 0.0
+  },
+  {
+   "module": "StageGold",
+   "fbx": "StageGold.fbx",
+   "robloxMaterial": "Metal",
+   "triangles": 12,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    202.6,
+    203.0
+   ],
+   "robloxPosition": [
+    -0.0,
+    2.8,
+    202.8
+   ],
+   "sizeStuds": [
+    32.4,
+    0.5,
+    0.4
+   ],
+   "materials": [
+    "OP_Gold"
+   ],
+   "color": "#d4a23a",
+   "transparency": 0.0
+  },
+  {
+   "module": "StandsE_Seats",
+   "fbx": "StandsE_Seats.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 48,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -30.0,
+    228.0
+   ],
+   "robloxPosition": [
+    101.0,
+    20.5,
+    99.0
+   ],
+   "sizeStuds": [
+    35.0,
+    41.0,
+    258.0
+   ],
+   "materials": [
+    "OP_Seats"
+   ],
+   "color": "#b89868",
+   "transparency": 0.0
+  },
+  {
+   "module": "StandsE_Trim",
+   "fbx": "StandsE_Trim.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 108,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -30.0,
+    228.0
+   ],
+   "robloxPosition": [
+    98.75,
+    29.25,
+    99.0
+   ],
+   "sizeStuds": [
+    40.5,
+    32.5,
+    258.0
+   ],
+   "materials": [
+    "OP_Trim"
+   ],
+   "color": "#e8dcc0",
+   "transparency": 0.0
+  },
+  {
+   "module": "StandsE_Wall",
+   "fbx": "StandsE_Wall.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 60,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -30.0,
+    228.0
+   ],
+   "robloxPosition": [
+    101.0,
+    22.5,
+    99.0
+   ],
+   "sizeStuds": [
+    45.0,
+    45.0,
+    258.0
+   ],
+   "materials": [
+    "OP_Wall"
+   ],
+   "color": "#c9a878",
+   "transparency": 0.0
+  },
+  {
+   "module": "StandsW_Seats",
+   "fbx": "StandsW_Seats.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 48,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -30.0,
+    228.0
+   ],
+   "robloxPosition": [
+    -101.0,
+    20.5,
+    99.0
+   ],
+   "sizeStuds": [
+    35.0,
+    41.0,
+    258.0
+   ],
+   "materials": [
+    "OP_Seats"
+   ],
+   "color": "#b89868",
+   "transparency": 0.0
+  },
+  {
+   "module": "StandsW_Trim",
+   "fbx": "StandsW_Trim.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 108,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -30.0,
+    228.0
+   ],
+   "robloxPosition": [
+    -98.75,
+    29.25,
+    99.0
+   ],
+   "sizeStuds": [
+    40.5,
+    32.5,
+    258.0
+   ],
+   "materials": [
+    "OP_Trim"
+   ],
+   "color": "#e8dcc0",
+   "transparency": 0.0
+  },
+  {
+   "module": "StandsW_Wall",
+   "fbx": "StandsW_Wall.fbx",
+   "robloxMaterial": "Sandstone",
+   "triangles": 60,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    -30.0,
+    228.0
+   ],
+   "robloxPosition": [
+    -101.0,
+    22.5,
+    99.0
+   ],
+   "sizeStuds": [
+    45.0,
+    45.0,
+    258.0
+   ],
+   "materials": [
+    "OP_Wall"
+   ],
+   "color": "#c9a878",
+   "transparency": 0.0
+  },
+  {
+   "module": "Throne",
+   "fbx": "Throne.fbx",
+   "robloxMaterial": "Fabric",
+   "triangles": 216,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    215.75,
+    221.57
+   ],
+   "robloxPosition": [
+    -0.0,
+    7.405,
+    218.661
+   ],
+   "sizeStuds": [
+    6.0,
+    8.209,
+    5.822
+   ],
+   "materials": [
+    "OP_ThroneRed"
+   ],
+   "color": "#7d1020",
+   "transparency": 0.0
+  },
+  {
+   "module": "ThroneGold",
+   "fbx": "ThroneGold.fbx",
+   "robloxMaterial": "Metal",
+   "triangles": 316,
+   "overLimit": false,
+   "outsideSlot": false,
+   "slotY": [
+    215.75,
+    222.2
+   ],
+   "robloxPosition": [
+    -0.0,
+    9.25,
+    218.975
+   ],
+   "sizeStuds": [
+    7.4,
+    8.3,
+    6.45
+   ],
+   "materials": [
+    "OP_Gold"
+   ],
+   "color": "#d4a23a",
+   "transparency": 0.0
+  }
+ ],
+ "anchors": [
+  {
+   "name": "VFX_Birdcage",
+   "robloxPosition": [
+    -0.0,
+    120.0,
+    212.0
+   ],
+   "kind": "string shimmer + slow tighten pulse during boss fight (runtime)"
+  },
+  {
+   "name": "VFX_BossStage",
+   "robloxPosition": [
+    -0.0,
+    3.0,
+    206.0
+   ],
+   "kind": "boss anchor + pink string aura (runtime)"
+  },
+  {
+   "name": "VFX_CrowdCheer-1",
+   "robloxPosition": [
+    98.5,
+    30.0,
+    115.0
+   ],
+   "kind": "crowd bob/cheer (client tween) + confetti bursts at boss fight (runtime)"
+  },
+  {
+   "name": "VFX_CrowdCheer1",
+   "robloxPosition": [
+    -98.5,
+    30.0,
+    115.0
+   ],
+   "kind": "crowd bob/cheer (client tween) + confetti bursts at boss fight (runtime)"
+  },
+  {
+   "name": "VFX_EggNest1",
+   "robloxPosition": [
+    -42.0,
+    1.8,
+    118.0
+   ],
+   "kind": "golden sparkle + treasure glint (runtime); egg spawn anchor"
+  },
+  {
+   "name": "VFX_EggNest2",
+   "robloxPosition": [
+    42.0,
+    1.8,
+    118.0
+   ],
+   "kind": "golden sparkle + treasure glint (runtime); egg spawn anchor"
+  },
+  {
+   "name": "VFX_EggNest3",
+   "robloxPosition": [
+    -26.0,
+    1.8,
+    158.0
+   ],
+   "kind": "golden sparkle + treasure glint (runtime); egg spawn anchor"
+  },
+  {
+   "name": "VFX_EggNest4",
+   "robloxPosition": [
+    26.0,
+    1.8,
+    158.0
+   ],
+   "kind": "golden sparkle + treasure glint (runtime); egg spawn anchor"
+  },
+  {
+   "name": "VFX_EggNest5",
+   "robloxPosition": [
+    -0.0,
+    1.8,
+    184.0
+   ],
+   "kind": "golden sparkle + treasure glint (runtime); egg spawn anchor"
+  },
+  {
+   "name": "VFX_FeatherSway",
+   "robloxPosition": [
+    -0.0,
+    10.0,
+    224.0
+   ],
+   "kind": "feather fan sway (client CFrame oscillation)"
+  },
+  {
+   "name": "VFX_Lamp_-56_10",
+   "robloxPosition": [
+    56.0,
+    9.0,
+    10.0
+   ],
+   "kind": "warm PointLight (runtime)"
+  },
+  {
+   "name": "VFX_Lamp_-56_130",
+   "robloxPosition": [
+    56.0,
+    9.0,
+    130.0
+   ],
+   "kind": "warm PointLight (runtime)"
+  },
+  {
+   "name": "VFX_Lamp_-56_170",
+   "robloxPosition": [
+    56.0,
+    9.0,
+    170.0
+   ],
+   "kind": "warm PointLight (runtime)"
+  },
+  {
+   "name": "VFX_Lamp_-56_50",
+   "robloxPosition": [
+    56.0,
+    9.0,
+    50.0
+   ],
+   "kind": "warm PointLight (runtime)"
+  },
+  {
+   "name": "VFX_Lamp_-56_90",
+   "robloxPosition": [
+    56.0,
+    9.0,
+    90.0
+   ],
+   "kind": "warm PointLight (runtime)"
+  },
+  {
+   "name": "VFX_Lamp_56_10",
+   "robloxPosition": [
+    -56.0,
+    9.0,
+    10.0
+   ],
+   "kind": "warm PointLight (runtime)"
+  },
+  {
+   "name": "VFX_Lamp_56_130",
+   "robloxPosition": [
+    -56.0,
+    9.0,
+    130.0
+   ],
+   "kind": "warm PointLight (runtime)"
+  },
+  {
+   "name": "VFX_Lamp_56_170",
+   "robloxPosition": [
+    -56.0,
+    9.0,
+    170.0
+   ],
+   "kind": "warm PointLight (runtime)"
+  },
+  {
+   "name": "VFX_Lamp_56_50",
+   "robloxPosition": [
+    -56.0,
+    9.0,
+    50.0
+   ],
+   "kind": "warm PointLight (runtime)"
+  },
+  {
+   "name": "VFX_Lamp_56_90",
+   "robloxPosition": [
+    -56.0,
+    9.0,
+    90.0
+   ],
+   "kind": "warm PointLight (runtime)"
+  }
+ ],
+ "colliders": []
+}
