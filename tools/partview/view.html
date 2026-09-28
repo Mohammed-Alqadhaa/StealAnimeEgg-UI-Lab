@@ -1,0 +1,71 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Part Viewer</title>
+<style>html,body{margin:0;background:#000;overflow:hidden}#tag{position:absolute;left:8px;bottom:6px;color:#fff;font:12px sans-serif;opacity:.7}</style>
+</head><body><div id="tag"></div>
+<script type="importmap">{"imports":{"three":"../node_modules/three/build/three.module.js"}}</script>
+<script type="module">
+/* Review-only approximation of Roblox parts (boxes, balls, cylinders, wedges, ellipsoids).
+   Meshes (MeshPart/FileMesh/Union) are drawn as their bounding boxes, translucent. */
+import * as THREE from 'three';
+const q = new URLSearchParams(location.search);
+const data = window.PART_DATA;
+const W = +(q.get('w') || 1280), H = +(q.get('h') || 720);
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+renderer.setSize(W, H); renderer.setPixelRatio(1);
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.shadowMap.enabled = true;
+document.body.appendChild(renderer.domElement);
+const scene = new THREE.Scene();
+const sky = q.get('sky') || '#8fd0ff';
+scene.background = new THREE.Color(sky);
+if (q.get('fog')) scene.fog = new THREE.Fog(new THREE.Color(q.get('fog')), +(q.get('fogNear') || 150), +(q.get('fogFar') || 700));
+const amb = +(q.get('ambient') || 0.65);
+scene.add(new THREE.HemisphereLight(0xffffff, 0x444466, amb));
+const sun = new THREE.DirectionalLight(new THREE.Color(q.get('sun') || '#ffffff'), +(q.get('sunI') || 1.6));
+sun.position.set(80, 160, -60); sun.castShadow = true; sun.shadow.mapSize.set(2048, 2048);
+Object.assign(sun.shadow.camera, { left: -300, right: 300, top: 300, bottom: -300, far: 800 });
+scene.add(sun);
+const geoBox = new THREE.BoxGeometry(1, 1, 1), geoBall = new THREE.SphereGeometry(0.5, 20, 14);
+const geoCyl = new THREE.CylinderGeometry(0.5, 0.5, 1, 20); geoCyl.rotateZ(Math.PI / 2); // Roblox cylinder axis = X
+const wedge = (() => { const g = new THREE.BufferGeometry();
+  // Roblox wedge: slope from top-back (+Z? ) to front-bottom; approximate: triangle profile in YZ
+  const v = [ -0.5,-0.5,-0.5, 0.5,-0.5,-0.5, -0.5,-0.5,0.5, 0.5,-0.5,0.5, -0.5,0.5,0.5, 0.5,0.5,0.5 ];
+  const idx = [0,2,1, 1,2,3, 2,4,3, 3,4,5, 0,1,4, 1,5,4, 0,4,2, 1,3,5];
+  g.setAttribute('position', new THREE.Float32BufferAttribute(v, 3)); g.setIndex(idx); g.computeVertexNormals(); return g; })();
+const mats = new Map();
+function mat(c, m, t) {
+  const key = c.join(',') + m + t;
+  if (mats.has(key)) return mats.get(key);
+  const col = new THREE.Color().setRGB(c[0], c[1], c[2], THREE.SRGBColorSpace);
+  const neon = m === 'Neon', glass = m === 'Glass' || m === 'ForceField';
+  const mm = new THREE.MeshStandardMaterial({ color: col, roughness: m === 'Metal' ? 0.35 : glass ? 0.1 : 0.75, metalness: m === 'Metal' ? 0.6 : 0,
+    emissive: neon ? col : new THREE.Color(0), emissiveIntensity: neon ? 0.75 : 0,
+    transparent: t > 0 || glass, opacity: Math.max(0.05, 1 - t) * (glass ? 0.85 : 1) });
+  mats.set(key, mm); return mm;
+}
+let lights = 0;
+for (const p of data.parts) {
+  let g = geoBox;
+  if (p.sh === 'Ball') g = geoBall; else if (p.sh === 'Cylinder') g = geoCyl; else if (p.sh === 'Wedge') g = wedge; else if (p.sh === 'Ellipsoid' || p.sh === 'Head') g = geoBall;
+  const isMesh = p.sh === 'Mesh';
+  const mesh = new THREE.Mesh(g, mat(p.c, p.m, isMesh ? Math.max(p.t, 0.35) : p.t));
+  const [x, y, z, a, b, c, d, e, f, gg, h, i] = p.cf;
+  const m4 = new THREE.Matrix4().set(a, b, c, x, d, e, f, y, gg, h, i, z, 0, 0, 0, 1);
+  mesh.applyMatrix4(m4);
+  // Roblox is left-handed-ish in Z vs three's view; mirror Z so +Z is 'forward into the screen' consistently
+  let sx = p.s[0], sy = p.s[1], sz = p.s[2];
+  if (p.sh === 'Ball') { const s = Math.min(sx, sy, sz); sx = sy = sz = s; }
+  mesh.scale.set(sx, sy, sz);
+  mesh.castShadow = p.t < 0.5; mesh.receiveShadow = true;
+  scene.add(mesh);
+  if (p.l && lights < 40) { lights++; const L = new THREE.PointLight(new THREE.Color().setRGB(p.l[0], p.l[1], p.l[2], THREE.SRGBColorSpace), p.l[4] * 40, p.l[3] * 2, 1.5); L.position.set(x, y, z); scene.add(L); }
+}
+const cam = new THREE.PerspectiveCamera(+(q.get('fov') || 55), W / H, 0.5, 5000);
+const [cx, cy, cz] = (q.get('cam') || '0,40,-60').split(',').map(Number);
+const [tx, ty, tz] = (q.get('at') || '0,0,0').split(',').map(Number);
+cam.position.set(cx, cy, cz); cam.lookAt(tx, ty, tz);
+// Roblox uses a right-handed system with -Z forward; three matches axes, only camera placement matters
+renderer.render(scene, cam);
+document.getElementById('tag').textContent = (q.get('title') || '') + '  •  three.js review approximation (not Roblox Studio)  •  ' + data.parts.length + ' parts';
+document.body.dataset.ready = '1';
+</script></body></html>

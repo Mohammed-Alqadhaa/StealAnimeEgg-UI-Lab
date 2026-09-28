@@ -1,3 +1,5 @@
 tools/node_modules/
 *.log
 .DS_Store
+tools/partview/_view.html
+game/build/

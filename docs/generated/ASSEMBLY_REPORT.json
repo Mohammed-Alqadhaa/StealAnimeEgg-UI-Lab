@@ -1,0 +1,364 @@
+{
+  "archived": [
+    {
+      "path": "ServerScriptService.Phase1Init",
+      "to": "ServerStorage.SAE_Archive.LegacyServer",
+      "why": "replaced by SAE_Server services (Muscle/BoxingBag/6-zone obsolete)"
+    },
+    {
+      "path": "ServerScriptService.FarmService",
+      "to": "ServerStorage.SAE_Archive.LegacyServer",
+      "why": "replaced by SAE_Server services (Muscle/BoxingBag/6-zone obsolete)"
+    },
+    {
+      "path": "ServerScriptService.PlayerStatsService",
+      "to": "ServerStorage.SAE_Archive.LegacyServer",
+      "why": "replaced by SAE_Server services (Muscle/BoxingBag/6-zone obsolete)"
+    },
+    {
+      "path": "ServerScriptService.TrainingService",
+      "to": "ServerStorage.SAE_Archive.LegacyServer",
+      "why": "replaced by SAE_Server services (Muscle/BoxingBag/6-zone obsolete)"
+    },
+    {
+      "path": "ServerScriptService.InspectionWorld",
+      "to": "ServerStorage.SAE_Archive.LegacyServer",
+      "why": "replaced by SAE_Server services (Muscle/BoxingBag/6-zone obsolete)"
+    },
+    {
+      "path": "ServerScriptService.AkazaBossController",
+      "to": "ServerStorage.SAE_Archive.LegacyServer",
+      "why": "replaced by SAE_Server services (Muscle/BoxingBag/6-zone obsolete)"
+    },
+    {
+      "path": "ServerScriptService.GiyuWaterEggAnimation",
+      "to": "ServerStorage.SAE_Archive.LegacyServer",
+      "why": "replaced by SAE_Server services (Muscle/BoxingBag/6-zone obsolete)"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.AnimeEggUiDesign",
+      "to": "ServerStorage.SAE_Archive.LegacyClient",
+      "why": "replaced by SAE_Client (UI Lab UI, ZoneFx, no Rebirth)"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.MuscleHud",
+      "to": "ServerStorage.SAE_Archive.LegacyClient",
+      "why": "replaced by SAE_Client (UI Lab UI, ZoneFx, no Rebirth)"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.FarmOwnershipClient",
+      "to": "ServerStorage.SAE_Archive.LegacyClient",
+      "why": "replaced by SAE_Client (UI Lab UI, ZoneFx, no Rebirth)"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.AkazaLocalAtmosphere",
+      "to": "ServerStorage.SAE_Archive.LegacyClient",
+      "why": "replaced by SAE_Client (UI Lab UI, ZoneFx, no Rebirth)"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.AkazaZoneVFX",
+      "to": "ServerStorage.SAE_Archive.LegacyClient",
+      "why": "replaced by SAE_Client (UI Lab UI, ZoneFx, no Rebirth)"
+    },
+    {
+      "path": "StarterGui.AnimeEggUI",
+      "to": "ServerStorage.SAE_Archive.LegacyUI",
+      "why": "legacy ScreenGui (basic UI / Muscle HUD / NavStack)"
+    },
+    {
+      "path": "StarterGui.ScreenGui",
+      "to": "ServerStorage.SAE_Archive.LegacyUI",
+      "why": "legacy ScreenGui (basic UI / Muscle HUD / NavStack)"
+    },
+    {
+      "path": "ReplicatedStorage.GameConfig",
+      "to": "ServerStorage.SAE_Archive.LegacyShared",
+      "why": "Muscle/Strength config superseded by SAE_Shared.Balance"
+    },
+    {
+      "path": "Workspace.Muzan",
+      "to": "ServerStorage.SAE_Archive.LegacyDisplayModels",
+      "why": "hub display models; copies live in SAE_Assets.CharacterRigs"
+    },
+    {
+      "path": "Workspace.Rengoku",
+      "to": "ServerStorage.SAE_Archive.LegacyDisplayModels",
+      "why": "hub display models; copies live in SAE_Assets.CharacterRigs"
+    },
+    {
+      "path": "Workspace.Tanjiro Kamado",
+      "to": "ServerStorage.SAE_Archive.LegacyDisplayModels",
+      "why": "hub display models; copies live in SAE_Assets.CharacterRigs"
+    },
+    {
+      "path": "Workspace.Akaza",
+      "to": "ServerStorage.SAE_Archive.LegacyDisplayModels",
+      "why": "hub display models; copies live in SAE_Assets.CharacterRigs"
+    },
+    {
+      "path": "Workspace.Yoriichi",
+      "to": "ServerStorage.SAE_Archive.LegacyDisplayModels",
+      "why": "hub display models; copies live in SAE_Assets.CharacterRigs"
+    },
+    {
+      "path": "Workspace.FarmHubVisualPrototype",
+      "to": "ServerStorage.SAE_Archive.LegacyWorld",
+      "why": "6-zone placeholder route (obsolete, §24) + old hub leftovers"
+    },
+    {
+      "path": "Workspace.Egg_Giyu_Water",
+      "to": "ServerStorage.SAE_Archive.PreservedEggs",
+      "why": "Giyu Water egg + VFX — preserved, not in the active Demon Slayer 5 (§31)"
+    },
+    {
+      "path": "Workspace.OfficialEggInspection",
+      "to": "ServerStorage.SAE_Archive.PreservedEggs",
+      "why": "egg inspection area (Shinobu/Gyomei/Mitsuri variants, scale reference)"
+    },
+    {
+      "path": "Workspace.Muzan_Corrupted_Egg_EYE...INUOUS_v03_GAMEPLAY_ONLY",
+      "to": "ServerStorage.SAE_Archive.PreservedEggs",
+      "why": "alternative Muzan egg (not the approved central set)"
+    }
+  ],
+  "created": [
+    "Workspace.SAE_World.Hub (7 farms, perimeter fence, treadmills, signs, TrailShop, SellKiosk, FogGate)",
+    "Workspace.SAE_World.Worlds.MHA",
+    "Workspace.SAE_World.Worlds.DragonBall",
+    "Workspace.SAE_World.Worlds.OnePiece",
+    "Workspace.SAE_World.Worlds.Naruto",
+    "Workspace.SAE_World.Worlds.Berserk",
+    "Workspace.SAE_World.Worlds.Bleach",
+    "Workspace.SAE_World.Worlds.JJK",
+    "Workspace.SAE_World.Worlds.SoloLeveling",
+    "ReplicatedStorage.SAE_Shared, ServerScriptService.SAE_Server, StarterPlayerScripts.SAE_Client"
+  ],
+  "demonSlayerWiden": {
+    "floorTilesCloned": 14,
+    "moved": 292
+  },
+  "eggSpawns": 45,
+  "importAudit": [
+    {
+      "name": "Tanjiro (existing R6 model in Last CP, asset 4167214076)",
+      "removed": {
+        "Attributes": 47
+      }
+    },
+    {
+      "name": "Rengoku (existing R6 model in Last CP, asset 17831748983)",
+      "removed": {
+        "Attributes": 70,
+        "Configuration": 2
+      }
+    },
+    {
+      "name": "Yoriichi (existing R6 model in Last CP, asset 17834842386)",
+      "removed": {
+        "Configuration": 4
+      }
+    },
+    {
+      "name": "Muzan (existing R6 model in Last CP)",
+      "removed": {
+        "Attributes": 70,
+        "Configuration": 3
+      }
+    },
+    {
+      "name": "Akaza (existing R6 model in Last CP, asset 17831588851)",
+      "removed": {
+        "Attributes": 77,
+        "Configuration": 4
+      }
+    },
+    {
+      "name": "Akaza boss (Last CP Zone1, scaled 2.7, asset 17831588851)",
+      "removed": {
+        "Attributes": 68
+      }
+    }
+  ],
+  "instanceCount": 18468,
+  "maxPlayersSetInFile": true,
+  "moved": [
+    "FarmHubVisualPrototype.SixZoneRoute.Zone1.BlenderEnvironment → SAE_World.Worlds.DemonSlayer.Environment (widened ×1.5)",
+    "OfficialEggInspection.RawAssets['Rengoku - flame egg'] → DemonSlayer.Eggs.RengokuSpawn.Visual (unchanged)",
+    "OfficialEggInspection.RawAssets['Akaza - Crimson Catsegg V2.0'] → DemonSlayer.Eggs.AkazaSpawn.Visual (unchanged)",
+    "OfficialEggInspection.RawAssets['Muzan - McVisibility Demons Heart Egg'] → DemonSlayer.Eggs.MuzanSpawn.Visual (unchanged)",
+    "OfficialEggInspection.RawAssets['Yoriichi - Flaming Egg of Burning'] → DemonSlayer.Eggs.YoriichiSpawn.Visual (unchanged)"
+  ],
+  "output": "checkpoints/StealAnAnimeEgg_FullProduction_OwnerReview_v01.rbxlx",
+  "partsCreatedByBuilders": 8940,
+  "removed": {},
+  "standIns": [
+    {
+      "characterId": "deku",
+      "name": "Deku"
+    },
+    {
+      "characterId": "bakugo",
+      "name": "Bakugo"
+    },
+    {
+      "characterId": "todoroki",
+      "name": "Todoroki"
+    },
+    {
+      "characterId": "allmight",
+      "name": "All Might"
+    },
+    {
+      "characterId": "shigaraki",
+      "knownAsset": 17832884677,
+      "name": "Shigaraki"
+    },
+    {
+      "characterId": "goku",
+      "name": "Goku"
+    },
+    {
+      "characterId": "vegeta",
+      "name": "Vegeta"
+    },
+    {
+      "characterId": "gohan",
+      "name": "Gohan"
+    },
+    {
+      "characterId": "broly",
+      "name": "Broly"
+    },
+    {
+      "characterId": "frieza",
+      "name": "Frieza"
+    },
+    {
+      "characterId": "luffy",
+      "name": "Luffy"
+    },
+    {
+      "characterId": "zoro",
+      "name": "Zoro"
+    },
+    {
+      "characterId": "nami",
+      "name": "Nami"
+    },
+    {
+      "characterId": "kaido",
+      "name": "Kaido"
+    },
+    {
+      "characterId": "doflamingo",
+      "name": "Doflamingo"
+    },
+    {
+      "characterId": "naruto",
+      "name": "Naruto"
+    },
+    {
+      "characterId": "sasuke",
+      "name": "Sasuke"
+    },
+    {
+      "characterId": "kakashi",
+      "name": "Kakashi"
+    },
+    {
+      "characterId": "itachi",
+      "name": "Itachi"
+    },
+    {
+      "characterId": "madara",
+      "name": "Madara"
+    },
+    {
+      "characterId": "guts",
+      "name": "Guts"
+    },
+    {
+      "characterId": "casca",
+      "name": "Casca"
+    },
+    {
+      "characterId": "skullknight",
+      "name": "Skull Knight"
+    },
+    {
+      "characterId": "zodd",
+      "name": "Zodd"
+    },
+    {
+      "characterId": "griffith",
+      "name": "Griffith / Femto"
+    },
+    {
+      "characterId": "ichigo",
+      "name": "Ichigo"
+    },
+    {
+      "characterId": "aizen",
+      "name": "Aizen (Muken)"
+    },
+    {
+      "characterId": "kenpachi",
+      "name": "Kenpachi"
+    },
+    {
+      "characterId": "yamamoto",
+      "name": "Yamamoto"
+    },
+    {
+      "characterId": "yhwach",
+      "name": "Yhwach (The Almighty)"
+    },
+    {
+      "characterId": "yuji",
+      "name": "Yuji"
+    },
+    {
+      "characterId": "gojo",
+      "name": "Gojo"
+    },
+    {
+      "characterId": "toji",
+      "name": "Toji"
+    },
+    {
+      "characterId": "mahoraga",
+      "name": "Mahoraga"
+    },
+    {
+      "characterId": "sukuna",
+      "name": "Sukuna"
+    },
+    {
+      "characterId": "igris",
+      "name": "Igris"
+    },
+    {
+      "characterId": "beru",
+      "name": "Beru"
+    },
+    {
+      "characterId": "chahaein",
+      "name": "Cha Hae-In"
+    },
+    {
+      "characterId": "thomasandre",
+      "name": "Thomas Andre"
+    },
+    {
+      "characterId": "sungjinwoo",
+      "name": "Sung Jin-Woo"
+    }
+  ],
+  "vendors": {
+    "sell": "Rem — Re:Zero (stand-in; not in the 45 hatchable roster)",
+    "trailShop": "Makima (stand-in)"
+  },
+  "warnings": [
+    "production UI model not found (game/build/SAE_UI.rbxmx) — run tools/build-prod.js first"
+  ]
+}
