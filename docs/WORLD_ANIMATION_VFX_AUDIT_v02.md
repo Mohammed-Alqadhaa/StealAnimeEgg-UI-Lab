@@ -1,0 +1,18 @@
+# World Animation / VFX Audit — v02
+
+**Rule:** runtime VFX and animation belong to Roblox (ParticleEmitters, Beams, PointLights, Texture scrolling,
+TweenService, client-side motion). Blender provides only the geometry and named `VFX_*` anchor empties. Those are
+exported in each world's `manifest.json` and become Attachments under `<World>.V02_VFX`.
+
+**Status:** nothing in this file is **ANIMATION/VFX VERIFIED**. That requires Studio.
+
+| # | World | Anchors (Blender) | Planned runtime effects | Status |
+|---|---|---|---|---|
+| 1 | Demon Slayer (Akaza) | none. Existing hooks: `AnimatedRiverFlow` textures, `FlowingWaterfall` beams, compass inlay, lantern lights | River scroll + foam, compass pulse, mist, lantern flicker, petals/energy. Everything goes in a new `V02_VFX` folder and the Akaza fingerprint must pass before and after (`AKAZA_PRESERVATION_AUDIT_v02.md` §5) | PLANNED |
+| 2 | MHA (Shigaraki) | `VFX_ThroneAura`, `VFX_BossStage`, `VFX_EggNest1–5`, `VFX_Lantern_*` ×6, `VFX_BarNeonFlicker` (14 total) | Decay purple aura + dust at the throne; purple swirl + rising motes on egg nests; crack-glow pulse (Neon `Color` tween on `CrackGlow`, `WallCracks`, `PillarCracks`); lantern flicker; bar neon flicker + smoke haze; banner/cloak sway (small client CFrame oscillation) | ANCHORS EXPORTED · runtime code PENDING |
+| 3 | Dragon Ball (Frieza) | — | Namek | PENDING |
+| 4 | One Piece (Doflamingo) | — | Dressrosa | PENDING |
+| 5 | Naruto (Madara) | — | Konoha | PENDING |
+| 6 | Bleach (Yhwach) | — | R10 palace | PENDING |
+| 7 | JJK (Sukuna) | — | Shibuya | PENDING |
+| 8 | Solo Leveling (Sung Jin-Woo) | — | Shadow corridor | PENDING |
