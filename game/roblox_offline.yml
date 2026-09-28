@@ -1,0 +1,70 @@
+base: luau
+globals:
+  game:
+    any: true
+  script:
+    any: true
+  workspace:
+    any: true
+  Instance:
+    any: true
+  Enum:
+    any: true
+  UDim:
+    any: true
+  UDim2:
+    any: true
+  Vector2:
+    any: true
+  Vector3:
+    any: true
+  Color3:
+    any: true
+  ColorSequence:
+    any: true
+  ColorSequenceKeypoint:
+    any: true
+  NumberSequence:
+    any: true
+  TweenInfo:
+    any: true
+  CFrame:
+    any: true
+  Font:
+    any: true
+  task:
+    any: true
+  typeof:
+    any: true
+  warn:
+    any: true
+  tick:
+    any: true
+  Random:
+    any: true
+  RaycastParams:
+    any: true
+  OverlapParams:
+    any: true
+  NumberRange:
+    any: true
+  NumberSequenceKeypoint:
+    any: true
+  Vector3int16:
+    any: true
+  PhysicalProperties:
+    any: true
+  BrickColor:
+    any: true
+  Rect:
+    any: true
+  Region3:
+    any: true
+  Axes:
+    any: true
+  Faces:
+    any: true
+  DateTime:
+    any: true
+  utf8:
+    any: true

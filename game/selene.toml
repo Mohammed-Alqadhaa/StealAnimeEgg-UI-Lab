@@ -1,0 +1,3 @@
+std = "roblox_offline"
+[rules]
+shadowing = "allow"

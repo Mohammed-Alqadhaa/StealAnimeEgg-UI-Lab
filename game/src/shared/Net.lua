@@ -31,6 +31,7 @@ Net.EVENTS = {
 	"StateSnapshot", -- (privateState)            inventory, eggs, index, trails …
 	"Notify", -- (kind, text, extra)              toasts / feedback
 	"EggFx", -- (kind, data)                      SECURED / DROPPED / RETURNED feedback
+	"Knockback", -- (impulse: Vector3)            applied locally to the client-owned character
 }
 
 Net.FUNCTIONS = {
