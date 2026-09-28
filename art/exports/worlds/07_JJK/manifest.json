@@ -3,6 +3,32 @@
   -30.0,
   228.0
  ],
+ "layers": {
+  "PLAYABLE": {
+   "collides": true,
+   "strictSlot": true
+  },
+  "BOUNDARY": {
+   "collides": true,
+   "strictSlot": true
+  },
+  "BOSS_STAGE": {
+   "collides": true,
+   "strictSlot": true
+  },
+  "PROPS": {
+   "collides": false,
+   "strictSlot": true
+  },
+  "BACKGROUND": {
+   "collides": false,
+   "strictSlot": false
+  },
+  "SKY": {
+   "collides": false,
+   "strictSlot": false
+  }
+ },
  "world": "JJK",
  "units": "1 Blender unit = 1 stud",
  "mapping": "Roblox(X,Y,Z) = (-x, z, z0 + y)",
@@ -11,13 +37,18 @@
   {
    "module": "BuildingsE_Building",
    "fbx": "BuildingsE_Building.fbx",
+   "layer": "BACKGROUND",
+   "canCollide": false,
    "robloxMaterial": "Concrete",
    "triangles": 96,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -104.17,
     -29.0,
-    227.0
+    0.0,
+    -78.0,
+    227.0,
+    89.19
    ],
    "robloxPosition": [
     91.085,
@@ -38,13 +69,18 @@
   {
    "module": "BuildingsE_BuildingLight",
    "fbx": "BuildingsE_BuildingLight.fbx",
+   "layer": "BACKGROUND",
+   "canCollide": false,
    "robloxMaterial": "Concrete",
    "triangles": 312,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -105.1,
     -29.3,
-    227.3
+    0.0,
+    -75.0,
+    227.3,
+    90.39
    ],
    "robloxPosition": [
     90.049,
@@ -65,13 +101,18 @@
   {
    "module": "BuildingsE_BuildingRed",
    "fbx": "BuildingsE_BuildingRed.fbx",
+   "layer": "BACKGROUND",
+   "canCollide": false,
    "robloxMaterial": "Concrete",
    "triangles": 24,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -104.8,
     41.1,
-    127.77
+    0.0,
+    -78.0,
+    127.77,
+    88.56
    ],
    "robloxPosition": [
     91.399,
@@ -92,13 +133,18 @@
   {
    "module": "BuildingsW_Building",
    "fbx": "BuildingsW_Building.fbx",
+   "layer": "BACKGROUND",
+   "canCollide": false,
    "robloxMaterial": "Concrete",
    "triangles": 48,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    78.0,
     -2.27,
-    138.5
+    0.0,
+    105.57,
+    138.5,
+    81.78
    ],
    "robloxPosition": [
     -91.787,
@@ -119,13 +165,18 @@
   {
    "module": "BuildingsW_BuildingLight",
    "fbx": "BuildingsW_BuildingLight.fbx",
+   "layer": "BACKGROUND",
+   "canCollide": false,
    "robloxMaterial": "Concrete",
    "triangles": 324,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    75.0,
     -29.3,
-    227.3
+    0.0,
+    107.24,
+    227.3,
+    84.86
    ],
    "robloxPosition": [
     -91.122,
@@ -146,13 +197,18 @@
   {
    "module": "BuildingsW_BuildingRed",
    "fbx": "BuildingsW_BuildingRed.fbx",
+   "layer": "BACKGROUND",
+   "canCollide": false,
    "robloxMaterial": "Concrete",
    "triangles": 24,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    78.0,
     18.38,
-    94.55
+    0.0,
+    105.38,
+    94.55,
+    62.0
    ],
    "robloxPosition": [
     -91.692,
@@ -173,13 +229,18 @@
   {
    "module": "Car",
    "fbx": "Car.fbx",
+   "layer": "PROPS",
+   "canCollide": false,
    "robloxMaterial": "SmoothPlastic",
    "triangles": 216,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -67.55,
     54.85,
-    65.15
+    -0.15,
+    -60.45,
+    65.15,
+    4.31
    ],
    "robloxPosition": [
     64.0,
@@ -200,13 +261,18 @@
   {
    "module": "CarGlass",
    "fbx": "CarGlass.fbx",
+   "layer": "PROPS",
+   "canCollide": false,
    "robloxMaterial": "Glass",
    "triangles": 12,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -66.95,
     57.49,
-    63.71
+    2.44,
+    -61.45,
+    63.71,
+    4.16
    ],
    "robloxPosition": [
     64.2,
@@ -227,13 +293,18 @@
   {
    "module": "CurseCracks",
    "fbx": "CurseCracks.fbx",
+   "layer": "PLAYABLE",
+   "canCollide": true,
    "robloxMaterial": "Neon",
    "triangles": 288,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -38.19,
     118.87,
-    185.1
+    0.01,
+    36.46,
+    185.1,
+    0.06
    ],
    "robloxPosition": [
     0.865,
@@ -254,13 +325,18 @@
   {
    "module": "EggPedestalGlow",
    "fbx": "EggPedestalGlow.fbx",
+   "layer": "PROPS",
+   "canCollide": false,
    "robloxMaterial": "Neon",
    "triangles": 1344,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -44.44,
     115.56,
-    186.44
+    1.48,
+    44.44,
+    186.44,
+    1.76
    ],
    "robloxPosition": [
     0.0,
@@ -281,13 +357,18 @@
   {
    "module": "EggPedestals_Building",
    "fbx": "EggPedestals_Building.fbx",
+   "layer": "PLAYABLE",
+   "canCollide": true,
    "robloxMaterial": "Slate",
    "triangles": 120,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -44.17,
     115.5,
-    186.5
+    1.2,
+    44.17,
+    186.5,
+    1.6
    ],
    "robloxPosition": [
     -0.0,
@@ -308,13 +389,18 @@
   {
    "module": "EggPedestals_Pedestal",
    "fbx": "EggPedestals_Pedestal.fbx",
+   "layer": "PLAYABLE",
+   "canCollide": true,
    "robloxMaterial": "Slate",
    "triangles": 120,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -44.6,
     115.0,
-    187.0
+    0.0,
+    44.6,
+    187.0,
+    1.2
    ],
    "robloxPosition": [
     -0.0,
@@ -335,13 +421,18 @@
   {
    "module": "EntrySign_Iron",
    "fbx": "EntrySign_Iron.fbx",
+   "layer": "PROPS",
+   "canCollide": false,
    "robloxMaterial": "Metal",
    "triangles": 36,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -58.0,
     -3.6,
-    -2.4
+    0.0,
+    58.0,
+    -2.4,
+    22.3
    ],
    "robloxPosition": [
     -0.0,
@@ -349,7 +440,7 @@
     -3.0
    ],
    "sizeStuds": [
-    90.0,
+    116.0,
     22.3,
     1.2
    ],
@@ -362,13 +453,18 @@
   {
    "module": "EntrySign_SignBoard",
    "fbx": "EntrySign_SignBoard.fbx",
+   "layer": "PROPS",
+   "canCollide": false,
    "robloxMaterial": "Metal",
    "triangles": 12,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -15.0,
     -3.3,
-    -2.7
+    15.5,
+    15.0,
+    -2.7,
+    20.5
    ],
    "robloxPosition": [
     -0.0,
@@ -389,13 +485,18 @@
   {
    "module": "EntrySignNeon",
    "fbx": "EntrySignNeon.fbx",
+   "layer": "PROPS",
+   "canCollide": false,
    "robloxMaterial": "Neon",
    "triangles": 24,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -14.0,
     -3.5,
-    -3.3
+    15.6,
+    14.0,
+    -3.3,
+    20.4
    ],
    "robloxPosition": [
     -0.0,
@@ -416,13 +517,18 @@
   {
    "module": "Grout",
    "fbx": "Grout.fbx",
+   "layer": "PLAYABLE",
+   "canCollide": true,
    "robloxMaterial": "Asphalt",
    "triangles": 12,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -80.0,
     -30.0,
-    228.0
+    -0.65,
+    80.0,
+    228.0,
+    -0.25
    ],
    "robloxPosition": [
     -0.0,
@@ -443,13 +549,18 @@
   {
    "module": "NeonCyanE",
    "fbx": "NeonCyanE.fbx",
+   "layer": "BACKGROUND",
+   "canCollide": false,
    "robloxMaterial": "Neon",
    "triangles": 288,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -78.0,
     88.43,
-    159.63
+    29.44,
+    -74.8,
+    159.63,
+    76.03
    ],
    "robloxPosition": [
     76.4,
@@ -470,22 +581,27 @@
   {
    "module": "NeonCyanW",
    "fbx": "NeonCyanW.fbx",
+   "layer": "BACKGROUND",
+   "canCollide": false,
    "robloxMaterial": "Neon",
    "triangles": 264,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    74.8,
     -19.01,
-    102.8
+    5.18,
+    78.0,
+    102.8,
+    27.45
    ],
    "robloxPosition": [
     -76.4,
-    13.1,
+    16.319,
     41.896
    ],
    "sizeStuds": [
     3.2,
-    22.949,
+    22.272,
     121.816
    ],
    "materials": [
@@ -497,13 +613,18 @@
   {
    "module": "NeonPinkE",
    "fbx": "NeonPinkE.fbx",
+   "layer": "BACKGROUND",
+   "canCollide": false,
    "robloxMaterial": "Neon",
    "triangles": 408,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -81.65,
     -5.68,
-    208.0
+    19.43,
+    -74.8,
+    208.0,
+    95.15
    ],
    "robloxPosition": [
     78.225,
@@ -524,22 +645,27 @@
   {
    "module": "NeonPinkW",
    "fbx": "NeonPinkW.fbx",
+   "layer": "BACKGROUND",
+   "canCollide": false,
    "robloxMaterial": "Neon",
    "triangles": 360,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    74.8,
     21.14,
-    224.24
+    5.57,
+    81.65,
+    224.24,
+    91.73
    ],
    "robloxPosition": [
     -78.225,
-    48.46,
+    48.649,
     122.688
    ],
    "sizeStuds": [
     6.85,
-    86.538,
+    86.161,
     203.101
    ],
    "materials": [
@@ -551,13 +677,18 @@
   {
    "module": "NeonRedE",
    "fbx": "NeonRedE.fbx",
+   "layer": "BACKGROUND",
+   "canCollide": false,
    "robloxMaterial": "Neon",
    "triangles": 600,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -78.0,
     -21.74,
-    219.32
+    11.66,
+    -74.8,
+    219.32,
+    72.88
    ],
    "robloxPosition": [
     76.4,
@@ -578,13 +709,18 @@
   {
    "module": "NeonRedW",
    "fbx": "NeonRedW.fbx",
+   "layer": "BACKGROUND",
+   "canCollide": false,
    "robloxMaterial": "Neon",
    "triangles": 552,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    74.8,
     7.49,
-    144.84
+    6.24,
+    78.0,
+    144.84,
+    59.56
    ],
    "robloxPosition": [
     -76.4,
@@ -605,13 +741,18 @@
   {
    "module": "PaperLanterns",
    "fbx": "PaperLanterns.fbx",
+   "layer": "PROPS",
+   "canCollide": false,
    "robloxMaterial": "Neon",
    "triangles": 1600,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -57.76,
     -0.8,
-    175.8
+    6.32,
+    57.76,
+    175.8,
+    8.48
    ],
    "robloxPosition": [
     -0.0,
@@ -632,13 +773,18 @@
   {
    "module": "Road1_Asphalt",
    "fbx": "Road1_Asphalt.fbx",
+   "layer": "PLAYABLE",
+   "canCollide": true,
    "robloxMaterial": "Asphalt",
    "triangles": 276,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -39.96,
     -29.97,
-    63.97
+    -0.8,
+    39.96,
+    63.97,
+    0.06
    ],
    "robloxPosition": [
     -0.0,
@@ -659,13 +805,18 @@
   {
    "module": "Road1_AsphaltDark",
    "fbx": "Road1_AsphaltDark.fbx",
+   "layer": "PLAYABLE",
+   "canCollide": true,
    "robloxMaterial": "Asphalt",
    "triangles": 84,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -23.96,
     -29.97,
-    63.97
+    -0.8,
+    39.96,
+    63.97,
+    0.05
    ],
    "robloxPosition": [
     -8.0,
@@ -686,13 +837,18 @@
   {
    "module": "Road2_Asphalt",
    "fbx": "Road2_Asphalt.fbx",
+   "layer": "PLAYABLE",
+   "canCollide": true,
    "robloxMaterial": "Asphalt",
    "triangles": 228,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -39.96,
     64.03,
-    139.97
+    -0.8,
+    39.96,
+    139.97,
+    0.05
    ],
    "robloxPosition": [
     -0.0,
@@ -713,13 +869,18 @@
   {
    "module": "Road2_AsphaltDark",
    "fbx": "Road2_AsphaltDark.fbx",
+   "layer": "PLAYABLE",
+   "canCollide": true,
    "robloxMaterial": "Asphalt",
    "triangles": 72,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -39.96,
     64.03,
-    139.97
+    -0.8,
+    39.96,
+    139.97,
+    0.03
    ],
    "robloxPosition": [
     -0.0,
@@ -740,13 +901,18 @@
   {
    "module": "Road3_Asphalt",
    "fbx": "Road3_Asphalt.fbx",
+   "layer": "PLAYABLE",
+   "canCollide": true,
    "robloxMaterial": "Asphalt",
    "triangles": 264,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -39.96,
     140.03,
-    227.97
+    -0.8,
+    39.96,
+    227.97,
+    0.06
    ],
    "robloxPosition": [
     -0.0,
@@ -767,13 +933,18 @@
   {
    "module": "Road3_AsphaltDark",
    "fbx": "Road3_AsphaltDark.fbx",
+   "layer": "PLAYABLE",
+   "canCollide": true,
    "robloxMaterial": "Asphalt",
    "triangles": 96,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -39.96,
     140.03,
-    227.97
+    -0.8,
+    39.96,
+    227.97,
+    0.01
    ],
    "robloxPosition": [
     -0.0,
@@ -794,13 +965,18 @@
   {
    "module": "RoadPaint",
    "fbx": "RoadPaint.fbx",
+   "layer": "PLAYABLE",
+   "canCollide": true,
    "robloxMaterial": "SmoothPlastic",
    "triangles": 864,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -39.05,
     -30.0,
-    228.0
+    0.0,
+    39.05,
+    228.0,
+    0.05
    ],
    "robloxPosition": [
     -0.0,
@@ -821,13 +997,18 @@
   {
    "module": "Shrine",
    "fbx": "Shrine.fbx",
+   "layer": "BOUNDARY",
+   "canCollide": true,
    "robloxMaterial": "Wood",
    "triangles": 220,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -13.0,
     219.0,
-    227.0
+    0.0,
+    13.0,
+    227.0,
+    17.0
    ],
    "robloxPosition": [
     -0.0,
@@ -848,13 +1029,18 @@
   {
    "module": "ShrineGlow",
    "fbx": "ShrineGlow.fbx",
+   "layer": "PROPS",
+   "canCollide": false,
    "robloxMaterial": "Neon",
    "triangles": 12,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -6.0,
     218.65,
-    218.95
+    5.8,
+    6.0,
+    218.95,
+    9.0
    ],
    "robloxPosition": [
     -0.0,
@@ -875,13 +1061,18 @@
   {
    "module": "ShrineRoof",
    "fbx": "ShrineRoof.fbx",
+   "layer": "PROPS",
+   "canCollide": false,
    "robloxMaterial": "Slate",
    "triangles": 80,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -18.66,
     217.0,
-    227.0
+    16.23,
+    18.66,
+    227.0,
+    24.34
    ],
    "robloxPosition": [
     -0.0,
@@ -902,13 +1093,18 @@
   {
    "module": "ShrineTeeth",
    "fbx": "ShrineTeeth.fbx",
+   "layer": "PROPS",
+   "canCollide": false,
    "robloxMaterial": "SmoothPlastic",
    "triangles": 216,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -5.7,
     218.1,
-    219.1
+    5.8,
+    5.7,
+    219.1,
+    9.0
    ],
    "robloxPosition": [
     -0.0,
@@ -929,13 +1125,18 @@
   {
    "module": "Sidewalk1",
    "fbx": "Sidewalk1.fbx",
+   "layer": "PLAYABLE",
+   "canCollide": true,
    "robloxMaterial": "Concrete",
    "triangles": 3648,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -79.94,
     -29.94,
-    63.94
+    -0.8,
+    79.94,
+    63.94,
+    0.06
    ],
    "robloxPosition": [
     -0.0,
@@ -956,13 +1157,18 @@
   {
    "module": "Sidewalk2",
    "fbx": "Sidewalk2.fbx",
+   "layer": "PLAYABLE",
+   "canCollide": true,
    "robloxMaterial": "Concrete",
    "triangles": 2880,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -79.94,
     64.06,
-    139.94
+    -0.8,
+    79.94,
+    139.94,
+    0.06
    ],
    "robloxPosition": [
     -0.0,
@@ -983,13 +1189,18 @@
   {
    "module": "Sidewalk3",
    "fbx": "Sidewalk3.fbx",
+   "layer": "PLAYABLE",
+   "canCollide": true,
    "robloxMaterial": "Concrete",
    "triangles": 3456,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -79.94,
     140.06,
-    227.94
+    -0.8,
+    79.94,
+    227.94,
+    0.06
    ],
    "robloxPosition": [
     -0.0,
@@ -1010,13 +1221,18 @@
   {
    "module": "SignBoardsE_Iron",
    "fbx": "SignBoardsE_Iron.fbx",
+   "layer": "BACKGROUND",
+   "canCollide": false,
    "robloxMaterial": "SmoothPlastic",
    "triangles": 144,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -81.25,
     -3.31,
-    206.11
+    44.53,
+    -80.75,
+    206.11,
+    88.2
    ],
    "robloxPosition": [
     81.0,
@@ -1037,13 +1253,18 @@
   {
    "module": "SignBoardsE_SignBoard",
    "fbx": "SignBoardsE_SignBoard.fbx",
+   "layer": "BACKGROUND",
+   "canCollide": false,
    "robloxMaterial": "SmoothPlastic",
    "triangles": 180,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -81.4,
     -21.62,
-    219.2
+    10.52,
+    -74.9,
+    219.2,
+    95.2
    ],
    "robloxPosition": [
     78.15,
@@ -1064,13 +1285,18 @@
   {
    "module": "SignBoardsW_Iron",
    "fbx": "SignBoardsW_Iron.fbx",
+   "layer": "BACKGROUND",
+   "canCollide": false,
    "robloxMaterial": "SmoothPlastic",
    "triangles": 72,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    80.75,
     23.64,
-    135.14
+    58.27,
+    81.25,
+    135.14,
+    84.78
    ],
    "robloxPosition": [
     -81.0,
@@ -1091,22 +1317,27 @@
   {
    "module": "SignBoardsW_SignBoard",
    "fbx": "SignBoardsW_SignBoard.fbx",
+   "layer": "BACKGROUND",
+   "canCollide": false,
    "robloxMaterial": "SmoothPlastic",
    "triangles": 132,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    74.9,
     -18.89,
-    224.12
+    4.0,
+    81.4,
+    224.12,
+    91.78
    ],
    "robloxPosition": [
     -78.15,
-    46.111,
+    47.89,
     102.613
    ],
    "sizeStuds": [
     6.5,
-    91.337,
+    87.779,
     243.011
    ],
    "materials": [
@@ -1118,13 +1349,18 @@
   {
    "module": "SkullPile",
    "fbx": "SkullPile.fbx",
+   "layer": "PROPS",
+   "canCollide": false,
    "robloxMaterial": "SmoothPlastic",
    "triangles": 3200,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -12.67,
     215.38,
-    220.89
+    2.17,
+    12.59,
+    220.89,
+    5.54
    ],
    "robloxPosition": [
     0.039,
@@ -1145,13 +1381,18 @@
   {
    "module": "StreetLampGlow",
    "fbx": "StreetLampGlow.fbx",
+   "layer": "PROPS",
+   "canCollide": false,
    "robloxMaterial": "Neon",
    "triangles": 192,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -54.6,
     -0.45,
-    175.45
+    10.45,
+    54.6,
+    175.45,
+    10.95
    ],
    "robloxPosition": [
     -0.0,
@@ -1172,13 +1413,18 @@
   {
    "module": "StreetLamps",
    "fbx": "StreetLamps.fbx",
+   "layer": "PROPS",
+   "canCollide": false,
    "robloxMaterial": "Metal",
    "triangles": 640,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -57.3,
     -0.3,
-    175.3
+    0.0,
+    57.3,
+    175.3,
+    11.15
    ],
    "robloxPosition": [
     -0.0,
@@ -1199,13 +1445,18 @@
   {
    "module": "Torii",
    "fbx": "Torii.fbx",
+   "layer": "BOUNDARY",
+   "canCollide": true,
    "robloxMaterial": "SmoothPlastic",
    "triangles": 468,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -42.16,
     211.8,
-    216.2
+    0.0,
+    42.16,
+    216.2,
+    48.84
    ],
    "robloxPosition": [
     -0.0,
@@ -1226,13 +1477,18 @@
   {
    "module": "ToriiBlack",
    "fbx": "ToriiBlack.fbx",
+   "layer": "BOUNDARY",
+   "canCollide": true,
    "robloxMaterial": "SmoothPlastic",
    "triangles": 444,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -42.5,
     211.2,
-    216.8
+    0.0,
+    42.5,
+    216.8,
+    50.18
    ],
    "robloxPosition": [
     -0.0,
@@ -1253,13 +1509,18 @@
   {
    "module": "Tower109_Building",
    "fbx": "Tower109_Building.fbx",
+   "layer": "BACKGROUND",
+   "canCollide": false,
    "robloxMaterial": "Concrete",
    "triangles": 108,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -106.6,
     192.4,
-    217.6
+    70.0,
+    -81.4,
+    217.6,
+    72.0
    ],
    "robloxPosition": [
     94.0,
@@ -1280,13 +1541,18 @@
   {
    "module": "Tower109_BuildingLight",
    "fbx": "Tower109_BuildingLight.fbx",
+   "layer": "BACKGROUND",
+   "canCollide": false,
    "robloxMaterial": "Concrete",
    "triangles": 108,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -106.0,
     193.0,
-    217.0
+    0.0,
+    -82.0,
+    217.0,
+    70.0
    ],
    "robloxPosition": [
     94.0,
@@ -1307,13 +1573,18 @@
   {
    "module": "Tower109Neon",
    "fbx": "Tower109Neon.fbx",
+   "layer": "BACKGROUND",
+   "canCollide": false,
    "robloxMaterial": "Neon",
    "triangles": 972,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -106.45,
     192.55,
-    217.45
+    19.75,
+    -81.55,
+    217.45,
+    66.0
    ],
    "robloxPosition": [
     94.0,
@@ -1334,13 +1605,18 @@
   {
    "module": "WindowsE",
    "fbx": "WindowsE.fbx",
+   "layer": "BACKGROUND",
+   "canCollide": false,
    "robloxMaterial": "Neon",
    "triangles": 2352,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    -77.99,
     -27.7,
-    225.19
+    10.7,
+    -77.85,
+    225.19,
+    85.3
    ],
    "robloxPosition": [
     77.92,
@@ -1361,13 +1637,18 @@
   {
    "module": "WindowsW",
    "fbx": "WindowsW.fbx",
+   "layer": "BACKGROUND",
+   "canCollide": false,
    "robloxMaterial": "Neon",
    "triangles": 2268,
    "overLimit": false,
-   "outsideSlot": false,
-   "slotY": [
+   "boundsLocal": [
+    77.85,
     -27.7,
-    224.59
+    10.7,
+    77.99,
+    224.59,
+    79.3
    ],
    "robloxPosition": [
     -77.92,
@@ -1586,5 +1867,26 @@
     258.0
    ]
   }
- ]
+ ],
+ "validation": {
+  "slot": [],
+  "neighbourCorridor": [],
+  "laneBlocked": [],
+  "walkThroughScenery": [],
+  "floorGaps": 0,
+  "floorSamples": 9804,
+  "exitWalkRun": 63.0,
+  "exitVisibleRun": 63.0,
+  "exitMin": 16.0,
+  "walkHalf": 76.0,
+  "layerCounts": {
+   "PLAYABLE": 10,
+   "BOUNDARY": 3,
+   "BOSS_STAGE": 0,
+   "PROPS": 12,
+   "BACKGROUND": 14,
+   "SKY": 0
+  },
+  "pass": true
+ }
 }
