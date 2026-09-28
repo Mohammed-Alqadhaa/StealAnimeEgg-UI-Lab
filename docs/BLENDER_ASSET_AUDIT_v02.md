@@ -333,3 +333,57 @@ Every other module is under 4,500 triangles.
 * The render uses a dusk-red sky colour for identity, with neutral readable ambient (no night lighting, §32). The
   final in-game sky is a Roblox Sky choice.
 * The neon "kanji" are abstract glyph strokes, not real text.
+
+## 08_SoloLeveling — Shadow Corridor / Sung Jin-Woo (reference **R02** Solo Leveling panel)
+
+| Field | Value |
+|---|---|
+| Source | `art/blender/worlds/08_SoloLeveling.blend` (8.5 MB; SHA-256 `b7eb44e952376be276efcdf485af2534a54dcbe86362f24c4b84e1332d4035ee`) |
+| Script | `tools/blender/worlds/w08_sololeveling.py` (`random.Random(808)`) |
+| Exports | `art/exports/worlds/08_SoloLeveling/`: **41 FBX modules (single colour each), 73,844 triangles, 0 over the limit (largest 13,028), 0 outside the slot**. 30 VFX anchors |
+| Renders | `pass1_*` (20 spp), `final_gameplay.png`, `final_boss.png`, `final_overview.png` (48 spp) |
+| Target Roblox path | `Workspace.SAE_World.Worlds.SoloLeveling.Environment.<Module>`, `…SoloLeveling.V02_VFX` |
+| Status | **BLENDER MODELED · BLENDER RENDER VERIFIED · EXPORTED · OWNER APPROVAL PENDING** |
+
+**Gameplay layout:**
+* Glossy dark stone floor with a darker central runner and violet guide lines. Lane `|x| < 54` clear.
+* Alcove walls at `|x| ≈ 76–81` collide.
+* A great open entry arch spans the lane.
+
+**R02 elements reproduced:**
+* **Corridor:** a deep-blue dungeon corridor with 20 horned shadow-soldier statues (capes, planted swords,
+  glowing blue eyes) in pointed-arch alcoves.
+* **Lighting props:** blue-flame braziers and blue candle clusters along the path. Ribbed gothic arches overhead.
+* **Throne:** the Monarch's spiked throne on a 4-step dais, in front of a glowing open gate. Two colossal knights
+  (Igris/Beru-style silhouettes, stylised) flank it.
+* **Egg pedestals:** dark, with alternating blue and violet glow.
+
+**Iterations:**
+
+| Pass | Findings | Fix |
+|---|---|---|
+| 1 | Knight helper's forward axis inverted (capes in front, swords behind, eyes inside the helmet); portal pane a flat bright blue | Forward axis fixed (sword, eyes and arms in front; cape behind); portal dimmed and made more transparent |
+| final | Matches the R02 Shadow Corridor composition | Final render + export |
+
+**Known deviations:**
+* The statues are generic horned knights. They are not likenesses of Igris or Beru; the actual characters are
+  the imported rigs.
+* The deep-blue sky is identity colour only, with readable ambient (§32).
+
+## Summary — 7 non-Akaza Blender worlds
+
+| # | World | Reference | `.blend` | Modules | Triangles | Anchors | Colliders | Status |
+|---|---|---|---|---|---|---|---|---|
+| 2 | MHA | R01 | `02_MHA.blend` | 63 | 131,236 | 14 | 0 | BLENDER MODELED · RENDER VERIFIED · EXPORTED |
+| 3 | Dragon Ball | R02 Namek | `03_DragonBall.blend` | 57 | 90,076 | 24 | 2 | same |
+| 4 | One Piece | R02 Dressrosa | `04_OnePiece.blend` | 74 | 125,836 | 20 | 0 | same |
+| 5 | Naruto | R02 Konoha | `05_Naruto.blend` | 59 | 66,004 | 17 | 19 | same |
+| 6 | Bleach | R10 | `06_Bleach.blend` | 44 | 41,356 | 25 | 0 | same |
+| 7 | JJK | R02 Shibuya | `07_JJK.blend` | 51 | 30,760 | 19 | 2 | same (6 egg pedestals) |
+| 8 | Solo Leveling | R02 Shadow Corridor | `08_SoloLeveling.blend` | 41 | 73,844 | 30 | 0 | same |
+
+For every world:
+* All modules are ≤ 20,000 triangles, single colour, and inside the world slot.
+* **Not yet:** mesh upload / MeshPart creation (needs Studio 3D Importer or Open Cloud), OFFLINE INTEGRATED,
+  STUDIO TESTED, VISUALLY VERIFIED, and Owner approval.
+* Demon Slayer (Akaza) is preserved, not rebuilt (`AKAZA_PRESERVATION_AUDIT_v02.md`).

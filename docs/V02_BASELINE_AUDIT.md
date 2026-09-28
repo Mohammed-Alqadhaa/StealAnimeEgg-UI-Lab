@@ -30,6 +30,8 @@ Eight: MHA, Dragon Ball, One Piece, Naruto, **Berserk**, Bleach, JJK, Solo Level
 by `game/assembler/worlds/Themes.luau` + `Kit.luau` from plain Roblox Parts (**0 MeshParts**; 135–1,136 parts each).
 
 **2. Which Worlds have genuine .blend source?**
+**UPDATE:** all 7 non-Akaza worlds now have real `.blend` sources, FBX exports and review renders (`art/blender/worlds/`, see
+`BLENDER_ASSET_AUDIT_v02.md`). The original answer at audit time follows.
 **None in this repository.** The Demon Slayer environment is Blender-*authored*: 300 MeshParts, 298
 carrying a `BlenderMaterial` attribute, from the Owner's Last CP. Its **.blend source file was never
 supplied** and is not in the repo.
