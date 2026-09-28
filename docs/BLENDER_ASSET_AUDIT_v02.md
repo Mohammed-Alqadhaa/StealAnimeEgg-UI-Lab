@@ -285,3 +285,51 @@ Every other module is under 4,500 triangles.
 * R10's stormy clouds and moon are a Roblox Sky choice, not geometry.
 * The Wandenreich cross is a simplified 4-point star with a longer lower arm.
 * The review render shows some Cycles firefly noise (no denoiser in this Blender build).
+
+## 07_JJK — Shibuya / Sukuna (reference **R02** JJK Shibuya panel)
+
+| Field | Value |
+|---|---|
+| Source | `art/blender/worlds/07_JJK.blend` (10.3 MB; SHA-256 `7fc0608215e3603f29510f0bf12a4959f939b400907644da25569463aacf8cd0`) |
+| Script | `tools/blender/worlds/w07_jjk.py` (`random.Random(707)`) |
+| Exports | `art/exports/worlds/07_JJK/`: **51 FBX modules (single colour each), 30,760 triangles, 0 over the limit (largest 3,648), 0 outside the slot**. 19 VFX anchors, 2 street-boundary colliders |
+| Renders | `pass1_*` (20 spp), `final_gameplay.png`, `final_boss.png`, `final_overview.png` (48 spp) |
+| Target Roblox path | `Workspace.SAE_World.Worlds.JJK.Environment.<Module>`, `…JJK.V02_VFX`, `…JJK.V02_Colliders` |
+| Status | **BLENDER MODELED · BLENDER RENDER VERIFIED · EXPORTED · OWNER APPROVAL PENDING** |
+
+**Six egg pedestals** (JJK roster: Yuji, Gojo, Toji, Mahoraga, Maki, Sukuna):
+* The standard 5 `EGG_OFFSETS`, plus a **proposed 6th at (0, 132)** (anchor `VFX_EggNest6`).
+* `Layout.EGG_OFFSETS` still has 5 entries. The gameplay/data phase must add the JJK 6th offset, and this
+  pedestal is placed to match it.
+
+**Gameplay layout:**
+* An 80-stud asphalt road with zebra crossings and flush concrete sidewalks up to the building fronts (x = 78).
+* Lane `|x| < 54` clear.
+* Street-boundary colliders at the building line.
+
+**R02 elements reproduced:**
+* **Sky and city:** a blood-red sky over dark city blocks with warm lit windows.
+* **Signage:** vertical signboards with red, pink and cyan neon glyph strokes, and rooftop billboards with neon
+  frames.
+* **Street:** lamps with red paper lanterns.
+* **Torii:** a giant red torii (black kasagi, upturned ends) at the far end, with Sukuna's stage in front.
+* **Egg pedestals:** dark hexagonal, with cursed-energy red glow. Red cursed cracks spread across the road near
+  the torii.
+
+**Extra identity:**
+* A Malevolent-Shrine-style horned shrine with a fanged maw and a skull pile, behind the torii.
+* A round "109"-style landmark tower with neon rings.
+* A wrecked car on the sidewalk.
+* A neon entry gantry sign.
+
+**Iterations:**
+
+| Pass | Findings | Fix |
+|---|---|---|
+| 1 | Shrine roof inverted (slope sign); shrine glow a flat pink block; void strip between the sidewalk edge (x = 75) and the building fronts (x = 78) | Roof signs fixed and horns re-seated at the eaves; dark-red maw with bone fangs; sidewalks/grout extended to x = 80 |
+| final | Matches the R02 Shibuya composition | Final render + export |
+
+**Known deviations:**
+* The render uses a dusk-red sky colour for identity, with neutral readable ambient (no night lighting, §32). The
+  final in-game sky is a Roblox Sky choice.
+* The neon "kanji" are abstract glyph strokes, not real text.
