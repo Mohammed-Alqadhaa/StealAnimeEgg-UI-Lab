@@ -3,116 +3,117 @@
 **Source:** `checkpoints/StealAnAnimeEgg_v01_SAFE_TEST.rbxlx` (Git LFS, 111,715,271 B, SHA-256
 `f260e511e48eeb23e3cd226fb63bab45cfaafbdb505c6c54e032e920f78c3c8a`). **Read-only; not modified.**
 
-**Status:** **STRUCTURALLY VERIFIED** (parsed offline with Lune). **Not** visually verified. MeshParts,
-textures and clothing reference Roblox asset ids that only render in Studio. Face swaps, scale and
-looks must be checked in Studio.
+**Status:** **STRUCTURALLY VERIFIED** (offline parse). **Not visually verified.** Meshes, textures and
+clothing reference Roblox asset ids that only render in Studio.
+
+**Identification method (no Owner input needed):**
+* model and accessory names;
+* MeshPart names;
+* clothing/decal ids;
+* rig type and height;
+* the Owner's **row layout** in SAFE_TEST: one row per world at z ≈ 58/64/70/77/84/92/102 with the
+  boss last, matching roster order;
+* Owner screenshots N04–N06.
+
+**Result: every model is identified.** None needs OWNER IDENTIFICATION REQUIRED.
 
 ## 1. What SAFE_TEST changes vs OwnerReview_v01
 
-* **Only Workspace differs.** v01 has 11,340 Workspace descendants; SAFE_TEST has 43,315. All other
-  services (ReplicatedStorage, ServerStorage, ServerScriptService, StarterGui, StarterPlayer,
-  Lighting, …) are **identical in structure**, so the latest repo code can be merged without losing
-  Owner work.
-* **37 new top-level Workspace models**, i.e. the Owner's imports. They are laid out in rows by
-  world (MHA z≈58, Dragon Ball z≈64, One Piece z≈70, Naruto z≈77, Bleach z≈84, JJK z≈92,
-  Solo Leveling z≈96–107) inside the hub.
-* The 108 humanoid models that also exist in v01 (DS rigs, stand-ins, preview rigs, vendors) are unchanged.
+* **Only Workspace differs:** 11,340 → 43,315 descendants. All other services are structurally
+  identical to v01, so the repo code can be merged without losing Owner work.
+* The Owner added **40 new top-level Workspace models**, all identified below.
+* The Akaza world is unchanged (fingerprint check passes; see `AKAZA_PRESERVATION_AUDIT_v02.md`).
+* The 5 Demon Slayer rigs (Tanjiro, Rengoku, Yoriichi, Muzan, Akaza) come from the Last CP and were
+  sanitized in v01 (`docs/IMPORT_AUDIT.md`).
 
-## 2. Per-import audit
+## 2. Per-model audit
 
-Columns:
-* **parts/mesh**: BaseParts / MeshParts.
-* **face**: extra head-like parts (FakeHead / face-swap indicators).
-* **exec**: Scripts, LocalScripts, ModuleScripts, remotes, bindables and tools inside the model.
-* **cfg/attr/tag**: Configuration objects / attributes / CollectionService tags (all must be reviewed during sanitization).
+| Raw model name | Proposed CharacterId | World / class | Rig | Height (studs) | Confidence | Evidence | Face / head issues | Executable content | Sanitation status |
+|---|---|---|---|---|---|---|---|---|---|
+| `StarterCharacter` | `deku` | MHA main | R6 | 6.4 | HIGH | MeshParts "Vigilante Deku Scarf/Mask/Eyes/Hood and Hair/Cape"; MHA row slot 1 | — | — | NOT YET SANITIZED (plan §4) |
+| `Model` | `bakugo` | MHA main | R6 | 5.5 | HIGH | wrapper Model→"Bakugo"; accessories "Katsuki Bakugo grenade belt", "Bakugo Hat" | "ROBLOX HEAD FACE MESH" accessory (face mesh on real Head) | — | NOT YET SANITIZED (plan §4) |
+| `Shoto Todoroki` | `todoroki` | MHA main | R15 | 5.6 | HIGH | name "Shoto Todoroki"; R15; MHA row slot 3 | — | — | NOT YET SANITIZED (plan §4) |
+| `All Might` | `allmight` | MHA main | R6 | 5.7 | HIGH | name; accessory "Migh"; MHA row slot 4 | — | — | NOT YET SANITIZED (plan §4) |
+| `Shoto` | `shigaraki` | MHA BOSS | R6 | 5 | HIGH | 3 accessories named "Shigaraki" (model is mis-named "Shoto"); MHA row boss slot (last) | — | — | NOT YET SANITIZED (plan §4) |
+| `Goku` | `goku` | DragonBall main | R6 | 6.4 | HIGH | name; "Base Hair" + "SSJ Hair", "Base Face"/"SSJ Face" decals | second face part (Face, T=1): form switch | — | NOT YET SANITIZED (plan §4) |
+| `(empty name)` | `vegeta` | DragonBall main | R6 | 6.4 | MEDIUM-HIGH | unnamed model in the Vegeta slot of the DB row (between Goku and Gohan); hair mesh + DBZ-style outfit | — | — | NOT YET SANITIZED (plan §4) |
+| `BeastGohan` | `gohan` | DragonBall main | R6 | 8 | HIGH | name "BeastGohan"; 8.0 studs tall | — | — | NOT YET SANITIZED (plan §4) |
+| `Broly` | `broly` | DragonBall main | R6 | 6.6 | HIGH | name; accessory "Broly" | — | — | NOT YET SANITIZED (plan §4) |
+| `R6 Frieza` | `frieza` | DragonBall BOSS | **no Humanoid** (18 MeshParts, R6-shaped) | 4.6 | HIGH | name "R6 Frieza"; 18 body MeshParts; DB boss slot | real Head hidden (T=1); body is mesh-built | — | NOT YET SANITIZED (plan §4) |
+| `Luffy - Gear 5` | `luffy` | OnePiece main | R15 | 5.8 | HIGH | name "Luffy - Gear 5"; "White Rubber Hair", "Smoke" mesh | — | — | NOT YET SANITIZED (plan §4) |
+| `Zoro` | `zoro` | OnePiece main | R6 | 5.3 | HIGH | name; hair mesh | **FakeHead** (T=0, visible) + real Head (T=0): double head risk | — | NOT YET SANITIZED (plan §4) |
+| `Nami Onigashima` | `nami` | OnePiece main | R6 | 5.3 | HIGH | name "Nami Onigashima"; "Meshes/nammi" | — | — | NOT YET SANITIZED (plan §4) |
+| `Donquixote Doflamingo` | `doflamingo` | OnePiece BOSS | R15 | 6.6 | HIGH | name; "Cloak", "Glasses", "Hair" meshes | — | — | NOT YET SANITIZED (plan §4) |
+| `Kaidos` | `kaido` | OnePiece main | R15 (nested) | 6.4 | HIGH | wrapper "Kaidos"→"Hybrid Kaido"; "Blue Scalie Dragon Tail", "Beast Mask" | — | — | NOT YET SANITIZED (plan §4) |
+| `Naruto` | `naruto` | Naruto main | R15 | 6 | HIGH | name; R15 | — | — | NOT YET SANITIZED (plan §4) |
+| `Sasuke` | `sasuke` | Naruto main | R6 | 5.2 | HIGH | name; "sasukehair" accessory | "Baki_head" accessory (head mesh overlay) | — | NOT YET SANITIZED (plan §4) |
+| `Kakashi` | `kakashi` | Naruto main | R15 (nested) | 6.4 | HIGH | wrapper "Kakashi"→"Kakashi"; decal "KAKASHI" | — | — | NOT YET SANITIZED (plan §4) |
+| `Itachi Uchiha for the gfx` | `itachi` | Naruto main | R6 | 5.8 | HIGH | name "Itachi Uchiha for the gfx"; "Meshes/ITACHI" | **two Head parts** (both T=0) | — | NOT YET SANITIZED (plan §4) |
+| `Madara` | `madara` | Naruto BOSS | R6 | 5.8 | HIGH | name; "MADARAHAIR+HEADBAND" | hair mesh named like a head part (not a swap) | — | NOT YET SANITIZED (plan §4) |
+| `StarterCharacter` | `muzan_secret` | DemonSlayer SECRET (Muzan egg) | R6 | 8.9 | HIGH | matches Owner screenshot N06; 8.9 studs; flesh segments B1/T1–T4, 4× "Raptor_Claw" meshes (Muzan final form); lone model outside the world rows | **Fakehead** (T=1) + real Head | — | NOT YET SANITIZED (plan §4) |
+| `Guts (Berserk Armor)` | `guts` | EXTRA | R6 | 5.3 | HIGH | name "Guts (Berserk Armor)"; "MainHelmet", "Blade", "WeaponHandle" | — | — | NOT YET SANITIZED (plan §4) |
+| `Yachiru_FaceSwap_Verified` | `yachiru` | Bleach main | R6 | 4.3 | HIGH | name "Yachiru_FaceSwap_Verified"; 4.3 studs (child-sized) | **FakeHead** (T=1) + real Head: Owner-labelled face swap | — | NOT YET SANITIZED (plan §4) |
+| `Kenpachi_FaceSwap_Verified` | `kenpachi` | Bleach main | R6 | 6.4 | HIGH | name "Kenpachi_FaceSwap_Verified" | **FakeHead** (T=1) + real Head: Owner-labelled face swap | — | NOT YET SANITIZED (plan §4) |
+| `Ichigo model` | `ichigo` | Bleach main | R6 | 5.1 | HIGH | name "Ichigo model" | — | — | NOT YET SANITIZED (plan §4) |
+| `aizen (tybw)` | `aizen` | Bleach main (Muken) | R6 | 5.6 | HIGH | meshes "kyoka suigetsu (tybwaizen)", "AIZEN BW MESHES Jacket" = Thousand-Year Blood War / Muken look | real Head replaced by part "hhead" | — | NOT YET SANITIZED (plan §4) |
+| `Yhwach_Gold_Mode` | `yhwach` | Bleach BOSS | R6 | 5.6 | HIGH | name "Yhwach_Gold_Mode"; "sword", "coat", "mustache" | **FakeHead** + "facepart" (both T=1); 106 attributes / 4 tags to review | — | NOT YET SANITIZED (plan §4) |
+| `Yuji` | `yuji` | JJK main | R6 | 5.4 | HIGH | name; "Yuji Mere Head", "yuji hoodie" accessories | — | **Animate LocalScript + PlayEmote BindableFunction** | NOT YET SANITIZED (plan §4) |
+| `Gojo(Sukuna Fight)` | `gojo_shinjuku` | EXTRA | R6 | 5.4 | HIGH | name "Gojo(Sukuna Fight)"; Owner screenshot N04 | — | **Animate LocalScript + PlayEmote BindableFunction** | NOT YET SANITIZED (plan §4) |
+| `Gojo satoru` | `gojo` | JJK main | R6 | 5.3 | HIGH | name "Gojo satoru"; "Crazed Infinity Sorcerer Face" | face accessory | — | NOT YET SANITIZED (plan §4) |
+| `Toji Fushiguro` | `toji` | JJK main | R6 | 5.2 | HIGH | name; "Toji Hair", "Toji Fushiguro Face", worm accessory | face accessory | — | NOT YET SANITIZED (plan §4) |
+| `Character` | `mahoraga` | JJK main | R15 | 11.6 | HIGH | R15, **11.6 studs tall** (giant); accessory "Mahoraga Wheel"; JJK row | — | — | NOT YET SANITIZED (plan §4) |
+| `StarterCharacter` | `sukuna_megumi` | EXTRA | R6 | 5.4 | MEDIUM-HIGH | JJK row; robe/scarf/sleeves/socks/sandals meshes + wheel-style accessory, matching Owner screenshot N05 (Sukuna markings, white robe, wheel above head); normal height 5.4 | — | — | NOT YET SANITIZED (plan §4) |
+| `SUKUNA6167` | `sukuna` | JJK BOSS | R6 | 5.7 | HIGH | name "SUKUNA6167"; JJK row | — | — | NOT YET SANITIZED (plan §4) |
+| `Toji_Maki` | `maki` | JJK main | R6 | 5.6 | MEDIUM-HIGH | name "Toji_Maki_Verified" (awakened Maki Zenin resembles Toji); JJK row; Owner "Verified" suffix | **FakeHead** (T=1) + real Head | — | NOT YET SANITIZED (plan §4) |
+| `Beru` | `beru` | SoloLeveling main | AnimationController | 9.7 | HIGH | name; wings, eyes, little arms; 9.7 studs | **no Humanoid** (AnimationController creature) | **Script** (plays idle animation) | NOT YET SANITIZED (plan §4) |
+| `Saber_Cha Hae In_Verified` | `chahaein_a` | SoloLeveling main (Variant A) | R6 | 5.9 | MEDIUM-HIGH | name "Saber_Cha Hae In_Verified"; contains a MeshPart literally named **"A"**; first in pair | — | — | NOT YET SANITIZED (plan §4) |
+| `Saber_Cha Hae In_Verified` | `chahaein_b` | SoloLeveling main (Variant B) | R6 | 5.5 | MEDIUM-HIGH | same name; second in pair (no "A" marker); different clothing ids | — | — | NOT YET SANITIZED (plan §4) |
+| `Sung Jin-woo` | `sungjinwoo` | SoloLeveling BOSS | R6 | 5.4 | HIGH | name "Sung Jin-woo" | — | — | NOT YET SANITIZED (plan §4) |
+| `Igris` | `igris` | SoloLeveling main | R6 | 12.7 | HIGH | name; mesh parts "*MAINIGAW"; 12.7 studs (armoured knight) | real Head hidden (T=1); head = "HeadMainIGAW" mesh | **2 Scripts** (hair/cape animation loops); 9 SurfaceAppearance | NOT YET SANITIZED (plan §4) |
 
-| characterId | World | Role | Model path in SAFE_TEST | Rig | parts/mesh | acc | clothing | face | exec | cfg/attr/tag | identification confidence |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `igris` | SoloLeveling | main | `Workspace.Igris` | R6 | 28/21 | 0 | —, SA×9 | MeshPart:HeadMainIGAW | **2**: Script:Script, Script:Script | 0/6/1 | HIGH |
-| `sungjinwoo` | SoloLeveling | BOSS | `Workspace.Sung Jin-woo` | R6 | 9/0 | 2 | Shirt+Pants | — | 0 | 2/0/0 | HIGH |
-| `chahaein` | SoloLeveling | main (A/B, two models) | `Workspace.Saber_Cha Hae In_Verified` | R6 | 11/2 | 0 | Shirt+Pants | — | 0 | 0/0/0 | HIGH; Owner says which is A vs B |
-| `chahaein` | SoloLeveling | main (A/B, two models) | `Workspace.Saber_Cha Hae In_Verified` | R6 | 12/5 | 0 | Shirt+Pants | Part:Head | 0 | 0/0/0 | HIGH; Owner says which is A vs B |
-| `sukuna` | JJK | BOSS | `Workspace.SUKUNA6167` | R6 | 8/0 | 1 | Shirt+Pants | — | 0 | 0/1/0 | HIGH |
-| `sukuna_megumi` | EXTRA | extra/shop | `Workspace.StarterCharacter` | R6 | 18/10 | 1 | Shirt+Pants | — | 0 | 1/0/1 | LOW-MEDIUM (JJK row at x=53,z=92; wheel-bearing candidate, cf. N05; could instead be Mahoraga) |
-| `mahoraga` | JJK | main | `Workspace.Character` | R15 | 19/15 | 3 | Shirt+Pants | — | 0 | 3/0/0 | LOW-MEDIUM (R15, has "Mahoraga Wheel" accessory; could instead be Megumi-body Sukuna) |
-| `toji` | JJK | main | `Workspace.Toji Fushiguro` | R6 | 10/0 | 3 | Shirt+Pants | — | 0 | 3/0/0 | HIGH |
-| `gojo` | JJK | main | `Workspace.Gojo satoru` | R6 | 9/0 | 2 | Shirt+Pants | — | 0 | 0/0/0 | HIGH |
-| `gojo_shinjuku` | EXTRA | extra/shop | `Workspace.Gojo(Sukuna Fight)` | R6 | 13/0 | 6 | Shirt+Pants | — | **2**: LocalScript:Animate | 6/0/0 | HIGH (N04) |
-| `yuji` | JJK | main | `Workspace.Yuji` | R6 | 10/0 | 3 | Shirt+Pants | — | **2**: LocalScript:Animate | 3/0/0 | HIGH |
-| `yhwach` | Bleach | BOSS | `Workspace.Yhwach_Gold_Mode` | R6 | 18/8 | 0 | Shirt+Pants | Part:FakeHead | 0 | 0/106/4 | HIGH |
-| `aizen` | Bleach | main | `Workspace.aizen (tybw)` | R6 | 10/3 | 0 | Shirt+Pants | Part:hhead | 0 | 0/0/0 | MEDIUM (named "tybw"; confirm it is the Muken version) |
-| `ichigo` | Bleach | main | `Workspace.Ichigo model` | R6 | 11/0 | 3 | Shirt+Pants | — | 0 | 3/0/0 | HIGH |
-| `kenpachi` | Bleach | main | `Workspace.Kenpachi_FaceSwap_Verified` | R6 | 13/3 | 0 | Shirt+Pants | Part:Head, Part:FakeHead | 0 | 0/0/0 | HIGH |
-| `yachiru` | Bleach | main | `Workspace.Yachiru_FaceSwap_Verified` | R6 | 12/2 | 0 | Shirt+Pants | Part:Head, Part:FakeHead | 0 | 0/0/0 | HIGH |
-| `guts` | EXTRA | extra/shop | `Workspace.Guts (Berserk Armor)` | R6 | 14/7 | 0 | Shirt+Pants | — | 0 | 0/0/0 | HIGH |
-| `muzan_secret` | DemonSlayer | SECRET (Muzan egg) | `Workspace.StarterCharacter` | R6 | 30/22 | 0 | — | Part:Fakehead | 0 | 0/0/1 | MEDIUM (matches N06 screenshot; lone model at z=44) |
-| `madara` | Naruto | BOSS | `Workspace.Madara` | R6 | 7/1 | 0 | Shirt+Pants | MeshPart:Meshes/MADARAHAIR+HEADBAND | 0 | 0/0/0 | HIGH |
-| `itachi` | Naruto | main | `Workspace.Itachi Uchiha for the gfx` | R6 | 15/7 | 0 | Shirt+Pants | Part:Head | 0 | 0/0/0 | HIGH |
-| `sasuke` | Naruto | main | `Workspace.Sasuke` | R6 | 9/0 | 2 | Shirt+Pants | — | 0 | 2/0/0 | HIGH |
-| `naruto` | Naruto | main | `Workspace.Naruto` | R15 | 17/15 | 0 | Shirt+Pants | — | 0 | 0/0/0 | HIGH |
-| `doflamingo` | OnePiece | BOSS | `Workspace.Donquixote Doflamingo` | R15 | 19/17 | 0 | Shirt+Pants | — | 0 | 0/0/0 | HIGH |
-| `nami` | OnePiece | main | `Workspace.Nami Onigashima` | R6 | 19/3 | 0 | Shirt+Pants | — | 0 | 0/0/0 | HIGH |
-| `zoro` | OnePiece | main | `Workspace.Zoro` | R6 | 9/1 | 0 | Shirt+Pants | Part:FakeHead | 0 | 0/0/0 | HIGH |
-| `luffy` | OnePiece | main | `Workspace.Luffy - Gear 5` | R15 | 18/15 | 1 | Shirt+Pants | — | 0 | 1/1/0 | HIGH |
-| `broly` | DragonBall | main | `Workspace.Broly` | R6 | 8/0 | 1 | Shirt+Pants | — | 0 | 0/0/0 | HIGH |
-| `gohan` | DragonBall | main | `Workspace.BeastGohan` | R6 | 8/1 | 0 | Shirt+Pants | — | 0 | 0/0/0 | HIGH |
-| `vegeta` | DragonBall | main | `Workspace.<empty name>` | R6 | 7/1 | 0 | Shirt+Pants | — | 0 | 0/0/0 | MEDIUM (unnamed model in DB row, between Goku and Gohan) |
-| `goku` | DragonBall | main | `Workspace.Goku` | R6 | 11/2 | 0 | Shirt+Pants | — | 0 | 0/0/0 | HIGH |
-| `todoroki` | MHA | main (DUPLICATE B, R6) | `Workspace.Shoto` | R6 | 10/0 | 3 | Shirt+Pants | — | 0 | 3/0/0 | HIGH; Owner picks A or B |
-| `allmight` | MHA | main | `Workspace.All Might` | R6 | 9/0 | 2 | Shirt+Pants | — | 0 | 2/0/0 | HIGH |
-| `todoroki` | MHA | main (DUPLICATE A, R15) | `Workspace.Shoto Todoroki` | R15 | 17/15 | 0 | Shirt+Pants | — | 0 | 0/0/0 | HIGH; Owner picks A or B |
-| `deku` | MHA | main | `Workspace.StarterCharacter` | R6 | 14/7 | 0 | Shirt+Pants, SA×3 | — | 0 | 0/0/0 | HIGH (Vigilante Deku scarf/mask meshes, MHA row x=25,z=58) |
-| `maki` | JJK | main | `Workspace.Toji_Maki.Toji_Maki_Verified` | R6 | 14/4 | 0 | Shirt+Pants | Part:FakeHead | 0 | 0/0/0 | MEDIUM (name "Toji_Maki"; assumed Maki) |
-| `kakashi` | Naruto | main | `Workspace.Kakashi.Kakashi` | R15 | 18/15 | 0 | Shirt+Pants | — | 0 | 0/0/0 | HIGH |
-| `kaido` | OnePiece | main | `Workspace.Kaidos.Hybrid Kaido` | R15 | 23/16 | 3 | Shirt+Pants | — | 0 | 2/0/0 | HIGH |
-| `bakugo` | MHA | main | `Workspace.Model.Bakugo` | R6 | 12/0 | 5 | Shirt+Pants | — | 0 | 5/0/0 | HIGH |
-| `beru` | SoloLeveling | main | `Workspace.Beru` | **no Humanoid** (AnimationController creature: wings, eyes, limbs) | — | — | — | — | **1**: Script (plays idle animation) | — | HIGH |
+**Rig summary:**
+* 32 R6-shaped models, of which **R6 Frieza has no Humanoid**.
+* 7 R15, 2 of them nested in wrapper Models (Kaido, Kakashi).
+* 1 AnimationController creature (Beru).
 
-**Already present from the Last CP (v01):** Tanjiro Kamado, Rengoku, Yoriichi, Muzan, Akaza (the
-real DS rigs used in v01, already sanitized: `docs/IMPORT_AUDIT.md` §1).
+## 3. Roster coverage (v02 Master Prompt)
 
-## 3. Roster coverage against the v02 Master Prompt
+| World | Required | Found | Notes |
+|---|---|---|---|
+| Demon Slayer | Tanjiro, Rengoku, Yoriichi, Muzan, **Akaza (boss)** + secret | all + `muzan_secret` | DS rigs from the Last CP |
+| MHA | Deku, Bakugo, Todoroki, All Might, **Shigaraki** | **all** | Shigaraki is the model mis-named `Shoto` |
+| Dragon Ball | Goku, Vegeta, Gohan, Broly, **Frieza** | all | Frieza needs a Humanoid rig for boss logic |
+| One Piece | Luffy, Zoro, Nami, Kaido, **Doflamingo** | all | |
+| Naruto | Naruto, Sasuke, Kakashi, Itachi, **Madara** | all | |
+| Bleach | Ichigo, Aizen (Muken), Kenpachi, Yachiru, **Yhwach** | all | |
+| JJK (6) | Yuji, Gojo, Toji, Mahoraga, Maki, **Sukuna** | all | |
+| Solo Leveling | Igris, Beru, Cha Hae-In A, Cha Hae-In B, **Sung Jin-Woo** | all | Beru is a creature rig |
+| Extras | Guts, Gojo (Shinjuku), Sukuna (Megumi body) | all | |
 
-| World | Required | Imported model found |
-|---|---|---|
-| Demon Slayer | Tanjiro, Rengoku, Yoriichi, Muzan, Akaza (boss) + **secret Muzan alternate** | all 5 (Last CP) + `StarterCharacter` at z=44 (probable secret) |
-| MHA | Deku, Bakugo, Todoroki, All Might, Shigaraki (boss) | Deku, Bakugo, **Todoroki ×2 (duplicate)**, All Might. **Shigaraki: NOT FOUND among the new imports** (only the v01 stand-in) |
-| Dragon Ball | Goku, Vegeta, Gohan, Broly, Frieza (boss) | all (Vegeta = unnamed model, medium confidence) |
-| One Piece | Luffy, Zoro, Nami, Kaido, Doflamingo (boss) | all |
-| Naruto | Naruto, Sasuke, Kakashi, Itachi, Madara (boss) | all |
-| Bleach | Ichigo, Aizen (Muken), Kenpachi, Yachiru, Yhwach (boss) | all (Aizen named "tybw"; confirm the Muken version) |
-| JJK | Yuji, Gojo, Toji, Mahoraga, Maki, Sukuna (boss) | all; Mahoraga identity is low-medium (see §4) |
-| Solo Leveling | Igris, Beru, Cha Hae-In A, Cha Hae-In B, Sung Jin-Woo (boss) | all |
-| Extras | Guts, Gojo (Shinjuku/Sukuna fight), Sukuna (Megumi body) | Guts, Gojo(Sukuna Fight); Megumi-Sukuna low-medium |
+**Missing character models: none.** Missing art is limited to eggs (see `V02_BASELINE_AUDIT.md`)
+and the Makima/Rem vendor models.
 
-## 4. Questions for the Owner (cannot be resolved offline)
-
-1. **Shigaraki** has no new import. Is the v01 stand-in to be replaced by a model you will import, or did I miss it under another name?
-2. **Todoroki**: keep `Shoto Todoroki` (R15) or `Shoto` (R6)?
-3. **JJK wheel models:** is `Workspace.Character` (R15, has a "Mahoraga Wheel" accessory) Mahoraga, and `Workspace.StarterCharacter` at (53, 92) Megumi-body Sukuna, or the reverse?
-4. **Cha Hae-In A vs B:** there are two `Saber_Cha Hae In_Verified` models (11 parts/2 meshes vs 12 parts/5 meshes). Which is A?
-5. Is the unnamed model in the Dragon Ball row Vegeta?
-6. Is `aizen (tybw)` the Muken version you approved?
-7. Is `StarterCharacter` at z=44 the secret Muzan alternate (it matches your N06 screenshot)?
-
-## 5. Sanitization plan (not executed yet; runs on the v02 WORKING copy, never on SAFE_TEST)
+## 4. Sanitization plan (runs on the v02 WORKING copy, never on SAFE_TEST)
 
 * **Remove:**
-  * 2 × `Animate` LocalScript + BindableFunction `PlayEmote` (Yuji, Gojo(Sukuna Fight)). These are
-    Roblox's default emote Animate; SAE drives animation from the server/rig instead.
-  * Beru `Script` (idle) and Igris 2 × `Script` (hair/cape animation loops). Their animations are
-    preserved as data and replayed by SAE's own controller.
-  * Every Configuration object (36 across imports) after reviewing its values.
-  * Unexpected attributes/tags: Yhwach has 106 attributes and 4 tags; Igris 6 attributes and 1 tag;
-    Luffy, Sukuna and Beru small counts. Review, then strip.
-* **Keep:** MeshParts, SurfaceAppearance (Igris ×9, Deku ×3), Shirt/Pants, BodyColors, CharacterMesh,
-  Accessories (+ attachments/welds), Motor6D/Bones, Decals (faces).
-* **Face swaps** (FakeHead / external head meshes): Yhwach, Kenpachi, Yachiru, Zoro, Maki, Muzan-secret,
-  Aizen (`hhead`), Itachi, Cha Hae-In (variant with `Head` part), Igris (Head transparency 1 +
-  `HeadMainIGAW` mesh). Keep the real internal Head for the Humanoid, make it transparent where
-  the fake head replaces it, and check welds/orientation **in Studio**.
-* **Rig types:** 31 R6, 7 R15 (38 humanoid models) + 1 AnimationController creature (Beru). SAE's farm wander, boss and preview code
-  assume a Humanoid; Beru needs a creature path (AnimationController + scripted movement), and R15
-  rigs need R15 animation ids.
-* No overhead BillboardGui junk was found on the imports themselves. The name labels seen in the
-  screenshots are Studio's selection labels.
+  * Animate LocalScript + PlayEmote BindableFunction (Yuji, Gojo Shinjuku).
+  * Beru idle Script and Igris hair/cape Scripts. Their Animation objects are kept as data and
+    replayed by SAE's own animation controller.
+  * All 36 Configuration objects, after logging their values.
+  * Unexplained attributes/tags (Yhwach 106/4, Igris 6/1, small counts on Luffy, Sukuna, Beru).
+* **Keep:** MeshParts, SurfaceAppearance, Shirt/Pants, BodyColors, CharacterMesh, Accessories
+  (+ attachments/welds), Motor6D/Bones, face Decals.
+* **Face/head fixes** (verify in Studio):
+  * **Zoro:** visible FakeHead + visible real Head → hide the real Head (keep it for the Humanoid).
+  * **Itachi:** two visible Head parts → keep the correct one visible.
+  * **Aizen:** `hhead` replaces Head → add or rename a proper Head for the Humanoid and keep `hhead` visual.
+  * **Yhwach, Kenpachi, Yachiru, Maki, Muzan-secret:** FakeHead is already hidden (T=1). Check which
+    head carries the face mesh and weld/orientation.
+  * **Frieza, Igris:** real Head hidden by design (mesh heads).
+* **Rig fixes:**
+  * **Frieza:** add a Humanoid + R6 Motor6D joints (boss chase needs a Humanoid) without changing
+    visual meshes.
+  * **Beru:** creature path (AnimationController + scripted movement) for the farm, preview and hatch.
+* **Wrappers:** unwrap Kaidos/Kakashi/Model(Bakugo)/Toji_Maki into production rigs named by characterId.
+* **Destination:** `ServerStorage.SAE_CharacterImports` with `Incoming` (originals, untouched) →
+  `Sanitized` → `Production`, plus `ReplicatedStorage.SAE_Preview.Rigs`.

@@ -70,16 +70,14 @@ All of these are **statically tested only**; nothing has been Studio-tested.
 
 **8. Which imported Characters are now inside SAFE_TEST?**
 38 humanoid models plus Beru (AnimationController). Details are in `CHARACTER_IMPORT_AUDIT_v02.md`.
-Every v02 roster slot has an import **except Shigaraki**. There is one duplicate (Todoroki ×2), and
-identity is uncertain for the Mahoraga vs Megumi-Sukuna pair and for Vegeta / Aizen (Muken?) / the
-Muzan secret.
+**UPDATE:** every roster slot has an import. Shigaraki is the model mis-named `Shoto` (it has 3
+"Shigaraki" accessories), so there is no Todoroki duplicate. All identities are resolved with evidence.
 
 **9. Which imports use FakeHead / face-swap techniques?**
 Yhwach, Kenpachi, Yachiru, Zoro, Maki (`Toji_Maki`), the Muzan-secret `StarterCharacter`, Aizen
 (`hhead`), Itachi, one Cha Hae-In, Igris (hidden real Head + `HeadMainIGAW` mesh).
 
 **10. Which roster assets are still missing?**
-* **Shigaraki model** (boss).
 * **Eggs for the new characters:** Yachiru, Maki, Cha Hae-In B, Guts, Shinjuku Gojo, Megumi-Sukuna.
 * **Final Blender eggs** for every non-approved character.
 * An **approved Tanjiro egg** (Owner decision on N12).
@@ -118,6 +116,19 @@ headers. **Full removal happens during sanitization.**
 No Rebirth, Boxing Bag, Muscle, Strength or offline income exists in active code (v01 place test verified).
 
 ## 2. Blender status
+
+**UPDATE (Owner authorized install): Blender is now installed and verified.**
+
+| Item | Value |
+|---|---|
+| Package | Ubuntu `blender 4.0.2+dfsg-1ubuntu8` (apt). `download.blender.org` is blocked by the environment proxy (HTTP 403) |
+| `blender --version` | `Blender 4.0.2` |
+| Added dependency | `python3-numpy` (needed by Blender's FBX exporter) |
+| Headless verified | bpy scene build, `.blend` save, **Cycles CPU** render, FBX + OBJ export |
+| Limitations | no EGL/OpenGL in the container, so EEVEE/Workbench cannot render. Review renders use **Cycles (CPU)**. This build has no OpenImageDenoise, so denoising is off |
+
+The history below is kept for the record.
+
 
 **BLENDER RUNTIME NOT AVAILABLE IN THIS CLOUD SESSION.** `blender`, `which blender` and
 `command -v blender` all return nothing.
