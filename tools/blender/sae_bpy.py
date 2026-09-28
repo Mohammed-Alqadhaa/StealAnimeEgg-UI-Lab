@@ -68,7 +68,7 @@ def hexc(h, a=1.0):
     return (*lin, a)
 
 
-def mat(name, color, rough=0.75, metal=0.0, emit=None, strength=0.0, roblox="SmoothPlastic"):
+def mat(name, color, rough=0.75, metal=0.0, emit=None, strength=0.0, roblox="SmoothPlastic", transparency=0.0):
     """Principled material. `roblox` = the Roblox Material the module should use in Studio."""
     if name in _mats:
         return _mats[name]
@@ -81,8 +81,12 @@ def mat(name, color, rough=0.75, metal=0.0, emit=None, strength=0.0, roblox="Smo
     if emit:
         p.inputs["Emission Color"].default_value = hexc(emit)
         p.inputs["Emission Strength"].default_value = strength
+    if transparency > 0:
+        p.inputs["Alpha"].default_value = 1.0 - transparency
+        m.blend_method = "BLEND"
     m["roblox_material"] = roblox
     m["roblox_color"] = color
+    m["roblox_transparency"] = transparency
     m.diffuse_color = hexc(color)
     _mats[name] = m
     return m
@@ -176,6 +180,16 @@ def prism(name, poly, z0, z1, material=None, col=None, top_tilt=(0.0, 0.0)):
         j = (i + 1) % n
         bm.faces.new((bot[i], bot[j], top[j], top[i]))
     return _obj_from_bm(name, bm, material, col)
+
+
+def collider(name, size, loc):
+    """Invisible gameplay collider (axis-aligned box). Not exported as a mesh: written to the manifest
+    `colliders` list and created as an invisible anchored Part at import. Hidden in review renders."""
+    col = collection("COLLIDERS")
+    ob = box(name, size, loc, col=col)
+    ob.hide_render = True
+    ob.display_type = "WIRE"
+    return ob
 
 
 def empty(name, loc, col=None):
@@ -319,7 +333,9 @@ def look_at(cam, target):
     cam.rotation_euler = d.to_track_quat("-Z", "Y").to_euler()
 
 
-def setup_render(sky="#2a1850", sky_strength=1.0, res=(1280, 720), samples=48):
+def setup_render(sky="#2a1850", sky_strength=1.0, res=(1280, 720), samples=48, sky_light=None, ambient="#ffffff"):
+    """`sky_light`: if set, the sky keeps its colour for camera rays but lights the scene with
+    `ambient` at this strength (mimics Roblox, where sky colour and Ambient are independent)."""
     sc = bpy.context.scene
     sc.render.engine = "CYCLES"
     sc.cycles.device = "CPU"
@@ -334,6 +350,18 @@ def setup_render(sky="#2a1850", sky_strength=1.0, res=(1280, 720), samples=48):
     bg = w.node_tree.nodes["Background"]
     bg.inputs["Color"].default_value = hexc(sky)
     bg.inputs["Strength"].default_value = sky_strength
+    if sky_light is not None:
+        nt = w.node_tree
+        amb = nt.nodes.new("ShaderNodeBackground")
+        amb.inputs["Color"].default_value = hexc(ambient)
+        amb.inputs["Strength"].default_value = sky_light
+        lp = nt.nodes.new("ShaderNodeLightPath")
+        mix = nt.nodes.new("ShaderNodeMixShader")
+        out = nt.nodes["World Output"]
+        nt.links.new(lp.outputs["Is Camera Ray"], mix.inputs[0])
+        nt.links.new(amb.outputs[0], mix.inputs[1])
+        nt.links.new(bg.outputs[0], mix.inputs[2])
+        nt.links.new(mix.outputs[0], out.inputs["Surface"])
     sc.world = w
     return sc
 
@@ -439,12 +467,19 @@ def export_modules(out_dir, z0_note, world_id):
             "sizeStuds": [round(dims.x, 3), round(dims.z, 3), round(dims.y, 3)],
             "materials": sorted({m.name for m in j.data.materials if m}),
             "colors": sorted({m.get("roblox_color", "") for m in j.data.materials if m}),
+            "transparency": max([m.get("roblox_transparency", 0.0) for m in j.data.materials if m] or [0.0]),
         })
         bpy.data.objects.remove(j, do_unlink=True)
     for ob in bpy.data.objects:
         if ob.type == "EMPTY" and ob.name.startswith("VFX_"):
             p = ob.matrix_world.translation
             manifest["anchors"].append({"name": ob.name, "robloxPosition": [round(-p.x, 3), round(p.z, 3), round(p.y, 3)], "kind": ob.get("vfx", "")})
+    manifest["colliders"] = []
+    col = bpy.data.collections.get("COLLIDERS")
+    for ob in (col.all_objects if col else []):
+        p, d = ob.matrix_world.translation, ob.dimensions
+        manifest["colliders"].append({"name": ob.name, "robloxPosition": [round(-p.x, 3), round(p.z, 3), round(p.y, 3)],
+                                      "sizeStuds": [round(d.x, 3), round(d.z, 3), round(d.y, 3)]})
     with open(os.path.join(out_dir, "manifest.json"), "w") as f:
         json.dump(manifest, f, indent=1)
     return manifest

@@ -10,7 +10,7 @@ exported in each world's `manifest.json` and become Attachments under `<World>.V
 |---|---|---|---|---|
 | 1 | Demon Slayer (Akaza) | none. Existing hooks: `AnimatedRiverFlow` textures, `FlowingWaterfall` beams, compass inlay, lantern lights | River scroll + foam, compass pulse, mist, lantern flicker, petals/energy. Everything goes in a new `V02_VFX` folder and the Akaza fingerprint must pass before and after (`AKAZA_PRESERVATION_AUDIT_v02.md` §5) | PLANNED |
 | 2 | MHA (Shigaraki) | `VFX_ThroneAura`, `VFX_BossStage`, `VFX_EggNest1–5`, `VFX_Lantern_*` ×6, `VFX_BarNeonFlicker` (14 total) | Decay purple aura + dust at the throne; purple swirl + rising motes on egg nests; crack-glow pulse (Neon `Color` tween on `CrackGlow`, `WallCracks`, `PillarCracks`); lantern flicker; bar neon flicker + smoke haze; banner/cloak sway (small client CFrame oscillation) | ANCHORS EXPORTED · runtime code PENDING |
-| 3 | Dragon Ball (Frieza) | — | Namek | PENDING |
+| 3 | Dragon Ball (Frieza) | `VFX_BossStage`, `VFX_FriezaArch`, `VFX_EggNest1–5`, `VFX_Lantern_*` ×8, `VFX_SeaShimmer±`, `VFX_Waterfall1–6`, `VFX_DragonBalls` (24 total) | Sea texture scroll + sparkles; waterfall beams + splash mist; arch glow pulse + swirling portal; Frieza purple energy aura; ki-aura rings + rising sparks on egg pedestals; Dragon Ball glow shimmer; gentle Ajisa canopy sway; lantern lights | ANCHORS EXPORTED · runtime code PENDING |
 | 4 | One Piece (Doflamingo) | — | Dressrosa | PENDING |
 | 5 | Naruto (Madara) | — | Konoha | PENDING |
 | 6 | Bleach (Yhwach) | — | R10 palace | PENDING |

@@ -22,7 +22,7 @@ All visual choices are **OWNER APPROVAL PENDING**.
 | Helper library | `tools/blender/sae_bpy.py`: materials carry `roblox_material` / `roblox_color`; kit primitives, flagstone floor, chain, hand, torn banner; Cycles setup; FBX module export + manifest |
 | World scripts | `tools/blender/worlds/wNN_<name>.py` |
 | Run | `blender -b --factory-startup --python tools/blender/worlds/w02_mha.py -- <repo> [render] [export]` (`SAE_SAMPLES`, `SAE_TAG` env vars) |
-| `.blend` sources | `art/blender/worlds/NN_<Name>.blend` (Git LFS) |
+| `.blend` sources | `art/blender/worlds/NN_<Name>.blend` (regular git: LFS upload to `lfs.github.com` is blocked by the environment proxy, HTTP 403; files are < 100 MB) |
 | Exports | `art/exports/worlds/NN_<Name>/<Module>.fbx` + `manifest.json` |
 | Review renders | `art/review_renders/v02/NN_<Name>/` |
 
@@ -101,3 +101,52 @@ Every other module is under 4,500 triangles.
 * Review lights (`LanternLight*`, `NestLight*`, `ThroneLight`, `PlazaGlow`) exist only in the render; in game they
   are runtime `PointLight`s placed at the `VFX_*` anchors.
 * The render lighting is a purple dusk that matches R01. The in-game review lighting will be daytime-readable (§32).
+
+## 03_DragonBall — Planet Namek / Frieza (reference **R02** Namek panel)
+
+| Field | Value |
+|---|---|
+| Source | `art/blender/worlds/03_DragonBall.blend` (10.0 MB; SHA-256 `b749a9e1326e99a4547c2fad709408d3495ff05fbec8c83b338a66dcc4b806f0`) |
+| Script | `tools/blender/worlds/w03_dragonball.py` (`random.Random(303)`) |
+| Exports | `art/exports/worlds/03_DragonBall/`: **43 FBX modules, 100,740 triangles, 0 over the limit** (canopies split into 4 modules of ≤ 12,052). Manifest: 24 VFX anchors, **2 boundary colliders** |
+| Renders | `pass1_*` … `pass3_*` (20 spp), `final_gameplay.png`, `final_boss.png`, `final_overview.png` (48 spp) |
+| Target Roblox path | `Workspace.SAE_World.Worlds.DragonBall.Environment.<Module>`, `…DragonBall.V02_VFX`, `…DragonBall.V02_Colliders` |
+| Status | **BLENDER MODELED · BLENDER RENDER VERIFIED · EXPORTED · OWNER APPROVAL PENDING** |
+
+**Pipeline additions:**
+* `S.collider()`: invisible boxes go to manifest `colliders` and are not rendered.
+* `transparency` on materials: Sea 0.25, Waterfalls 0.3, Portal 0.55 and the pod glass are written to the manifest.
+* `setup_render(sky_light=…)`: sky colour for the camera, separate neutral ambient, like Roblox Sky vs Ambient.
+
+**Gameplay layout:**
+* A 112-stud grey stone causeway (lane `|x| < 54` clear).
+* A balustrade at `|x| = 56.8`, with **invisible colliders on it**, so the sea is never walkable and nobody falls.
+* Open gates at both ends.
+
+**R02 elements reproduced:**
+* **Sky:** green sky with a pale-green banded planet and a small moon.
+* **Causeway:** straight stone causeway to Frieza. Balustrade with stone lantern posts and warm lanterns.
+* **Sea and islands:** turquoise sea on both sides. Grass islands with blue-ball Ajisa trees (also rising beside
+  the causeway) and white Namekian domes with round windows and top tubes.
+* **Horizon:** tan/ochre mesas, with waterfalls into the sea.
+* **Frieza stage:** a dark purple stage with a glowing arch and portal pane.
+
+**Extra identity (not in R02, kept outside the lane):**
+* Seven orange Dragon Balls (1–7 stars) on plinths.
+* Frieza's hover pod.
+* Two crashed Saiyan pods.
+* A 4-star Dragon Ball emblem in the plaza.
+
+**Iterations:**
+
+| Pass | Findings | Fix |
+|---|---|---|
+| 1 | Path tinted green; planet a flat white disc; portal pane opaque; mesas uniform "wedding cakes"; faceted small canopies | Neutral cool-grey path; banded pale-green planet + moon; portal transparency 0.55; flat-topped irregular mesas; larger canopies with 4 lobes |
+| 2 | Green sky light still tinted every surface | `sky_light` ambient separation (renders only) |
+| 3 / final | Matches the R02 composition | Final render + export; canopy split to meet the triangle limit |
+
+**Known deviations:**
+* Stylised low-poly. The canopies are faceted spheres, and the sea is a flat transparent plane (runtime scroll/sparkle
+  at `VFX_SeaShimmer*`).
+* The sky planet is a far mesh. In Roblox it may instead become a Sky/billboard (recorded in the script).
+* The "stepped" mesa silhouette is a deliberate stylisation.

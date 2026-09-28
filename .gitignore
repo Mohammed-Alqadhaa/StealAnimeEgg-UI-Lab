@@ -5,3 +5,4 @@ tools/partview/_view.html
 
 # Blender autosave backups
 *.blend1
+__pycache__/
