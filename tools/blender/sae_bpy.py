@@ -611,6 +611,9 @@ def validate(world_id, walk_half=75.0, exit_min=16.0, lane_clear_y=(0.0, 186.0))
 
 
 def _export_group(objs, mod, rmat, out_dir, manifest, layer):
+    # per-object bounds (before joining) for precise cross-world checks
+    dg = bpy.context.evaluated_depsgraph_get()
+    obj_bounds = [[round(v, 2) for v in _aabb(o, dg)] for o in objs]
     # duplicate → apply modifiers → join (the editable objects in the .blend stay untouched)
     dups = []
     for o in objs:
@@ -648,6 +651,7 @@ def _export_group(objs, mod, rmat, out_dir, manifest, layer):
         "module": mod, "fbx": os.path.basename(path), "layer": layer, "canCollide": LAYERS[layer][0],
         "robloxMaterial": rmat or "SmoothPlastic", "triangles": tris, "overLimit": tris > TRI_LIMIT,
         "boundsLocal": [round(v, 2) for v in bmin + bmax],  # Blender world-local x,y,z min then max
+        "objectBounds": obj_bounds,  # per source object, same frame
         "robloxPosition": [round(-c.x, 3), round(c.z, 3), round(c.y, 3)],
         "sizeStuds": [round(dims.x, 3), round(dims.z, 3), round(dims.y, 3)],
         "materials": sorted({m.name for m in mats}),

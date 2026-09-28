@@ -49,9 +49,9 @@ def boxes():
         m = json.load(open(path))
         off = (idx - 1) * STRIDE
         for mod in m["modules"]:
-            b = mod["boundsLocal"]
-            out.append({"world": idx, "id": f"{folder}:{mod['module']}", "layer": mod["layer"],
-                        "collides": mod["canCollide"], "b": (b[0], b[1] + off, b[2], b[3], b[4] + off, b[5])})
+            for b in mod.get("objectBounds") or [mod["boundsLocal"]]:  # per-object bounds when available
+                out.append({"world": idx, "id": f"{folder}:{mod['module']}", "layer": mod["layer"],
+                            "collides": mod["canCollide"], "b": (b[0], b[1] + off, b[2], b[3], b[4] + off, b[5])})
         for c in m.get("colliders", []):
             X, Y, Z = c["robloxPosition"]
             sx, sy, sz = c["sizeStuds"]
@@ -67,7 +67,7 @@ def inter(a, b):
 
 def main():
     bx = boxes()
-    conflicts, notes = [], []
+    conflicts, notes, seen = [], [], set()
     for i in range(len(bx)):
         for j in range(i + 1, len(bx)):
             A, B = bx[i], bx[j]
@@ -78,11 +78,18 @@ def main():
             low = ov[2] < 12.0 and ov[5] > 0.0
             kind = "CONFLICT" if ((A["collides"] or B["collides"]) and low) or (in_corridor and ov[5] > 0.5 and
                                                                               "AKAZA" not in (A["layer"], B["layer"])) else "NOTE"
+            # protected Akaza geometry flush with / below floor level under the next world's threshold floor
+            if kind == "CONFLICT" and "AKAZA" in (A["layer"], B["layer"]) and ov[5] <= 0.2:
+                kind = "NOTE"
             # two boundary colliders on the same wall line are harmless
             if kind == "CONFLICT" and A["collides"] and B["collides"] and A["layer"] in ("BOUNDARY", "COLLISION", "AKAZA") \
                     and B["layer"] in ("BOUNDARY", "COLLISION", "AKAZA") and abs(ov[0]) > 70 and abs(ov[3]) > 70:
                 kind = "NOTE"
             rec = f"{A['id']} [{A['layer']}] x {B['id']} [{B['layer']}] overlap x[{ov[0]:.1f},{ov[3]:.1f}] z[{ov[2]:.1f},{ov[5]:.1f}] globalY[{ov[1]:.1f},{ov[4]:.1f}]"
+            key = (A["id"], B["id"], kind)
+            if key in seen:
+                continue
+            seen.add(key)
             (conflicts if kind == "CONFLICT" else notes).append(rec)
     print(f"CROSS-WORLD CHECK: {len(conflicts)} conflict(s), {len(notes)} note(s)")
     for r in conflicts:

@@ -1,0 +1,15 @@
+{
+ "conflicts": [],
+ "notes": [
+  "Akaza:Environment.Rocks.RiverRockSupport_1_10 [AKAZA] x 02_MHA:CrackBed [PLAYABLE] overlap x[-75.0,-60.8] z[-0.7,-0.5] globalY[230.0,243.1]",
+  "Akaza:Environment.Rocks.RiverRockSupport_1_10 [AKAZA] x 02_MHA:Floor1_Stone [PLAYABLE] overlap x[-74.8,-65.3] z[-1.0,0.0] globalY[236.1,243.1]",
+  "Akaza:Environment.Rocks.RiverRockSupport_1_10 [AKAZA] x 02_MHA:Floor1_StoneDark [PLAYABLE] overlap x[-74.7,-64.9] z[-1.0,0.1] globalY[230.2,236.1]",
+  "Akaza:Environment.Rocks.RiverRockSupport_1_10 [AKAZA] x 02_MHA:WallsE_Stone [BOUNDARY] overlap x[-76.2,-74.7] z[-0.1,0.1] globalY[239.8,243.1]",
+  "Akaza:Environment.Rocks.RiverRockSupport_1_10 [AKAZA] x 02_MHA:WallsE_StoneDark [BOUNDARY] overlap x[-76.2,-74.8] z[-0.0,0.1] globalY[230.0,239.8]",
+  "Akaza:Environment.Rocks.RiverRockSupport_-1_10 [AKAZA] x 02_MHA:CrackBed [PLAYABLE] overlap x[61.2,75.0] z[-0.7,-0.5] globalY[230.0,239.7]",
+  "Akaza:Environment.Rocks.RiverRockSupport_-1_10 [AKAZA] x 02_MHA:Floor1_Stone [PLAYABLE] overlap x[61.2,61.5] z[-1.0,-0.1] globalY[238.9,239.7]",
+  "Akaza:NightDressing.WallCollider(+X) [AKAZA] x 02_MHA:WallsE_Stone [BOUNDARY] overlap x[-80.0,-76.0] z[18.4,22.4] globalY[231.1,235.0]",
+  "Akaza:NightDressing.WallCollider(+X) [AKAZA] x 02_MHA:WallsE_StoneDark [BOUNDARY] overlap x[-79.6,-76.0] z[0.0,19.2] globalY[230.0,235.0]",
+  "Akaza:NightDressing.WallCollider(-X) [AKAZA] x 02_MHA:WallsW_Stone [BOUNDARY] overlap x[76.0,79.8] z[0.0,20.4] globalY[230.0,235.0]"
+ ]
+}
