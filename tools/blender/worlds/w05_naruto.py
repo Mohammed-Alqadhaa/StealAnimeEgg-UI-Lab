@@ -88,9 +88,9 @@ def gable_roof(name, cx, cy, w, d, z, pitch, overhang, material, along_y=True):
     objs = []
     for s_ in (-1, 1):
         if along_y:
-            objs.append(S.box(f"{name}_{s_}", (slope_len, length, 0.6), (cx + s_ * run / 2, cy, z + rise / 2), (0, -s_ * pitch, 0), material))
+            objs.append(S.box(f"{name}_{s_}", (slope_len, length, 0.6), (cx + s_ * run / 2, cy, z + rise / 2), (0, s_ * pitch, 0), material))
         else:
-            objs.append(S.box(f"{name}_{s_}", (length, slope_len, 0.6), (cx, cy + s_ * run / 2, z + rise / 2), (s_ * pitch, 0, 0), material))
+            objs.append(S.box(f"{name}_{s_}", (length, slope_len, 0.6), (cx, cy + s_ * run / 2, z + rise / 2), (-s_ * pitch, 0, 0), material))
     return objs, rise
 
 
@@ -99,21 +99,21 @@ C("EXPORT_Grout__Ground")
 S.box("Grout", (HALF * 2, YL, 0.4), (0, YM, -0.45), material=GROUT)
 for part, (y0, y1) in enumerate([(Y0, 64), (64, 140), (140, Y1)]):
     C(f"EXPORT_Street{part + 1}__Cobblestone")
-    for ob in S.slab_floor(f"Street{part}", -18.0, 18.0, y0, y1, 4.5, 0.12, 0.02, 0.8, PATH, rng, jitter=0.2, tilt=0.006, bev=0.08, gap_var=0.05):
+    for ob in S.slab_floor(f"Street{part}", -26.0, 26.0, y0, y1, 4.5, 0.12, 0.02, 0.8, PATH, rng, jitter=0.2, tilt=0.006, bev=0.08, gap_var=0.05):
         if rng.random() < 0.3:
             ob.data.materials[0] = PATH_D
     C(f"EXPORT_Ground{part + 1}__Ground")
     for side in (-1, 1):
-        x0, x1 = (-HALF, -18.0) if side < 0 else (18.0, HALF)
+        x0, x1 = (-HALF, -26.0) if side < 0 else (26.0, HALF)
         S.slab_floor(f"Dirt{part}{side}", x0, x1, y0, y1, 12.0, 0.05, 0.0, 0.8, DIRT, rng, jitter=0.1, tilt=0.0)
 C("EXPORT_StreetCurb__Cobblestone")
 for side in (-1, 1):
-    S.box(f"Curb{side}", (0.8, YL, 0.35), (side * 18.2, YM, 0.12), material=PATH_D)
+    S.box(f"Curb{side}", (0.8, YL, 0.35), (side * 26.2, YM, 0.12), material=PATH_D)
 
 # ════════════════════════════════════════════════════════════ HOUSES ══
 HOUSES = []
 for side in (-1, 1):
-    y = Y0 + 2
+    y = 8.0  # houses start inside the village gate (the threshold before it stays open ground)
     while y < Y1 - 10:
         d = min(rng.uniform(14, 22), Y1 - 2 - y)
         if d < 8:
@@ -211,13 +211,23 @@ for side in (-1, 1):
 RX0, RY0, RY1 = 64.0, 160.0, 226.0
 C("EXPORT_HokageRock__Rock")
 z, layer = 0.0, 0
-while z < 70:
-    lh = rng.uniform(10, 16)
-    inset = layer * 1.5
-    poly = [(RX0 + inset + rng.uniform(0, 3), RY0 + inset), (RX0 + 110, RY0 + inset * 0.5), (RX0 + 110, RY1), (RX0 + inset * 0.6 + rng.uniform(0, 3), RY1)]
-    S.prism(f"Cliff{layer}", poly, z, min(70, z + lh), ROCK if layer % 2 == 0 else ROCK_D)
+while z < 72:
+    lh = rng.uniform(12, 20)
+    inset = layer * 2.2
+    front = [(RX0 + inset + k * 11 + rng.uniform(-3, 3), RY0 + inset * 0.6 + rng.uniform(0, 4)) for k in range(11)]
+    left = [(RX0 + inset + rng.uniform(0, 3), RY1 - 2 - k * (RY1 - RY0) / 4 + rng.uniform(-2, 2)) for k in range(4)]
+    # outline in order: jagged front (+x), far corners, back-left corner, then down the left side (-y)
+    poly = front + [(RX0 + 118, RY0 + inset), (RX0 + 118, RY1), (RX0 + inset + rng.uniform(0, 3), RY1)] + left[1:]
+    S.prism(f"Cliff{layer}", poly, z, min(72, z + lh), ROCK)
     z += lh
     layer += 1
+C("EXPORT_HokageRockBoulders__Rock")
+for k in range(14):
+    bx, by = RX0 + rng.uniform(0, 100), RY0 + rng.uniform(-6, 2)
+    S.sphere(f"Boulder{k}", rng.uniform(2.5, 5.5), (bx, by, 1.5), ROCK_D, seg=8, rings=6, scale=(1.2, 0.9, 0.8))
+C("EXPORT_HokageTopTrees__Grass")
+for k in range(12):
+    S.sphere(f"TopTree{k}", rng.uniform(4, 6.5), (RX0 + 14 + k * 8.5 + rng.uniform(-2, 2), RY0 + 26 + rng.uniform(0, 30), 74), LEAF, seg=10, rings=6)
 S.use(S.collection("VFX"))
 S.empty("VFX_HokageDust", (RX0, RY0, 40))["vfx"] = "drifting leaves + light dust off the cliff (runtime)"
 C("EXPORT_HokageFaces__Rock")
@@ -262,11 +272,11 @@ for dx in (-5, 5):
     S.cyl(f"CrestRope{dx}", 0.12, 4.0, (dx, 219, 33.0), material=TIMBER, verts=5)
 # red round tower (Hokage residence silhouette) behind-left of the stage, inside the slot
 C("EXPORT_Tower__SmoothPlastic")
-S.cyl("TowerBody", 13, 26, (-36, 214, 13), material=TOWER, verts=28)
-S.cyl("TowerBand", 13.4, 1.2, (-36, 214, 18), material=WHITE, verts=28)
+S.cyl("TowerBody", 13, 26, (-36, 209, 13), material=TOWER, verts=28)
+S.cyl("TowerBand", 13.4, 1.2, (-36, 209, 18), material=WHITE, verts=28)
 C("EXPORT_TowerRoof__Slate")
-S.cyl("TowerRoof", 15, 5, (-36, 214, 28.5), material=ROOF, verts=28, r2=9)
-S.cyl("TowerTop", 9, 2.5, (-36, 214, 32.2), material=ROOF_O, verts=28, r2=4)
+S.cyl("TowerRoof", 15, 5, (-36, 209, 28.5), material=ROOF, verts=28, r2=9)
+S.cyl("TowerTop", 9, 2.5, (-36, 209, 32.2), material=ROOF_O, verts=28, r2=4)
 S.use(S.collection("VFX"))
 S.empty("VFX_BossStage", (0, BOSS_Y, 3))["vfx"] = "boss anchor + dark chakra / Susanoo-blue aura (runtime)"
 S.empty("VFX_UchihaCrest", (0, 219, 24))["vfx"] = "crest pulse + falling leaves (runtime)"

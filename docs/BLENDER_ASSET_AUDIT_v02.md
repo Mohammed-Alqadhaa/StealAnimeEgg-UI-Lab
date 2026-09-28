@@ -203,3 +203,47 @@ Every other module is under 4,500 triangles.
 * R02 shows stands behind Doflamingo. They cannot fit inside the world slot, so the façade takes their place.
 * Spectators are static blocks. The `VFX_CrowdCheer±` anchors drive a client bob/cheer.
 * The feather fan is stylised as petals.
+
+## 05_Naruto — Konoha / Madara (reference **R02** Konoha panel)
+
+| Field | Value |
+|---|---|
+| Source | `art/blender/worlds/05_Naruto.blend` (9.0 MB; SHA-256 `e66b77e25ea830aaa7e7222fa8fa0bd50225c3d176c8d4eb209e955321ab9f3d`) |
+| Script | `tools/blender/worlds/w05_naruto.py` (`random.Random(505)`) |
+| Exports | `art/exports/worlds/05_Naruto/`: **59 FBX modules (single colour each), 66,004 triangles, 0 over the limit (largest 7,920), 0 outside the slot**. 17 VFX anchors, **19 colliders** (house blocks, street boundaries, gate walls) |
+| Renders | `pass1_*`, `pass2_*` (20 spp), `final_gameplay.png`, `final_boss.png`, `final_overview.png` (48 spp) |
+| Target Roblox path | `Workspace.SAE_World.Worlds.Naruto.Environment.<Module>`, `…Naruto.V02_VFX`, `…Naruto.V02_Colliders` |
+| Status | **BLENDER MODELED · BLENDER RENDER VERIFIED · EXPORTED · OWNER APPROVAL PENDING** |
+
+**Gameplay layout:**
+* A 52-stud cobblestone street on packed-earth ground. Lane `|x| < 54` clear.
+* House fronts at `|x| ≥ 60`, with invisible colliders on each house and along the street edge.
+* The Konoha main gate at the entry spans the whole lane; its open doors rest outside the lane.
+
+**R02 elements reproduced:**
+* **Houses:** cream-walled timber-framed houses (1–2 storeys) with red, orange and green gable roofs. Red paper
+  lanterns hang at the eaves.
+* **Street:** wooden lantern posts with warm lanterns. Red banners with the white Leaf spiral.
+* **Hokage Rock:** a craggy cliff with 4 carved faces (two with forehead plates) and trees on top. It sits at the
+  far end on the Roblox −x side, inside the slot, facing down the street.
+* **Madara stage:** a stone stage under a timber crest frame with a large red and white Uchiha fan. A red round
+  tower (Hokage residence silhouette) stands to the side.
+
+**Extra identity:**
+* An open Konoha main gate with a green roof and a Leaf mark.
+* An Ichiraku-style ramen stand with white noren.
+* Round green trees behind the houses.
+
+**Iterations:**
+
+| Pass | Findings | Fix |
+|---|---|---|
+| 1 | Gable roofs rendered inverted (slope sign bug); Hokage Rock a flat striped box; stone street narrow against wide dirt; tower roof 1 stud outside the slot | Roof slope signs fixed; craggy layered cliff with boulders and top trees; street widened to 52 studs; tower moved inside the slot |
+| 2 | Cliff outline vertex order zig-zagged (renders, but not a clean mesh); houses started in the entry threshold in front of the gate | Proper outline order; houses start inside the gate (y ≥ 8) |
+| final | Matches the R02 Konoha composition | Final render + export |
+
+**Known deviations:**
+* R02 places the Hokage Rock behind Madara on the horizon. The world slot forbids that, so it is placed at the
+  far-end side.
+* The faces are stylised (no likeness of specific Hokage).
+* The Leaf symbol is a simplified spiral + tip.
