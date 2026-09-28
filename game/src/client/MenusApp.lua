@@ -367,9 +367,7 @@ function Menus.start(ctx)
 		end, bindNew)
 	end
 	state.observe(renderTrails)
-	onClick(U.find(trC, "TopBar.UnequipButton"), function()
-		net.fire("RequestEquipTrail", nil)
-	end)
+	-- TopBar.UnequipButton carries Action=UnequipTrail (handled in the ui.Action switch below)
 
 	---------------------------------------------------------------- SELL
 	local slC = content(gui, "Sell")
