@@ -247,3 +247,41 @@ Every other module is under 4,500 triangles.
   far-end side.
 * The faces are stylised (no likeness of specific Hokage).
 * The Leaf symbol is a simplified spiral + tip.
+
+## 06_Bleach — Yhwach's palace (reference **R10**, authoritative for the Bleach map)
+
+| Field | Value |
+|---|---|
+| Source | `art/blender/worlds/06_Bleach.blend` (5.7 MB; SHA-256 `27108f6b05fff6f44bdcd26b96d5eff7738d389b0b901561e6ab48de594909f0`) |
+| Script | `tools/blender/worlds/w06_bleach.py` (`random.Random(606)`) |
+| Exports | `art/exports/worlds/06_Bleach/`: **44 FBX modules (single colour each), 41,356 triangles, 0 over the limit (largest 5,248), 0 outside the slot**. 25 VFX anchors |
+| Renders | `pass1_*` (20 spp), `final_gameplay.png`, `final_boss.png`, `final_overview.png` (48 spp) |
+| Target Roblox path | `Workspace.SAE_World.Worlds.Bleach.Environment.<Module>`, `…Bleach.V02_VFX` |
+| Status | **BLENDER MODELED · BLENDER RENDER VERIFIED · EXPORTED · OWNER APPROVAL PENDING** |
+
+**Gameplay layout:**
+* Polished dark marble floor. Lane `|x| < 54` clear.
+* Palace walls at `|x| ≈ 77` collide.
+* A great open entry arch spans the lane, between two gate towers.
+
+**R10 elements reproduced:**
+* **Corridor:** a monumental grey/white corridor with a reflective dark floor and white inlaid guide lines running
+  to the throne.
+* **Banners:** towering banner pillars with long white banners bearing the black Wandenreich cross.
+* **Braziers:** stone brazier pedestals with burning fires along the path.
+* **Skyline:** gothic towers and spires with pale-blue lit windows, and buttressed palace walls.
+* **Throne:** a wide 8-step staircase up to Yhwach's dark throne (glowing cross emblem, spired back), flanked by
+  two giant banner pillars.
+* **Egg pedestals:** dark, with blue reishi glow.
+
+**Iterations:**
+
+| Pass | Findings | Fix |
+|---|---|---|
+| 1 | Flying buttresses read as stray floating beams; flames and banner crosses smaller than R10 | Buttresses removed; flames enlarged; banner crosses scaled ×1.3 |
+| final | Matches the R10 composition | Final render + export |
+
+**Known deviations:**
+* R10's stormy clouds and moon are a Roblox Sky choice, not geometry.
+* The Wandenreich cross is a simplified 4-point star with a longer lower arm.
+* The review render shows some Cycles firefly noise (no denoiser in this Blender build).
