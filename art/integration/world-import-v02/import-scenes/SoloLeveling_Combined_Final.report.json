@@ -1,0 +1,1450 @@
+{
+ "world": "SoloLeveling",
+ "source": "art/blender/worlds/08_SoloLeveling.blend",
+ "fbx": "SoloLeveling_Combined_Final.fbx",
+ "mapping": "Roblox(X,Y,Z) = (-x, z, z0 + y) * importScale",
+ "pieces": [
+  {
+   "piece": "AlcoveFrames_Trim",
+   "module": "AlcoveFrames",
+   "layer": "BOUNDARY",
+   "canCollide": true,
+   "robloxMaterial": "Slate",
+   "color": "#4a5468",
+   "transparency": 0.0,
+   "triangles": 48,
+   "blenderCenter": [
+    0.0,
+    99.0,
+    17.0
+   ],
+   "blenderSize": [
+    161.0,
+    258.0,
+    34.0
+   ],
+   "robloxPosition": [
+    -0.0,
+    17.0,
+    99.0
+   ],
+   "sizeStuds": [
+    161.0,
+    34.0,
+    258.0
+   ]
+  },
+  {
+   "piece": "AlcoveFrames_WallStone",
+   "module": "AlcoveFrames",
+   "layer": "BOUNDARY",
+   "canCollide": true,
+   "robloxMaterial": "Slate",
+   "color": "#2b3140",
+   "transparency": 0.0,
+   "triangles": 6320,
+   "blenderCenter": [
+    0.0,
+    92.0,
+    16.6
+   ],
+   "blenderSize": [
+    160.0,
+    240.0,
+    33.2
+   ],
+   "robloxPosition": [
+    -0.0,
+    16.6,
+    92.0
+   ],
+   "sizeStuds": [
+    160.0,
+    33.2,
+    240.0
+   ]
+  },
+  {
+   "piece": "BlueFire",
+   "module": "BlueFire",
+   "layer": "PROPS",
+   "canCollide": false,
+   "robloxMaterial": "Neon",
+   "color": "#2f8dff",
+   "transparency": 0.0,
+   "triangles": 1200,
+   "blenderCenter": [
+    0.0825,
+    96.0433,
+    7.5939
+   ],
+   "blenderSize": [
+    115.5063,
+    182.6948,
+    4.3877
+   ],
+   "robloxPosition": [
+    -0.083,
+    7.594,
+    96.043
+   ],
+   "sizeStuds": [
+    115.506,
+    4.388,
+    182.695
+   ]
+  },
+  {
+   "piece": "BlueFireCore",
+   "module": "BlueFireCore",
+   "layer": "PROPS",
+   "canCollide": false,
+   "robloxMaterial": "Neon",
+   "color": "#bfe6ff",
+   "transparency": 0.0,
+   "triangles": 400,
+   "blenderCenter": [
+    -0.0,
+    96.0,
+    6.9
+   ],
+   "blenderSize": [
+    113.9526,
+    181.1,
+    3.0
+   ],
+   "robloxPosition": [
+    0.0,
+    6.9,
+    96.0
+   ],
+   "sizeStuds": [
+    113.953,
+    3.0,
+    181.1
+   ]
+  },
+  {
+   "piece": "Braziers",
+   "module": "Braziers",
+   "layer": "PROPS",
+   "canCollide": false,
+   "robloxMaterial": "Metal",
+   "color": "#1d1f25",
+   "transparency": 0.0,
+   "triangles": 1360,
+   "blenderCenter": [
+    -0.0,
+    96.0,
+    2.725
+   ],
+   "blenderSize": [
+    116.4,
+    183.4,
+    5.45
+   ],
+   "robloxPosition": [
+    0.0,
+    2.725,
+    96.0
+   ],
+   "sizeStuds": [
+    116.4,
+    5.45,
+    183.4
+   ]
+  },
+  {
+   "piece": "CandleFlames",
+   "module": "CandleFlames",
+   "layer": "PROPS",
+   "canCollide": false,
+   "robloxMaterial": "Neon",
+   "color": "#bfe6ff",
+   "transparency": 0.0,
+   "triangles": 648,
+   "blenderCenter": [
+    0.1198,
+    95.9691,
+    2.3
+   ],
+   "blenderSize": [
+    126.0593,
+    167.922,
+    1.08
+   ],
+   "robloxPosition": [
+    -0.12,
+    2.3,
+    95.969
+   ],
+   "sizeStuds": [
+    126.059,
+    1.08,
+    167.922
+   ]
+  },
+  {
+   "piece": "Candles",
+   "module": "Candles",
+   "layer": "PROPS",
+   "canCollide": false,
+   "robloxMaterial": "SmoothPlastic",
+   "color": "#d9dce4",
+   "transparency": 0.0,
+   "triangles": 1440,
+   "blenderCenter": [
+    0.0177,
+    95.783,
+    0.7
+   ],
+   "blenderSize": [
+    127.7796,
+    169.3479,
+    2.1982
+   ],
+   "robloxPosition": [
+    -0.018,
+    0.7,
+    95.783
+   ],
+   "sizeStuds": [
+    127.78,
+    2.198,
+    169.348
+   ]
+  },
+  {
+   "piece": "Colossi_ShadowCape",
+   "module": "Colossi",
+   "layer": "PROPS",
+   "canCollide": false,
+   "robloxMaterial": "Fabric",
+   "color": "#0d0f16",
+   "transparency": 0.0,
+   "triangles": 1308,
+   "blenderCenter": [
+    -0.017,
+    219.3202,
+    15.9469
+   ],
+   "blenderSize": [
+    85.0589,
+    2.7023,
+    33.636
+   ],
+   "robloxPosition": [
+    0.017,
+    15.947,
+    219.32
+   ],
+   "sizeStuds": [
+    85.059,
+    33.636,
+    2.702
+   ]
+  },
+  {
+   "piece": "Colossi_ShadowArmor",
+   "module": "Colossi",
+   "layer": "PROPS",
+   "canCollide": false,
+   "robloxMaterial": "Metal",
+   "color": "#12141b",
+   "transparency": 0.0,
+   "triangles": 824,
+   "blenderCenter": [
+    0.0,
+    216.0,
+    19.942
+   ],
+   "blenderSize": [
+    86.4368,
+    12.48,
+    39.884
+   ],
+   "robloxPosition": [
+    -0.0,
+    19.942,
+    216.0
+   ],
+   "sizeStuds": [
+    86.437,
+    39.884,
+    12.48
+   ]
+  },
+  {
+   "piece": "Colossi_ShadowEdge",
+   "module": "Colossi",
+   "layer": "PROPS",
+   "canCollide": false,
+   "robloxMaterial": "Metal",
+   "color": "#2a3350",
+   "transparency": 0.0,
+   "triangles": 568,
+   "blenderCenter": [
+    -0.0,
+    215.194,
+    22.6406
+   ],
+   "blenderSize": [
+    91.675,
+    9.048,
+    43.2012
+   ],
+   "robloxPosition": [
+    0.0,
+    22.641,
+    215.194
+   ],
+   "sizeStuds": [
+    91.675,
+    43.201,
+    9.048
+   ]
+  },
+  {
+   "piece": "Colossi_ShadowEyes",
+   "module": "Colossi",
+   "layer": "PROPS",
+   "canCollide": false,
+   "robloxMaterial": "Neon",
+   "color": "#39b5ff",
+   "transparency": 0.0,
+   "triangles": 48,
+   "blenderCenter": [
+    0.0,
+    213.27,
+    36.4
+   ],
+   "blenderSize": [
+    75.64,
+    0.52,
+    0.572
+   ],
+   "robloxPosition": [
+    -0.0,
+    36.4,
+    213.27
+   ],
+   "sizeStuds": [
+    75.64,
+    0.572,
+    0.52
+   ]
+  },
+  {
+   "piece": "Dais",
+   "module": "Dais",
+   "layer": "BOSS_STAGE",
+   "canCollide": true,
+   "robloxMaterial": "Marble",
+   "color": "#14161d",
+   "transparency": 0.0,
+   "triangles": 540,
+   "blenderCenter": [
+    0.0,
+    200.875,
+    1.8
+   ],
+   "blenderSize": [
+    40.0,
+    25.25,
+    3.6
+   ],
+   "robloxPosition": [
+    -0.0,
+    1.8,
+    200.875
+   ],
+   "sizeStuds": [
+    40.0,
+    3.6,
+    25.25
+   ]
+  },
+  {
+   "piece": "EggPedestalGlow_GateGlow",
+   "module": "EggPedestalGlow",
+   "layer": "PROPS",
+   "canCollide": false,
+   "robloxMaterial": "Neon",
+   "color": "#3aa0ff",
+   "transparency": 0.0,
+   "triangles": 672,
+   "blenderCenter": [
+    21.0,
+    151.0,
+    1.62
+   ],
+   "blenderSize": [
+    46.88,
+    70.88,
+    0.28
+   ],
+   "robloxPosition": [
+    -21.0,
+    1.62,
+    151.0
+   ],
+   "sizeStuds": [
+    46.88,
+    0.28,
+    70.88
+   ]
+  },
+  {
+   "piece": "EggPedestalGlow_ShadowViolet",
+   "module": "EggPedestalGlow",
+   "layer": "PROPS",
+   "canCollide": false,
+   "robloxMaterial": "Neon",
+   "color": "#7b5cff",
+   "transparency": 0.0,
+   "triangles": 448,
+   "blenderCenter": [
+    -34.0,
+    138.0,
+    1.62
+   ],
+   "blenderSize": [
+    20.88,
+    44.88,
+    0.28
+   ],
+   "robloxPosition": [
+    34.0,
+    1.62,
+    138.0
+   ],
+   "sizeStuds": [
+    20.88,
+    0.28,
+    44.88
+   ]
+  },
+  {
+   "piece": "EggPedestals_Throne",
+   "module": "EggPedestals",
+   "layer": "PLAYABLE",
+   "canCollide": true,
+   "robloxMaterial": "Slate",
+   "color": "#14161d",
+   "transparency": 0.0,
+   "triangles": 140,
+   "blenderCenter": [
+    0.0,
+    151.0,
+    1.4
+   ],
+   "blenderSize": [
+    89.2,
+    71.2,
+    0.4
+   ],
+   "robloxPosition": [
+    -0.0,
+    1.4,
+    151.0
+   ],
+   "sizeStuds": [
+    89.2,
+    0.4,
+    71.2
+   ]
+  },
+  {
+   "piece": "EggPedestals_WallStoneDark",
+   "module": "EggPedestals",
+   "layer": "PLAYABLE",
+   "canCollide": true,
+   "robloxMaterial": "Slate",
+   "color": "#1b202b",
+   "transparency": 0.0,
+   "triangles": 140,
+   "blenderCenter": [
+    0.0,
+    151.0,
+    0.6
+   ],
+   "blenderSize": [
+    90.2,
+    72.2,
+    1.2
+   ],
+   "robloxPosition": [
+    -0.0,
+    0.6,
+    151.0
+   ],
+   "sizeStuds": [
+    90.2,
+    1.2,
+    72.2
+   ]
+  },
+  {
+   "piece": "EndGuards_ShadowCape",
+   "module": "EndGuards",
+   "layer": "PROPS",
+   "canCollide": false,
+   "robloxMaterial": "Fabric",
+   "color": "#0d0f16",
+   "transparency": 0.0,
+   "triangles": 2612,
+   "blenderCenter": [
+    -0.017,
+    224.0653,
+    7.6465
+   ],
+   "blenderSize": [
+    130.3089,
+    1.3611,
+    16.2169
+   ],
+   "robloxPosition": [
+    0.017,
+    7.646,
+    224.065
+   ],
+   "sizeStuds": [
+    130.309,
+    16.217,
+    1.361
+   ]
+  },
+  {
+   "piece": "EndGuards_ShadowArmor",
+   "module": "EndGuards",
+   "layer": "PROPS",
+   "canCollide": false,
+   "robloxMaterial": "Metal",
+   "color": "#12141b",
+   "transparency": 0.0,
+   "triangles": 1648,
+   "blenderCenter": [
+    0.0,
+    222.5,
+    9.5875
+   ],
+   "blenderSize": [
+    130.9408,
+    6.0,
+    19.175
+   ],
+   "robloxPosition": [
+    -0.0,
+    9.587,
+    222.5
+   ],
+   "sizeStuds": [
+    130.941,
+    19.175,
+    6.0
+   ]
+  },
+  {
+   "piece": "EndGuards_ShadowEdge",
+   "module": "EndGuards",
+   "layer": "PROPS",
+   "canCollide": false,
+   "robloxMaterial": "Metal",
+   "color": "#2a3350",
+   "transparency": 0.0,
+   "triangles": 1136,
+   "blenderCenter": [
+    0.0,
+    222.1125,
+    10.887
+   ],
+   "blenderSize": [
+    133.4591,
+    4.35,
+    20.774
+   ],
+   "robloxPosition": [
+    -0.0,
+    10.887,
+    222.113
+   ],
+   "sizeStuds": [
+    133.459,
+    20.774,
+    4.35
+   ]
+  },
+  {
+   "piece": "EndGuards_ShadowEyes",
+   "module": "EndGuards",
+   "layer": "PROPS",
+   "canCollide": false,
+   "robloxMaterial": "Neon",
+   "color": "#39b5ff",
+   "transparency": 0.0,
+   "triangles": 96,
+   "blenderCenter": [
+    0.0,
+    221.1875,
+    17.5
+   ],
+   "blenderSize": [
+    125.75,
+    0.25,
+    0.275
+   ],
+   "robloxPosition": [
+    -0.0,
+    17.5,
+    221.188
+   ],
+   "sizeStuds": [
+    125.75,
+    0.275,
+    0.25
+   ]
+  },
+  {
+   "piece": "EndWalls_Trim",
+   "module": "EndWalls",
+   "layer": "BOUNDARY",
+   "canCollide": true,
+   "robloxMaterial": "Slate",
+   "color": "#4a5468",
+   "transparency": 0.0,
+   "triangles": 24,
+   "blenderCenter": [
+    0.0,
+    226.5,
+    33.0
+   ],
+   "blenderSize": [
+    163.0,
+    3.0,
+    2.0
+   ],
+   "robloxPosition": [
+    -0.0,
+    33.0,
+    226.5
+   ],
+   "sizeStuds": [
+    163.0,
+    2.0,
+    3.0
+   ]
+  },
+  {
+   "piece": "EndWalls_WallStone",
+   "module": "EndWalls",
+   "layer": "BOUNDARY",
+   "canCollide": true,
+   "robloxMaterial": "Slate",
+   "color": "#2b3140",
+   "transparency": 0.0,
+   "triangles": 744,
+   "blenderCenter": [
+    0.0,
+    225.0,
+    13.5
+   ],
+   "blenderSize": [
+    160.0,
+    1.2,
+    27.0
+   ],
+   "robloxPosition": [
+    -0.0,
+    13.5,
+    225.0
+   ],
+   "sizeStuds": [
+    160.0,
+    27.0,
+    1.2
+   ]
+  },
+  {
+   "piece": "EndWalls_WallStoneDark",
+   "module": "EndWalls",
+   "layer": "BOUNDARY",
+   "canCollide": true,
+   "robloxMaterial": "Slate",
+   "color": "#1b202b",
+   "transparency": 0.0,
+   "triangles": 24,
+   "blenderCenter": [
+    0.0,
+    226.75,
+    17.0
+   ],
+   "blenderSize": [
+    162.0,
+    2.5,
+    34.0
+   ],
+   "robloxPosition": [
+    -0.0,
+    17.0,
+    226.75
+   ],
+   "sizeStuds": [
+    162.0,
+    34.0,
+    2.5
+   ]
+  },
+  {
+   "piece": "EntryGate",
+   "module": "EntryGate",
+   "layer": "BOUNDARY",
+   "canCollide": true,
+   "robloxMaterial": "Slate",
+   "color": "#2b3140",
+   "transparency": 0.0,
+   "triangles": 444,
+   "blenderCenter": [
+    0.0,
+    -3.0,
+    48.5
+   ],
+   "blenderSize": [
+    128.0,
+    8.0,
+    97.0
+   ],
+   "robloxPosition": [
+    -0.0,
+    48.5,
+    -3.0
+   ],
+   "sizeStuds": [
+    128.0,
+    97.0,
+    8.0
+   ]
+  },
+  {
+   "piece": "EntryGlow",
+   "module": "EntryGlow",
+   "layer": "PROPS",
+   "canCollide": false,
+   "robloxMaterial": "Neon",
+   "color": "#3aa0ff",
+   "transparency": 0.0,
+   "triangles": 228,
+   "blenderCenter": [
+    0.0,
+    -3.0,
+    63.9
+   ],
+   "blenderSize": [
+    111.6,
+    7.4,
+    55.8
+   ],
+   "robloxPosition": [
+    -0.0,
+    63.9,
+    -3.0
+   ],
+   "sizeStuds": [
+    111.6,
+    55.8,
+    7.4
+   ]
+  },
+  {
+   "piece": "Floor1_FloorStone",
+   "module": "Floor1",
+   "layer": "PLAYABLE",
+   "canCollide": true,
+   "robloxMaterial": "Slate",
+   "color": "#252a36",
+   "transparency": 0.0,
+   "triangles": 5720,
+   "blenderCenter": [
+    0.0001,
+    17.0005,
+    -0.3702
+   ],
+   "blenderSize": [
+    149.8661,
+    93.8664,
+    0.8596
+   ],
+   "robloxPosition": [
+    -0.0,
+    -0.37,
+    17.0
+   ],
+   "sizeStuds": [
+    149.866,
+    0.86,
+    93.866
+   ]
+  },
+  {
+   "piece": "Floor1_FloorStoneLight",
+   "module": "Floor1",
+   "layer": "PLAYABLE",
+   "canCollide": true,
+   "robloxMaterial": "Slate",
+   "color": "#2f3544",
+   "transparency": 0.0,
+   "triangles": 2728,
+   "blenderCenter": [
+    -0.0007,
+    16.9996,
+    -0.3711
+   ],
+   "blenderSize": [
+    149.8636,
+    93.864,
+    0.8579
+   ],
+   "robloxPosition": [
+    0.001,
+    -0.371,
+    17.0
+   ],
+   "sizeStuds": [
+    149.864,
+    0.858,
+    93.864
+   ]
+  },
+  {
+   "piece": "Floor1_Runner",
+   "module": "Floor1",
+   "layer": "PLAYABLE",
+   "canCollide": true,
+   "robloxMaterial": "Slate",
+   "color": "#171b24",
+   "transparency": 0.0,
+   "triangles": 1584,
+   "blenderCenter": [
+    0.0064,
+    16.9993,
+    -0.3704
+   ],
+   "blenderSize": [
+    24.4197,
+    93.8645,
+    0.8593
+   ],
+   "robloxPosition": [
+    -0.006,
+    -0.37,
+    16.999
+   ],
+   "sizeStuds": [
+    24.42,
+    0.859,
+    93.865
+   ]
+  },
+  {
+   "piece": "Floor2_FloorStone",
+   "module": "Floor2",
+   "layer": "PLAYABLE",
+   "canCollide": true,
+   "robloxMaterial": "Slate",
+   "color": "#252a36",
+   "transparency": 0.0,
+   "triangles": 4708,
+   "blenderCenter": [
+    -0.0007,
+    102.0007,
+    -0.3702
+   ],
+   "blenderSize": [
+    149.8622,
+    75.8689,
+    0.8596
+   ],
+   "robloxPosition": [
+    0.001,
+    -0.37,
+    102.001
+   ],
+   "sizeStuds": [
+    149.862,
+    0.86,
+    75.869
+   ]
+  },
+  {
+   "piece": "Floor2_FloorStoneLight",
+   "module": "Floor2",
+   "layer": "PLAYABLE",
+   "canCollide": true,
+   "robloxMaterial": "Slate",
+   "color": "#2f3544",
+   "transparency": 0.0,
+   "triangles": 2332,
+   "blenderCenter": [
+    0.0003,
+    101.9993,
+    -0.3736
+   ],
+   "blenderSize": [
+    149.8627,
+    75.8683,
+    0.8529
+   ],
+   "robloxPosition": [
+    -0.0,
+    -0.374,
+    101.999
+   ],
+   "sizeStuds": [
+    149.863,
+    0.853,
+    75.868
+   ]
+  },
+  {
+   "piece": "Floor2_Runner",
+   "module": "Floor2",
+   "layer": "PLAYABLE",
+   "canCollide": true,
+   "robloxMaterial": "Slate",
+   "color": "#171b24",
+   "transparency": 0.0,
+   "triangles": 1320,
+   "blenderCenter": [
+    0.013,
+    102.0003,
+    -0.3708
+   ],
+   "blenderSize": [
+    24.4255,
+    75.8676,
+    0.8583
+   ],
+   "robloxPosition": [
+    -0.013,
+    -0.371,
+    102.0
+   ],
+   "sizeStuds": [
+    24.425,
+    0.858,
+    75.868
+   ]
+  },
+  {
+   "piece": "Floor3_FloorStone",
+   "module": "Floor3",
+   "layer": "PLAYABLE",
+   "canCollide": true,
+   "robloxMaterial": "Slate",
+   "color": "#252a36",
+   "transparency": 0.0,
+   "triangles": 5104,
+   "blenderCenter": [
+    0.001,
+    184.0007,
+    -0.3702
+   ],
+   "blenderSize": [
+    149.8686,
+    87.8656,
+    0.8597
+   ],
+   "robloxPosition": [
+    -0.001,
+    -0.37,
+    184.001
+   ],
+   "sizeStuds": [
+    149.869,
+    0.86,
+    87.866
+   ]
+  },
+  {
+   "piece": "Floor3_FloorStoneLight",
+   "module": "Floor3",
+   "layer": "PLAYABLE",
+   "canCollide": true,
+   "robloxMaterial": "Slate",
+   "color": "#2f3544",
+   "transparency": 0.0,
+   "triangles": 2640,
+   "blenderCenter": [
+    -0.0005,
+    183.9993,
+    -0.373
+   ],
+   "blenderSize": [
+    149.8663,
+    87.8635,
+    0.854
+   ],
+   "robloxPosition": [
+    0.0,
+    -0.373,
+    183.999
+   ],
+   "sizeStuds": [
+    149.866,
+    0.854,
+    87.864
+   ]
+  },
+  {
+   "piece": "Floor3_Runner",
+   "module": "Floor3",
+   "layer": "PLAYABLE",
+   "canCollide": true,
+   "robloxMaterial": "Slate",
+   "color": "#171b24",
+   "transparency": 0.0,
+   "triangles": 1452,
+   "blenderCenter": [
+    0.0231,
+    184.0003,
+    -0.373
+   ],
+   "blenderSize": [
+    24.3992,
+    87.8631,
+    0.8539
+   ],
+   "robloxPosition": [
+    -0.023,
+    -0.373,
+    184.0
+   ],
+   "sizeStuds": [
+    24.399,
+    0.854,
+    87.863
+   ]
+  },
+  {
+   "piece": "Gate",
+   "module": "Gate",
+   "layer": "BOUNDARY",
+   "canCollide": true,
+   "robloxMaterial": "Slate",
+   "color": "#2b3140",
+   "transparency": 0.0,
+   "triangles": 380,
+   "blenderCenter": [
+    0.0,
+    225.0,
+    33.25
+   ],
+   "blenderSize": [
+    53.0,
+    5.0,
+    66.5
+   ],
+   "robloxPosition": [
+    -0.0,
+    33.25,
+    225.0
+   ],
+   "sizeStuds": [
+    53.0,
+    66.5,
+    5.0
+   ]
+  },
+  {
+   "piece": "GateGlowRing",
+   "module": "GateGlowRing",
+   "layer": "PROPS",
+   "canCollide": false,
+   "robloxMaterial": "Neon",
+   "color": "#3aa0ff",
+   "transparency": 0.0,
+   "triangles": 220,
+   "blenderCenter": [
+    0.0,
+    224.9,
+    30.675
+   ],
+   "blenderSize": [
+    42.7,
+    5.4,
+    61.35
+   ],
+   "robloxPosition": [
+    -0.0,
+    30.675,
+    224.9
+   ],
+   "sizeStuds": [
+    42.7,
+    61.35,
+    5.4
+   ]
+  },
+  {
+   "piece": "GatePortal",
+   "module": "GatePortal",
+   "layer": "PROPS",
+   "canCollide": false,
+   "robloxMaterial": "Glass",
+   "color": "#0f2a66",
+   "transparency": 0.65,
+   "triangles": 12,
+   "blenderCenter": [
+    0.0,
+    226.2,
+    20.0
+   ],
+   "blenderSize": [
+    41.0,
+    0.3,
+    40.0
+   ],
+   "robloxPosition": [
+    -0.0,
+    20.0,
+    226.2
+   ],
+   "sizeStuds": [
+    41.0,
+    40.0,
+    0.3
+   ]
+  },
+  {
+   "piece": "Grout",
+   "module": "Grout",
+   "layer": "PLAYABLE",
+   "canCollide": true,
+   "robloxMaterial": "Slate",
+   "color": "#0c0e13",
+   "transparency": 0.0,
+   "triangles": 12,
+   "blenderCenter": [
+    0.0,
+    99.0,
+    -0.45
+   ],
+   "blenderSize": [
+    150.0,
+    258.0,
+    0.4
+   ],
+   "robloxPosition": [
+    -0.0,
+    -0.45,
+    99.0
+   ],
+   "sizeStuds": [
+    150.0,
+    0.4,
+    258.0
+   ]
+  },
+  {
+   "piece": "RibGlow",
+   "module": "RibGlow",
+   "layer": "BACKGROUND",
+   "canCollide": false,
+   "robloxMaterial": "Neon",
+   "color": "#2f8dff",
+   "transparency": 0.0,
+   "triangles": 60,
+   "blenderCenter": [
+    0.0,
+    87.9,
+    114.5
+   ],
+   "blenderSize": [
+    2.8,
+    160.8,
+    2.8
+   ],
+   "robloxPosition": [
+    -0.0,
+    114.5,
+    87.9
+   ],
+   "sizeStuds": [
+    2.8,
+    2.8,
+    160.8
+   ]
+  },
+  {
+   "piece": "Ribs",
+   "module": "Ribs",
+   "layer": "BACKGROUND",
+   "canCollide": false,
+   "robloxMaterial": "Slate",
+   "color": "#2b3140",
+   "transparency": 0.0,
+   "triangles": 980,
+   "blenderCenter": [
+    0.0,
+    90.0,
+    75.0
+   ],
+   "blenderSize": [
+    164.0,
+    164.0,
+    82.0
+   ],
+   "robloxPosition": [
+    -0.0,
+    75.0,
+    90.0
+   ],
+   "sizeStuds": [
+    164.0,
+    82.0,
+    164.0
+   ]
+  },
+  {
+   "piece": "RunnerGlow",
+   "module": "RunnerGlow",
+   "layer": "PLAYABLE",
+   "canCollide": true,
+   "robloxMaterial": "Neon",
+   "color": "#7b5cff",
+   "transparency": 0.0,
+   "triangles": 24,
+   "blenderCenter": [
+    0.0,
+    80.0,
+    0.03
+   ],
+   "blenderSize": [
+    24.65,
+    220.0,
+    0.05
+   ],
+   "robloxPosition": [
+    -0.0,
+    0.03,
+    80.0
+   ],
+   "sizeStuds": [
+    24.65,
+    0.05,
+    220.0
+   ]
+  },
+  {
+   "piece": "ShadowArmy_ShadowCape",
+   "module": "ShadowArmy",
+   "layer": "PROPS",
+   "canCollide": false,
+   "robloxMaterial": "Fabric",
+   "color": "#0d0f16",
+   "transparency": 0.0,
+   "triangles": 13028,
+   "blenderCenter": [
+    0.0001,
+    92.0,
+    7.6409
+   ],
+   "blenderSize": [
+    146.2314,
+    222.343,
+    16.2281
+   ],
+   "robloxPosition": [
+    -0.0,
+    7.641,
+    92.0
+   ],
+   "sizeStuds": [
+    146.231,
+    16.228,
+    222.343
+   ]
+  },
+  {
+   "piece": "ShadowArmy_ShadowArmor",
+   "module": "ShadowArmy",
+   "layer": "PROPS",
+   "canCollide": false,
+   "robloxMaterial": "Metal",
+   "color": "#12141b",
+   "transparency": 0.0,
+   "triangles": 8240,
+   "blenderCenter": [
+    0.0,
+    92.0,
+    9.5875
+   ],
+   "blenderSize": [
+    154.0,
+    222.9408,
+    19.175
+   ],
+   "robloxPosition": [
+    -0.0,
+    9.587,
+    92.0
+   ],
+   "sizeStuds": [
+    154.0,
+    19.175,
+    222.941
+   ]
+  },
+  {
+   "piece": "ShadowArmy_ShadowEdge",
+   "module": "ShadowArmy",
+   "layer": "PROPS",
+   "canCollide": false,
+   "robloxMaterial": "Metal",
+   "color": "#2a3350",
+   "transparency": 0.0,
+   "triangles": 5680,
+   "blenderCenter": [
+    0.0,
+    92.0,
+    10.887
+   ],
+   "blenderSize": [
+    153.125,
+    225.325,
+    20.774
+   ],
+   "robloxPosition": [
+    -0.0,
+    10.887,
+    92.0
+   ],
+   "sizeStuds": [
+    153.125,
+    20.774,
+    225.325
+   ]
+  },
+  {
+   "piece": "ShadowArmy_ShadowEyes",
+   "module": "ShadowArmy",
+   "layer": "PROPS",
+   "canCollide": false,
+   "robloxMaterial": "Neon",
+   "color": "#39b5ff",
+   "transparency": 0.0,
+   "triangles": 480,
+   "blenderCenter": [
+    0.0,
+    92.0,
+    17.5
+   ],
+   "blenderSize": [
+    150.875,
+    217.75,
+    0.275
+   ],
+   "robloxPosition": [
+    -0.0,
+    17.5,
+    92.0
+   ],
+   "sizeStuds": [
+    150.875,
+    0.275,
+    217.75
+   ]
+  },
+  {
+   "piece": "Throne",
+   "module": "Throne",
+   "layer": "PROPS",
+   "canCollide": false,
+   "robloxMaterial": "Marble",
+   "color": "#14161d",
+   "transparency": 0.0,
+   "triangles": 316,
+   "blenderCenter": [
+    0.0,
+    209.075,
+    14.3
+   ],
+   "blenderSize": [
+    9.2124,
+    5.65,
+    21.6
+   ],
+   "robloxPosition": [
+    -0.0,
+    14.3,
+    209.075
+   ],
+   "sizeStuds": [
+    9.212,
+    21.6,
+    5.65
+   ]
+  },
+  {
+   "piece": "ThroneGlow",
+   "module": "ThroneGlow",
+   "layer": "PROPS",
+   "canCollide": false,
+   "robloxMaterial": "Neon",
+   "color": "#3aa0ff",
+   "transparency": 0.0,
+   "triangles": 24,
+   "blenderCenter": [
+    0.0,
+    205.775,
+    10.5375
+   ],
+   "blenderSize": [
+    22.0,
+    9.05,
+    14.025
+   ],
+   "robloxPosition": [
+    -0.0,
+    10.537,
+    205.775
+   ],
+   "sizeStuds": [
+    22.0,
+    14.025,
+    9.05
+   ]
+  },
+  {
+   "piece": "Walls",
+   "module": "Walls",
+   "layer": "BOUNDARY",
+   "canCollide": true,
+   "robloxMaterial": "Slate",
+   "color": "#1b202b",
+   "transparency": 0.0,
+   "triangles": 24,
+   "blenderCenter": [
+    0.0,
+    99.0,
+    17.0
+   ],
+   "blenderSize": [
+    166.0,
+    258.0,
+    34.0
+   ],
+   "robloxPosition": [
+    -0.0,
+    17.0,
+    99.0
+   ],
+   "sizeStuds": [
+    166.0,
+    34.0,
+    258.0
+   ]
+  }
+ ],
+ "pieceCount": 48,
+ "triangles": 80128
+}

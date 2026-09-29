@@ -661,26 +661,94 @@ def _export_group(objs, mod, rmat, out_dir, manifest, layer):
     bpy.data.objects.remove(j, do_unlink=True)
 
 
-def export_modules(out_dir, z0_note, world_id, validation=None):
-    """Join every EXPORT_* collection into one mesh (temporary copies), write FBX + manifest.
-    The editable objects in the .blend are left untouched."""
-    os.makedirs(out_dir, exist_ok=True)
-    manifest = {"worldSlotY": list(WORLD_SLOT_Y), "layers": {k: {"collides": v[0], "strictSlot": v[1]} for k, v in LAYERS.items()}, "world": world_id, "units": "1 Blender unit = 1 stud", "mapping": "Roblox(X,Y,Z) = (-x, z, z0 + y)", "z0": z0_note, "modules": [], "anchors": []}
-    for col in list(bpy.data.collections):
-        if not col.name.startswith("EXPORT_"):
-            continue
-        mod, _, rmat = col.name[len("EXPORT_"):].partition("__")
-        objs = [o for o in col.all_objects if o.type == "MESH"]
-        if not objs:
-            continue
-        # A Roblox MeshPart has one Color: split multi-material modules into one sub-module per material.
+def module_groups():
+    """Export pieces as (piece name, Roblox material, objects, module). A Roblox MeshPart has one Color, so each
+    EXPORT_<Module>__<Material> collection is split into one piece per Blender material.
+    Naming: a piece is called <Module> only when that module name belongs to exactly one collection AND the
+    collection has one material; otherwise it is <Module>_<MaterialSuffix>. (Before this rule, modules split across
+    several collections, e.g. EXPORT_ShadowArmy__Fabric + EXPORT_ShadowArmy__Neon, both wrote ShadowArmy.fbx and one
+    overwrote the other.) Names are deterministic and verified unique."""
+    cols = [(c, *c.name[len("EXPORT_"):].partition("__")[::2]) for c in bpy.data.collections if c.name.startswith("EXPORT_")]
+    uses = {}
+    for c, mod, rmat in cols:
+        uses[mod] = uses.get(mod, 0) + 1
+    out = []
+    for c, mod, rmat in cols:
+        objs = [o for o in c.all_objects if o.type == "MESH"]
         groups = {}
         for o in objs:
             m = o.data.materials[0] if o.data.materials else None
             groups.setdefault(m.name if m else "", []).append(o)
         for mname, gobjs in sorted(groups.items()):
-            sub = mod if len(groups) == 1 else f"{mod}_{mname.split('_', 1)[-1]}"
-            _export_group(gobjs, sub, rmat, out_dir, manifest, module_layer(mod))
+            sub = mod if (len(groups) == 1 and uses[mod] == 1) else f"{mod}_{mname.split('_', 1)[-1]}"
+            out.append((sub, rmat, gobjs, mod))
+    names = [o[0] for o in out]
+    dup = sorted({n for n in names if names.count(n) > 1})
+    assert not dup, f"duplicate export piece names: {dup}"
+    return out
+
+
+def export_combined_scene(fbx_path, report_path, world_id, source_blend=""):
+    """One FBX containing every export piece at its world-local position (Studio's importer keeps only the last file
+    of a multi-file import, so worlds are imported as one scene). Same axis/unit settings as the per-piece exports.
+    Pieces are temporary joined copies; the editable source objects are untouched and nothing is saved."""
+    made, report = [], {"world": world_id, "source": source_blend, "fbx": os.path.basename(fbx_path),
+                        "mapping": "Roblox(X,Y,Z) = (-x, z, z0 + y) * importScale", "pieces": []}
+    dg = bpy.context.evaluated_depsgraph_get()
+    for sub, rmat, gobjs, mod in module_groups():
+        dups = []
+        for o in gobjs:
+            d = o.copy()
+            d.data = o.data.copy()
+            bpy.context.scene.collection.objects.link(d)
+            dups.append(d)
+        bpy.ops.object.select_all(action="DESELECT")
+        for d in dups:
+            bpy.context.view_layer.objects.active = d
+            for m in list(d.modifiers):
+                bpy.ops.object.modifier_apply(modifier=m.name)
+        for d in dups:
+            d.select_set(True)
+        bpy.context.view_layer.objects.active = dups[0]
+        if len(dups) > 1:
+            bpy.ops.object.join()
+        j = bpy.context.view_layer.objects.active
+        bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
+        bpy.ops.object.origin_set(type="ORIGIN_GEOMETRY", center="BOUNDS")
+        j.name = sub
+        j.data.name = sub
+        c, dims = j.location.copy(), j.dimensions.copy()
+        mats = [m for m in j.data.materials if m]
+        report["pieces"].append({
+            "piece": sub, "module": mod, "layer": module_layer(mod), "canCollide": LAYERS[module_layer(mod)][0],
+            "robloxMaterial": rmat or "SmoothPlastic", "color": mats[0].get("roblox_color", "") if mats else "",
+            "transparency": max([m.get("roblox_transparency", 0.0) for m in mats] or [0.0]), "triangles": tri_count(j),
+            "blenderCenter": [round(v, 4) for v in c], "blenderSize": [round(v, 4) for v in dims],
+            "robloxPosition": [round(-c.x, 3), round(c.z, 3), round(c.y, 3)],
+            "sizeStuds": [round(dims.x, 3), round(dims.z, 3), round(dims.y, 3)]})
+        made.append(j)
+    bpy.ops.object.select_all(action="DESELECT")
+    for j in made:
+        j.select_set(True)
+    os.makedirs(os.path.dirname(fbx_path), exist_ok=True)
+    bpy.ops.export_scene.fbx(filepath=fbx_path, use_selection=True, apply_unit_scale=True, global_scale=1.0,
+                             axis_forward="Z", axis_up="Y", bake_space_transform=True, mesh_smooth_type="FACE", add_leaf_bones=False)
+    report["pieceCount"] = len(made)
+    report["triangles"] = sum(p["triangles"] for p in report["pieces"])
+    for j in made:
+        bpy.data.objects.remove(j, do_unlink=True)
+    with open(report_path, "w") as f:
+        json.dump(report, f, indent=1)
+    return report
+
+
+def export_modules(out_dir, z0_note, world_id, validation=None):
+    """Join every EXPORT_* collection into one mesh (temporary copies), write FBX + manifest.
+    The editable objects in the .blend are left untouched."""
+    os.makedirs(out_dir, exist_ok=True)
+    manifest = {"worldSlotY": list(WORLD_SLOT_Y), "layers": {k: {"collides": v[0], "strictSlot": v[1]} for k, v in LAYERS.items()}, "world": world_id, "units": "1 Blender unit = 1 stud", "mapping": "Roblox(X,Y,Z) = (-x, z, z0 + y)", "z0": z0_note, "modules": [], "anchors": []}
+    for sub, rmat, gobjs, mod in module_groups():
+        _export_group(gobjs, sub, rmat, out_dir, manifest, module_layer(mod))
     for ob in bpy.data.objects:
         if ob.type == "EMPTY" and ob.name.startswith("VFX_"):
             p = ob.matrix_world.translation
