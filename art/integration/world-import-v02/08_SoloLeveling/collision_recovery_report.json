@@ -1,0 +1,107 @@
+{
+ "title": "Solo Leveling export collision recovery (offline)",
+ "status": [
+  "COMPLETE OFFLINE",
+  "STATICALLY TESTED",
+  "STUDIO VALIDATION PENDING"
+ ],
+ "rootCause": "sae_bpy.export_modules named a single-material collection by its bare module name; the knight builder splits one module into EXPORT_<Mod>__Metal/__Fabric/__Neon collections, so the Fabric (capes) and Neon (eyes) collections of ShadowArmy, Colossi and EndGuards wrote the same <Mod>.fbx and the later (Neon) overwrote the earlier (Fabric).",
+ "fix": "sae_bpy.module_groups(): a piece keeps the bare module name only if its module belongs to one collection and has one material; otherwise <Module>_<MaterialSuffix>; uniqueness asserted. Other six worlds verified: names unchanged.",
+ "collisions": [
+  {
+   "collidingFile": "ShadowArmy.fbx",
+   "committedPath": "art/exports/worlds/08_SoloLeveling/ShadowArmy.fbx",
+   "survivedOnDisk": {
+    "group": "Neon (SL_ShadowEyes)",
+    "triangles": 480
+   },
+   "overwritten": {
+    "group": "Fabric (SL_ShadowCape)",
+    "triangles": 13028
+   },
+   "correctedPieces": {
+    "ShadowArmy_ShadowCape": {
+     "triangles": 13028,
+     "sha256": "603e95b47dadd715529590a3ab5ee8c70878e4abb389982a0350b5c8639155d9"
+    },
+    "ShadowArmy_ShadowEyes": {
+     "triangles": 480,
+     "sha256": "e878531de4a88f8b63daefab1279a38ce275af30cd4f90cea0353b4dbc148c31"
+    }
+   }
+  },
+  {
+   "collidingFile": "Colossi.fbx",
+   "committedPath": "art/exports/worlds/08_SoloLeveling/Colossi.fbx",
+   "survivedOnDisk": {
+    "group": "Neon (SL_ShadowEyes)",
+    "triangles": 48
+   },
+   "overwritten": {
+    "group": "Fabric (SL_ShadowCape)",
+    "triangles": 1308
+   },
+   "correctedPieces": {
+    "Colossi_ShadowCape": {
+     "triangles": 1308,
+     "sha256": "93bc0ecd50f625dd736c122df8bd3f0404162ad94153ee8ba17ff1fcfee815c5"
+    },
+    "Colossi_ShadowEyes": {
+     "triangles": 48,
+     "sha256": "3247ed6b4ff759cadd75592c821232be9da1a471bcaacf548ace6c9a5ea4155a"
+    }
+   }
+  },
+  {
+   "collidingFile": "EndGuards.fbx",
+   "committedPath": "art/exports/worlds/08_SoloLeveling/EndGuards.fbx",
+   "survivedOnDisk": {
+    "group": "Neon (SL_ShadowEyes)",
+    "triangles": 96
+   },
+   "overwritten": {
+    "group": "Fabric (SL_ShadowCape)",
+    "triangles": 2612
+   },
+   "correctedPieces": {
+    "EndGuards_ShadowCape": {
+     "triangles": 2612,
+     "sha256": "d135beb697e2a189c1c3241173402c17e7f71eeda1948bd6488192af17fa3d59"
+    },
+    "EndGuards_ShadowEyes": {
+     "triangles": 96,
+     "sha256": "1cbd037c6deb3286220c01bee78311c84931b9918ff8705e3595f5ec47724eeb"
+    }
+   }
+  }
+ ],
+ "lostTrianglesRecovered": 16948,
+ "committedExport": {
+  "manifestEntries": 48,
+  "fbxFilesOnDisk": 45
+ },
+ "correctedExport": {
+  "path": "art/integration/world-import-v02/08_SoloLeveling/pieces/",
+  "pieces": 48,
+  "fbxFiles": 48,
+  "triangles": 80128,
+  "validationPass": true
+ },
+ "combinedScene": {
+  "path": "art/integration/world-import-v02/import-scenes/SoloLeveling_Combined_Final.fbx",
+  "bytes": 1235580,
+  "sha256": "eef9dc819ba05853048a3c8323c234606341dd142b9b923823267ccd45458121",
+  "pieces": 48,
+  "triangles": 80128,
+  "offlineReimport": "48/48 objects, names unique, 80,128 triangles, max centre/size deviation 0.000063 studs vs report, 0.01 vs committed manifest (2-decimal rounding)",
+  "studioImportScale": 0.01
+ },
+ "sourceObjectMap": "art/integration/world-import-v02/08_SoloLeveling/source_object_map.json",
+ "canonicalBlend": {
+  "path": "art/blender/worlds/08_SoloLeveling.blend",
+  "sha256": "2626078ce4db5764df34cdae47a3e5ea2dba485be1a11ded7ee66c505d0a036f",
+  "committedIn": "3d2fe1e",
+  "unchanged": true,
+  "proof": "sha256 identical before/after every packaging run; git diff empty; package_world_scene.py opens the .blend and never saves it"
+ }
+}
